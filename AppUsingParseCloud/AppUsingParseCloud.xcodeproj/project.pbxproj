@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E92E52061890FC9B0042C093 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E92E52041890FC9B0042C093 /* MBProgressHUD.m */; };
 		E942E6531890CCF400BED53F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942E6521890CCF400BED53F /* Foundation.framework */; };
 		E942E6551890CCF400BED53F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942E6541890CCF400BED53F /* CoreGraphics.framework */; };
 		E942E6571890CCF400BED53F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942E6561890CCF400BED53F /* UIKit.framework */; };
@@ -21,6 +22,16 @@
 		E942E6741890CCF400BED53F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942E6561890CCF400BED53F /* UIKit.framework */; };
 		E942E67C1890CCF400BED53F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E942E67A1890CCF400BED53F /* InfoPlist.strings */; };
 		E942E67E1890CCF400BED53F /* AppUsingParseCloudTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E942E67D1890CCF400BED53F /* AppUsingParseCloudTests.m */; };
+		E942E6891890D1FE00BED53F /* UersUITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E942E6881890D1FE00BED53F /* UersUITableViewController.m */; };
+		E942E68B1890D42500BED53F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942E68A1890D42500BED53F /* Parse.framework */; };
+		E942E68D1890D45A00BED53F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942E68C1890D45A00BED53F /* AudioToolbox.framework */; };
+		E942E68F1890D46700BED53F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942E68E1890D46700BED53F /* CFNetwork.framework */; };
+		E942E6911890D48100BED53F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942E6901890D48100BED53F /* CoreLocation.framework */; };
+		E942E6931890D48900BED53F /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E942E6921890D48900BED53F /* libz.1.1.3.dylib */; };
+		E942E6951890D49300BED53F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942E6941890D49300BED53F /* MobileCoreServices.framework */; };
+		E942E6971890D49A00BED53F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942E6961890D49A00BED53F /* QuartzCore.framework */; };
+		E942E6991890D4A100BED53F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942E6981890D4A100BED53F /* Security.framework */; };
+		E942E69D1890D4B400BED53F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942E69C1890D4B400BED53F /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E92E52041890FC9B0042C093 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		E92E52051890FC9B0042C093 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		E942E64F1890CCF400BED53F /* AppUsingParseCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppUsingParseCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E942E6521890CCF400BED53F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E942E6541890CCF400BED53F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +66,17 @@
 		E942E6791890CCF400BED53F /* AppUsingParseCloudTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AppUsingParseCloudTests-Info.plist"; sourceTree = "<group>"; };
 		E942E67B1890CCF400BED53F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E942E67D1890CCF400BED53F /* AppUsingParseCloudTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppUsingParseCloudTests.m; sourceTree = "<group>"; };
+		E942E6871890D1FE00BED53F /* UersUITableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UersUITableViewController.h; sourceTree = "<group>"; };
+		E942E6881890D1FE00BED53F /* UersUITableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UersUITableViewController.m; sourceTree = "<group>"; };
+		E942E68A1890D42500BED53F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		E942E68C1890D45A00BED53F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E942E68E1890D46700BED53F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E942E6901890D48100BED53F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E942E6921890D48900BED53F /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		E942E6941890D49300BED53F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		E942E6961890D49A00BED53F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E942E6981890D4A100BED53F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		E942E69C1890D4B400BED53F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +84,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E942E69D1890D4B400BED53F /* SystemConfiguration.framework in Frameworks */,
+				E942E6991890D4A100BED53F /* Security.framework in Frameworks */,
+				E942E6971890D49A00BED53F /* QuartzCore.framework in Frameworks */,
+				E942E6951890D49300BED53F /* MobileCoreServices.framework in Frameworks */,
+				E942E6931890D48900BED53F /* libz.1.1.3.dylib in Frameworks */,
+				E942E6911890D48100BED53F /* CoreLocation.framework in Frameworks */,
 				E942E6551890CCF400BED53F /* CoreGraphics.framework in Frameworks */,
+				E942E68F1890D46700BED53F /* CFNetwork.framework in Frameworks */,
+				E942E68D1890D45A00BED53F /* AudioToolbox.framework in Frameworks */,
 				E942E6571890CCF400BED53F /* UIKit.framework in Frameworks */,
+				E942E68B1890D42500BED53F /* Parse.framework in Frameworks */,
 				E942E6531890CCF400BED53F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +134,15 @@
 		E942E6511890CCF400BED53F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E942E69C1890D4B400BED53F /* SystemConfiguration.framework */,
+				E942E6981890D4A100BED53F /* Security.framework */,
+				E942E6961890D49A00BED53F /* QuartzCore.framework */,
+				E942E6941890D49300BED53F /* MobileCoreServices.framework */,
+				E942E6921890D48900BED53F /* libz.1.1.3.dylib */,
+				E942E6901890D48100BED53F /* CoreLocation.framework */,
+				E942E68E1890D46700BED53F /* CFNetwork.framework */,
+				E942E68C1890D45A00BED53F /* AudioToolbox.framework */,
+				E942E68A1890D42500BED53F /* Parse.framework */,
 				E942E6521890CCF400BED53F /* Foundation.framework */,
 				E942E6541890CCF400BED53F /* CoreGraphics.framework */,
 				E942E6561890CCF400BED53F /* UIKit.framework */,
@@ -112,9 +154,13 @@
 		E942E6581890CCF400BED53F /* AppUsingParseCloud */ = {
 			isa = PBXGroup;
 			children = (
+				E92E52041890FC9B0042C093 /* MBProgressHUD.m */,
+				E92E52051890FC9B0042C093 /* MBProgressHUD.h */,
 				E942E6611890CCF400BED53F /* AppDelegate.h */,
 				E942E6621890CCF400BED53F /* AppDelegate.m */,
 				E942E6641890CCF400BED53F /* Main.storyboard */,
+				E942E6871890D1FE00BED53F /* UersUITableViewController.h */,
+				E942E6881890D1FE00BED53F /* UersUITableViewController.m */,
 				E942E6671890CCF400BED53F /* ViewController.h */,
 				E942E6681890CCF400BED53F /* ViewController.m */,
 				E942E66A1890CCF400BED53F /* Images.xcassets */,
@@ -199,6 +245,14 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Khalid;
 				TargetAttributes = {
+					E942E64E1890CCF400BED53F = {
+						DevelopmentTeam = B4AKR8WPZG;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
+					};
 					E942E66F1890CCF400BED53F = {
 						TestTargetID = E942E64E1890CCF400BED53F;
 					};
@@ -251,6 +305,8 @@
 			files = (
 				E942E6691890CCF400BED53F /* ViewController.m in Sources */,
 				E942E6631890CCF400BED53F /* AppDelegate.m in Sources */,
+				E92E52061890FC9B0042C093 /* MBProgressHUD.m in Sources */,
+				E942E6891890D1FE00BED53F /* UersUITableViewController.m in Sources */,
 				E942E65F1890CCF400BED53F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +434,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/KHALID/Desktop/Project\\ App/One-Step-Forward-App/AppUsingParseCloud",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AppUsingParseCloud/AppUsingParseCloud-Prefix.pch";
 				INFOPLIST_FILE = "AppUsingParseCloud/AppUsingParseCloud-Info.plist";
@@ -391,6 +451,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/KHALID/Desktop/Project\\ App/One-Step-Forward-App/AppUsingParseCloud",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AppUsingParseCloud/AppUsingParseCloud-Prefix.pch";
 				INFOPLIST_FILE = "AppUsingParseCloud/AppUsingParseCloud-Info.plist";
@@ -460,6 +524,7 @@
 				E942E6831890CCF400BED53F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E942E6841890CCF400BED53F /* Build configuration list for PBXNativeTarget "AppUsingParseCloudTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +533,7 @@
 				E942E6861890CCF400BED53F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
