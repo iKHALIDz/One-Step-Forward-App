@@ -8,6 +8,12 @@
 
 #import "SignoutViewController.h"
 
+
+#define PHOTO_LIBRART_BUTTON_TITLE @"Photo Library"
+#define PHOTO_ALBUM_BUTTON_TITLE @"Camera Roll"
+#define CAMERA_BUTTON_TITLE @"Camera"
+#define CANCEL_BUTTON_TITLE @"Cancel"
+
 @interface SignoutViewController ()
 
 
@@ -31,7 +37,7 @@
 {
     [super viewDidLoad];
     [self.FirsnameTextbox becomeFirstResponder];
-	// Do any additional setup after loading the view.
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,6 +45,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 
 - (IBAction)IsSignUpPressed:(UIBarButtonItem *)sender {
@@ -81,9 +89,6 @@
 }
 
 
-
-
-
 #pragma mark Keyboard dissmiss
 - (void)touchesBegan: (NSSet *) touches withEvent: (UIEvent *) event
 {
@@ -110,20 +115,65 @@
 }
 
 
+
 - (IBAction)PickPictureisPressed:(UIButton *)sender {
     
     self.imagePicker=[[UIImagePickerController alloc]init];
     imagePicker.delegate=self;
     
-    imagePicker.sourceType= UIImagePickerControllerSourceTypePhotoLibrary;
-    [self presentViewController:imagePicker animated:YES completion:nil];
+    if(!self.actionSheet){
+        UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Choose Source of Image"
+                                                                delegate:self cancelButtonTitle:nil
+                                                  destructiveButtonTitle:nil
+                                                    otherButtonTitles:nil];
+        
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]){
+            [actionSheet addButtonWithTitle:PHOTO_LIBRART_BUTTON_TITLE];
+        }
+       
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+            [actionSheet addButtonWithTitle:CAMERA_BUTTON_TITLE];
+        }
+        
+        [actionSheet addButtonWithTitle:CANCEL_BUTTON_TITLE];
+        [actionSheet setCancelButtonIndex:actionSheet.numberOfButtons-1];
+        [actionSheet showInView:sender];
+    
+        self.actionSheet = actionSheet;
+    }
+}
 
+
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == self.actionSheet.destructiveButtonIndex){
+        NSLog(@"destuctivebutton clicked");
+    }else if(buttonIndex == self.actionSheet.cancelButtonIndex){
+        NSLog(@"cancel clicked");
+    }else{
+        UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+        
+        picker.allowsEditing = YES;
+        picker.delegate = self;
+        picker.mediaTypes = @[(NSString *) kUTTypeImage]; // choose both video and image
+        NSString *choice = [actionSheet buttonTitleAtIndex:buttonIndex];
+        if([choice isEqualToString:PHOTO_LIBRART_BUTTON_TITLE]){
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }else if([choice isEqualToString:CAMERA_BUTTON_TITLE]){
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        }
+        [self presentViewController:picker animated:YES completion:^{
+            NSLog(@"complete picked image");
+        }];
+        
+    }
 }
 
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    self.ProfileImg.image=[info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    self.ProfileImg.image=[info objectForKey:UIImagePickerControllerEditedImage];
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }

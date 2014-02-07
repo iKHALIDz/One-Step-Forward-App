@@ -1,0 +1,487 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E982D1EC18A236B0006F70E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D1EB18A236B0006F70E0 /* Foundation.framework */; };
+		E982D1EE18A236B0006F70E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D1ED18A236B0006F70E0 /* CoreGraphics.framework */; };
+		E982D1F018A236B0006F70E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D1EF18A236B0006F70E0 /* UIKit.framework */; };
+		E982D1F618A236B0006F70E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E982D1F418A236B0006F70E0 /* InfoPlist.strings */; };
+		E982D1F818A236B0006F70E0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E982D1F718A236B0006F70E0 /* main.m */; };
+		E982D1FC18A236B0006F70E0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E982D1FB18A236B0006F70E0 /* AppDelegate.m */; };
+		E982D1FF18A236B0006F70E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E982D1FD18A236B0006F70E0 /* Main.storyboard */; };
+		E982D20218A236B0006F70E0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E982D20118A236B0006F70E0 /* ViewController.m */; };
+		E982D20418A236B0006F70E0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E982D20318A236B0006F70E0 /* Images.xcassets */; };
+		E982D20B18A236B1006F70E0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D20A18A236B1006F70E0 /* XCTest.framework */; };
+		E982D20C18A236B1006F70E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D1EB18A236B0006F70E0 /* Foundation.framework */; };
+		E982D20D18A236B1006F70E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D1EF18A236B0006F70E0 /* UIKit.framework */; };
+		E982D21518A236B1006F70E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E982D21318A236B1006F70E0 /* InfoPlist.strings */; };
+		E982D21718A236B1006F70E0 /* PercentageAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E982D21618A236B1006F70E0 /* PercentageAppTests.m */; };
+		E982D22418A236CF006F70E0 /* PercentageChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E982D22118A236CF006F70E0 /* PercentageChart.m */; };
+		E982D22518A236CF006F70E0 /* PercentageChartLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E982D22318A236CF006F70E0 /* PercentageChartLayer.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E982D20E18A236B1006F70E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E982D1E018A236B0006F70E0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E982D1E718A236B0006F70E0;
+			remoteInfo = PercentageApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E982D1E818A236B0006F70E0 /* PercentageApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PercentageApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E982D1EB18A236B0006F70E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E982D1ED18A236B0006F70E0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E982D1EF18A236B0006F70E0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E982D1F318A236B0006F70E0 /* PercentageApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PercentageApp-Info.plist"; sourceTree = "<group>"; };
+		E982D1F518A236B0006F70E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E982D1F718A236B0006F70E0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E982D1F918A236B0006F70E0 /* PercentageApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PercentageApp-Prefix.pch"; sourceTree = "<group>"; };
+		E982D1FA18A236B0006F70E0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E982D1FB18A236B0006F70E0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E982D1FE18A236B0006F70E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E982D20018A236B0006F70E0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E982D20118A236B0006F70E0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E982D20318A236B0006F70E0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E982D20918A236B1006F70E0 /* PercentageAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PercentageAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E982D20A18A236B1006F70E0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		E982D21218A236B1006F70E0 /* PercentageAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PercentageAppTests-Info.plist"; sourceTree = "<group>"; };
+		E982D21418A236B1006F70E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E982D21618A236B1006F70E0 /* PercentageAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PercentageAppTests.m; sourceTree = "<group>"; };
+		E982D22018A236CF006F70E0 /* PercentageChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PercentageChart.h; sourceTree = "<group>"; };
+		E982D22118A236CF006F70E0 /* PercentageChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PercentageChart.m; sourceTree = "<group>"; };
+		E982D22218A236CF006F70E0 /* PercentageChartLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PercentageChartLayer.h; sourceTree = "<group>"; };
+		E982D22318A236CF006F70E0 /* PercentageChartLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PercentageChartLayer.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E982D1E518A236B0006F70E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E982D1EE18A236B0006F70E0 /* CoreGraphics.framework in Frameworks */,
+				E982D1F018A236B0006F70E0 /* UIKit.framework in Frameworks */,
+				E982D1EC18A236B0006F70E0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E982D20618A236B1006F70E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E982D20B18A236B1006F70E0 /* XCTest.framework in Frameworks */,
+				E982D20D18A236B1006F70E0 /* UIKit.framework in Frameworks */,
+				E982D20C18A236B1006F70E0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E982D1DF18A236B0006F70E0 = {
+			isa = PBXGroup;
+			children = (
+				E982D1F118A236B0006F70E0 /* PercentageApp */,
+				E982D21018A236B1006F70E0 /* PercentageAppTests */,
+				E982D1EA18A236B0006F70E0 /* Frameworks */,
+				E982D1E918A236B0006F70E0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E982D1E918A236B0006F70E0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E982D1E818A236B0006F70E0 /* PercentageApp.app */,
+				E982D20918A236B1006F70E0 /* PercentageAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E982D1EA18A236B0006F70E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E982D1EB18A236B0006F70E0 /* Foundation.framework */,
+				E982D1ED18A236B0006F70E0 /* CoreGraphics.framework */,
+				E982D1EF18A236B0006F70E0 /* UIKit.framework */,
+				E982D20A18A236B1006F70E0 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E982D1F118A236B0006F70E0 /* PercentageApp */ = {
+			isa = PBXGroup;
+			children = (
+				E982D1FA18A236B0006F70E0 /* AppDelegate.h */,
+				E982D1FB18A236B0006F70E0 /* AppDelegate.m */,
+				E982D1FD18A236B0006F70E0 /* Main.storyboard */,
+				E982D20018A236B0006F70E0 /* ViewController.h */,
+				E982D20118A236B0006F70E0 /* ViewController.m */,
+				E982D20318A236B0006F70E0 /* Images.xcassets */,
+				E982D22018A236CF006F70E0 /* PercentageChart.h */,
+				E982D22118A236CF006F70E0 /* PercentageChart.m */,
+				E982D22218A236CF006F70E0 /* PercentageChartLayer.h */,
+				E982D22318A236CF006F70E0 /* PercentageChartLayer.m */,
+				E982D1F218A236B0006F70E0 /* Supporting Files */,
+			);
+			path = PercentageApp;
+			sourceTree = "<group>";
+		};
+		E982D1F218A236B0006F70E0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E982D1F318A236B0006F70E0 /* PercentageApp-Info.plist */,
+				E982D1F418A236B0006F70E0 /* InfoPlist.strings */,
+				E982D1F718A236B0006F70E0 /* main.m */,
+				E982D1F918A236B0006F70E0 /* PercentageApp-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E982D21018A236B1006F70E0 /* PercentageAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				E982D21618A236B1006F70E0 /* PercentageAppTests.m */,
+				E982D21118A236B1006F70E0 /* Supporting Files */,
+			);
+			path = PercentageAppTests;
+			sourceTree = "<group>";
+		};
+		E982D21118A236B1006F70E0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E982D21218A236B1006F70E0 /* PercentageAppTests-Info.plist */,
+				E982D21318A236B1006F70E0 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E982D1E718A236B0006F70E0 /* PercentageApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E982D21A18A236B1006F70E0 /* Build configuration list for PBXNativeTarget "PercentageApp" */;
+			buildPhases = (
+				E982D1E418A236B0006F70E0 /* Sources */,
+				E982D1E518A236B0006F70E0 /* Frameworks */,
+				E982D1E618A236B0006F70E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PercentageApp;
+			productName = PercentageApp;
+			productReference = E982D1E818A236B0006F70E0 /* PercentageApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E982D20818A236B1006F70E0 /* PercentageAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E982D21D18A236B1006F70E0 /* Build configuration list for PBXNativeTarget "PercentageAppTests" */;
+			buildPhases = (
+				E982D20518A236B1006F70E0 /* Sources */,
+				E982D20618A236B1006F70E0 /* Frameworks */,
+				E982D20718A236B1006F70E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E982D20F18A236B1006F70E0 /* PBXTargetDependency */,
+			);
+			name = PercentageAppTests;
+			productName = PercentageAppTests;
+			productReference = E982D20918A236B1006F70E0 /* PercentageAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E982D1E018A236B0006F70E0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = Khalid;
+				TargetAttributes = {
+					E982D20818A236B1006F70E0 = {
+						TestTargetID = E982D1E718A236B0006F70E0;
+					};
+				};
+			};
+			buildConfigurationList = E982D1E318A236B0006F70E0 /* Build configuration list for PBXProject "PercentageApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E982D1DF18A236B0006F70E0;
+			productRefGroup = E982D1E918A236B0006F70E0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E982D1E718A236B0006F70E0 /* PercentageApp */,
+				E982D20818A236B1006F70E0 /* PercentageAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E982D1E618A236B0006F70E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E982D20418A236B0006F70E0 /* Images.xcassets in Resources */,
+				E982D1F618A236B0006F70E0 /* InfoPlist.strings in Resources */,
+				E982D1FF18A236B0006F70E0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E982D20718A236B1006F70E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E982D21518A236B1006F70E0 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E982D1E418A236B0006F70E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E982D22418A236CF006F70E0 /* PercentageChart.m in Sources */,
+				E982D22518A236CF006F70E0 /* PercentageChartLayer.m in Sources */,
+				E982D20218A236B0006F70E0 /* ViewController.m in Sources */,
+				E982D1FC18A236B0006F70E0 /* AppDelegate.m in Sources */,
+				E982D1F818A236B0006F70E0 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E982D20518A236B1006F70E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E982D21718A236B1006F70E0 /* PercentageAppTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E982D20F18A236B1006F70E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E982D1E718A236B0006F70E0 /* PercentageApp */;
+			targetProxy = E982D20E18A236B1006F70E0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E982D1F418A236B0006F70E0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E982D1F518A236B0006F70E0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E982D1FD18A236B0006F70E0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E982D1FE18A236B0006F70E0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E982D21318A236B1006F70E0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E982D21418A236B1006F70E0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E982D21818A236B1006F70E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E982D21918A236B1006F70E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E982D21B18A236B1006F70E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PercentageApp/PercentageApp-Prefix.pch";
+				INFOPLIST_FILE = "PercentageApp/PercentageApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E982D21C18A236B1006F70E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PercentageApp/PercentageApp-Prefix.pch";
+				INFOPLIST_FILE = "PercentageApp/PercentageApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E982D21E18A236B1006F70E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PercentageApp.app/PercentageApp";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PercentageApp/PercentageApp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PercentageAppTests/PercentageAppTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		E982D21F18A236B1006F70E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PercentageApp.app/PercentageApp";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PercentageApp/PercentageApp-Prefix.pch";
+				INFOPLIST_FILE = "PercentageAppTests/PercentageAppTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E982D1E318A236B0006F70E0 /* Build configuration list for PBXProject "PercentageApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E982D21818A236B1006F70E0 /* Debug */,
+				E982D21918A236B1006F70E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E982D21A18A236B1006F70E0 /* Build configuration list for PBXNativeTarget "PercentageApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E982D21B18A236B1006F70E0 /* Debug */,
+				E982D21C18A236B1006F70E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E982D21D18A236B1006F70E0 /* Build configuration list for PBXNativeTarget "PercentageAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E982D21E18A236B1006F70E0 /* Debug */,
+				E982D21F18A236B1006F70E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E982D1E018A236B0006F70E0 /* Project object */;
+}

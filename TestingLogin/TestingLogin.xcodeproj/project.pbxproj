@@ -35,7 +35,13 @@
 		E9768D6318984B290087D1C6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9768D6218984B290087D1C6 /* SystemConfiguration.framework */; };
 		E9768D661898EF110087D1C6 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9768D651898EF110087D1C6 /* WelcomeViewController.m */; };
 		E9768D69189901CE0087D1C6 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9768D68189901CE0087D1C6 /* MainMenuViewController.m */; };
+		E982D22D18A4DCCE006F70E0 /* MainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E982D22C18A4DCCE006F70E0 /* MainNavigationController.m */; };
 		E9A0AFD8189C38FD005755AE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A0AFD7189C38FD005755AE /* Parse.framework */; };
+		E9A0AFDD189CC0A9005755AE /* login-button-small-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A0AFD9189CC0A9005755AE /* login-button-small-pressed.png */; };
+		E9A0AFDE189CC0A9005755AE /* login-button-small-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A0AFDA189CC0A9005755AE /* login-button-small-pressed@2x.png */; };
+		E9A0AFDF189CC0A9005755AE /* login-button-small.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A0AFDB189CC0A9005755AE /* login-button-small.png */; };
+		E9A0AFE0189CC0A9005755AE /* login-button-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A0AFDC189CC0A9005755AE /* login-button-small@2x.png */; };
+		E9A0AFE2189CC35F005755AE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A0AFE1189CC35F005755AE /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,7 +91,14 @@
 		E9768D651898EF110087D1C6 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		E9768D67189901CE0087D1C6 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMenuViewController.h; path = ../MainMenuViewController.h; sourceTree = "<group>"; };
 		E9768D68189901CE0087D1C6 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainMenuViewController.m; path = ../MainMenuViewController.m; sourceTree = "<group>"; };
+		E982D22B18A4DCCE006F70E0 /* MainNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNavigationController.h; sourceTree = "<group>"; };
+		E982D22C18A4DCCE006F70E0 /* MainNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNavigationController.m; sourceTree = "<group>"; };
 		E9A0AFD7189C38FD005755AE /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		E9A0AFD9189CC0A9005755AE /* login-button-small-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button-small-pressed.png"; sourceTree = "<group>"; };
+		E9A0AFDA189CC0A9005755AE /* login-button-small-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button-small-pressed@2x.png"; sourceTree = "<group>"; };
+		E9A0AFDB189CC0A9005755AE /* login-button-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button-small.png"; sourceTree = "<group>"; };
+		E9A0AFDC189CC0A9005755AE /* login-button-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button-small@2x.png"; sourceTree = "<group>"; };
+		E9A0AFE1189CC35F005755AE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +119,7 @@
 				E9768D5118984A4E0087D1C6 /* CoreLocation.framework in Frameworks */,
 				E9768D4F18984A400087D1C6 /* CFNetwork.framework in Frameworks */,
 				E9768D111898497C0087D1C6 /* CoreGraphics.framework in Frameworks */,
+				E9A0AFE2189CC35F005755AE /* FacebookSDK.framework in Frameworks */,
 				E9768D131898497C0087D1C6 /* UIKit.framework in Frameworks */,
 				E9768D0F1898497C0087D1C6 /* Foundation.framework in Frameworks */,
 			);
@@ -146,6 +160,7 @@
 		E9768D0D1898497C0087D1C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E9A0AFE1189CC35F005755AE /* FacebookSDK.framework */,
 				E9A0AFD7189C38FD005755AE /* Parse.framework */,
 				E9768D6218984B290087D1C6 /* SystemConfiguration.framework */,
 				E9768D6018984AD80087D1C6 /* Security.framework */,
@@ -178,6 +193,8 @@
 				E9768D1D1898497C0087D1C6 /* AppDelegate.h */,
 				E9768D1E1898497C0087D1C6 /* AppDelegate.m */,
 				E9768D201898497C0087D1C6 /* Main.storyboard */,
+				E982D22B18A4DCCE006F70E0 /* MainNavigationController.h */,
+				E982D22C18A4DCCE006F70E0 /* MainNavigationController.m */,
 				E9768D641898EF110087D1C6 /* WelcomeViewController.h */,
 				E9768D651898EF110087D1C6 /* WelcomeViewController.m */,
 				E9768D261898497C0087D1C6 /* Images.xcassets */,
@@ -189,6 +206,10 @@
 		E9768D151898497C0087D1C6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E9A0AFD9189CC0A9005755AE /* login-button-small-pressed.png */,
+				E9A0AFDA189CC0A9005755AE /* login-button-small-pressed@2x.png */,
+				E9A0AFDB189CC0A9005755AE /* login-button-small.png */,
+				E9A0AFDC189CC0A9005755AE /* login-button-small@2x.png */,
 				E9768D161898497C0087D1C6 /* TestingLogin-Info.plist */,
 				E9768D171898497C0087D1C6 /* InfoPlist.strings */,
 				E9768D1A1898497C0087D1C6 /* main.m */,
@@ -291,8 +312,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9A0AFDE189CC0A9005755AE /* login-button-small-pressed@2x.png in Resources */,
+				E9A0AFDF189CC0A9005755AE /* login-button-small.png in Resources */,
+				E9A0AFDD189CC0A9005755AE /* login-button-small-pressed.png in Resources */,
 				E9768D271898497C0087D1C6 /* Images.xcassets in Resources */,
 				E9768D191898497C0087D1C6 /* InfoPlist.strings in Resources */,
+				E9A0AFE0189CC0A9005755AE /* login-button-small@2x.png in Resources */,
 				E9768D221898497C0087D1C6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +341,7 @@
 				E9768D1B1898497C0087D1C6 /* main.m in Sources */,
 				E9768D4B189849B80087D1C6 /* SignoutViewController.m in Sources */,
 				E9768D4A189849B80087D1C6 /* LoginViewController.m in Sources */,
+				E982D22D18A4DCCE006F70E0 /* MainNavigationController.m in Sources */,
 				E9768D69189901CE0087D1C6 /* MainMenuViewController.m in Sources */,
 				E9768D661898EF110087D1C6 /* WelcomeViewController.m in Sources */,
 			);

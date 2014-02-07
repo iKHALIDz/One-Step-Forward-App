@@ -18,6 +18,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    /*
+     [self.self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+     forBarMetrics:UIBarMetricsDefault];
+     self.self.navigationController.navigationBar.shadowImage = [UIImage new];
+     self.self.navigationController.navigationBar.translucent = YES;
+     */
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,11 +53,9 @@
 }
 
 
-
 #pragma mark Keyboard dissmiss
 - (void)touchesBegan: (NSSet *) touches withEvent: (UIEvent *) event
 {
-    
     if (! [self isFirstResponder])
     {
         {
@@ -65,6 +69,5 @@
             
         }
     }
-    
 }
 @end

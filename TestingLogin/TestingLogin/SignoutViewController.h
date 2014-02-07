@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
 
-@interface SignoutViewController : UIViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface SignoutViewController : UIViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITextField *FirsnameTextbox;
@@ -27,5 +28,8 @@
 - (IBAction)PickPictureisPressed:(UIButton *)sender;
 
 @property (strong, nonatomic) UIImagePickerController * imagePicker;
+
+@property (nonatomic,weak) UIActionSheet *actionSheet;
+
 
 @end

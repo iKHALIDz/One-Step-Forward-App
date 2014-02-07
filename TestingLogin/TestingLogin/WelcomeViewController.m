@@ -35,19 +35,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-- (IBAction)Singup:(UIButton *)sender {
-    
-    //SignoutViewController *view=[[SignoutViewController alloc] initWithNibName:@"SignoutViewController" bundle:[NSBundle mainBundle]];
-    
-    //[self.navigationController pushViewController:view animated:YES];
-    
-    
-    NSLog(@"SignUp is Presses");
-    [self performSegueWithIdentifier:@"SignUPisPressed" sender:self];
 
-}
-
-*/
 
 @end
