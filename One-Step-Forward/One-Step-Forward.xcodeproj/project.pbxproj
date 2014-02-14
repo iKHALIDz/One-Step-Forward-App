@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E918E6BC18ADF68300D0F431 /* Goal.m in Sources */ = {isa = PBXBuildFile; fileRef = E918E6BB18ADF68300D0F431 /* Goal.m */; };
+		E918E6C018ADF6B100D0F431 /* goalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E918E6BF18ADF6B100D0F431 /* goalTableViewCell.m */; };
+		E918E6C318ADF80000D0F431 /* userGoals.m in Sources */ = {isa = PBXBuildFile; fileRef = E918E6C218ADF80000D0F431 /* userGoals.m */; };
 		E982D24118A6DA4B006F70E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D24018A6DA4B006F70E0 /* Foundation.framework */; };
 		E982D24318A6DA4B006F70E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D24218A6DA4B006F70E0 /* CoreGraphics.framework */; };
 		E982D24518A6DA4B006F70E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D24418A6DA4B006F70E0 /* UIKit.framework */; };
@@ -51,6 +54,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E918E6BA18ADF68300D0F431 /* Goal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Goal.h; sourceTree = "<group>"; };
+		E918E6BB18ADF68300D0F431 /* Goal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Goal.m; sourceTree = "<group>"; };
+		E918E6BE18ADF6B100D0F431 /* goalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goalTableViewCell.h; sourceTree = "<group>"; };
+		E918E6BF18ADF6B100D0F431 /* goalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goalTableViewCell.m; sourceTree = "<group>"; };
+		E918E6C118ADF80000D0F431 /* userGoals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userGoals.h; sourceTree = "<group>"; };
+		E918E6C218ADF80000D0F431 /* userGoals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userGoals.m; sourceTree = "<group>"; };
 		E982D23D18A6DA4B006F70E0 /* One-Step-Forward.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "One-Step-Forward.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E982D24018A6DA4B006F70E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E982D24218A6DA4B006F70E0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -129,6 +138,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E918E6B918ADF58400D0F431 /* Signin+SingUp */ = {
+			isa = PBXGroup;
+			children = (
+				E982D27718A6DAEF006F70E0 /* LoginViewController.h */,
+				E982D27818A6DAEF006F70E0 /* LoginViewController.m */,
+				E982D27918A6DAEF006F70E0 /* MainNavigationController.h */,
+				E982D27A18A6DAEF006F70E0 /* MainNavigationController.m */,
+				E982D27B18A6DAEF006F70E0 /* WelcomeViewController.h */,
+				E982D27C18A6DAEF006F70E0 /* WelcomeViewController.m */,
+				E982D28118A6DB9F006F70E0 /* SignupViewController.h */,
+				E982D28218A6DB9F006F70E0 /* SignupViewController.m */,
+			);
+			name = "Signin+SingUp";
+			sourceTree = "<group>";
+		};
+		E918E6BD18ADF68D00D0F431 /* Model Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E918E6BA18ADF68300D0F431 /* Goal.h */,
+				E918E6BB18ADF68300D0F431 /* Goal.m */,
+			);
+			name = "Model Classes";
+			sourceTree = "<group>";
+		};
 		E982D23418A6DA4B006F70E0 = {
 			isa = PBXGroup;
 			children = (
@@ -176,14 +209,12 @@
 			children = (
 				E982D27518A6DAEF006F70E0 /* MainMenuViewController.h */,
 				E982D27618A6DAEF006F70E0 /* MainMenuViewController.m */,
-				E982D27718A6DAEF006F70E0 /* LoginViewController.h */,
-				E982D27818A6DAEF006F70E0 /* LoginViewController.m */,
-				E982D27918A6DAEF006F70E0 /* MainNavigationController.h */,
-				E982D27A18A6DAEF006F70E0 /* MainNavigationController.m */,
-				E982D27B18A6DAEF006F70E0 /* WelcomeViewController.h */,
-				E982D27C18A6DAEF006F70E0 /* WelcomeViewController.m */,
-				E982D28118A6DB9F006F70E0 /* SignupViewController.h */,
-				E982D28218A6DB9F006F70E0 /* SignupViewController.m */,
+				E918E6BE18ADF6B100D0F431 /* goalTableViewCell.h */,
+				E918E6BF18ADF6B100D0F431 /* goalTableViewCell.m */,
+				E918E6C118ADF80000D0F431 /* userGoals.h */,
+				E918E6C218ADF80000D0F431 /* userGoals.m */,
+				E918E6BD18ADF68D00D0F431 /* Model Classes */,
+				E918E6B918ADF58400D0F431 /* Signin+SingUp */,
 				E982D24F18A6DA4B006F70E0 /* AppDelegate.h */,
 				E982D25018A6DA4B006F70E0 /* AppDelegate.m */,
 				E982D25218A6DA4B006F70E0 /* Main.storyboard */,
@@ -323,11 +354,14 @@
 			files = (
 				E982D27E18A6DAEF006F70E0 /* LoginViewController.m in Sources */,
 				E982D25118A6DA4B006F70E0 /* AppDelegate.m in Sources */,
+				E918E6C018ADF6B100D0F431 /* goalTableViewCell.m in Sources */,
 				E982D27D18A6DAEF006F70E0 /* MainMenuViewController.m in Sources */,
 				E982D24D18A6DA4B006F70E0 /* main.m in Sources */,
+				E918E6BC18ADF68300D0F431 /* Goal.m in Sources */,
 				E982D27F18A6DAEF006F70E0 /* MainNavigationController.m in Sources */,
 				E982D28318A6DB9F006F70E0 /* SignupViewController.m in Sources */,
 				E982D28018A6DAEF006F70E0 /* WelcomeViewController.m in Sources */,
+				E918E6C318ADF80000D0F431 /* userGoals.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +578,7 @@
 				E982D27118A6DA4B006F70E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E982D27218A6DA4B006F70E0 /* Build configuration list for PBXNativeTarget "One-Step-ForwardTests" */ = {
 			isa = XCConfigurationList;
@@ -552,6 +587,7 @@
 				E982D27418A6DA4B006F70E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

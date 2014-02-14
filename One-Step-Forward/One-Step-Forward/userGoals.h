@@ -1,20 +1,16 @@
 //
-//  MainMenuViewController.h
-//  TestingLogin
+//  userGoals.h
+//  One-Step-Forward
 //
-//  Created by KHALID ALAHMARI on 1/29/14.
+//  Created by KHALID ALAHMARI on 2/13/14.
 //  Copyright (c) 2014 Khalid. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import <Parse/Parse.h>
 #import "goalTableViewCell.h"
 
 
-@interface MainMenuViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
-
-
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@interface userGoals : UITableView
 
 @property (nonatomic,strong) NSMutableArray *goalsName;
 @property (nonatomic,strong) NSMutableArray *goalsdescription;

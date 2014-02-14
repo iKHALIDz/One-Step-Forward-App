@@ -1,47 +1,25 @@
 //
-//  MainMenuViewController.m
-//  TestingLogin
+//  userGoals.m
+//  One-Step-Forward
 //
-//  Created by KHALID ALAHMARI on 1/29/14.
+//  Created by KHALID ALAHMARI on 2/13/14.
 //  Copyright (c) 2014 Khalid. All rights reserved.
 //
 
-#import "MainMenuViewController.h"
+#import "userGoals.h"
 
-@interface MainMenuViewController ()
-
-@end
-
-
-@implementation MainMenuViewController
-
+@implementation userGoals
 
 @synthesize goalsdescription,goalsName,goalDeadline;
 
-@synthesize tableView;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
     goalsName=[[NSMutableArray alloc]initWithObjects:@"Ahmed",@"Ali",nil];
     goalsdescription=[[NSMutableArray alloc]initWithObjects:@"Ahmed Description",@"Ali Description",nil];
     goalDeadline = [[NSMutableArray alloc]initWithObjects:@"22/5/2013",@"22/5/2014",nil];
-    
-
-
 }
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -57,17 +35,13 @@
 }
 
 
-- (void)didReceiveMemoryWarning
+- (id)initWithFrame:(CGRect)frame
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)isSignOutPressed:(UIButton *)sender {
-    
-    [PFUser logOut];
-    
-    //[self performSegueWithIdentifier:@"LogoutSuccessfuly" sender:self];
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+    }
+    return self;
 }
 
 
@@ -84,6 +58,13 @@
     return cell;
 }
 
-
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
+{
+    // Drawing code
+}
+*/
 
 @end

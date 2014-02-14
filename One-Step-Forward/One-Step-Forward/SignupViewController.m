@@ -174,6 +174,11 @@
 {
     
     self.ProfileImg.image=[info objectForKey:UIImagePickerControllerEditedImage];
+    self.ProfileImg.layer.cornerRadius=45;
+    self.ProfileImg.layer.masksToBounds=YES;
+    self.ProfileImg.layer.borderWidth=1.0f;
+    
+    
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }

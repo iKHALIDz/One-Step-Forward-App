@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Khalid. All rights reserved.
 //
 
-#import "SignoutViewController.h"
+#import "SignupViewController.h"
 
 
 #define PHOTO_LIBRART_BUTTON_TITLE @"Photo Library"
@@ -14,13 +14,13 @@
 #define CAMERA_BUTTON_TITLE @"Camera"
 #define CANCEL_BUTTON_TITLE @"Cancel"
 
-@interface SignoutViewController ()
+@interface SignupViewController ()
 
 
 @end
 
 
-@implementation SignoutViewController
+@implementation SignupViewController
 
 @synthesize imagePicker,ProfileImg;
 
@@ -61,7 +61,6 @@
     newUser.username=self.UsernameTextbox.text;
     newUser.password=self.PasswordTextbox.text;
     newUser.email=self.EmailTextbox.text;
-    
     
     
     NSData *pictureData = UIImagePNGRepresentation(self.ProfileImg.image);
@@ -174,6 +173,9 @@
 {
     
     self.ProfileImg.image=[info objectForKey:UIImagePickerControllerEditedImage];
+    self.ProfileImg.layer.cornerRadius=30;
+    self.ProfileImg.layer.masksToBounds=YES;
+
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }

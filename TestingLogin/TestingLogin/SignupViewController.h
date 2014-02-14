@@ -11,7 +11,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 
 
-@interface SignoutViewController : UIViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface SignupViewController : UIViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITextField *FirsnameTextbox;
