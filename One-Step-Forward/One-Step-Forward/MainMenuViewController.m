@@ -20,6 +20,9 @@
 
 @synthesize tableView;
 
+@synthesize postArray;
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -29,17 +32,33 @@
     return self;
 }
 
+/*
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    if ([PFUser currentUser])
+        [self refreshButtonHandler:nil];
+    NSLog(@"viewDidLoad");
+*/
+
+/*
     goalsName=[[NSMutableArray alloc]initWithObjects:@"Ahmed",@"Ali",nil];
     goalsdescription=[[NSMutableArray alloc]initWithObjects:@"Ahmed Description",@"Ali Description",nil];
     goalDeadline = [[NSMutableArray alloc]initWithObjects:@"22/5/2013",@"22/5/2014",nil];
+ 
     
+}
+ */
 
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    if ([PFUser currentUser]){
+[self.tableView reloadData];
+        [self refreshButtonHandler:nil];
+
+    }
 }
 
 
@@ -52,8 +71,26 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [goalsName count];
+    return postArray.count;
     
+    
+}
+
+
+- (void)refreshButtonHandler:(id)sender {
+    // Create a query
+    PFQuery *postQuery = [PFQuery queryWithClassName:@"Goal"];
+    postQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
+
+    // Follow relationship
+    [postQuery whereKey:@"CreatedBy" equalTo:[PFUser currentUser]];
+    
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            postArray = objects;           // Store results
+            [self.tableView reloadData];   // Reload table
+        }
+    }];
 }
 
 
@@ -77,13 +114,12 @@
     goalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     
-    cell.goalDescription.text=[goalsdescription objectAtIndex:indexPath.row];
-    //cell.goalDeadline.text = [goalDeadline objectAtIndex:indexPath.row];
-    cell.goalName.text=[goalsName objectAtIndex:indexPath.row];
+    PFObject *goal = [postArray objectAtIndex:indexPath.row];
+    
+    [cell.goalName setText:[goal objectForKey:@"GoalName"]];
+    [cell.goalDescription setText:[goal objectForKey:@"GoalDesc"]];
     
     return cell;
 }
-
-
 
 @end

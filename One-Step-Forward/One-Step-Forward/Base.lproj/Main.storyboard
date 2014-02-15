@@ -66,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NUQ-4c-MUI" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2319" y="1077"/>
+            <point key="canvasLocation" x="877" y="1013"/>
         </scene>
         <!--Main Menu View Controller - Main-->
         <scene sceneID="gOD-ly-XeZ">
@@ -139,14 +139,63 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Main" id="sgh-zD-5Vb"/>
+                    <navigationItem key="navigationItem" title="Main" id="sgh-zD-5Vb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="UkS-p0-xKw">
+                            <connections>
+                                <segue destination="eG7-Cr-ta2" kind="push" id="Xsx-bE-RzO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Q7Y-qE-ZvC" id="kO2-7J-OtO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTE-Iw-kOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3568" y="1291"/>
+            <point key="canvasLocation" x="1850" y="1207"/>
+        </scene>
+        <!--Add Goal View Controller-->
+        <scene sceneID="ggd-kw-NR1">
+            <objects>
+                <viewController id="eG7-Cr-ta2" customClass="AddGoalViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Ii-Bp-r0H"/>
+                        <viewControllerLayoutGuide type="bottom" id="saQ-Dn-Lqh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oc5-IG-gOB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Goal Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CJn-UG-FTN">
+                                <rect key="frame" x="20" y="91" width="266" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Goal Desc" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zCv-16-r06">
+                                <rect key="frame" x="20" y="129" width="266" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5SZ-5E-jEO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="hXN-jV-rEf">
+                            <connections>
+                                <action selector="isSavePressed:" destination="eG7-Cr-ta2" id="7UP-pX-5Ig"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="goalDesc" destination="zCv-16-r06" id="7pX-30-ZyY"/>
+                        <outlet property="goalName" destination="CJn-UG-FTN" id="HrZ-kJ-H9D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Igw-kX-vjo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2411" y="1156"/>
         </scene>
         <!--Signup View Controller - New User-->
         <scene sceneID="967-MZ-iAX">
@@ -230,7 +279,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azV-e1-Eqh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2363" y="1743"/>
+            <point key="canvasLocation" x="921" y="1679"/>
         </scene>
         <!--Main Navigation Controller-->
         <scene sceneID="sMX-67-amr">
@@ -250,7 +299,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rbR-tZ-d3F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="1291"/>
+            <point key="canvasLocation" x="-142" y="1227"/>
         </scene>
         <!--Welcome View Controller - Welcome-->
         <scene sceneID="duP-0b-goP">
@@ -293,7 +342,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pQY-iJ-S5w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1847" y="1291"/>
+            <point key="canvasLocation" x="405" y="1227"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X9F-63-aUw">
@@ -317,7 +366,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LWs-z8-N6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3028" y="1291"/>
+            <point key="canvasLocation" x="1398" y="1227"/>
         </scene>
     </scenes>
     <resources>
@@ -329,6 +378,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="fhC-bU-6R8"/>
+        <segue reference="F9C-LS-NcX"/>
     </inferredMetricsTieBreakers>
 </document>
