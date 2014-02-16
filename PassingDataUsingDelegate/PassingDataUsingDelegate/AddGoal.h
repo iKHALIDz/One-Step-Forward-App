@@ -11,13 +11,13 @@
 #import "CalenderViewController.h"
 
 
-@interface AddGoal : UIViewController  <SDProtocol>
+@interface AddGoal : UIViewController <passDate>
+
 
 
 @property (weak, nonatomic) IBOutlet UITextField *goalNameTextField;
 
 @property (weak, nonatomic) IBOutlet UITextField *goalDescriptionTextField;
-
 
 
 @property (weak, nonatomic) IBOutlet UILabel *deadlineLabel;

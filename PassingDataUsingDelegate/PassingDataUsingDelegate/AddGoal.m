@@ -1,24 +1,23 @@
 //
-//  AddGoalViewController.m
-//  One-Step-Forward
+//  AddGoal.m
+//  CreateGoals
 //
-//  Created by KHALID ALAHMARI on 2/13/14.
+//  Created by KHALID ALAHMARI on 2/12/14.
 //  Copyright (c) 2014 Khalid. All rights reserved.
 //
 
-#import "AddGoalViewController.h"
+#import "AddGoal.h"
 
-@interface AddGoalViewController ()
+
+@interface AddGoal ()
 
 @end
 
+@implementation AddGoal
 
-
-@implementation AddGoalViewController
-
-@synthesize deadlineLabel;
+@synthesize dateFormatter;
 @synthesize DeadlineLabelText;
-
+@synthesize deadlineLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,8 +32,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    if(DeadlineLabelText!=nil)
+    {
+    self.deadlineLabel.text=DeadlineLabelText;
+    }
+    
+    
+    
 }
-
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -52,32 +58,20 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)isSavePressed:(UIBarButtonItem *)sender {
-    
-    PFObject *newGoal = [PFObject objectWithClassName:@"Goal"];
-    [newGoal setObject:self.goalName.text forKey:@"GoalName"];
-    [newGoal setObject:self.goalDesc.text forKey:@"GoalDesc"];
-    [newGoal setObject:self.deadlineLabel.text forKey:@"GoalDeadline"];
-    
-
-    [newGoal setObject:[PFUser currentUser] forKey:@"CreatedBy"];
-    
-    [newGoal saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            
-            [[self navigationController] popViewControllerAnimated:YES];
 
 
-        }}];
+- (IBAction)PickADeadlineDate:(UIButton *)sender {
+   
     
 }
 
 
 -(void)setDeadline:(NSString*)deadline;
 {
-    
+
     self.deadlineLabel.text=deadline;
 }
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -92,27 +86,21 @@
     
 }
 
+
 - (void)touchesBegan: (NSSet *) touches withEvent: (UIEvent *) event
 {
     if (! [self isFirstResponder])
     {
         {
-            if ([self.goalName isFirstResponder]) {
-                [self.goalName resignFirstResponder];
+            if ([self.goalNameTextField isFirstResponder]) {
+                [self.goalNameTextField resignFirstResponder];
             }
-            if ([self.goalDesc isFirstResponder]) {
-                [self.goalDesc resignFirstResponder];
+            if ([self.goalDescriptionTextField isFirstResponder]) {
+                [self.goalDescriptionTextField resignFirstResponder];
                 
             }
             
         }
     }
 }
-
-- (IBAction)PickADeadlineDate:(UIButton *)sender
-{
-    
-    
-}
-
 @end

@@ -66,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NUQ-4c-MUI" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="877" y="1013"/>
+            <point key="canvasLocation" x="833" y="1009"/>
         </scene>
         <!--Main Menu View Controller - Main-->
         <scene sceneID="gOD-ly-XeZ">
@@ -123,9 +123,16 @@
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deadline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RpF-zO-Shv">
+                                                    <rect key="frame" x="20" y="71" width="111" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="goalDeadline" destination="RpF-zO-Shv" id="rU6-D4-as5"/>
                                             <outlet property="goalDescription" destination="2hG-RT-EqZ" id="a7i-BX-cEe"/>
                                             <outlet property="goalName" destination="gMn-9h-UA9" id="kw8-QT-tQZ"/>
                                         </connections>
@@ -152,7 +159,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTE-Iw-kOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1850" y="1207"/>
+            <point key="canvasLocation" x="1742" y="1207"/>
         </scene>
         <!--Add Goal View Controller-->
         <scene sceneID="ggd-kw-NR1">
@@ -178,6 +185,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deadline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPt-64-wFO">
+                                <rect key="frame" x="20" y="167" width="67" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vRo-Tk-npF">
+                                <rect key="frame" x="87" y="163" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Pick A date">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="PickADeadlineDate:" destination="eG7-Cr-ta2" eventType="touchUpInside" id="MT0-rd-fUU"/>
+                                    <segue destination="YCw-fn-nea" kind="modal" identifier="VC" id="xfJ-GD-zzd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -189,13 +214,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="deadlineLabel" destination="zPt-64-wFO" id="twc-cQ-x2E"/>
                         <outlet property="goalDesc" destination="zCv-16-r06" id="7pX-30-ZyY"/>
                         <outlet property="goalName" destination="CJn-UG-FTN" id="HrZ-kJ-H9D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Igw-kX-vjo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2411" y="1156"/>
+            <point key="canvasLocation" x="2151" y="1207"/>
         </scene>
         <!--Signup View Controller - New User-->
         <scene sceneID="967-MZ-iAX">
@@ -366,7 +392,60 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LWs-z8-N6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1398" y="1227"/>
+            <point key="canvasLocation" x="1324" y="1207"/>
+        </scene>
+        <!--Calender View Controller-->
+        <scene sceneID="nQI-dM-7vD">
+            <objects>
+                <viewController id="C1B-3V-7KQ" customClass="CalenderViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wtb-y8-2Q2"/>
+                        <viewControllerLayoutGuide type="bottom" id="quE-kQ-KdJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="spv-xN-BKP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jYL-cV-Fxc">
+                                <rect key="frame" x="0.0" y="69" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dEM-sg-mnl">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="8BE-fC-8ZQ">
+                            <connections>
+                                <action selector="doneisPressed:" destination="C1B-3V-7KQ" id="eB1-fL-ibK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="CalenderView" destination="jYL-cV-Fxc" id="khf-qP-Xhb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ml0-34-pqZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2632" y="507"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="i6s-yc-5qT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YCw-fn-nea" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VYc-FJ-e4O">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="C1B-3V-7KQ" kind="relationship" relationship="rootViewController" id="liq-6O-0ly"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rjq-9X-x3X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2078" y="493"/>
         </scene>
     </scenes>
     <resources>
@@ -378,6 +457,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="F9C-LS-NcX"/>
+        <segue reference="fhC-bU-6R8"/>
     </inferredMetricsTieBreakers>
 </document>

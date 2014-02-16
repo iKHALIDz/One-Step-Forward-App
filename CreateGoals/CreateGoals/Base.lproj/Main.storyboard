@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="UFB-hZ-GLT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vaC-gH-JRY">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -45,19 +45,6 @@
                                     <action selector="PickADeadlineDate:" destination="UFB-hZ-GLT" eventType="touchUpInside" id="7Vq-k9-10E"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7va-mn-pMK">
-                                <rect key="frame" x="0.0" y="19" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Add Goal" id="bJv-Yu-u5l">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="uaR-Am-6NN">
-                                            <connections>
-                                                <action selector="Save:" destination="UFB-hZ-GLT" id="9mw-Yb-U7y"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAs-FV-Yhe">
                                 <rect key="frame" x="119" y="241" width="60" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -66,7 +53,7 @@
                                 </state>
                                 <connections>
                                     <action selector="PickADeadlineDate:" destination="UFB-hZ-GLT" eventType="touchUpInside" id="T0T-wz-gam"/>
-                                    <segue destination="3sd-aC-I6J" kind="modal" id="iu0-YU-V7p"/>
+                                    <segue destination="3sd-aC-I6J" kind="push" id="iu0-YU-V7p"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -81,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="enV-6z-fX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="280" y="-305"/>
+            <point key="canvasLocation" x="1338" y="-435"/>
         </scene>
         <!--Calender View Controller-->
         <scene sceneID="ZPD-0X-IZx">
@@ -100,29 +87,41 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mDT-3q-yeX">
-                                <rect key="frame" x="0.0" y="19" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Calender" id="LIG-NQ-LhF">
-                                        <barButtonItem key="rightBarButtonItem" title="Done" id="Gmg-na-jgJ">
-                                            <connections>
-                                                <action selector="doneisPressed:" destination="3sd-aC-I6J" id="DMU-Fy-Baw"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="FTr-qm-WMl">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="3qP-nj-PTF">
+                            <connections>
+                                <action selector="doneisPressed:" destination="3sd-aC-I6J" id="72U-1w-XC5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="CalenderView" destination="z5f-2N-5lt" id="K3X-uc-SwD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hIW-Jm-XZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="876" y="-305"/>
+            <point key="canvasLocation" x="1934" y="-435"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fcG-KS-kzp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vaC-gH-JRY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yq2-TY-a7f">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UFB-hZ-GLT" kind="relationship" relationship="rootViewController" id="9XD-8S-PI1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DkH-fo-RXv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="812" y="-435"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

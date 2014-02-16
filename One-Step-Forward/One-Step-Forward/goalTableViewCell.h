@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *goalName;
 @property (weak, nonatomic) IBOutlet UILabel *goalDescription;
 
-//@property (weak, nonatomic) IBOutlet UILabel *goalDeadline;
+@property (weak, nonatomic) IBOutlet UILabel *goalDeadline;
 
 
 @end

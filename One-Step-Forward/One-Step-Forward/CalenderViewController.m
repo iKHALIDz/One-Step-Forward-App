@@ -6,7 +6,8 @@
 //
 
 #import "CalenderViewController.h"
-#import "AddGoal.h"
+#import "AddGoalViewController.h"
+
 
 @interface CalenderViewController ()
 
@@ -14,8 +15,7 @@
 
 @implementation CalenderViewController
 
-@synthesize calendar,dateFormatter,selctedDate;
-@synthesize myDelegate;
+@synthesize calendar,dateFormatter,selctedDate,delegate,deadlinetext;
 
 
 
@@ -44,7 +44,6 @@
 	// Do any additional setup after loading the view.
     
     [self.navigationItem setHidesBackButton:YES animated:YES];
-
     
 }
 
@@ -58,26 +57,21 @@
 {
     
     selctedDate=[self.dateFormatter stringFromDate:date];
-    
+    NSLog(@"%@",selctedDate);
 }
 
 
 - (IBAction)doneisPressed:(UIBarButtonItem *)sender {
     NSLog(@"Done is Pressed");
-   
-}
-
-
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-    {
-    if ([[segue identifier] isEqualToString:@"didChooseADate"])
-    {
     
-        AddGoal *addGoal = [segue destinationViewController];
-        [addGoal setDeadlineLabelText:selctedDate];
-        
-    }
+    [[self delegate]setDeadline:self.selctedDate];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+    
+
 }
+
+
+
 
 @end

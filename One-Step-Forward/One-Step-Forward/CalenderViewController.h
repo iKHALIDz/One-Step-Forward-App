@@ -10,18 +10,15 @@
 #import "CKCalendarView.h"
 
 
+@protocol passDate <NSObject>
 
-@protocol SDProtocol <NSObject>
-
--(void) secondViewControllerDismissed:(NSString *)stringForFirst;
+-(void)setDeadline:(NSString*)deadline;
 
 @end
 
 
 @interface CalenderViewController : UIViewController <CKCalendarDelegate>
 
-
-@property (nonatomic, assign) id <SDProtocol> myDelegate;
 
 @property(nonatomic, strong) CKCalendarView *calendar;
 
@@ -31,6 +28,12 @@
 
 @property(nonatomic, strong) NSDateFormatter *dateFormatter;
 @property(nonatomic, strong) NSString *selctedDate;
+
+
+
+@property (retain) id <passDate> delegate;
+@property (nonatomic,retain) NSString *deadlinetext;
+
 
 
 @end

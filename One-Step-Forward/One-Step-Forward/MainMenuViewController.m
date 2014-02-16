@@ -118,6 +118,8 @@
     
     [cell.goalName setText:[goal objectForKey:@"GoalName"]];
     [cell.goalDescription setText:[goal objectForKey:@"GoalDesc"]];
+    [cell.goalDeadline setText:[goal objectForKey:@"GoalDeadline"]];
+    
     
     return cell;
 }

@@ -41,6 +41,8 @@
 		E982D29918A6DC9C006F70E0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D29818A6DC9C006F70E0 /* AudioToolbox.framework */; };
 		E982D29B18A6DCA8006F70E0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D29A18A6DCA8006F70E0 /* CFNetwork.framework */; };
 		E982D29D18A6DCAF006F70E0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D29C18A6DCAF006F70E0 /* CoreLocation.framework */; };
+		E9D9685318B1615600339A50 /* CKCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D9685118B1615600339A50 /* CKCalendarView.m */; };
+		E9D9685818B1619E00339A50 /* CalenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D9685718B1619E00339A50 /* CalenderViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,10 @@
 		E982D29818A6DC9C006F70E0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E982D29A18A6DCA8006F70E0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E982D29C18A6DCAF006F70E0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E9D9685118B1615600339A50 /* CKCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKCalendarView.m; sourceTree = "<group>"; };
+		E9D9685218B1615600339A50 /* CKCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCalendarView.h; sourceTree = "<group>"; };
+		E9D9685618B1619E00339A50 /* CalenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderViewController.h; sourceTree = "<group>"; };
+		E9D9685718B1619E00339A50 /* CalenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,7 +224,10 @@
 				E982D25218A6DA4B006F70E0 /* Main.storyboard */,
 				E918E6C418AE001600D0F431 /* AddGoalViewController.h */,
 				E918E6C518AE001600D0F431 /* AddGoalViewController.m */,
+				E9D9685618B1619E00339A50 /* CalenderViewController.h */,
+				E9D9685718B1619E00339A50 /* CalenderViewController.m */,
 				E982D25818A6DA4B006F70E0 /* Images.xcassets */,
+				E9D9685518B1616700339A50 /* External Resources */,
 				E982D24718A6DA4B006F70E0 /* Supporting Files */,
 			);
 			path = "One-Step-Forward";
@@ -252,6 +261,23 @@
 				E982D26818A6DA4B006F70E0 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E9D9685418B1615F00339A50 /* Calender View */ = {
+			isa = PBXGroup;
+			children = (
+				E9D9685118B1615600339A50 /* CKCalendarView.m */,
+				E9D9685218B1615600339A50 /* CKCalendarView.h */,
+			);
+			name = "Calender View";
+			sourceTree = "<group>";
+		};
+		E9D9685518B1616700339A50 /* External Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E9D9685418B1615F00339A50 /* Calender View */,
+			);
+			name = "External Resources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,10 +382,12 @@
 				E918E6C618AE001600D0F431 /* AddGoalViewController.m in Sources */,
 				E982D25118A6DA4B006F70E0 /* AppDelegate.m in Sources */,
 				E918E6C018ADF6B100D0F431 /* goalTableViewCell.m in Sources */,
+				E9D9685818B1619E00339A50 /* CalenderViewController.m in Sources */,
 				E982D27D18A6DAEF006F70E0 /* MainMenuViewController.m in Sources */,
 				E982D24D18A6DA4B006F70E0 /* main.m in Sources */,
 				E918E6BC18ADF68300D0F431 /* Goal.m in Sources */,
 				E982D27F18A6DAEF006F70E0 /* MainNavigationController.m in Sources */,
+				E9D9685318B1615600339A50 /* CKCalendarView.m in Sources */,
 				E982D28318A6DB9F006F70E0 /* SignupViewController.m in Sources */,
 				E982D28018A6DAEF006F70E0 /* WelcomeViewController.m in Sources */,
 			);
