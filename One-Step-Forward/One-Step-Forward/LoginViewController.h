@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "User.h"
 
 
 @interface LoginViewController : UIViewController
@@ -18,6 +19,8 @@
 
 
 - (IBAction)isLoginPressed:(UIButton *)sender;
+
+@property (nonatomic,strong) User *user;
 
 
 

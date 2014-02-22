@@ -58,18 +58,21 @@
     [newGoal setObject:self.goalName.text forKey:@"GoalName"];
     [newGoal setObject:self.goalDesc.text forKey:@"GoalDesc"];
     [newGoal setObject:self.deadlineLabel.text forKey:@"GoalDeadline"];
+    [newGoal setObject:[NSNumber numberWithBool:NO] forKey:@"isGoalCompleted"];
+    [newGoal setObject:[NSNumber numberWithBool:YES] forKey:@"isGoalinPregress"];
     
-
+    
+    
+    //Realationship
     [newGoal setObject:[PFUser currentUser] forKey:@"CreatedBy"];
+    
     
     [newGoal saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             
             [[self navigationController] popViewControllerAnimated:YES];
 
-
         }}];
-    
 }
 
 

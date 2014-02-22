@@ -14,6 +14,10 @@
 
 @implementation LoginViewController
 
+
+@synthesize user;
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -24,7 +28,12 @@
      self.self.navigationController.navigationBar.shadowImage = [UIImage new];
      self.self.navigationController.navigationBar.translucent = YES;
      */
+    
+    user=[[User alloc]init];
+    NSLog(@"Im at LoginViewController ViewDidLoad");
+    
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -32,28 +41,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark Login
+
 - (IBAction)isLoginPressed:(UIButton *)sender {
     
-    NSLog(@"Login is Pressed");
-    [PFUser logInWithUsernameInBackground:self.UsernameTextbox.text password:self.PasswordTextbox.text block:^ (PFUser *user,NSError *error)
-        {
-        
-        if (user) {
-            [self performSegueWithIdentifier:@"LoginSuccessfuly" sender:self];
-        }
-        
-        else
-        {
-            NSString *errorString = [[error userInfo] objectForKey:@"error"];
-            UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            [errorAlertView show];
-        }
-            
-        }];
+    [user setUserUsername:self.UsernameTextbox.text];
+    [user setUserPassword:self.PasswordTextbox.text];
+    
+    BOOL x=[user userLoging];
+    
+    if(x==YES)
+    {
+        [self performSegueWithIdentifier:@"LoginSuccessfuly" sender:self];
+    }
 }
 
-
 #pragma mark Keyboard dissmiss
+
 - (void)touchesBegan: (NSSet *) touches withEvent: (UIEvent *) event
 {
     if (! [self isFirstResponder])
@@ -69,5 +74,29 @@
             
         }
     }
+
 }
+
+
+
 @end
+
+
+/*
+ // First set up a callback.
+ - (void)handleUserLogin:(PFUser *)user error:(NSError *)error {
+ if (user) {
+ // Do stuff after successful login.
+ } else {
+ // The login failed. Check error to see why.
+ }
+ }
+ 
+ // Then, elsewhere in your code...
+ [PFUser logInWithUsernameInBackground:@"myname"
+ password:@"mypass"
+ target:self
+ selector:@selector(handleUserLogin:error:)];
+ */
+
+

@@ -18,7 +18,11 @@ typedef enum { OneTime,Weakly,Monthly,Yearly,Progressive } goalType;
 @property (nonatomic,weak) NSData * goalDeadline;
 @property double goalProgress;
 @property BOOL isGoalCompleted;
+@property BOOL isGoalinProgress;
 @property (nonatomic,retain) NSArray * goalSteps;
 @property (nonatomic) goalType  goalType;
+
+
+
 
 @end

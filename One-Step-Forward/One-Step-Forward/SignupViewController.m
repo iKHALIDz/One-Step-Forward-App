@@ -9,9 +9,9 @@
 #import "SignupViewController.h"
 
 
-#define PHOTO_LIBRART_BUTTON_TITLE @"Photo Library"
-#define PHOTO_ALBUM_BUTTON_TITLE @"Camera Roll"
-#define CAMERA_BUTTON_TITLE @"Camera"
+#define PHOTO_LIBRART_BUTTON_TITLE @"Choose Existing"
+#define PHOTO_ALBUM_BUTTON_TITLE @"Choose Existing"
+#define CAMERA_BUTTON_TITLE @"Take a photo"
 #define CANCEL_BUTTON_TITLE @"Cancel"
 
 @interface SignupViewController ()
@@ -23,6 +23,8 @@
 @implementation SignupViewController
 
 @synthesize imagePicker,ProfileImg;
+@synthesize user;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,6 +39,9 @@
 {
     [super viewDidLoad];
     [self.FirsnameTextbox becomeFirstResponder];
+    user=[[User alloc]init];
+
+    
 
 }
 
@@ -53,6 +58,30 @@
     
     
     NSLog(@"SignUp is Pressed");
+   
+    
+    
+    [user setUserUsername:self.UsernameTextbox.text];
+    [user setUserPassword:self.PasswordTextbox.text];
+    [user setUserFirsname:self.FirsnameTextbox.text];
+    [user setUserLastname:self.LastnameTextbox.text];
+    [user setUserEmailAddres:self.EmailTextbox.text];
+    [user setUserProfileImage:self.ProfileImg.image];
+    
+    
+    BOOL x=[user UserRegister];
+    
+    if(x==YES)
+    {
+        [self performSegueWithIdentifier:@"SignUPDone" sender:self];
+    }
+
+    
+    //UserRegister
+    
+    /*
+     
+    
     // Create new Object PFUser;
     PFUser *newUser= [PFUser user];
     [newUser setObject:self.FirsnameTextbox.text forKey:@"FirstName"];
@@ -85,7 +114,7 @@
              
          }
      }];
-
+*/
 }
 
 
@@ -122,7 +151,7 @@
     imagePicker.delegate=self;
     
     if(!self.actionSheet){
-        UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Choose Source of Image"
+        UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@""
                                                                 delegate:self cancelButtonTitle:nil
                                                   destructiveButtonTitle:nil
                                                     otherButtonTitles:nil];

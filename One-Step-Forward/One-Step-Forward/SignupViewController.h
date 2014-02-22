@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "User.h"
 
 
 @interface SignupViewController : UIViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -30,6 +31,9 @@
 @property (strong, nonatomic) UIImagePickerController * imagePicker;
 
 @property (nonatomic,weak) UIActionSheet *actionSheet;
+
+@property (nonatomic,strong) User *user;
+
 
 
 @end

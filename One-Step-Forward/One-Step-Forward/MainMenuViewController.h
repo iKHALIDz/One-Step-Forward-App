@@ -13,7 +13,7 @@
 
 @interface MainMenuViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic, strong) NSMutableArray *postArray;
+@property (nonatomic, strong) NSArray *postArray;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

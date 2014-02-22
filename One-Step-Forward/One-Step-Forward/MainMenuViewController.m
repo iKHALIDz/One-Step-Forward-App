@@ -32,24 +32,13 @@
     return self;
 }
 
-/*
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    if ([PFUser currentUser])
-        [self refreshButtonHandler:nil];
-    NSLog(@"viewDidLoad");
-*/
 
-/*
-    goalsName=[[NSMutableArray alloc]initWithObjects:@"Ahmed",@"Ali",nil];
-    goalsdescription=[[NSMutableArray alloc]initWithObjects:@"Ahmed Description",@"Ali Description",nil];
-    goalDeadline = [[NSMutableArray alloc]initWithObjects:@"22/5/2013",@"22/5/2014",nil];
- 
-    
 }
- */
+ 
 
 
 -(void) viewWillAppear:(BOOL)animated
@@ -103,14 +92,16 @@
 - (IBAction)isSignOutPressed:(UIButton *)sender {
     
     [PFUser logOut];
+    [self.navigationController popToRootViewControllerAnimated:YES];
     
-    //[self performSegueWithIdentifier:@"LogoutSuccessfuly" sender:self];
+
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
+    
     goalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     

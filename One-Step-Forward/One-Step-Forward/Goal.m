@@ -17,6 +17,8 @@
 @synthesize goalType;
 @synthesize goalSteps;
 @synthesize isGoalCompleted;
+@synthesize isGoalinProgress;
+
 
 
 @end
