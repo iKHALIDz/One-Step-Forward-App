@@ -31,8 +31,7 @@
     
     if (!error) {
         isUserloggedin=YES;
-        
-        NSLog(@"user: %d",isUserloggedin);
+
     }
     
     else

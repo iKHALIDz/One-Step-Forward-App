@@ -11,8 +11,6 @@
 @interface goalTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *goalName;
-@property (weak, nonatomic) IBOutlet UILabel *goalDescription;
-@property (weak, nonatomic) IBOutlet UILabel *goalDeadline;
 
 
 @end

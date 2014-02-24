@@ -10,24 +10,20 @@
 
 @implementation AppDelegate
 
+@synthesize i;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    
     [Parse setApplicationId:@"KmacqhkEK38ZSbv51RbVEH40m3xdo7hoBc33yJQz" clientKey:@"luIx9XAQ1KIvwrkrS5PorZY9tsvWVC5Xdbp7H93v"];
     
     PFUser *curreUser = [PFUser currentUser];
+    
     if (curreUser)
     {
-        
         NSLog(@"Current User: %@",curreUser.username);
-        
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         MainMenuViewController *mainMenuViewController = (MainMenuViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"MainMenuViewController"];
-        
         self.window.rootViewController = mainMenuViewController;
-        
-        
     }
     
     else
@@ -35,14 +31,13 @@
         NSLog(@"No Current User");
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         WelcomeViewController *wViewController = (WelcomeViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"WelcomeViewController"];
-        
         self.window.rootViewController = wViewController;
         
-        
-        
     }
-    return YES;
     
+    
+    
+    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -7,20 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Parse/Parse.h>
 #import "goalTableViewCell.h"
-#import "detailsViewController.h"
+#import "Goal.h"
 
 
 
 @interface MainMenuViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic, strong) NSArray *postArray;
-@property (nonatomic, strong) NSArray *doneGoals;
-
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property(nonatomic,strong) NSString *currentGoal;
+@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
+@property (nonatomic,strong) NSArray* goals;
+
 
 @end

@@ -15,7 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *goalDeadline;
 
-
+@property (weak, nonatomic) IBOutlet UILabel *goalPercentage;
 
 
 @end

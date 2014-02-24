@@ -1,8 +1,8 @@
 //
 //  main.m
-//  CreateGoals
+//  Goals
 //
-//  Created by KHALID ALAHMARI on 2/9/14.
+//  Created by KHALID ALAHMARI on 2/23/14.
 //  Copyright (c) 2014 Khalid. All rights reserved.
 //
 

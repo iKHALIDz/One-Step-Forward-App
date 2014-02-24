@@ -12,15 +12,13 @@
 
 @end
 
-
 @implementation MainMenuViewController
 
 
-@synthesize goalsdescription,goalsName,goalDeadline;
-
 @synthesize tableView;
-
 @synthesize postArray;
+@synthesize doneGoals;
+@synthesize currentGoal;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -45,8 +43,8 @@
 {
     if ([PFUser currentUser]){
 [self.tableView reloadData];
-        [self refreshButtonHandler:nil];
-
+        [self getInProgressGoals:nil];
+        [self getDoneGoals:nil];
     }
 }
 
@@ -54,34 +52,61 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return postArray.count;
     
+    if (section==0)
+    {
+        return postArray.count;
+
+    }
+    else return doneGoals.count;
     
 }
 
 
-- (void)refreshButtonHandler:(id)sender {
+- (void)getInProgressGoals:(id)sender {
     // Create a query
     PFQuery *postQuery = [PFQuery queryWithClassName:@"Goal"];
-    postQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
-
+    //postQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    //[postQuery orderByAscending:@"createdAt"];
+    
+    
     // Follow relationship
     [postQuery whereKey:@"CreatedBy" equalTo:[PFUser currentUser]];
-    
+    [postQuery whereKey:@"isGoalCompleted" equalTo:@NO];
+
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             postArray = objects;           // Store results
             [self.tableView reloadData];   // Reload table
         }
     }];
+    
 }
 
+- (void)getDoneGoals:(id)sender {
+    // Create a query
+    PFQuery *postQuery = [PFQuery queryWithClassName:@"Goal"];
+   // postQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    //[postQuery orderByAscending:@"createdAt"];
+
+    // Follow relationship
+    [postQuery whereKey:@"CreatedBy" equalTo:[PFUser currentUser]];
+    [postQuery whereKey:@"isGoalCompleted" equalTo:@YES];
+    
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            doneGoals = objects;           // Store results
+            [self.tableView reloadData];   // Reload table
+        }
+    }];
+    
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -98,21 +123,71 @@
 }
 
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    
+    if(section == 0)
+        return @"Goals In Progress";
+    else
+        return @"Goals Done";
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    
     goalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
+    if (indexPath.section==0){
+        PFObject *goal = [postArray objectAtIndex:indexPath.row];
+        
+        [cell.goalName setText:[goal objectForKey:@"GoalName"]];
+        [cell.goalDescription setText:[goal objectForKey:@"GoalDesc"]];
+        [cell.goalDeadline setText:[goal objectForKey:@"GoalDeadline"]];
+        [cell.goalPercentage setText:[NSString stringWithFormat:@"%.2f",[[goal objectForKey:@"goalPercentage"] doubleValue]]];
+        
+    }
     
-    
-    PFObject *goal = [postArray objectAtIndex:indexPath.row];
-    
-    [cell.goalName setText:[goal objectForKey:@"GoalName"]];
-    [cell.goalDescription setText:[goal objectForKey:@"GoalDesc"]];
-    [cell.goalDeadline setText:[goal objectForKey:@"GoalDeadline"]];
-    
-    
+    if (indexPath.section==1)
+    {
+        PFObject *goal2 = [doneGoals objectAtIndex:indexPath.row];
+
+        [cell.goalName setText:[goal2 objectForKey:@"GoalName"]];
+        [cell.goalDescription setText:[goal2 objectForKey:@"GoalDesc"]];
+        [cell.goalDeadline setText:[goal2 objectForKey:@"GoalDeadline"]];
+        [cell.goalPercentage setText:[NSString stringWithFormat:@"%.2f",[[goal2 objectForKey:@"goalPercentage"] doubleValue]]];
+
+
+    }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
+    if (indexPath.section==0){
+        PFObject *goal = [postArray objectAtIndex:indexPath.row];
+        currentGoal=[goal objectForKey:@"goalID"];
+    }
+    
+    if (indexPath.section==1)
+    {
+        PFObject *goal2 = [doneGoals objectAtIndex:indexPath.row];
+        currentGoal=[goal2 objectForKey:@"goalID"];
+    }
+    
+    [self performSegueWithIdentifier:@"GoalToDetails" sender:nil];
+    
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"GoalToDetails"])
+    {
+        detailsViewController *nav = [segue destinationViewController];
+        
+        [nav setCurrentGoalID:self.currentGoal];
+    }
 }
 
 @end

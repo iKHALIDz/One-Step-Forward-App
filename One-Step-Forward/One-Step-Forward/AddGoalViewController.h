@@ -29,5 +29,12 @@
 @property(nonatomic, strong) NSString *DeadlineLabelText;
 
 
+@property (nonatomic, strong) NSString *goalID;
+
+-(void)nextIdentifies;
+
+
+
+
 
 @end

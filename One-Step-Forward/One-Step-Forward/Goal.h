@@ -22,7 +22,4 @@ typedef enum { OneTime,Weakly,Monthly,Yearly,Progressive } goalType;
 @property (nonatomic,retain) NSArray * goalSteps;
 @property (nonatomic) goalType  goalType;
 
-
-
-
 @end

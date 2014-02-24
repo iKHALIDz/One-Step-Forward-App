@@ -18,6 +18,7 @@
 
 @synthesize deadlineLabel;
 @synthesize DeadlineLabelText;
+@synthesize goalID;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,13 +56,18 @@
 - (IBAction)isSavePressed:(UIBarButtonItem *)sender {
     
     PFObject *newGoal = [PFObject objectWithClassName:@"Goal"];
+    
     [newGoal setObject:self.goalName.text forKey:@"GoalName"];
     [newGoal setObject:self.goalDesc.text forKey:@"GoalDesc"];
     [newGoal setObject:self.deadlineLabel.text forKey:@"GoalDeadline"];
     [newGoal setObject:[NSNumber numberWithBool:NO] forKey:@"isGoalCompleted"];
     [newGoal setObject:[NSNumber numberWithBool:YES] forKey:@"isGoalinPregress"];
+    [newGoal setObject:@"0.0" forKey:@"goalPercentage"];
     
     
+    [self nextIdentifies];
+    
+    [newGoal setObject:self.goalID forKey:@"goalID"];
     
     //Realationship
     [newGoal setObject:[PFUser currentUser] forKey:@"CreatedBy"];
@@ -117,5 +123,21 @@
     
     
 }
+
+
+
+#pragma mark Create a random number 
+
+-(void)nextIdentifies
+{
+    static NSString* lastID = @"lastID";
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger identifier = [defaults integerForKey:lastID] + 1;
+    [defaults setInteger:identifier forKey:lastID];
+    [defaults synchronize];
+    self.goalID=[NSString stringWithFormat:@"%ld",(long)identifier];
+    
+}
+
 
 @end
