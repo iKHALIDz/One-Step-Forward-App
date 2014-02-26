@@ -19,6 +19,7 @@
 @synthesize postArray;
 @synthesize doneGoals;
 @synthesize currentGoal;
+@synthesize currentGoalProgressPercentage;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -167,13 +168,17 @@
     if (indexPath.section==0){
         PFObject *goal = [postArray objectAtIndex:indexPath.row];
         currentGoal=[goal objectForKey:@"goalID"];
+        currentGoalProgressPercentage =[[goal objectForKey:@"goalPercentage"] doubleValue];
+        
     }
     
     if (indexPath.section==1)
     {
         PFObject *goal2 = [doneGoals objectAtIndex:indexPath.row];
         currentGoal=[goal2 objectForKey:@"goalID"];
+        currentGoalProgressPercentage =[[goal2 objectForKey:@"goalPercentage"] doubleValue];
     }
+    
     
     [self performSegueWithIdentifier:@"GoalToDetails" sender:nil];
     
@@ -187,6 +192,8 @@
         detailsViewController *nav = [segue destinationViewController];
         
         [nav setCurrentGoalID:self.currentGoal];
+        [nav setCurrentGoalProgressPercentage:currentGoalProgressPercentage];
+        
     }
 }
 

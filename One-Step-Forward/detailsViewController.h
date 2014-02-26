@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "progressTableViewCell.h"
 
-@interface detailsViewController : UIViewController
+@interface detailsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+
 
 
 - (IBAction) declareAchieved:(UIButton *)sender;
 
 @property (nonatomic,retain) NSString *currentGoalID;
-
+@property double currentGoalProgressPercentage;
 
 @property (nonatomic, strong) NSArray *postArray;
 
@@ -23,7 +25,13 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *progressTextField;
 
+@property (weak, nonatomic) IBOutlet UITextField *progressPercentage;
 
-@property (weak, nonatomic) IBOutlet UILabel *label;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+
+@property (nonatomic, strong) NSArray *doneProgress;
+
 
 @end

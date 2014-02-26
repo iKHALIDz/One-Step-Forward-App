@@ -22,5 +22,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property(nonatomic,strong) NSString *currentGoal;
+@property double currentGoalProgressPercentage;
+
+
 
 @end

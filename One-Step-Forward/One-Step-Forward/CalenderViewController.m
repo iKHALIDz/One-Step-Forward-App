@@ -67,7 +67,6 @@
     [[self delegate]setDeadline:self.selctedDate];
     [self dismissViewControllerAnimated:YES completion:nil];
     
-
 }
 
 

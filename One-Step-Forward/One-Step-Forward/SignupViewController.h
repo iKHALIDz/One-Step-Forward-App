@@ -12,7 +12,7 @@
 #import "User.h"
 
 
-@interface SignupViewController : UIViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface SignupViewController : UIViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITextField *FirsnameTextbox;

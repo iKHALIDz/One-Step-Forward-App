@@ -119,30 +119,29 @@
 
 
 #pragma mark Keyboard dissmiss
-- (void)touchesBegan: (NSSet *) touches withEvent: (UIEvent *) event
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    
-    if (! [self isFirstResponder])
-    {
-        {
-            if ([self.UsernameTextbox isFirstResponder]) {
-                [self.UsernameTextbox resignFirstResponder];
-            }
-            if ([self.PasswordTextbox isFirstResponder]) {
-                [self.PasswordTextbox resignFirstResponder];
-
-            }
-            
-            if ([self.EmailTextbox isFirstResponder]) {
-                [self.EmailTextbox resignFirstResponder];
-            }
-
-            
-        }
+    if ([textField isEqual:self.FirsnameTextbox]) {
+        [self.LastnameTextbox becomeFirstResponder];
+        
+    } else if ([textField isEqual:self.LastnameTextbox]) {
+        [self.UsernameTextbox becomeFirstResponder];
+        
+    } else if ([textField isEqual:self.UsernameTextbox]) {
+        [self.PasswordTextbox becomeFirstResponder];
+        
+    } else if ([textField isEqual:self.PasswordTextbox]) {
+        [self.EmailTextbox becomeFirstResponder];
     }
-    
+    else
+    {
+        [self IsSignUpPressed:nil];
+        
+    }
+    return YES;
 }
-
 
 
 - (IBAction)PickPictureisPressed:(UIButton *)sender {
