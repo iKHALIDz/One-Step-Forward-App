@@ -73,9 +73,10 @@
 - (void)getInProgressGoals:(id)sender {
     // Create a query
     PFQuery *postQuery = [PFQuery queryWithClassName:@"Goal"];
-    //postQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    postQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
     //[postQuery orderByAscending:@"createdAt"];
-    
+    [postQuery orderByDescending:@"createdAt"];
+
     
     // Follow relationship
     [postQuery whereKey:@"CreatedBy" equalTo:[PFUser currentUser]];
@@ -93,8 +94,8 @@
 - (void)getDoneGoals:(id)sender {
     // Create a query
     PFQuery *postQuery = [PFQuery queryWithClassName:@"Goal"];
-   // postQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
-    //[postQuery orderByAscending:@"createdAt"];
+    postQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    [postQuery orderByDescending:@"createdAt"];
 
     // Follow relationship
     [postQuery whereKey:@"CreatedBy" equalTo:[PFUser currentUser]];

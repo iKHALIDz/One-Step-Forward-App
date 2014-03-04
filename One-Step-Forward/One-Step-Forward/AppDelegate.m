@@ -10,7 +10,6 @@
 
 @implementation AppDelegate
 
-@synthesize i;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

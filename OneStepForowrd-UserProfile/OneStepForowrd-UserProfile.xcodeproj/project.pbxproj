@@ -1,0 +1,527 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E966424018C13D0000E5EF1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E966423F18C13D0000E5EF1A /* Foundation.framework */; };
+		E966424218C13D0000E5EF1A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E966424118C13D0000E5EF1A /* CoreGraphics.framework */; };
+		E966424418C13D0000E5EF1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E966424318C13D0000E5EF1A /* UIKit.framework */; };
+		E966424618C13D0000E5EF1A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E966424518C13D0000E5EF1A /* CoreData.framework */; };
+		E966424C18C13D0000E5EF1A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E966424A18C13D0000E5EF1A /* InfoPlist.strings */; };
+		E966424E18C13D0000E5EF1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E966424D18C13D0000E5EF1A /* main.m */; };
+		E966425218C13D0000E5EF1A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E966425118C13D0000E5EF1A /* AppDelegate.m */; };
+		E966425518C13D0000E5EF1A /* OneStepForowrd_UserProfile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E966425318C13D0000E5EF1A /* OneStepForowrd_UserProfile.xcdatamodeld */; };
+		E966425718C13D0000E5EF1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E966425618C13D0000E5EF1A /* Images.xcassets */; };
+		E966425E18C13D0000E5EF1A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E966425D18C13D0000E5EF1A /* XCTest.framework */; };
+		E966425F18C13D0000E5EF1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E966423F18C13D0000E5EF1A /* Foundation.framework */; };
+		E966426018C13D0000E5EF1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E966424318C13D0000E5EF1A /* UIKit.framework */; };
+		E966426118C13D0000E5EF1A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E966424518C13D0000E5EF1A /* CoreData.framework */; };
+		E966426918C13D0000E5EF1A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E966426718C13D0000E5EF1A /* InfoPlist.strings */; };
+		E966426B18C13D0000E5EF1A /* OneStepForowrd_UserProfileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E966426A18C13D0000E5EF1A /* OneStepForowrd_UserProfileTests.m */; };
+		E966427518C13D1900E5EF1A /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E966427418C13D1900E5EF1A /* main.storyboard */; };
+		E966427818C13D9B00E5EF1A /* SQLiteDB.m in Sources */ = {isa = PBXBuildFile; fileRef = E966427718C13D9B00E5EF1A /* SQLiteDB.m */; };
+		E966427B18C13DBE00E5EF1A /* GTDFSQL.m in Sources */ = {isa = PBXBuildFile; fileRef = E966427A18C13DBE00E5EF1A /* GTDFSQL.m */; };
+		E966427E18C13F1300E5EF1A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E966427D18C13F1300E5EF1A /* User.m */; };
+		E966428118C142CF00E5EF1A /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E966428018C142CF00E5EF1A /* SignupViewController.m */; };
+		E966428318C148B100E5EF1A /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E966428218C148B100E5EF1A /* libsqlite3.0.dylib */; };
+		E966428718C1600000E5EF1A /* Database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E966428618C1600000E5EF1A /* Database.sqlite */; };
+		E966428818C1600000E5EF1A /* Database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E966428618C1600000E5EF1A /* Database.sqlite */; };
+		E966428B18C16C9A00E5EF1A /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E966428A18C16C9A00E5EF1A /* SQLiteManager.m */; };
+		E966428C18C16C9A00E5EF1A /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E966428A18C16C9A00E5EF1A /* SQLiteManager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E966426218C13D0000E5EF1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E966423418C13D0000E5EF1A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E966423B18C13D0000E5EF1A;
+			remoteInfo = "OneStepForowrd-UserProfile";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E966423C18C13D0000E5EF1A /* OneStepForowrd-UserProfile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OneStepForowrd-UserProfile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E966423F18C13D0000E5EF1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E966424118C13D0000E5EF1A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E966424318C13D0000E5EF1A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E966424518C13D0000E5EF1A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E966424918C13D0000E5EF1A /* OneStepForowrd-UserProfile-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OneStepForowrd-UserProfile-Info.plist"; sourceTree = "<group>"; };
+		E966424B18C13D0000E5EF1A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E966424D18C13D0000E5EF1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E966424F18C13D0000E5EF1A /* OneStepForowrd-UserProfile-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OneStepForowrd-UserProfile-Prefix.pch"; sourceTree = "<group>"; };
+		E966425018C13D0000E5EF1A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E966425118C13D0000E5EF1A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E966425418C13D0000E5EF1A /* OneStepForowrd_UserProfile.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OneStepForowrd_UserProfile.xcdatamodel; sourceTree = "<group>"; };
+		E966425618C13D0000E5EF1A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E966425C18C13D0000E5EF1A /* OneStepForowrd-UserProfileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OneStepForowrd-UserProfileTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E966425D18C13D0000E5EF1A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		E966426618C13D0000E5EF1A /* OneStepForowrd-UserProfileTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OneStepForowrd-UserProfileTests-Info.plist"; sourceTree = "<group>"; };
+		E966426818C13D0000E5EF1A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E966426A18C13D0000E5EF1A /* OneStepForowrd_UserProfileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneStepForowrd_UserProfileTests.m; sourceTree = "<group>"; };
+		E966427418C13D1900E5EF1A /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = main.storyboard; path = ../main.storyboard; sourceTree = "<group>"; };
+		E966427618C13D9B00E5EF1A /* SQLiteDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteDB.h; sourceTree = "<group>"; };
+		E966427718C13D9B00E5EF1A /* SQLiteDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteDB.m; sourceTree = "<group>"; };
+		E966427918C13DBE00E5EF1A /* GTDFSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTDFSQL.h; sourceTree = "<group>"; };
+		E966427A18C13DBE00E5EF1A /* GTDFSQL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTDFSQL.m; sourceTree = "<group>"; };
+		E966427C18C13F1300E5EF1A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		E966427D18C13F1300E5EF1A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		E966427F18C142CF00E5EF1A /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
+		E966428018C142CF00E5EF1A /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		E966428218C148B100E5EF1A /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		E966428618C1600000E5EF1A /* Database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Database.sqlite; sourceTree = "<group>"; };
+		E966428918C16C9A00E5EF1A /* SQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteManager.h; sourceTree = "<group>"; };
+		E966428A18C16C9A00E5EF1A /* SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteManager.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E966423918C13D0000E5EF1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E966428318C148B100E5EF1A /* libsqlite3.0.dylib in Frameworks */,
+				E966424218C13D0000E5EF1A /* CoreGraphics.framework in Frameworks */,
+				E966424618C13D0000E5EF1A /* CoreData.framework in Frameworks */,
+				E966424418C13D0000E5EF1A /* UIKit.framework in Frameworks */,
+				E966424018C13D0000E5EF1A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E966425918C13D0000E5EF1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E966425E18C13D0000E5EF1A /* XCTest.framework in Frameworks */,
+				E966426118C13D0000E5EF1A /* CoreData.framework in Frameworks */,
+				E966426018C13D0000E5EF1A /* UIKit.framework in Frameworks */,
+				E966425F18C13D0000E5EF1A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E966423318C13D0000E5EF1A = {
+			isa = PBXGroup;
+			children = (
+				E966424718C13D0000E5EF1A /* OneStepForowrd-UserProfile */,
+				E966426418C13D0000E5EF1A /* OneStepForowrd-UserProfileTests */,
+				E966423E18C13D0000E5EF1A /* Frameworks */,
+				E966423D18C13D0000E5EF1A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E966423D18C13D0000E5EF1A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E966423C18C13D0000E5EF1A /* OneStepForowrd-UserProfile.app */,
+				E966425C18C13D0000E5EF1A /* OneStepForowrd-UserProfileTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E966423E18C13D0000E5EF1A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E966428218C148B100E5EF1A /* libsqlite3.0.dylib */,
+				E966423F18C13D0000E5EF1A /* Foundation.framework */,
+				E966424118C13D0000E5EF1A /* CoreGraphics.framework */,
+				E966424318C13D0000E5EF1A /* UIKit.framework */,
+				E966424518C13D0000E5EF1A /* CoreData.framework */,
+				E966425D18C13D0000E5EF1A /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E966424718C13D0000E5EF1A /* OneStepForowrd-UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				E966427618C13D9B00E5EF1A /* SQLiteDB.h */,
+				E966427718C13D9B00E5EF1A /* SQLiteDB.m */,
+				E966427918C13DBE00E5EF1A /* GTDFSQL.h */,
+				E966427A18C13DBE00E5EF1A /* GTDFSQL.m */,
+				E966428918C16C9A00E5EF1A /* SQLiteManager.h */,
+				E966428A18C16C9A00E5EF1A /* SQLiteManager.m */,
+				E966425018C13D0000E5EF1A /* AppDelegate.h */,
+				E966427C18C13F1300E5EF1A /* User.h */,
+				E966427D18C13F1300E5EF1A /* User.m */,
+				E966427F18C142CF00E5EF1A /* SignupViewController.h */,
+				E966428018C142CF00E5EF1A /* SignupViewController.m */,
+				E966425118C13D0000E5EF1A /* AppDelegate.m */,
+				E966425618C13D0000E5EF1A /* Images.xcassets */,
+				E966428618C1600000E5EF1A /* Database.sqlite */,
+				E966425318C13D0000E5EF1A /* OneStepForowrd_UserProfile.xcdatamodeld */,
+				E966427418C13D1900E5EF1A /* main.storyboard */,
+				E966424818C13D0000E5EF1A /* Supporting Files */,
+			);
+			path = "OneStepForowrd-UserProfile";
+			sourceTree = "<group>";
+		};
+		E966424818C13D0000E5EF1A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E966424918C13D0000E5EF1A /* OneStepForowrd-UserProfile-Info.plist */,
+				E966424A18C13D0000E5EF1A /* InfoPlist.strings */,
+				E966424D18C13D0000E5EF1A /* main.m */,
+				E966424F18C13D0000E5EF1A /* OneStepForowrd-UserProfile-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E966426418C13D0000E5EF1A /* OneStepForowrd-UserProfileTests */ = {
+			isa = PBXGroup;
+			children = (
+				E966426A18C13D0000E5EF1A /* OneStepForowrd_UserProfileTests.m */,
+				E966426518C13D0000E5EF1A /* Supporting Files */,
+			);
+			path = "OneStepForowrd-UserProfileTests";
+			sourceTree = "<group>";
+		};
+		E966426518C13D0000E5EF1A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E966426618C13D0000E5EF1A /* OneStepForowrd-UserProfileTests-Info.plist */,
+				E966426718C13D0000E5EF1A /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E966423B18C13D0000E5EF1A /* OneStepForowrd-UserProfile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E966426E18C13D0000E5EF1A /* Build configuration list for PBXNativeTarget "OneStepForowrd-UserProfile" */;
+			buildPhases = (
+				E966423818C13D0000E5EF1A /* Sources */,
+				E966423918C13D0000E5EF1A /* Frameworks */,
+				E966423A18C13D0000E5EF1A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "OneStepForowrd-UserProfile";
+			productName = "OneStepForowrd-UserProfile";
+			productReference = E966423C18C13D0000E5EF1A /* OneStepForowrd-UserProfile.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E966425B18C13D0000E5EF1A /* OneStepForowrd-UserProfileTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E966427118C13D0000E5EF1A /* Build configuration list for PBXNativeTarget "OneStepForowrd-UserProfileTests" */;
+			buildPhases = (
+				E966425818C13D0000E5EF1A /* Sources */,
+				E966425918C13D0000E5EF1A /* Frameworks */,
+				E966425A18C13D0000E5EF1A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E966426318C13D0000E5EF1A /* PBXTargetDependency */,
+			);
+			name = "OneStepForowrd-UserProfileTests";
+			productName = "OneStepForowrd-UserProfileTests";
+			productReference = E966425C18C13D0000E5EF1A /* OneStepForowrd-UserProfileTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E966423418C13D0000E5EF1A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = Khalid;
+				TargetAttributes = {
+					E966425B18C13D0000E5EF1A = {
+						TestTargetID = E966423B18C13D0000E5EF1A;
+					};
+				};
+			};
+			buildConfigurationList = E966423718C13D0000E5EF1A /* Build configuration list for PBXProject "OneStepForowrd-UserProfile" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E966423318C13D0000E5EF1A;
+			productRefGroup = E966423D18C13D0000E5EF1A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E966423B18C13D0000E5EF1A /* OneStepForowrd-UserProfile */,
+				E966425B18C13D0000E5EF1A /* OneStepForowrd-UserProfileTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E966423A18C13D0000E5EF1A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E966428718C1600000E5EF1A /* Database.sqlite in Resources */,
+				E966424C18C13D0000E5EF1A /* InfoPlist.strings in Resources */,
+				E966427518C13D1900E5EF1A /* main.storyboard in Resources */,
+				E966425718C13D0000E5EF1A /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E966425A18C13D0000E5EF1A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E966428818C1600000E5EF1A /* Database.sqlite in Resources */,
+				E966426918C13D0000E5EF1A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E966423818C13D0000E5EF1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E966425218C13D0000E5EF1A /* AppDelegate.m in Sources */,
+				E966427B18C13DBE00E5EF1A /* GTDFSQL.m in Sources */,
+				E966427E18C13F1300E5EF1A /* User.m in Sources */,
+				E966427818C13D9B00E5EF1A /* SQLiteDB.m in Sources */,
+				E966424E18C13D0000E5EF1A /* main.m in Sources */,
+				E966428118C142CF00E5EF1A /* SignupViewController.m in Sources */,
+				E966425518C13D0000E5EF1A /* OneStepForowrd_UserProfile.xcdatamodeld in Sources */,
+				E966428B18C16C9A00E5EF1A /* SQLiteManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E966425818C13D0000E5EF1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E966426B18C13D0000E5EF1A /* OneStepForowrd_UserProfileTests.m in Sources */,
+				E966428C18C16C9A00E5EF1A /* SQLiteManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E966426318C13D0000E5EF1A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E966423B18C13D0000E5EF1A /* OneStepForowrd-UserProfile */;
+			targetProxy = E966426218C13D0000E5EF1A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E966424A18C13D0000E5EF1A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E966424B18C13D0000E5EF1A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E966426718C13D0000E5EF1A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E966426818C13D0000E5EF1A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E966426C18C13D0000E5EF1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E966426D18C13D0000E5EF1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E966426F18C13D0000E5EF1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OneStepForowrd-UserProfile/OneStepForowrd-UserProfile-Prefix.pch";
+				INFOPLIST_FILE = "OneStepForowrd-UserProfile/OneStepForowrd-UserProfile-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E966427018C13D0000E5EF1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OneStepForowrd-UserProfile/OneStepForowrd-UserProfile-Prefix.pch";
+				INFOPLIST_FILE = "OneStepForowrd-UserProfile/OneStepForowrd-UserProfile-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E966427218C13D0000E5EF1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OneStepForowrd-UserProfile.app/OneStepForowrd-UserProfile";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OneStepForowrd-UserProfile/OneStepForowrd-UserProfile-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "OneStepForowrd-UserProfileTests/OneStepForowrd-UserProfileTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		E966427318C13D0000E5EF1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OneStepForowrd-UserProfile.app/OneStepForowrd-UserProfile";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OneStepForowrd-UserProfile/OneStepForowrd-UserProfile-Prefix.pch";
+				INFOPLIST_FILE = "OneStepForowrd-UserProfileTests/OneStepForowrd-UserProfileTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E966423718C13D0000E5EF1A /* Build configuration list for PBXProject "OneStepForowrd-UserProfile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E966426C18C13D0000E5EF1A /* Debug */,
+				E966426D18C13D0000E5EF1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E966426E18C13D0000E5EF1A /* Build configuration list for PBXNativeTarget "OneStepForowrd-UserProfile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E966426F18C13D0000E5EF1A /* Debug */,
+				E966427018C13D0000E5EF1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E966427118C13D0000E5EF1A /* Build configuration list for PBXNativeTarget "OneStepForowrd-UserProfileTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E966427218C13D0000E5EF1A /* Debug */,
+				E966427318C13D0000E5EF1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E966425318C13D0000E5EF1A /* OneStepForowrd_UserProfile.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E966425418C13D0000E5EF1A /* OneStepForowrd_UserProfile.xcdatamodel */,
+			);
+			currentVersion = E966425418C13D0000E5EF1A /* OneStepForowrd_UserProfile.xcdatamodel */;
+			path = OneStepForowrd_UserProfile.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = E966423418C13D0000E5EF1A /* Project object */;
+}
