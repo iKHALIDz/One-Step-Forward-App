@@ -186,7 +186,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4oQ-Ib-G3A">
-                                <rect key="frame" x="84" y="74" width="120" height="30"/>
+                                <rect key="frame" x="100" y="97" width="120" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Declare Achieved">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -195,30 +195,8 @@
                                     <action selector="declareAchieved:" destination="O4s-Cb-ko1" eventType="touchUpInside" id="VBb-Ti-6L3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEw-IV-XjW">
-                                <rect key="frame" x="99" y="99" width="91" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="add progress">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="addProgress:" destination="O4s-Cb-ko1" eventType="touchUpInside" id="vTy-wx-Ssl"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Progress Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DhI-sI-oNn">
-                                <rect key="frame" x="44" y="137" width="242" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ProgressPersentage" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Olm-vt-EQH">
-                                <rect key="frame" x="44" y="180" width="242" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="91" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="f86-mR-SOF">
-                                <rect key="frame" x="0.0" y="220" width="320" height="260"/>
+                                <rect key="frame" x="0.0" y="189" width="320" height="291"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -242,6 +220,16 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yKp-2R-EBR">
+                                                    <rect key="frame" x="207" y="21" width="44" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Delete">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="deleteProgress:" destination="O4s-Cb-ko1" eventType="touchUpInside" id="AW7-dV-zvE"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="rpO-2c-4bp" firstAttribute="leading" secondItem="reC-4S-mND" secondAttribute="leading" id="Ccz-xp-ICz"/>
@@ -261,19 +249,87 @@
                                     <outlet property="delegate" destination="O4s-Cb-ko1" id="GrZ-pL-ikB"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEa-sv-i74">
+                                <rect key="frame" x="138" y="135" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="DeleteGoal:" destination="O4s-Cb-ko1" eventType="touchUpInside" id="Emj-BC-cF6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="4fT-jF-Ymi"/>
+                    <navigationItem key="navigationItem" id="4fT-jF-Ymi">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="iEC-xm-SkF">
+                            <connections>
+                                <segue destination="zeK-QQ-kxE" kind="modal" identifier="AddProgress" id="TP0-K9-rZm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="progressPercentage" destination="Olm-vt-EQH" id="bSX-5n-e7j"/>
-                        <outlet property="progressTextField" destination="DhI-sI-oNn" id="PdJ-cB-MAc"/>
                         <outlet property="tableView" destination="f86-mR-SOF" id="KtS-x3-gc1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ekd-TG-Far" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2041" y="821"/>
+            <point key="canvasLocation" x="1937" y="823"/>
+        </scene>
+        <!--Add Progress View Controller-->
+        <scene sceneID="RFB-XO-gOt">
+            <objects>
+                <viewController id="ZI4-Ua-WeO" customClass="AddProgressViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XQ9-6F-lY2"/>
+                        <viewControllerLayoutGuide type="bottom" id="MLE-LQ-IQO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RJ8-PB-CYc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Boy-kF-KRo">
+                                <rect key="frame" x="94" y="177" width="91" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="add progress">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addProgress:" destination="O4s-Cb-ko1" eventType="touchUpInside" id="HXc-a8-k1d"/>
+                                    <action selector="addProgress:" destination="ZI4-Ua-WeO" eventType="touchUpInside" id="Seo-dm-lWF"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Progress Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s8Z-il-Pzj">
+                                <rect key="frame" x="32" y="86" width="242" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ProgressPersentage" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XIx-w8-PEE">
+                                <rect key="frame" x="32" y="132" width="242" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Mzr-UX-pdJ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uWE-TW-x7e">
+                            <connections>
+                                <action selector="cancelIsPressed:" destination="ZI4-Ua-WeO" id="hvM-bS-TwR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="progressPercentage" destination="XIx-w8-PEE" id="ORb-z2-Apm"/>
+                        <outlet property="progressTextField" destination="s8Z-il-Pzj" id="654-mV-kKs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qxP-Mu-dwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3011" y="823"/>
         </scene>
         <!--Add Goal View Controller-->
         <scene sceneID="ggd-kw-NR1">
@@ -575,6 +631,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rjq-9X-x3X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2582" y="1481"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gsg-4k-Lsf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zeK-QQ-kxE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="NVl-gc-Kpd"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Igt-BM-t6p">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZI4-Ua-WeO" kind="relationship" relationship="rootViewController" id="abO-NI-N7P"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DOV-ko-b5C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2449" y="823"/>
         </scene>
     </scenes>
     <resources>

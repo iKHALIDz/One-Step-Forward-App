@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "progressTableViewCell.h"
+#import "AddProgressViewController.h"
 
-@interface detailsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
+@interface detailsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,updateGoalPercentage>
 
 
 - (IBAction) declareAchieved:(UIButton *)sender;
@@ -21,11 +22,12 @@
 
 @property (nonatomic, strong) NSArray *postArray;
 
-- (IBAction)addProgress:(UIButton *)sender;
-
-@property (weak, nonatomic) IBOutlet UITextField *progressTextField;
-
-@property (weak, nonatomic) IBOutlet UITextField *progressPercentage;
+//
+//- (IBAction)addProgress:(UIButton *)sender;
+//
+//@property (weak, nonatomic) IBOutlet UITextField *progressTextField;
+//
+//@property (weak, nonatomic) IBOutlet UITextField *progressPercentage;
 
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
