@@ -90,49 +90,47 @@
 
 
 
-//create table users(userId integer primary key,
-//                   userFirstname text,
-//                   userLastname text,
-//                   userUsername text,
-//                   userPassword text,
-//                   userEmailAddress text,
-//                   userProfileImage blob);
+
+
+-(NSString*)DataFilePath{
+    
+    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSLog(@"%@",[paths objectAtIndex:0]);
+    
+    return [paths objectAtIndex:0];
+}
 
 
 -(BOOL)UserRegistration
 {
+    FMDatabase *db=[FMDatabase databaseWithPath:[[self DataFilePath] stringByAppendingPathComponent:@"Database.sqlite"]];
+    [db open];
     
-//    
-    SQLiteDB *Database= [SQLiteDB  databaseWithPath:@"Database.sqlite"];
-    sqlite3* DBconnection=[Database getConnection];
-    sqlite3_stmt *statement=nil;
-    
-    NSString *insertSQL = @"INSERT INTO users (userId,userFirstname,userLastname,userUsername,userPassword,userEmailAddress) VALUES (?,?,?,?,?,?)";
+//    NSString *createSQL= @"create table IF NOT exists Users(userId integer primary key,userFirstname text, userLastname text, userUsername text, userPassword text, userEmailAddress text, userProfileImage blob);";
+//    [db executeUpdate:createSQL];
+
+    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Users (userId,userFirstname,userLastname,userUsername,userPassword,userEmailAddress) VALUES (%d,'%@','%@','%@','%@','%@')",445,userFirsname,userLastname,userUsername,userPassword,userEmailAddres];
     
     NSLog(@"%@",insertSQL);
+
     
-    if (sqlite3_prepare_v2(DBconnection, [insertSQL UTF8String],[insertSQL length], &statement, nil) != SQLITE_OK)
-    {
-        NSLog(@"The SQL STAM isn't preapred");
+    BOOL succ=[db executeUpdate:insertSQL];
+
+    if (succ==YES) {
+        NSLog(@"Succseed");
     }
     
-    sqlite3_bind_int(statement, 1, 556);
-    sqlite3_bind_text(statement, 2, [self.userFirsname UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(statement, 3, [self.userLastname UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(statement, 4, [self.userUsername UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(statement, 5, [self.userPassword UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(statement, 6, [self.userEmailAddres UTF8String], -1, SQLITE_TRANSIENT);
-    
-    if(SQLITE_DONE != sqlite3_step(statement))
-        NSAssert1(0, @"Error while inserting data. '%s'", sqlite3_errmsg(DBconnection));
     else
-        NSLog(@"Inserted");
-
+    {
+        NSLog(@"Fail");
+    }
     
-    sqlite3_finalize(statement);
-    sqlite3_close(DBconnection);
-
+    
+    [db close];
+    
     return YES;
-
 }
+
+
 @end

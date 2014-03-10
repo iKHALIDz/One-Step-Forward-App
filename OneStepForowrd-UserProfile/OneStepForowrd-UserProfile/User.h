@@ -7,19 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SQLiteDB.h"
-#import "SQLiteManager.h"
 
+#import "FMDatabase.h"
 
 
 //#import <Parse/Parse.h>
 
 
 @interface User : NSObject
-{
-    
-    SQLiteManager *dbManager;
-}
+
+
 @property (strong, nonatomic) NSString  *userFirsname;
 @property (strong, nonatomic) NSString *userLastname;
 @property (strong, nonatomic) NSString  *userUsername;
@@ -27,7 +24,6 @@
 @property (strong, nonatomic) NSString *userEmailAddres;
 @property (strong, nonatomic) UIImage *userProfileImage;
 @property BOOL isUserloggedin;
-
 
 
 //-(BOOL) userLoging;

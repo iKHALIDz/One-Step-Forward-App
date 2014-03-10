@@ -11,7 +11,7 @@
 @implementation User
 
 
-
+@synthesize userID;
 @synthesize userFirsname;
 @synthesize userLastname;
 @synthesize userUsername;
@@ -31,7 +31,7 @@
     
     if (!error) {
         isUserloggedin=YES;
-
+        
     }
     
     else
@@ -41,20 +41,64 @@
         [errorAlertView show];
     }
 
-
     return isUserloggedin;
 }
 
 
 
+-(NSString*)DataFilePath{
+    
+    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSLog(@"%@",[paths objectAtIndex:0]);
+    
+    return [paths objectAtIndex:0];
+}
+
+-(void)UserRegistrationUsingDB
+{
+    FMDatabase *db=[FMDatabase databaseWithPath:[[self DataFilePath] stringByAppendingPathComponent:@"Database.sqlite"]];
+    BOOL isOpen=[db open];
+    
+    if (isOpen==NO)
+    {
+        NSLog(@"Fail");
+        
+    }
+       NSString *createSQL= @"create table IF NOT exists Users(userId integer primary key,userFirstname text, userLastname text, userUsername text, userPassword text, userEmailAddress text, userProfileImage blob);";
+        [db executeUpdate:createSQL];
+    
+    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Users (userId,userFirstname,userLastname,userUsername,userPassword,userEmailAddress) VALUES (%d,'%@','%@','%@','%@','%@')",[userID integerValue],userFirsname,userLastname,userUsername,userPassword,userEmailAddres];
+    
+    NSLog(@"%@",insertSQL);
+    
+    
+    BOOL succ=[db executeUpdate:insertSQL];
+    
+    if (succ==YES) {
+        NSLog(@"Succseed");
+    }
+    
+    else
+    {
+        NSLog(@"Fail");
+    }
+    
+    
+    [db close];
+}
+
+
 
 -(BOOL) UserRegister
 {
+    [self nextIdentifies];
     
     PFUser *newUser= [PFUser user];
+    [newUser setObject:userID forKey:@"UserID"];
     [newUser setObject:userFirsname forKey:@"FirstName"];
     [newUser setObject:userLastname forKey:@"LastName"];
-    
+
     newUser.username=userUsername;
     newUser.password=userPassword;
     
@@ -67,17 +111,14 @@
     [newUser setObject:file forKey:@"ProfileImage"];
     
     NSError *error = nil;
-
-    
     [newUser signUp:&error];
     
     //[newUser signUpInBackgroundWithBlock:^ (BOOL succeeded, NSError *error)
-    
-     
     {
          if (!error)
          {
              isUserloggedin=YES;
+             [self UserRegistrationUsingDB];
          }
         
          else
@@ -90,5 +131,20 @@
     return isUserloggedin;
 }
 
+
+#pragma mark Create a random number
+
+
+
+-(void)nextIdentifies
+{
+    static NSString* lastID = @"lastID";
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger identifier = [defaults integerForKey:lastID] + 1;
+    [defaults setInteger:identifier forKey:lastID];
+    [defaults synchronize];
+    self.userID=[NSString stringWithFormat:@"%ld",(long)identifier];
+    
+}
 
 @end

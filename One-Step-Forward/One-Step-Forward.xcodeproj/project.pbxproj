@@ -12,7 +12,22 @@
 		E918E6C618AE001600D0F431 /* AddGoalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E918E6C518AE001600D0F431 /* AddGoalViewController.m */; };
 		E93491D518C56CF200E4D3AF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93491D418C56CF200E4D3AF /* Parse.framework */; };
 		E93491D818C7079400E4D3AF /* AddProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93491D718C7079400E4D3AF /* AddProgressViewController.m */; };
+		E93491DA18C9BDAB00E4D3AF /* iOS 7 Color UI Kit - Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = E93491D918C9BDAB00E4D3AF /* iOS 7 Color UI Kit - Yellow.png */; };
+		E93491DE18C9C34A00E4D3AF /* Pinned - Profile.png in Resources */ = {isa = PBXBuildFile; fileRef = E93491DD18C9C34A00E4D3AF /* Pinned - Profile.png */; };
 		E96641EB18BE7CF600E5EF1A /* progressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96641EA18BE7CF600E5EF1A /* progressTableViewCell.m */; };
+		E973FD5D18CDB23F006ED83F /* Database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E973FD5C18CDB23F006ED83F /* Database.sqlite */; };
+		E973FD5E18CDB23F006ED83F /* Database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E973FD5C18CDB23F006ED83F /* Database.sqlite */; };
+		E97E633618CDAD17001AF751 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E632D18CDAD17001AF751 /* FMDatabase.m */; };
+		E97E633718CDAD17001AF751 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E632D18CDAD17001AF751 /* FMDatabase.m */; };
+		E97E633818CDAD17001AF751 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E632F18CDAD17001AF751 /* FMDatabaseAdditions.m */; };
+		E97E633918CDAD17001AF751 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E632F18CDAD17001AF751 /* FMDatabaseAdditions.m */; };
+		E97E633A18CDAD17001AF751 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E633118CDAD17001AF751 /* FMDatabasePool.m */; };
+		E97E633B18CDAD17001AF751 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E633118CDAD17001AF751 /* FMDatabasePool.m */; };
+		E97E633C18CDAD17001AF751 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E633318CDAD17001AF751 /* FMDatabaseQueue.m */; };
+		E97E633D18CDAD17001AF751 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E633318CDAD17001AF751 /* FMDatabaseQueue.m */; };
+		E97E633E18CDAD17001AF751 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E633518CDAD17001AF751 /* FMResultSet.m */; };
+		E97E633F18CDAD17001AF751 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E633518CDAD17001AF751 /* FMResultSet.m */; };
+		E97E634218CDAF29001AF751 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E97E634118CDAF29001AF751 /* libsqlite3.dylib */; };
 		E982D24118A6DA4B006F70E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D24018A6DA4B006F70E0 /* Foundation.framework */; };
 		E982D24318A6DA4B006F70E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D24218A6DA4B006F70E0 /* CoreGraphics.framework */; };
 		E982D24518A6DA4B006F70E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D24418A6DA4B006F70E0 /* UIKit.framework */; };
@@ -71,8 +86,22 @@
 		E93491D418C56CF200E4D3AF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E93491D618C7079400E4D3AF /* AddProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddProgressViewController.h; path = "One-Step-Forward/AddProgressViewController.h"; sourceTree = "<group>"; };
 		E93491D718C7079400E4D3AF /* AddProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddProgressViewController.m; path = "One-Step-Forward/AddProgressViewController.m"; sourceTree = "<group>"; };
+		E93491D918C9BDAB00E4D3AF /* iOS 7 Color UI Kit - Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS 7 Color UI Kit - Yellow.png"; sourceTree = "<group>"; };
+		E93491DD18C9C34A00E4D3AF /* Pinned - Profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pinned - Profile.png"; sourceTree = "<group>"; };
 		E96641E918BE7CF600E5EF1A /* progressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = progressTableViewCell.h; sourceTree = "<group>"; };
 		E96641EA18BE7CF600E5EF1A /* progressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = progressTableViewCell.m; sourceTree = "<group>"; };
+		E973FD5C18CDB23F006ED83F /* Database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Database.sqlite; sourceTree = "<group>"; };
+		E97E632C18CDAD17001AF751 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		E97E632D18CDAD17001AF751 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		E97E632E18CDAD17001AF751 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		E97E632F18CDAD17001AF751 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		E97E633018CDAD17001AF751 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		E97E633118CDAD17001AF751 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		E97E633218CDAD17001AF751 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		E97E633318CDAD17001AF751 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		E97E633418CDAD17001AF751 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		E97E633518CDAD17001AF751 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		E97E634118CDAF29001AF751 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		E982D23D18A6DA4B006F70E0 /* One-Step-Forward.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "One-Step-Forward.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E982D24018A6DA4B006F70E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E982D24218A6DA4B006F70E0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -130,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E97E634218CDAF29001AF751 /* libsqlite3.dylib in Frameworks */,
 				E982D29D18A6DCAF006F70E0 /* CoreLocation.framework in Frameworks */,
 				E982D29B18A6DCA8006F70E0 /* CFNetwork.framework in Frameworks */,
 				E982D29918A6DC9C006F70E0 /* AudioToolbox.framework in Frameworks */,
@@ -181,6 +211,24 @@
 			name = "Model Classes";
 			sourceTree = "<group>";
 		};
+		E97E634018CDAD23001AF751 /* Database Framwork */ = {
+			isa = PBXGroup;
+			children = (
+				E97E632C18CDAD17001AF751 /* FMDatabase.h */,
+				E97E632D18CDAD17001AF751 /* FMDatabase.m */,
+				E97E632E18CDAD17001AF751 /* FMDatabaseAdditions.h */,
+				E97E632F18CDAD17001AF751 /* FMDatabaseAdditions.m */,
+				E97E633018CDAD17001AF751 /* FMDatabasePool.h */,
+				E97E633118CDAD17001AF751 /* FMDatabasePool.m */,
+				E97E633218CDAD17001AF751 /* FMDatabaseQueue.h */,
+				E97E633318CDAD17001AF751 /* FMDatabaseQueue.m */,
+				E97E633418CDAD17001AF751 /* FMResultSet.h */,
+				E97E633518CDAD17001AF751 /* FMResultSet.m */,
+			);
+			name = "Database Framwork";
+			path = "One-Step-ForwardTests";
+			sourceTree = SOURCE_ROOT;
+		};
 		E982D23418A6DA4B006F70E0 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +236,7 @@
 				E9B2298518B83EC400311007 /* detailsViewController.m */,
 				E93491D618C7079400E4D3AF /* AddProgressViewController.h */,
 				E93491D718C7079400E4D3AF /* AddProgressViewController.m */,
+				E973FD5C18CDB23F006ED83F /* Database.sqlite */,
 				E982D24618A6DA4B006F70E0 /* One-Step-Forward */,
 				E982D26518A6DA4B006F70E0 /* One-Step-ForwardTests */,
 				E982D23F18A6DA4B006F70E0 /* Frameworks */,
@@ -207,6 +256,7 @@
 		E982D23F18A6DA4B006F70E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E97E634118CDAF29001AF751 /* libsqlite3.dylib */,
 				E93491D418C56CF200E4D3AF /* Parse.framework */,
 				E982D29C18A6DCAF006F70E0 /* CoreLocation.framework */,
 				E982D29A18A6DCA8006F70E0 /* CFNetwork.framework */,
@@ -245,6 +295,8 @@
 				E918E6C518AE001600D0F431 /* AddGoalViewController.m */,
 				E9D9685618B1619E00339A50 /* CalenderViewController.h */,
 				E9D9685718B1619E00339A50 /* CalenderViewController.m */,
+				E93491DD18C9C34A00E4D3AF /* Pinned - Profile.png */,
+				E93491D918C9BDAB00E4D3AF /* iOS 7 Color UI Kit - Yellow.png */,
 				E982D25818A6DA4B006F70E0 /* Images.xcassets */,
 				E9B2298218B83E5500311007 /* done copy.png */,
 				E9D9685518B1616700339A50 /* External Resources */,
@@ -319,6 +371,7 @@
 		E9D9685518B1616700339A50 /* External Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E97E634018CDAD23001AF751 /* Database Framwork */,
 				E9D9685418B1615F00339A50 /* Calender View */,
 			);
 			name = "External Resources";
@@ -404,6 +457,9 @@
 				E982D24B18A6DA4B006F70E0 /* InfoPlist.strings in Resources */,
 				E9B2298318B83E5500311007 /* done copy.png in Resources */,
 				E982D25418A6DA4B006F70E0 /* Main.storyboard in Resources */,
+				E973FD5D18CDB23F006ED83F /* Database.sqlite in Resources */,
+				E93491DE18C9C34A00E4D3AF /* Pinned - Profile.png in Resources */,
+				E93491DA18C9BDAB00E4D3AF /* iOS 7 Color UI Kit - Yellow.png in Resources */,
 				E982D28518A6DBC5006F70E0 /* Profile Picture.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +468,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E973FD5E18CDB23F006ED83F /* Database.sqlite in Resources */,
 				E982D26A18A6DA4B006F70E0 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,10 +483,12 @@
 				E9B2298918B9A96F00311007 /* Progress.m in Sources */,
 				E9AA299918B55A5B00719757 /* User.m in Sources */,
 				E982D27E18A6DAEF006F70E0 /* LoginViewController.m in Sources */,
+				E97E633618CDAD17001AF751 /* FMDatabase.m in Sources */,
 				E918E6C618AE001600D0F431 /* AddGoalViewController.m in Sources */,
 				E982D25118A6DA4B006F70E0 /* AppDelegate.m in Sources */,
 				E918E6C018ADF6B100D0F431 /* goalTableViewCell.m in Sources */,
 				E9D9685818B1619E00339A50 /* CalenderViewController.m in Sources */,
+				E97E633E18CDAD17001AF751 /* FMResultSet.m in Sources */,
 				E982D27D18A6DAEF006F70E0 /* MainMenuViewController.m in Sources */,
 				E9B2298618B83EC400311007 /* detailsViewController.m in Sources */,
 				E982D24D18A6DA4B006F70E0 /* main.m in Sources */,
@@ -437,7 +496,10 @@
 				E918E6BC18ADF68300D0F431 /* Goal.m in Sources */,
 				E982D27F18A6DAEF006F70E0 /* MainNavigationController.m in Sources */,
 				E93491D818C7079400E4D3AF /* AddProgressViewController.m in Sources */,
+				E97E633818CDAD17001AF751 /* FMDatabaseAdditions.m in Sources */,
 				E9D9685318B1615600339A50 /* CKCalendarView.m in Sources */,
+				E97E633C18CDAD17001AF751 /* FMDatabaseQueue.m in Sources */,
+				E97E633A18CDAD17001AF751 /* FMDatabasePool.m in Sources */,
 				E982D28318A6DB9F006F70E0 /* SignupViewController.m in Sources */,
 				E982D28018A6DAEF006F70E0 /* WelcomeViewController.m in Sources */,
 			);
@@ -447,7 +509,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E97E633F18CDAD17001AF751 /* FMResultSet.m in Sources */,
+				E97E633D18CDAD17001AF751 /* FMDatabaseQueue.m in Sources */,
 				E982D26C18A6DA4B006F70E0 /* One_Step_ForwardTests.m in Sources */,
+				E97E633B18CDAD17001AF751 /* FMDatabasePool.m in Sources */,
+				E97E633718CDAD17001AF751 /* FMDatabase.m in Sources */,
+				E97E633918CDAD17001AF751 /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
