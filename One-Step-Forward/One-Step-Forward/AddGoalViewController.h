@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "CalenderViewController.h"
+#import "FMDatabase.h"
+#import "Goal.h"
 
 
 
@@ -28,11 +30,7 @@
 
 @property(nonatomic, strong) NSString *DeadlineLabelText;
 
-
 @property (nonatomic, strong) NSString *goalID;
-
--(void)nextIdentifies;
-
 
 
 

@@ -216,4 +216,18 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"SignUPDone"])
+    {
+        UINavigationController *nav = [segue destinationViewController];
+        MainMenuViewController *vc =(MainMenuViewController*)nav.topViewController;
+        
+        [vc setCurrentUserID:user.userID];
+        
+    }
+}
+
 @end

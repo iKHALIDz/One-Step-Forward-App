@@ -12,11 +12,10 @@
 		E918E6C618AE001600D0F431 /* AddGoalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E918E6C518AE001600D0F431 /* AddGoalViewController.m */; };
 		E93491D518C56CF200E4D3AF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93491D418C56CF200E4D3AF /* Parse.framework */; };
 		E93491D818C7079400E4D3AF /* AddProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93491D718C7079400E4D3AF /* AddProgressViewController.m */; };
-		E93491DA18C9BDAB00E4D3AF /* iOS 7 Color UI Kit - Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = E93491D918C9BDAB00E4D3AF /* iOS 7 Color UI Kit - Yellow.png */; };
-		E93491DE18C9C34A00E4D3AF /* Pinned - Profile.png in Resources */ = {isa = PBXBuildFile; fileRef = E93491DD18C9C34A00E4D3AF /* Pinned - Profile.png */; };
 		E96641EB18BE7CF600E5EF1A /* progressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96641EA18BE7CF600E5EF1A /* progressTableViewCell.m */; };
 		E973FD5D18CDB23F006ED83F /* Database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E973FD5C18CDB23F006ED83F /* Database.sqlite */; };
 		E973FD5E18CDB23F006ED83F /* Database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E973FD5C18CDB23F006ED83F /* Database.sqlite */; };
+		E973FD6118D10555006ED83F /* MangeProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E973FD6018D10555006ED83F /* MangeProgressViewController.m */; };
 		E97E633618CDAD17001AF751 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E632D18CDAD17001AF751 /* FMDatabase.m */; };
 		E97E633718CDAD17001AF751 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E632D18CDAD17001AF751 /* FMDatabase.m */; };
 		E97E633818CDAD17001AF751 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E632F18CDAD17001AF751 /* FMDatabaseAdditions.m */; };
@@ -58,8 +57,13 @@
 		E982D29918A6DC9C006F70E0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D29818A6DC9C006F70E0 /* AudioToolbox.framework */; };
 		E982D29B18A6DCA8006F70E0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D29A18A6DCA8006F70E0 /* CFNetwork.framework */; };
 		E982D29D18A6DCAF006F70E0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E982D29C18A6DCAF006F70E0 /* CoreLocation.framework */; };
+		E989757218D168DB00714005 /* MDRadialProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E989756D18D168DB00714005 /* MDRadialProgressView.m */; };
+		E989757318D168DB00714005 /* MDRadialProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E989756D18D168DB00714005 /* MDRadialProgressView.m */; };
+		E989757418D168DB00714005 /* MDRadialProgressTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E989756F18D168DB00714005 /* MDRadialProgressTheme.m */; };
+		E989757518D168DB00714005 /* MDRadialProgressTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E989756F18D168DB00714005 /* MDRadialProgressTheme.m */; };
+		E989757618D168DB00714005 /* MDRadialProgressLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E989757118D168DB00714005 /* MDRadialProgressLabel.m */; };
+		E989757718D168DB00714005 /* MDRadialProgressLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E989757118D168DB00714005 /* MDRadialProgressLabel.m */; };
 		E9AA299918B55A5B00719757 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AA299818B55A5B00719757 /* User.m */; };
-		E9B2298318B83E5500311007 /* done copy.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B2298218B83E5500311007 /* done copy.png */; };
 		E9B2298618B83EC400311007 /* detailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2298518B83EC400311007 /* detailsViewController.m */; };
 		E9B2298918B9A96F00311007 /* Progress.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2298818B9A96F00311007 /* Progress.m */; };
 		E9D9685318B1615600339A50 /* CKCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D9685118B1615600339A50 /* CKCalendarView.m */; };
@@ -84,13 +88,13 @@
 		E918E6C418AE001600D0F431 /* AddGoalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGoalViewController.h; sourceTree = "<group>"; };
 		E918E6C518AE001600D0F431 /* AddGoalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGoalViewController.m; sourceTree = "<group>"; };
 		E93491D418C56CF200E4D3AF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		E93491D618C7079400E4D3AF /* AddProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddProgressViewController.h; path = "One-Step-Forward/AddProgressViewController.h"; sourceTree = "<group>"; };
-		E93491D718C7079400E4D3AF /* AddProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddProgressViewController.m; path = "One-Step-Forward/AddProgressViewController.m"; sourceTree = "<group>"; };
-		E93491D918C9BDAB00E4D3AF /* iOS 7 Color UI Kit - Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS 7 Color UI Kit - Yellow.png"; sourceTree = "<group>"; };
-		E93491DD18C9C34A00E4D3AF /* Pinned - Profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pinned - Profile.png"; sourceTree = "<group>"; };
+		E93491D618C7079400E4D3AF /* AddProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddProgressViewController.h; sourceTree = "<group>"; };
+		E93491D718C7079400E4D3AF /* AddProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddProgressViewController.m; sourceTree = "<group>"; };
 		E96641E918BE7CF600E5EF1A /* progressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = progressTableViewCell.h; sourceTree = "<group>"; };
 		E96641EA18BE7CF600E5EF1A /* progressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = progressTableViewCell.m; sourceTree = "<group>"; };
-		E973FD5C18CDB23F006ED83F /* Database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Database.sqlite; sourceTree = "<group>"; };
+		E973FD5C18CDB23F006ED83F /* Database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = Database.sqlite; path = ../Database.sqlite; sourceTree = "<group>"; };
+		E973FD5F18D10555006ED83F /* MangeProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MangeProgressViewController.h; sourceTree = "<group>"; };
+		E973FD6018D10555006ED83F /* MangeProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MangeProgressViewController.m; sourceTree = "<group>"; };
 		E97E632C18CDAD17001AF751 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		E97E632D18CDAD17001AF751 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		E97E632E18CDAD17001AF751 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -141,11 +145,16 @@
 		E982D29818A6DC9C006F70E0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E982D29A18A6DCA8006F70E0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E982D29C18A6DCAF006F70E0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E989756C18D168DB00714005 /* MDRadialProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressView.h; sourceTree = "<group>"; };
+		E989756D18D168DB00714005 /* MDRadialProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRadialProgressView.m; sourceTree = "<group>"; };
+		E989756E18D168DB00714005 /* MDRadialProgressTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressTheme.h; sourceTree = "<group>"; };
+		E989756F18D168DB00714005 /* MDRadialProgressTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRadialProgressTheme.m; sourceTree = "<group>"; };
+		E989757018D168DB00714005 /* MDRadialProgressLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressLabel.h; sourceTree = "<group>"; };
+		E989757118D168DB00714005 /* MDRadialProgressLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRadialProgressLabel.m; sourceTree = "<group>"; };
 		E9AA299718B55A5B00719757 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		E9AA299818B55A5B00719757 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		E9B2298218B83E5500311007 /* done copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done copy.png"; sourceTree = "<group>"; };
-		E9B2298418B83EC400311007 /* detailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailsViewController.h; sourceTree = "<group>"; };
-		E9B2298518B83EC400311007 /* detailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailsViewController.m; sourceTree = "<group>"; };
+		E9B2298418B83EC400311007 /* detailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = detailsViewController.h; path = ../detailsViewController.h; sourceTree = "<group>"; };
+		E9B2298518B83EC400311007 /* detailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = detailsViewController.m; path = ../detailsViewController.m; sourceTree = "<group>"; };
 		E9B2298718B9A96F00311007 /* Progress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Progress.h; sourceTree = "<group>"; };
 		E9B2298818B9A96F00311007 /* Progress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Progress.m; sourceTree = "<group>"; };
 		E9D9685118B1615600339A50 /* CKCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKCalendarView.m; sourceTree = "<group>"; };
@@ -232,11 +241,6 @@
 		E982D23418A6DA4B006F70E0 = {
 			isa = PBXGroup;
 			children = (
-				E9B2298418B83EC400311007 /* detailsViewController.h */,
-				E9B2298518B83EC400311007 /* detailsViewController.m */,
-				E93491D618C7079400E4D3AF /* AddProgressViewController.h */,
-				E93491D718C7079400E4D3AF /* AddProgressViewController.m */,
-				E973FD5C18CDB23F006ED83F /* Database.sqlite */,
 				E982D24618A6DA4B006F70E0 /* One-Step-Forward */,
 				E982D26518A6DA4B006F70E0 /* One-Step-ForwardTests */,
 				E982D23F18A6DA4B006F70E0 /* Frameworks */,
@@ -280,6 +284,12 @@
 		E982D24618A6DA4B006F70E0 /* One-Step-Forward */ = {
 			isa = PBXGroup;
 			children = (
+				E9B2298418B83EC400311007 /* detailsViewController.h */,
+				E9B2298518B83EC400311007 /* detailsViewController.m */,
+				E973FD5F18D10555006ED83F /* MangeProgressViewController.h */,
+				E973FD6018D10555006ED83F /* MangeProgressViewController.m */,
+				E93491D618C7079400E4D3AF /* AddProgressViewController.h */,
+				E93491D718C7079400E4D3AF /* AddProgressViewController.m */,
 				E982D27518A6DAEF006F70E0 /* MainMenuViewController.h */,
 				E982D27618A6DAEF006F70E0 /* MainMenuViewController.m */,
 				E918E6BE18ADF6B100D0F431 /* goalTableViewCell.h */,
@@ -290,15 +300,12 @@
 				E918E6B918ADF58400D0F431 /* Signin,Rigester */,
 				E982D24F18A6DA4B006F70E0 /* AppDelegate.h */,
 				E982D25018A6DA4B006F70E0 /* AppDelegate.m */,
-				E982D25218A6DA4B006F70E0 /* Main.storyboard */,
 				E918E6C418AE001600D0F431 /* AddGoalViewController.h */,
 				E918E6C518AE001600D0F431 /* AddGoalViewController.m */,
+				E982D25218A6DA4B006F70E0 /* Main.storyboard */,
 				E9D9685618B1619E00339A50 /* CalenderViewController.h */,
 				E9D9685718B1619E00339A50 /* CalenderViewController.m */,
-				E93491DD18C9C34A00E4D3AF /* Pinned - Profile.png */,
-				E93491D918C9BDAB00E4D3AF /* iOS 7 Color UI Kit - Yellow.png */,
 				E982D25818A6DA4B006F70E0 /* Images.xcassets */,
-				E9B2298218B83E5500311007 /* done copy.png */,
 				E9D9685518B1616700339A50 /* External Resources */,
 				E982D24718A6DA4B006F70E0 /* Supporting Files */,
 			);
@@ -308,6 +315,7 @@
 		E982D24718A6DA4B006F70E0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E973FD5C18CDB23F006ED83F /* Database.sqlite */,
 				E982D28418A6DBC5006F70E0 /* Profile Picture.png */,
 				E982D24818A6DA4B006F70E0 /* One-Step-Forward-Info.plist */,
 				E982D24918A6DA4B006F70E0 /* InfoPlist.strings */,
@@ -333,6 +341,19 @@
 				E982D26818A6DA4B006F70E0 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E989757818D168E800714005 /* MDRadialProgres */ = {
+			isa = PBXGroup;
+			children = (
+				E989756C18D168DB00714005 /* MDRadialProgressView.h */,
+				E989756D18D168DB00714005 /* MDRadialProgressView.m */,
+				E989756E18D168DB00714005 /* MDRadialProgressTheme.h */,
+				E989756F18D168DB00714005 /* MDRadialProgressTheme.m */,
+				E989757018D168DB00714005 /* MDRadialProgressLabel.h */,
+				E989757118D168DB00714005 /* MDRadialProgressLabel.m */,
+			);
+			name = MDRadialProgres;
 			sourceTree = "<group>";
 		};
 		E9AA299A18B5CEED00719757 /* Model Classes */ = {
@@ -371,6 +392,7 @@
 		E9D9685518B1616700339A50 /* External Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E989757818D168E800714005 /* MDRadialProgres */,
 				E97E634018CDAD23001AF751 /* Database Framwork */,
 				E9D9685418B1615F00339A50 /* Calender View */,
 			);
@@ -455,11 +477,8 @@
 			files = (
 				E982D25918A6DA4B006F70E0 /* Images.xcassets in Resources */,
 				E982D24B18A6DA4B006F70E0 /* InfoPlist.strings in Resources */,
-				E9B2298318B83E5500311007 /* done copy.png in Resources */,
 				E982D25418A6DA4B006F70E0 /* Main.storyboard in Resources */,
 				E973FD5D18CDB23F006ED83F /* Database.sqlite in Resources */,
-				E93491DE18C9C34A00E4D3AF /* Pinned - Profile.png in Resources */,
-				E93491DA18C9BDAB00E4D3AF /* iOS 7 Color UI Kit - Yellow.png in Resources */,
 				E982D28518A6DBC5006F70E0 /* Profile Picture.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,6 +499,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E973FD6118D10555006ED83F /* MangeProgressViewController.m in Sources */,
 				E9B2298918B9A96F00311007 /* Progress.m in Sources */,
 				E9AA299918B55A5B00719757 /* User.m in Sources */,
 				E982D27E18A6DAEF006F70E0 /* LoginViewController.m in Sources */,
@@ -489,12 +509,14 @@
 				E918E6C018ADF6B100D0F431 /* goalTableViewCell.m in Sources */,
 				E9D9685818B1619E00339A50 /* CalenderViewController.m in Sources */,
 				E97E633E18CDAD17001AF751 /* FMResultSet.m in Sources */,
+				E989757418D168DB00714005 /* MDRadialProgressTheme.m in Sources */,
 				E982D27D18A6DAEF006F70E0 /* MainMenuViewController.m in Sources */,
 				E9B2298618B83EC400311007 /* detailsViewController.m in Sources */,
 				E982D24D18A6DA4B006F70E0 /* main.m in Sources */,
 				E96641EB18BE7CF600E5EF1A /* progressTableViewCell.m in Sources */,
 				E918E6BC18ADF68300D0F431 /* Goal.m in Sources */,
 				E982D27F18A6DAEF006F70E0 /* MainNavigationController.m in Sources */,
+				E989757618D168DB00714005 /* MDRadialProgressLabel.m in Sources */,
 				E93491D818C7079400E4D3AF /* AddProgressViewController.m in Sources */,
 				E97E633818CDAD17001AF751 /* FMDatabaseAdditions.m in Sources */,
 				E9D9685318B1615600339A50 /* CKCalendarView.m in Sources */,
@@ -502,6 +524,7 @@
 				E97E633A18CDAD17001AF751 /* FMDatabasePool.m in Sources */,
 				E982D28318A6DB9F006F70E0 /* SignupViewController.m in Sources */,
 				E982D28018A6DAEF006F70E0 /* WelcomeViewController.m in Sources */,
+				E989757218D168DB00714005 /* MDRadialProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,10 +532,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E989757518D168DB00714005 /* MDRadialProgressTheme.m in Sources */,
 				E97E633F18CDAD17001AF751 /* FMResultSet.m in Sources */,
 				E97E633D18CDAD17001AF751 /* FMDatabaseQueue.m in Sources */,
+				E989757718D168DB00714005 /* MDRadialProgressLabel.m in Sources */,
 				E982D26C18A6DA4B006F70E0 /* One_Step_ForwardTests.m in Sources */,
 				E97E633B18CDAD17001AF751 /* FMDatabasePool.m in Sources */,
+				E989757318D168DB00714005 /* MDRadialProgressView.m in Sources */,
 				E97E633718CDAD17001AF751 /* FMDatabase.m in Sources */,
 				E97E633918CDAD17001AF751 /* FMDatabaseAdditions.m in Sources */,
 			);

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "Progress.h"
+#import "Goal.h"
+
 
 
 @protocol updateGoalPercentage <NSObject>
@@ -19,7 +22,6 @@
 @interface AddProgressViewController : UIViewController
 
 
-
 - (IBAction)cancelIsPressed:(UIBarButtonItem *)sender;
 - (IBAction)addProgress:(UIButton *)sender;
 
@@ -29,7 +31,7 @@
 
 @property (nonatomic,retain) NSString *currentGoalID;
 @property double currentGoalProgressPercentage;
-
 @property (retain) id <updateGoalPercentage> delegate;
+
 
 @end

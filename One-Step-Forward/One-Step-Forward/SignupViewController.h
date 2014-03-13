@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "User.h"
+#import "MainMenuViewController.h"
 
 
 @interface SignupViewController : UIViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
@@ -33,7 +34,6 @@
 @property (nonatomic,weak) UIActionSheet *actionSheet;
 
 @property (nonatomic,strong) User *user;
-
 
 
 @end

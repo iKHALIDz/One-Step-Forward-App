@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *progressPercentage;
 
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 
 @end

@@ -51,6 +51,8 @@
     
     BOOL x=[user userLoging];
     
+    NSLog(@"User: %@",[user userID]);
+    
     if(x==YES)
     {
         [self performSegueWithIdentifier:@"LoginSuccessfuly" sender:self];
@@ -78,25 +80,21 @@
 }
 
 
+#pragma mark Pass UserId to the main menu ViewController
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"LoginSuccessfuly"])
+    {
+        UINavigationController *nav = [segue destinationViewController];
+        MainMenuViewController *vc =(MainMenuViewController*)nav.topViewController;
+        
+        [vc setCurrentUserID:user.userID];
+        
+    }
+}
 @end
 
 
-/*
- // First set up a callback.
- - (void)handleUserLogin:(PFUser *)user error:(NSError *)error {
- if (user) {
- // Do stuff after successful login.
- } else {
- // The login failed. Check error to see why.
- }
- }
- 
- // Then, elsewhere in your code...
- [PFUser logInWithUsernameInBackground:@"myname"
- password:@"mypass"
- target:self
- selector:@selector(handleUserLogin:error:)];
- */
 
 

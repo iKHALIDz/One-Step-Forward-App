@@ -10,30 +10,32 @@
 #import <Parse/Parse.h>
 #import "progressTableViewCell.h"
 #import "AddProgressViewController.h"
+#import "MangeProgressViewController.h"
 
 
-@interface detailsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,updateGoalPercentage>
+#import "FMDatabase.h"
 
+
+#import "MDRadialProgressView.h"
+#import "MDRadialProgressTheme.h"
+#import "MDRadialProgressLabel.h"
+
+
+#import "Goal.h"
+
+
+@interface detailsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,updateGoalPercentage,updateGoalPercentage2>
 
 - (IBAction) declareAchieved:(UIButton *)sender;
 
+
+@property (weak, nonatomic) IBOutlet UILabel *CurrentGoalProgressLabel;
 @property (nonatomic,retain) NSString *currentGoalID;
 @property double currentGoalProgressPercentage;
-
 @property (nonatomic, strong) NSArray *postArray;
-
-//
-//- (IBAction)addProgress:(UIButton *)sender;
-//
-//@property (weak, nonatomic) IBOutlet UITextField *progressTextField;
-//
-//@property (weak, nonatomic) IBOutlet UITextField *progressPercentage;
-
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-
 @property (nonatomic, strong) NSArray *doneProgress;
-
+@property(nonatomic,retain) NSMutableArray *array;
+@property (nonatomic,strong) Progress *currentProgress;
 
 @end

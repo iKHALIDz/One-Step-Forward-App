@@ -31,9 +31,10 @@
     
     if (!error) {
         isUserloggedin=YES;
-        
-    }
     
+        userID=[d objectForKey:@"UserID"];
+    }
+
     else
     {
         NSString *errorString = [[error userInfo] objectForKey:@"error"];
@@ -43,7 +44,6 @@
 
     return isUserloggedin;
 }
-
 
 
 -(NSString*)DataFilePath{
@@ -58,6 +58,7 @@
 -(void)UserRegistrationUsingDB
 {
     FMDatabase *db=[FMDatabase databaseWithPath:[[self DataFilePath] stringByAppendingPathComponent:@"Database.sqlite"]];
+    
     BOOL isOpen=[db open];
     
     if (isOpen==NO)
@@ -65,10 +66,11 @@
         NSLog(@"Fail");
         
     }
-       NSString *createSQL= @"create table IF NOT exists Users(userId integer primary key,userFirstname text, userLastname text, userUsername text, userPassword text, userEmailAddress text, userProfileImage blob);";
+    
+    NSString *createSQL= @"create table IF NOT exists Users(userId integer primary key,userFirstname text, userLastname text, userUsername text, userPassword text, userEmailAddress text, userProfileImage blob);";
         [db executeUpdate:createSQL];
     
-    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Users (userId,userFirstname,userLastname,userUsername,userPassword,userEmailAddress) VALUES (%d,'%@','%@','%@','%@','%@')",[userID integerValue],userFirsname,userLastname,userUsername,userPassword,userEmailAddres];
+    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Users (userId,userFirstname,userLastname,userUsername,userPassword,userEmailAddress) VALUES (%ld,'%@','%@','%@','%@','%@')",(long)[userID integerValue],userFirsname,userLastname,userUsername,userPassword,userEmailAddres];
     
     NSLog(@"%@",insertSQL);
     
@@ -87,7 +89,6 @@
     
     [db close];
 }
-
 
 
 -(BOOL) UserRegister
@@ -132,9 +133,7 @@
 }
 
 
-#pragma mark Create a random number
-
-
+#pragma mark Create a random unrepeatable number
 
 -(void)nextIdentifies
 {
@@ -144,7 +143,6 @@
     [defaults setInteger:identifier forKey:lastID];
     [defaults synchronize];
     self.userID=[NSString stringWithFormat:@"%ld",(long)identifier];
-    
 }
 
 @end

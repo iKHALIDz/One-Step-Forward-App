@@ -10,10 +10,12 @@
 #import <Parse/Parse.h>
 #import "goalTableViewCell.h"
 #import "detailsViewController.h"
-
+#import "FMDatabase.h"
+#import "Goal.h"
 
 
 @interface MainMenuViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+
 
 @property (nonatomic, strong) NSArray *postArray;
 @property (nonatomic, strong) NSArray *doneGoals;
@@ -24,6 +26,9 @@
 @property(nonatomic,strong) NSString *currentGoal;
 @property double currentGoalProgressPercentage;
 
+@property(nonatomic,strong) NSString *currentUserID;
+@property(nonatomic,retain) NSMutableArray *array;
+@property(nonatomic,retain) NSMutableArray *array2;
 
 
 @end

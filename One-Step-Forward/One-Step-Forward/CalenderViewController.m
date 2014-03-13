@@ -40,7 +40,6 @@
     self.dateFormatter = [[NSDateFormatter alloc] init];
     [self.dateFormatter setDateFormat:@"dd/MM/yyyy"];
 
-    
 	// Do any additional setup after loading the view.
     
     [self.navigationItem setHidesBackButton:YES animated:YES];
@@ -66,7 +65,6 @@
     
     [[self delegate]setDeadline:self.selctedDate];
     [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
 
