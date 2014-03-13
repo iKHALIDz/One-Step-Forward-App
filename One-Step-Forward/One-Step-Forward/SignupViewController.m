@@ -77,45 +77,7 @@
     }
 
     
-    //UserRegister
-    
-    /*
-     
-    
-    // Create new Object PFUser;
-    PFUser *newUser= [PFUser user];
-    [newUser setObject:self.FirsnameTextbox.text forKey:@"FirstName"];
-    [newUser setObject:self.LastnameTextbox.text forKey:@"LastName"];
-    
-    newUser.username=self.UsernameTextbox.text;
-    newUser.password=self.PasswordTextbox.text;
-    newUser.email=self.EmailTextbox.text;
-    
-    
-    
-    NSData *pictureData = UIImagePNGRepresentation(self.ProfileImg.image);
-    
-    PFFile *file = [PFFile fileWithName:@"img" data:pictureData];
-
-    [newUser setObject:file forKey:@"ProfileImage"];
-
-    
-    [newUser signUpInBackgroundWithBlock:^ (BOOL succeeded, NSError *error)
-     {
-         if (!error)
-         {
-             [self performSegueWithIdentifier:@"SignUPDone" sender:self];
-         }
-         else
-         {
-             NSString *errorString = [[error userInfo] objectForKey:@"error"];
-             UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-             [errorAlertView show];
-             
-         }
-     }];
-*/
-}
+   }
 
 
 #pragma mark Keyboard dissmiss

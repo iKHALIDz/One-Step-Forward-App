@@ -63,6 +63,7 @@
 		E989757518D168DB00714005 /* MDRadialProgressTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E989756F18D168DB00714005 /* MDRadialProgressTheme.m */; };
 		E989757618D168DB00714005 /* MDRadialProgressLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E989757118D168DB00714005 /* MDRadialProgressLabel.m */; };
 		E989757718D168DB00714005 /* MDRadialProgressLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E989757118D168DB00714005 /* MDRadialProgressLabel.m */; };
+		E989757C18D2609A00714005 /* goalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E989757B18D2609A00714005 /* goalTableViewCell.xib */; };
 		E9AA299918B55A5B00719757 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AA299818B55A5B00719757 /* User.m */; };
 		E9B2298618B83EC400311007 /* detailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2298518B83EC400311007 /* detailsViewController.m */; };
 		E9B2298918B9A96F00311007 /* Progress.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2298818B9A96F00311007 /* Progress.m */; };
@@ -151,6 +152,7 @@
 		E989756F18D168DB00714005 /* MDRadialProgressTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRadialProgressTheme.m; sourceTree = "<group>"; };
 		E989757018D168DB00714005 /* MDRadialProgressLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressLabel.h; sourceTree = "<group>"; };
 		E989757118D168DB00714005 /* MDRadialProgressLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRadialProgressLabel.m; sourceTree = "<group>"; };
+		E989757B18D2609A00714005 /* goalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = goalTableViewCell.xib; path = ../goalTableViewCell.xib; sourceTree = "<group>"; };
 		E9AA299718B55A5B00719757 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		E9AA299818B55A5B00719757 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		E9B2298418B83EC400311007 /* detailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = detailsViewController.h; path = ../detailsViewController.h; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				E982D27618A6DAEF006F70E0 /* MainMenuViewController.m */,
 				E918E6BE18ADF6B100D0F431 /* goalTableViewCell.h */,
 				E918E6BF18ADF6B100D0F431 /* goalTableViewCell.m */,
+				E989757B18D2609A00714005 /* goalTableViewCell.xib */,
 				E96641E918BE7CF600E5EF1A /* progressTableViewCell.h */,
 				E96641EA18BE7CF600E5EF1A /* progressTableViewCell.m */,
 				E918E6BD18ADF68D00D0F431 /* Model Classes */,
@@ -477,6 +480,7 @@
 			files = (
 				E982D25918A6DA4B006F70E0 /* Images.xcassets in Resources */,
 				E982D24B18A6DA4B006F70E0 /* InfoPlist.strings in Resources */,
+				E989757C18D2609A00714005 /* goalTableViewCell.xib in Resources */,
 				E982D25418A6DA4B006F70E0 /* Main.storyboard in Resources */,
 				E973FD5D18CDB23F006ED83F /* Database.sqlite in Resources */,
 				E982D28518A6DBC5006F70E0 /* Profile Picture.png in Resources */,

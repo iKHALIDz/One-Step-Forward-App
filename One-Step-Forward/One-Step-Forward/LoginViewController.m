@@ -21,13 +21,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    /*
-     [self.self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-     forBarMetrics:UIBarMetricsDefault];
-     self.self.navigationController.navigationBar.shadowImage = [UIImage new];
-     self.self.navigationController.navigationBar.translucent = YES;
-     */
     
     user=[[User alloc]init];
     NSLog(@"Im at LoginViewController ViewDidLoad");

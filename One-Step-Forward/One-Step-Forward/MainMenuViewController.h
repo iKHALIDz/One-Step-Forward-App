@@ -14,6 +14,11 @@
 #import "Goal.h"
 
 
+#import "MDRadialProgressView.h"
+#import "MDRadialProgressTheme.h"
+#import "MDRadialProgressLabel.h"
+
+
 @interface MainMenuViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 
@@ -29,6 +34,8 @@
 @property(nonatomic,strong) NSString *currentUserID;
 @property(nonatomic,retain) NSMutableArray *array;
 @property(nonatomic,retain) NSMutableArray *array2;
+
+@property (nonatomic,strong) MDRadialProgressView *radialView;
 
 
 @end

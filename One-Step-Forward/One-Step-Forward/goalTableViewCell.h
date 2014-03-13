@@ -18,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *goalPercentage;
 
 
+@property (weak, nonatomic) IBOutlet UIView *progressPercentageView;
 
 @end

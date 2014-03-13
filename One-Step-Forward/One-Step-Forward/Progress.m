@@ -22,7 +22,6 @@
     
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
-    //NSLog(@"%@",[paths objectAtIndex:0]);
     
     return [paths objectAtIndex:0];
 }
@@ -109,7 +108,6 @@
         
     }
     
-    //progressID integer primary key, progressDescription text, progressPercentageToGoal REAL, goalID integer);"
     
     NSString * insertSQL = [NSString stringWithFormat:@"UPDATE Progress SET progressDescription='%@',progressPercentageToGoal='%f' where progressID='%d';",self.progressDescription,self.progressPercentageToGoal,self.progressID];
     

@@ -31,4 +31,5 @@ typedef enum { OneTime,Weakly,Monthly,Yearly,Progressive } goalType;
 
 -(void)DeleteGoalFromDatabase;
 
+
 @end

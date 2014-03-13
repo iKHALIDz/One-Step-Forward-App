@@ -10,6 +10,9 @@
 
 @implementation goalTableViewCell
 
+@synthesize goalName=_goalName;
+@synthesize progressPercentageView=_progressPercentageView;
+
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -24,7 +27,6 @@
 {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
 }
 
 @end

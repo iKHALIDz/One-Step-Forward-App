@@ -28,7 +28,6 @@
 
 - (IBAction) declareAchieved:(UIButton *)sender;
 
-
 @property (weak, nonatomic) IBOutlet UILabel *CurrentGoalProgressLabel;
 @property (nonatomic,retain) NSString *currentGoalID;
 @property double currentGoalProgressPercentage;

@@ -35,10 +35,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-//    NSLog(@"%d",currentProgress.progressID);
-//    
-//    
-//    NSLog(@"%d",currentProgress.goalID);
+    //    NSLog(@"%d",currentProgress.progressID);
+    //
+    //
+    //    NSLog(@"%d",currentProgress.goalID);
     
     NSLog(@"Selected Progress %f",currentProgress.progressPercentageToGoal);
     NSLog(@"Ovarall Progress %f",currentGoalProgressPercentage);
@@ -51,12 +51,6 @@
 }
 
 - (IBAction)deleteProgress:(UIButton *)sender {
-    
-//    Progress *progress=[[Progress alloc]init];
-    
-//    progress.progressID=[currentProgressID integerValue];
-//    progress.progressPercentageToGoal=[currentProgress doubleValue];
-//
     
     
     [currentProgress DeleteProgressFromDatabase];
@@ -71,7 +65,7 @@
     currentGoalProgressPercentage=currentGoalProgressPercentage-currentProgress.progressPercentageToGoal;
     [[self delegate]setGoalPercentage2:currentGoalProgressPercentage];
     
-
+    
     NSLog(@"%.2f",currentGoalProgressPercentage);
     [self dismissViewControllerAnimated:YES completion:nil];
     
@@ -91,7 +85,6 @@
     progress.progressID=currentProgress.progressID;
     progress.goalID=currentProgress.goalID;
     
-//    
     int check = [self checkTheEnteredProgress];
     
     if (check==1) // meaning the currentGoalProgress+new progress < 100
@@ -100,7 +93,7 @@
         [progress UpdateProgress];
         
         Goal *goal=[[Goal alloc]init];
-
+        
         goal.goalID=currentProgress.goalID;
         goal.goalProgress=currentGoalProgressPercentage;
         
@@ -163,10 +156,6 @@
 
 -(int) checkTheEnteredProgress
 {
-//    NSLog(@"Overall %f",self.currentGoalProgressPercentage);
-//    NSLog(@"Selected %f",currentProgress.progressPercentageToGoal);
-//    NSLog(@"entred progressPercentage %f",[self.progressPersntageTextField.text doubleValue]);
-//    
     NSLog(@"min %f",(currentGoalProgressPercentage-currentProgress.progressPercentageToGoal)+[self.progressPersntageTextField.text doubleValue]);
     int X=-1;
     
