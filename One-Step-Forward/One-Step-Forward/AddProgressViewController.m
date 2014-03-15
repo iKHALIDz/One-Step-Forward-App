@@ -17,6 +17,7 @@
 @synthesize currentGoalID;
 @synthesize currentGoalProgressPercentage;
 @synthesize delegate;
+@synthesize currentGoal;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -58,7 +59,7 @@
     
     progress.progressDescription=self.progressTextField.text;
     progress.goalID=[currentGoalID integerValue];
-    
+    progress.LoggedBy=[currentGoal.createdBy integerValue];
     
     int check=[self checkTheEnteredProgress];
     

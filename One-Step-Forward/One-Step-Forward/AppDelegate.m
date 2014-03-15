@@ -24,18 +24,57 @@
         MainMenuViewController *mainMenuViewController = (MainMenuViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"MainMenuViewController"];
         self.window.rootViewController = mainMenuViewController;
     }
-    
+
     else
     {
         NSLog(@"No Current User");
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         WelcomeViewController *wViewController = (WelcomeViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"WelcomeViewController"];
         self.window.rootViewController = wViewController;
+    }
+    
+    
+    FMDatabase *db=[FMDatabase databaseWithPath:[[self DataFilePath] stringByAppendingPathComponent:@"Database.sqlite"]];
+    BOOL isOpen=[db open];
+    if (isOpen==NO)
+    {
+        NSLog(@"Fail to open");
         
     }
     
+    
+    NSString *createSQL= @"create table IF NOT exists Goals(goalId integer primary key,GoalName text, GoalDesc text, GoalDeadline text, isGoalCompleted integer, isGoalinPregress integer, goalPercentage REAL,CreatedBy text,goalDate text);";
+    [db executeUpdate:createSQL];
+    
+
+    
+    
+    NSString *createSQL2= @"create table IF NOT exists Users(userId integer primary key,userFirstname text, userLastname text, userUsername text, userPassword text, userEmailAddress text, userProfileImage blob);";
+    
+    [db executeUpdate:createSQL2];
+
+    
+    NSString *createSQL3= @"create table IF NOT exists Progress(progressID integer primary key, progressDescription text, progressPercentageToGoal REAL, goalID integer,progressDate text,createdBy int);";
+    
+    [db executeUpdate:createSQL3];
+    
+    
+
+    NSString *createSQL4= @"create table IF NOT exists Logs(logID integer primary key, userID integer, logDate text,LogContent text, logType text,logAction text);";
+    
+    [db executeUpdate:createSQL4];
+    
+    
     return YES;
 }
+
+
+-(NSString*)DataFilePath
+{
+    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    return [paths objectAtIndex:0];
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

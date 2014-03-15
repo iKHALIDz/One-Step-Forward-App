@@ -10,6 +10,8 @@
 #import <Parse/Parse.h>
 #import "MainMenuViewController.h"
 #import "WelcomeViewController.h"
+#import "FMDatabase.h"
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

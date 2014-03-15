@@ -21,6 +21,8 @@
 @synthesize tableView = _tableView;
 @synthesize doneProgress;
 @synthesize array;
+@synthesize currentGoal;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,14 +54,11 @@
 - (IBAction)DeleteGoal:(UIButton *)sender {
     
     
-    Goal *goal=[[Goal alloc]init];
+    Goal *goal=self.currentGoal;
     
-    goal.goalID=[currentGoalID integerValue];
-
+    //goal.goalID=[currentGoalID integerValue];
+    
     [goal DeleteGoalFromDatabase];
-    
-    
-
 }
 
 
@@ -73,7 +72,6 @@
     self.CurrentGoalProgressLabel.text=[[NSString stringWithFormat:@"%.2f",currentGoalProgressPercentage] stringByAppendingString:@"%"];
  
 }
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -149,11 +147,10 @@
 - (IBAction) declareAchieved:(UIButton *)sender
 {
     
-    Goal *goal=[[Goal alloc]init];
+    Goal *goal=self.currentGoal;
+    
     goal.goalID=[self.currentGoalID integerValue];
-    
     [goal declareGoalAsAchieved];
-    
     
 }
 
@@ -180,6 +177,7 @@
 
         [vc setCurrentGoalID:self.currentGoalID];
         [vc setCurrentGoalProgressPercentage:self.currentGoalProgressPercentage];
+        [vc setCurrentGoal:self.currentGoal];
         [vc setDelegate:self];
         
     }
@@ -224,6 +222,8 @@
     
     currentProgress.progressPercentageToGoal =[[array objectAtIndex:indexPath.row] progressPercentageToGoal];
     currentProgress.goalID=[currentGoalID integerValue];
+    currentProgress.LoggedBy=[currentGoal.createdBy integerValue];
+    currentProgress.progressDescription=[[array objectAtIndex:indexPath.row]progressDescription];
     
 }
 
@@ -233,29 +233,6 @@
     progressTableViewCell *cell = (progressTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     
     cell.deleteButton.hidden=YES;
-}
-
-
-- (MDRadialProgressView *)progressViewWithFrame:(CGRect)frame
-{
-	MDRadialProgressView *view = [[MDRadialProgressView alloc] initWithFrame:frame];
-    
-	// Only required in this demo to align vertically the progress views.
-	view.center = CGPointMake(self.view.center.x + 80, view.center.y);
-	
-	return view;
-}
-
-- (UILabel *)labelAtY:(CGFloat)y andText:(NSString *)text
-{
-	CGRect frame = CGRectMake(5, y, 180, 50);
-	UILabel *label = [[UILabel alloc] initWithFrame:frame];
-	label.text = text;
-	label.numberOfLines = 0;
-	label.textAlignment = NSTextAlignmentCenter;
-	label.font = [label.font fontWithSize:14];
-    
-	return label;
 }
 
 

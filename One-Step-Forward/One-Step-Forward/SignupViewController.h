@@ -35,5 +35,4 @@
 
 @property (nonatomic,strong) User *user;
 
-
 @end

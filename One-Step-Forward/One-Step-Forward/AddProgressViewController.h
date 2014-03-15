@@ -31,6 +31,9 @@
 
 @property (nonatomic,retain) NSString *currentGoalID;
 @property double currentGoalProgressPercentage;
+
+@property (nonatomic,retain) Goal *currentGoal;
+
 @property (retain) id <updateGoalPercentage> delegate;
 
 

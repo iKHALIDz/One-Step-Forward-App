@@ -10,6 +10,7 @@
 		E918E6BC18ADF68300D0F431 /* Goal.m in Sources */ = {isa = PBXBuildFile; fileRef = E918E6BB18ADF68300D0F431 /* Goal.m */; };
 		E918E6C018ADF6B100D0F431 /* goalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E918E6BF18ADF6B100D0F431 /* goalTableViewCell.m */; };
 		E918E6C618AE001600D0F431 /* AddGoalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E918E6C518AE001600D0F431 /* AddGoalViewController.m */; };
+		E9275FBF18D2A493001BC20A /* CalenderLogsEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9275FBE18D2A493001BC20A /* CalenderLogsEventsViewController.m */; };
 		E93491D518C56CF200E4D3AF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93491D418C56CF200E4D3AF /* Parse.framework */; };
 		E93491D818C7079400E4D3AF /* AddProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93491D718C7079400E4D3AF /* AddProgressViewController.m */; };
 		E96641EB18BE7CF600E5EF1A /* progressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96641EA18BE7CF600E5EF1A /* progressTableViewCell.m */; };
@@ -88,6 +89,8 @@
 		E918E6BF18ADF6B100D0F431 /* goalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goalTableViewCell.m; sourceTree = "<group>"; };
 		E918E6C418AE001600D0F431 /* AddGoalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGoalViewController.h; sourceTree = "<group>"; };
 		E918E6C518AE001600D0F431 /* AddGoalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGoalViewController.m; sourceTree = "<group>"; };
+		E9275FBD18D2A493001BC20A /* CalenderLogsEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderLogsEventsViewController.h; sourceTree = "<group>"; };
+		E9275FBE18D2A493001BC20A /* CalenderLogsEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderLogsEventsViewController.m; sourceTree = "<group>"; };
 		E93491D418C56CF200E4D3AF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E93491D618C7079400E4D3AF /* AddProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddProgressViewController.h; sourceTree = "<group>"; };
 		E93491D718C7079400E4D3AF /* AddProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddProgressViewController.m; sourceTree = "<group>"; };
@@ -222,6 +225,40 @@
 			name = "Model Classes";
 			sourceTree = "<group>";
 		};
+		E9275FC018D2F3F0001BC20A /* UITableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				E918E6BE18ADF6B100D0F431 /* goalTableViewCell.h */,
+				E918E6BF18ADF6B100D0F431 /* goalTableViewCell.m */,
+				E989757B18D2609A00714005 /* goalTableViewCell.xib */,
+				E96641E918BE7CF600E5EF1A /* progressTableViewCell.h */,
+				E96641EA18BE7CF600E5EF1A /* progressTableViewCell.m */,
+			);
+			name = UITableViewCells;
+			sourceTree = "<group>";
+		};
+		E9275FC118D2F410001BC20A /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				E973FD5F18D10555006ED83F /* MangeProgressViewController.h */,
+				E973FD6018D10555006ED83F /* MangeProgressViewController.m */,
+				E93491D618C7079400E4D3AF /* AddProgressViewController.h */,
+				E93491D718C7079400E4D3AF /* AddProgressViewController.m */,
+			);
+			name = Progress;
+			sourceTree = "<group>";
+		};
+		E9275FC218D2F427001BC20A /* Goal */ = {
+			isa = PBXGroup;
+			children = (
+				E918E6C418AE001600D0F431 /* AddGoalViewController.h */,
+				E918E6C518AE001600D0F431 /* AddGoalViewController.m */,
+				E9D9685618B1619E00339A50 /* CalenderViewController.h */,
+				E9D9685718B1619E00339A50 /* CalenderViewController.m */,
+			);
+			name = Goal;
+			sourceTree = "<group>";
+		};
 		E97E634018CDAD23001AF751 /* Database Framwork */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,28 +323,20 @@
 		E982D24618A6DA4B006F70E0 /* One-Step-Forward */ = {
 			isa = PBXGroup;
 			children = (
-				E9B2298418B83EC400311007 /* detailsViewController.h */,
-				E9B2298518B83EC400311007 /* detailsViewController.m */,
-				E973FD5F18D10555006ED83F /* MangeProgressViewController.h */,
-				E973FD6018D10555006ED83F /* MangeProgressViewController.m */,
-				E93491D618C7079400E4D3AF /* AddProgressViewController.h */,
-				E93491D718C7079400E4D3AF /* AddProgressViewController.m */,
+				E9275FC218D2F427001BC20A /* Goal */,
+				E9275FC118D2F410001BC20A /* Progress */,
 				E982D27518A6DAEF006F70E0 /* MainMenuViewController.h */,
 				E982D27618A6DAEF006F70E0 /* MainMenuViewController.m */,
-				E918E6BE18ADF6B100D0F431 /* goalTableViewCell.h */,
-				E918E6BF18ADF6B100D0F431 /* goalTableViewCell.m */,
-				E989757B18D2609A00714005 /* goalTableViewCell.xib */,
-				E96641E918BE7CF600E5EF1A /* progressTableViewCell.h */,
-				E96641EA18BE7CF600E5EF1A /* progressTableViewCell.m */,
+				E9B2298418B83EC400311007 /* detailsViewController.h */,
+				E9B2298518B83EC400311007 /* detailsViewController.m */,
+				E9275FC018D2F3F0001BC20A /* UITableViewCells */,
 				E918E6BD18ADF68D00D0F431 /* Model Classes */,
 				E918E6B918ADF58400D0F431 /* Signin,Rigester */,
 				E982D24F18A6DA4B006F70E0 /* AppDelegate.h */,
 				E982D25018A6DA4B006F70E0 /* AppDelegate.m */,
-				E918E6C418AE001600D0F431 /* AddGoalViewController.h */,
-				E918E6C518AE001600D0F431 /* AddGoalViewController.m */,
 				E982D25218A6DA4B006F70E0 /* Main.storyboard */,
-				E9D9685618B1619E00339A50 /* CalenderViewController.h */,
-				E9D9685718B1619E00339A50 /* CalenderViewController.m */,
+				E9275FBD18D2A493001BC20A /* CalenderLogsEventsViewController.h */,
+				E9275FBE18D2A493001BC20A /* CalenderLogsEventsViewController.m */,
 				E982D25818A6DA4B006F70E0 /* Images.xcassets */,
 				E9D9685518B1616700339A50 /* External Resources */,
 				E982D24718A6DA4B006F70E0 /* Supporting Files */,
@@ -505,6 +534,7 @@
 			files = (
 				E973FD6118D10555006ED83F /* MangeProgressViewController.m in Sources */,
 				E9B2298918B9A96F00311007 /* Progress.m in Sources */,
+				E9275FBF18D2A493001BC20A /* CalenderLogsEventsViewController.m in Sources */,
 				E9AA299918B55A5B00719757 /* User.m in Sources */,
 				E982D27E18A6DAEF006F70E0 /* LoginViewController.m in Sources */,
 				E97E633618CDAD17001AF751 /* FMDatabase.m in Sources */,

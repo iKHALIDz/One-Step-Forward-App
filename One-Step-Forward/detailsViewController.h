@@ -15,12 +15,6 @@
 
 #import "FMDatabase.h"
 
-
-#import "MDRadialProgressView.h"
-#import "MDRadialProgressTheme.h"
-#import "MDRadialProgressLabel.h"
-
-
 #import "Goal.h"
 
 
@@ -36,5 +30,7 @@
 @property (nonatomic, strong) NSArray *doneProgress;
 @property(nonatomic,retain) NSMutableArray *array;
 @property (nonatomic,strong) Progress *currentProgress;
+@property (nonatomic,strong) Goal *currentGoal;
+
 
 @end

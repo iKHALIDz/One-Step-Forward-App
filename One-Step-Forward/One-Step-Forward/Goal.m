@@ -21,6 +21,9 @@
 @synthesize isGoalCompleted;
 @synthesize isGoalinProgress;
 @synthesize createdBy;
+@synthesize goalDate;
+
+
 
 
 -(NSString*)DataFilePath
@@ -32,6 +35,7 @@
     return [paths objectAtIndex:0];
 }
 
+
 -(void)nextIdentifies
 {
     static NSString* lastID = @"lastID";
@@ -42,6 +46,30 @@
     self.goalID= [[NSString stringWithFormat:@"%ld",(long)identifier] integerValue];
 }
 
+-(int)nextIdentifies2
+{
+    static NSString* lastID = @"lastID";
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger identifier = [defaults integerForKey:lastID] + 1;
+    [defaults setInteger:identifier forKey:lastID];
+    [defaults synchronize];
+    return [[NSString stringWithFormat:@"%ld",(long)identifier] integerValue];
+}
+
+
+-(NSString *)getCurrentDataAndTime
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
+    NSDate *Todaydata=[NSDate date];
+    
+    NSString *currentData= [dateFormatter stringFromDate:Todaydata];
+    
+    return currentData;
+}
+
+
+
 -(void)AddGoaltoDatabase
 {
     FMDatabase *db=[FMDatabase databaseWithPath:[[self DataFilePath] stringByAppendingPathComponent:@"Database.sqlite"]];
@@ -51,27 +79,33 @@
         NSLog(@"Fail to open");
         
     }
-    NSString *createSQL= @"create table IF NOT exists Goals(goalId integer primary key,GoalName text, GoalDesc text, GoalDeadline text, isGoalCompleted integer, isGoalinPregress integer, goalPercentage REAL,CreatedBy text);";
-    [db executeUpdate:createSQL];
-    
     // 0 means False
     // 1 means True
     [self nextIdentifies];
     
-    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Goals (goalId,GoalName,GoalDesc,GoalDeadline,isGoalCompleted,isGoalinPregress,goalPercentage,CreatedBy) VALUES (%d,'%@','%@','%@','%d','%d','%f','%@')",self.goalID,self.goalName,self.goalDescription,self.goalDeadline,0,1,0.0,self.createdBy];
+    
+    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Goals (goalId,GoalName,GoalDesc,GoalDeadline,isGoalCompleted,isGoalinPregress,goalPercentage,CreatedBy,goalDate) VALUES (%d,'%@','%@','%@','%d','%d','%f','%@','%@')",self.goalID,self.goalName,self.goalDescription,self.goalDeadline,0,1,0.0,self.createdBy,[self getCurrentDataAndTime]];
+    
     
     NSLog(@"%@",insertSQL);
     
+    //NSString *createSQL4= @"create table IF NOT exists Logs(logID integer primary key, userID integer, logDate text,LogContent text, logType text);";
+    
     BOOL succ=[db executeUpdate:insertSQL];
     
-    if (succ==YES) {
+    if (succ==YES)
+    {
         NSLog(@"Succseed");
+        NSString *LoginsertSQL = [NSString stringWithFormat:@"INSERT INTO Logs (logID,userID,logDate,LogContent,logType,logAction) VALUES (%d,'%d','%@','%@','%@','%@')",[self nextIdentifies2],[self.createdBy integerValue] ,[self getCurrentDataAndTime],self.goalName,@"Goal",@"Goal Created"];
+        
+        [db executeUpdate:LoginsertSQL];
+
     }
     else
     {
         NSLog(@"Fail");
     }
-
+    
     [db close];
 }
 
@@ -90,13 +124,22 @@
     // 0 means False
     // 1 means True
     
+    
     NSString *insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET isGoalCompleted='1',isGoalinPregress='0',goalPercentage='100.00' where goalId='%d';",self.goalID];
     NSLog(@"%@",insertSQL);
     BOOL succ=[db executeUpdate:insertSQL];
+    
     if (succ==YES)
     {
         NSLog(@"Succseed");
+        
+        
+        NSString *LoginsertSQL = [NSString stringWithFormat:@"INSERT INTO Logs (logID,userID,logDate,LogContent,logType,logAction) VALUES (%d,'%d','%@','%@','%@','%@')",[self nextIdentifies2],[self.createdBy integerValue] ,[self getCurrentDataAndTime],self.goalName,@"Goal",@"Goal Achieved"];
+
+
+        [db executeUpdate:LoginsertSQL];
     }
+    
     else
     {
         NSLog(@"Fail");
@@ -106,8 +149,6 @@
 
 -(void) UpdataGoalWithProgress:(double) progress WithMark:(NSString*)mark
 {
-
-    
     FMDatabase *db=[FMDatabase databaseWithPath:[[self DataFilePath] stringByAppendingPathComponent:@"Database.sqlite"]];
     
     BOOL isOpen=[db open];
@@ -153,6 +194,8 @@
         
     }
     
+    
+    
     NSString *deleteSQL = [NSString stringWithFormat:@"DELETE FROM Goals WHERE goalId='%d';",self.goalID];
     
     NSLog(@"%@",deleteSQL);
@@ -162,6 +205,7 @@
     if (succ==YES) {
         NSLog(@"Succseed");
         
+        
         NSString *deleteSQLP = [NSString stringWithFormat:@"DELETE FROM Progress WHERE goalId='%d';",self.goalID];
         
         NSLog(@"%@",deleteSQLP);
@@ -169,6 +213,10 @@
         
         if (succ==YES) {
             NSLog(@"Succseed");
+            
+            NSString *LoginsertSQL = [NSString stringWithFormat:@"INSERT INTO Logs (logID,userID,logDate,LogContent,logType,logAction) VALUES (%d,'%d','%@','%@','%@','%@')",[self nextIdentifies2],[self.createdBy integerValue] ,[self getCurrentDataAndTime],self.goalName,@"Goal",@"Goal Deleted"];
+            
+            [db executeUpdate:LoginsertSQL];
         }
         else
         {
@@ -183,5 +231,6 @@
     
     [db close];
 }
+
 
 @end

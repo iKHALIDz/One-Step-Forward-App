@@ -24,12 +24,11 @@ typedef enum { OneTime,Weakly,Monthly,Yearly,Progressive } goalType;
 @property (nonatomic,retain) NSArray * goalSteps;
 @property (nonatomic) goalType  goalType;
 @property (nonatomic,retain) NSString * createdBy;
+@property (nonatomic,retain) NSString *goalDate;
 
 -(void)AddGoaltoDatabase;
 -(void)declareGoalAsAchieved;
 -(void) UpdataGoalWithProgress:(double) progress WithMark:(NSString*)mark;
-
 -(void)DeleteGoalFromDatabase;
-
 
 @end

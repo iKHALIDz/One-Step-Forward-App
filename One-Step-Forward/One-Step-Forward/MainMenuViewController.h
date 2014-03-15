@@ -12,18 +12,15 @@
 #import "detailsViewController.h"
 #import "FMDatabase.h"
 #import "Goal.h"
-
-
 #import "MDRadialProgressView.h"
 #import "MDRadialProgressTheme.h"
 #import "MDRadialProgressLabel.h"
 
 
+
 @interface MainMenuViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 
-@property (nonatomic, strong) NSArray *postArray;
-@property (nonatomic, strong) NSArray *doneGoals;
 
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -36,6 +33,9 @@
 @property(nonatomic,retain) NSMutableArray *array2;
 
 @property (nonatomic,strong) MDRadialProgressView *radialView;
+
+@property (nonatomic,strong) Goal *cGoal;
+
 
 
 @end

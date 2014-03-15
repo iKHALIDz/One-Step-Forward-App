@@ -67,13 +67,13 @@
         
     }
     
+    
     NSString *createSQL= @"create table IF NOT exists Users(userId integer primary key,userFirstname text, userLastname text, userUsername text, userPassword text, userEmailAddress text, userProfileImage blob);";
         [db executeUpdate:createSQL];
     
     NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Users (userId,userFirstname,userLastname,userUsername,userPassword,userEmailAddress) VALUES (%ld,'%@','%@','%@','%@','%@')",(long)[userID integerValue],userFirsname,userLastname,userUsername,userPassword,userEmailAddres];
     
     NSLog(@"%@",insertSQL);
-    
     
     BOOL succ=[db executeUpdate:insertSQL];
     
@@ -85,7 +85,6 @@
     {
         NSLog(@"Fail");
     }
-    
     
     [db close];
 }

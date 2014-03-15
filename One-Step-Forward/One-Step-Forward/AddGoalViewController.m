@@ -37,7 +37,6 @@
 
 }
 
-
 -(void)viewDidAppear:(BOOL)animated
 {
     
@@ -56,8 +55,6 @@
 }
 
 - (IBAction)isSavePressed:(UIBarButtonItem *)sender {
-    
-
     
             Goal *goal=[[Goal alloc]init];
             PFUser *curreUser = [PFUser currentUser];

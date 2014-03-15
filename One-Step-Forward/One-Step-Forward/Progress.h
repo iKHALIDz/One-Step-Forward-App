@@ -16,6 +16,7 @@
 @property double progressPercentageToGoal;
 @property int goalID;
 @property int progressID;
+@property int LoggedBy;
 
 -(void)AddProgressltoDatabase;
 -(void)DeleteProgressFromDatabase;

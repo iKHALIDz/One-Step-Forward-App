@@ -16,13 +16,12 @@
 
 @synthesize tableView = _tableView;
 
-@synthesize postArray;
-@synthesize doneGoals;
 @synthesize currentGoal;
 @synthesize currentGoalProgressPercentage;
 @synthesize currentUserID;
 @synthesize array,array2;
 @synthesize radialView;
+@synthesize cGoal;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -53,10 +52,11 @@
     NSLog(@"User ID: %@",currentUserID);
     array=[[NSMutableArray alloc]init];
     array2=[[NSMutableArray alloc]init];
+    
     array=[self getinProgressGoalsFromDB];
     array2=[self getDoneGoalsFromDB];
     
-    
+    cGoal=[[Goal alloc]init];
 }
 
 - (MDRadialProgressView *)progressViewWithFrame:(CGRect)frame
@@ -77,6 +77,7 @@
     array2=[self getDoneGoalsFromDB];
     
     [self.tableView reloadData];
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
     
 }
 
@@ -97,20 +98,21 @@
     else return array2.count;
 }
 
-
-
-- (void)didReceiveMemoryWarning
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return 50; // you can have your own choice, of course
 }
-
 
 - (IBAction)isSignOutPressed:(UIButton *)sender {
     
     [PFUser logOut];
     [self.navigationController popToRootViewControllerAnimated:YES];
     
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100;
 }
 
 
@@ -167,7 +169,7 @@
         radialView.label.textColor = [UIColor blueColor];
         radialView.label.shadowColor = [UIColor clearColor];
         [cell.progressPercentageView addSubview:radialView];
-
+        
         
     }
     
@@ -177,12 +179,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0){
+        
+        cGoal.goalID=[[NSString stringWithFormat:@"%d",[[array objectAtIndex:indexPath.row] goalID]] integerValue];
+        cGoal.goalName=[NSString stringWithFormat:@"%@",[[array objectAtIndex:indexPath.row] goalName]];
+        cGoal.createdBy=[NSString stringWithFormat:@"%@",[[array objectAtIndex:indexPath.row] createdBy]];
+                    
         currentGoalProgressPercentage=[[array objectAtIndex:indexPath.row] goalProgress];
         currentGoal = [NSString stringWithFormat:@"%d",[[array objectAtIndex:indexPath.row] goalID]] ;
         
     }
     if (indexPath.section==1)
     {
+        cGoal.goalID=[[NSString stringWithFormat:@"%d",[[array2 objectAtIndex:indexPath.row] goalID]] integerValue];
+        cGoal.goalName=[NSString stringWithFormat:@"%@",[[array2 objectAtIndex:indexPath.row] goalName]];
+        cGoal.createdBy=[NSString stringWithFormat:@"%@",[[array objectAtIndex:indexPath.row] createdBy]];
+        
+
         currentGoalProgressPercentage=[[array2 objectAtIndex:indexPath.row] goalProgress];
         currentGoal = [NSString stringWithFormat:@"%d",[[array2 objectAtIndex:indexPath.row] goalID]] ;
     }
@@ -199,6 +211,7 @@
         
         [nav setCurrentGoalID:self.currentGoal];
         [nav setCurrentGoalProgressPercentage:currentGoalProgressPercentage];
+        [nav setCurrentGoal:cGoal];
         
     }
 }
@@ -222,10 +235,6 @@
         NSLog(@"Fail to open");
         
     }
-    
-    NSString *createSQL= @"create table IF NOT exists Goals(goalId integer primary key,GoalName text, GoalDesc text, GoalDeadline text, isGoalCompleted integer, isGoalinPregress integer, goalPercentage REAL,CreatedBy text);";
-    
-    [db executeUpdate:createSQL];
     
     
     FMResultSet *result =[db executeQuery:@"select * from Goals where isGoalCompleted='1' AND isGoalinPregress='0';"];
@@ -259,12 +268,6 @@
         NSLog(@"Fail to open");
         
     }
-    
-    
-    NSString *createSQL= @"create table IF NOT exists Goals(goalId integer primary key,GoalName text, GoalDesc text, GoalDeadline text, isGoalCompleted integer, isGoalinPregress integer, goalPercentage REAL,CreatedBy text);";
-    
-    [db executeUpdate:createSQL];
-    
     
     FMResultSet *result =[db executeQuery:@"select * from Goals where isGoalinPregress='1' AND isGoalCompleted='0';"];
     

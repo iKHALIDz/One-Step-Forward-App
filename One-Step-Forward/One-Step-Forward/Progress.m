@@ -15,14 +15,12 @@
 @synthesize progressPercentageToGoal;
 @synthesize goalID;
 @synthesize progressID;
+@synthesize LoggedBy;
 
 
 -(NSString*)DataFilePath
 {
-    
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    
-    
     return [paths objectAtIndex:0];
 }
 
@@ -36,6 +34,27 @@
     self.progressID= [[NSString stringWithFormat:@"%ld",(long)identifier] integerValue];
 }
 
+-(int)nextIdentifies2
+{
+    static NSString* lastID = @"lastID";
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger identifier = [defaults integerForKey:lastID] + 1;
+    [defaults setInteger:identifier forKey:lastID];
+    [defaults synchronize];
+    return [[NSString stringWithFormat:@"%ld",(long)identifier] integerValue];
+}
+
+
+-(NSString *)getCurrentDataAndTime
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
+    NSDate *Todaydata=[NSDate date];
+    
+    NSString *currentData= [dateFormatter stringFromDate:Todaydata];
+    
+    return currentData;
+}
 
 -(void)AddProgressltoDatabase
 {
@@ -46,13 +65,11 @@
         NSLog(@"Fail to open");
         
     }
-    NSString *createSQL= @"create table IF NOT exists Progress(progressID integer primary key, progressDescription text, progressPercentageToGoal REAL, goalID integer);";
-    [db executeUpdate:createSQL];
+  
     
     [self nextIdentifies];
     
-    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Progress (progressID,progressDescription,progressPercentageToGoal,goalID) VALUES (%d,'%@','%f','%d')",self.progressID,self.progressDescription,self.progressPercentageToGoal,self.goalID];
-    
+    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Progress (progressID,progressDescription,progressPercentageToGoal,goalID,progressDate,createdBy) VALUES (%d,'%@','%f','%d','%@','%d')",self.progressID,self.progressDescription,self.progressPercentageToGoal,self.goalID,[self getCurrentDataAndTime],self.LoggedBy];
     
     NSLog(@"%@",insertSQL);
     
@@ -60,6 +77,11 @@
     
     if (succ==YES) {
         NSLog(@"Succseed");
+        
+        NSString *LoginsertSQL = [NSString stringWithFormat:@"INSERT INTO Logs (logID,userID,logDate,LogContent,logType,logAction) VALUES (%d,'%d','%@','%@','%@','%@')",[self nextIdentifies2],self.LoggedBy,[self getCurrentDataAndTime],self.progressDescription,@"Progress",@"Progress Logged"];
+
+        [db executeUpdate:LoginsertSQL];
+
     }
     else
     {
@@ -88,6 +110,10 @@
     
     if (succ==YES) {
         NSLog(@"Succseed");
+        
+        NSString *LoginsertSQL = [NSString stringWithFormat:@"INSERT INTO Logs (logID,userID,logDate,LogContent,logType,logAction) VALUES (%d,'%d','%@','%@','%@','%@')",[self nextIdentifies2],self.LoggedBy,[self getCurrentDataAndTime],self.progressDescription,@"Progress",@"Progress Deleted"];
+        
+        [db executeUpdate:LoginsertSQL];
     }
     else
     {
@@ -122,8 +148,6 @@
     }
     
     [db close];
-    
-
 }
 
 @end
