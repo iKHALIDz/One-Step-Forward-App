@@ -33,12 +33,11 @@
     return self;
 }
 
+
 - (IBAction)deleteProgress:(UIButton *)sender
 {
     
-    
 }
-
 -(id) initWithCoder:(NSCoder *)aDecoder
 {
     
@@ -59,18 +58,28 @@
     //goal.goalID=[currentGoalID integerValue];
     
     [goal DeleteGoalFromDatabase];
-}
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Success!"
+                                                      message:@"The goal is deleteted"
+                                                     delegate:nil
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+    
+    
+    [message show];
 
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    
     self.currentGoalProgressPercentage=currentGoalProgressPercentage;
+    
     array=[self getProgressList];
     [self.tableView reloadData];
     
     self.CurrentGoalProgressLabel.text=[[NSString stringWithFormat:@"%.2f",currentGoalProgressPercentage] stringByAppendingString:@"%"];
- 
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -152,6 +161,18 @@
     goal.goalID=[self.currentGoalID integerValue];
     [goal declareGoalAsAchieved];
     
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Congrats!"
+                                                      message:@"The goal is Achieved"
+                                                     delegate:nil
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+    
+    [message show];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 
@@ -166,6 +187,7 @@
 
     return cell;
 }
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -227,13 +249,11 @@
     
 }
 
-
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     progressTableViewCell *cell = (progressTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     
     cell.deleteButton.hidden=YES;
 }
-
 
 @end

@@ -46,14 +46,7 @@
 
 
 
-- (IBAction)cancelIsPressed:(UIBarButtonItem *)sender
-{
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-
-- (IBAction)addProgress:(UIButton *)sender {
+- (IBAction)isDonePressed:(UIBarButtonItem *)sender {
     
     Progress *progress=[[Progress alloc]init];
     
@@ -67,9 +60,12 @@
     {
         progress.progressPercentageToGoal=[self.progressPercentage.text doubleValue];
         [progress AddProgressltoDatabase];
-        Goal *goal=[[Goal alloc]init];
-        goal.goalID=[currentGoalID integerValue];
-        goal.goalProgress=currentGoalProgressPercentage;
+        
+        Goal*goal=currentGoal;
+        
+        //Goal *goal=[[Goal alloc]init];
+        //goal.goalID=[currentGoalID integerValue];
+        //goal.goalProgress=currentGoalProgressPercentage;
         
         [goal UpdataGoalWithProgress:[self.progressPercentage.text doubleValue] WithMark:@"+"];
         
@@ -87,8 +83,12 @@
         Goal *goal=[[Goal alloc]init];
         goal.goalID=[currentGoalID integerValue];
         [goal declareGoalAsAchieved];
+        
+        
+        [[self delegate]setGoalPercentage:100.00];
+        
         [self dismissViewControllerAnimated:YES completion:nil];
-
+        
     }
     
     else if (check==-1) // meaning the new progress is larger than the remaining
@@ -119,9 +119,16 @@
         
         [message show];
         
-        
     }
+
 }
+
+- (IBAction)cancelIsPressed:(UIBarButtonItem *)sender
+{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 
 -(int) checkTheEnteredProgress

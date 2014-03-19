@@ -48,7 +48,7 @@
 -(NSString *)getCurrentDataAndTime
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
+    [dateFormatter setDateFormat:@"yyyy/MM/dd"];
     NSDate *Todaydata=[NSDate date];
     
     NSString *currentData= [dateFormatter stringFromDate:Todaydata];
@@ -79,6 +79,7 @@
         NSLog(@"Succseed");
         
         NSString *LoginsertSQL = [NSString stringWithFormat:@"INSERT INTO Logs (logID,userID,logDate,LogContent,logType,logAction) VALUES (%d,'%d','%@','%@','%@','%@')",[self nextIdentifies2],self.LoggedBy,[self getCurrentDataAndTime],self.progressDescription,@"Progress",@"Progress Logged"];
+        
 
         [db executeUpdate:LoginsertSQL];
 

@@ -10,6 +10,8 @@
 #import <Parse/Parse.h>
 #import "goalTableViewCell.h"
 #import "detailsViewController.h"
+#import "CalenderLogsEventsViewController.h"
+
 #import "FMDatabase.h"
 #import "Goal.h"
 #import "MDRadialProgressView.h"
@@ -19,8 +21,6 @@
 
 
 @interface MainMenuViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
-
-
 
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -35,7 +35,6 @@
 @property (nonatomic,strong) MDRadialProgressView *radialView;
 
 @property (nonatomic,strong) Goal *cGoal;
-
 
 
 @end

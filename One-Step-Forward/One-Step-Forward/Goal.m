@@ -60,7 +60,7 @@
 -(NSString *)getCurrentDataAndTime
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
+    [dateFormatter setDateFormat:@"yyyy/MM/dd"];
     NSDate *Todaydata=[NSDate date];
     
     NSString *currentData= [dateFormatter stringFromDate:Todaydata];
@@ -84,8 +84,7 @@
     [self nextIdentifies];
     
     
-    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Goals (goalId,GoalName,GoalDesc,GoalDeadline,isGoalCompleted,isGoalinPregress,goalPercentage,CreatedBy,goalDate) VALUES (%d,'%@','%@','%@','%d','%d','%f','%@','%@')",self.goalID,self.goalName,self.goalDescription,self.goalDeadline,0,1,0.0,self.createdBy,[self getCurrentDataAndTime]];
-    
+    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Goals (goalId,GoalName,GoalDesc,GoalDeadline,isGoalCompleted,isGoalinPregress,goalPercentage,CreatedBy,goalDate,numberofStepTaken) VALUES (%d,'%@','%@','%@','%d','%d','%f','%@','%@','%d')",self.goalID,self.goalName,self.goalDescription,self.goalDeadline,0,1,0.0,self.createdBy,[self getCurrentDataAndTime],0];
     
     NSLog(@"%@",insertSQL);
     
@@ -163,12 +162,12 @@
     
     if ([mark isEqualToString:@"+"])
     {
-        insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET goalPercentage='%f' where goalId='%d';",self.goalProgress+progress,self.goalID];
+        insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET goalPercentage='%f',numberofStepTaken='%d' where goalId='%d';",self.goalProgress+progress,self.goalSteps+1,self.goalID];
     }
     
     else
     {
-        insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET goalPercentage='%f' where goalId='%d';",self.goalProgress-progress,self.goalID];
+        insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET goalPercentage='%f',,numberofStepTaken='%d' where goalId='%d';",self.goalProgress-progress,self.goalSteps-1,self.goalID];
     }
     
     NSLog(@"%@",insertSQL);

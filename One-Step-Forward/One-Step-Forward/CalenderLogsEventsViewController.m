@@ -10,59 +10,137 @@
 
 @interface CalenderLogsEventsViewController ()
 
-
 @end
+
+
 
 @implementation CalenderLogsEventsViewController
 
-@synthesize calendar,dateFormatter,selctedDate;
+@synthesize calenderLog;
+@synthesize array;
+@synthesize currentUserID;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self.scroller setScrollEnabled:YES];
+    [self.scroller setContentSize:CGSizeMake(320,450)];
     
-    calendar = [[CKCalendarView alloc] init];
-    [self.CalenderView addSubview:calendar];
+    CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
     
-    calendar.delegate = self;
+    _calendarView = [[RDVCalendarView alloc] initWithFrame:applicationFrame];
+    [_calendarView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
+    [_calendarView setSeparatorStyle:RDVCalendarViewDayCellSeparatorTypeHorizontal];
+    [_calendarView setBackgroundColor:[UIColor whiteColor]];
+    [_calendarView setDelegate:self];
     
-    self.dateFormatter = [[NSDateFormatter alloc] init];
-    [self.dateFormatter setDateFormat:@"dd/MM/yyyy"];
-
+    [_calendarView setFrame:CGRectMake(3, -80, 320,360)];
+    
+    [self.scroller addSubview: _calendarView];
+    
+    UIBarButtonItem *todayButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Today", nil)
+                                                                    style:UIBarButtonItemStylePlain
+                                                                   target:[self calendarView]
+                                                                   action:@selector(showCurrentMonth)];
+    
+    
+    [self.navigationItem setRightBarButtonItem:todayButton];
+    self.navigationItem.title=@"Logs";
+    
+    
 }
 
-- (void)didReceiveMemoryWarning
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    // Return the number of sections.
+    return 1;
 }
 
-- (void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [array count];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if ([self clearsSelectionOnViewWillAppear]) {
+        [[self calendarView] deselectDayCellAtIndex:[[self calendarView] indexForSelectedDayCell] animated:YES];
+    }
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy/MM/dd"];
+    
+    NSString *currentData= [dateFormatter stringFromDate:[NSDate date]];
+    array=[self getGoalsList:currentData];
+    [self.tableview reloadData];
+}
+
+
+- (void)calendarView:(RDVCalendarView *)calendarView didSelectCellAtIndex:(NSInteger)index
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy/MM/dd"];
+    
+    NSString *currentData= [dateFormatter stringFromDate:_calendarView.selectedDate];
+    
+    NSLog(@"%@",currentData);
+    
+    array=[self getGoalsList:currentData];
+    
+    [self.tableview reloadData];
+    
+}
+
+- (void)calendarView:(RDVCalendarView *)calendarView configureDayCell:(RDVCalendarDayCell *)dayCell
+             atIndex:(NSInteger)index
+{
+
+    if (calendarView )
+    {
+        
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    selctedDate=[self.dateFormatter stringFromDate:date];
-    NSLog(@"%@",selctedDate);
+    static NSString *simpleTableIdentifier = @"Cell3";
     
-//    NSMutableArray *array=[self getGoalsList:selctedDate];
+    logCell *cell = (logCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    if(cell==nil)
+    {
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"logCell" owner:self options:nil];
+    cell = [nib objectAtIndex:0];
+    }
     
-    //if ([array count] != 0)
-   // {
-     //   NSLog(@"%@",[[array objectAtIndex:0]goalName]);
-    //}
     
+    [cell.logContent setText:(NSString *)[[array objectAtIndex:indexPath.row] logContent]];
+    
+    
+    if ([[[array objectAtIndex:indexPath.row]logType] isEqualToString:@"Goal"])
+    {
+         cell.picContent.image=[UIImage imageNamed:@"G.png"];
+    }
+    else
+    {
+        cell.picContent.image=[UIImage imageNamed:@"P.png"];
+    }
+    
+    
+    
+    return cell;
 }
-
 
 -(NSString*)DataFilePath{
     
@@ -71,8 +149,6 @@
     return [paths objectAtIndex:0];
 }
 
-
-/*
 -(NSMutableArray *) getGoalsList:(NSString*)Data
 {
     NSMutableArray *list=[[NSMutableArray alloc]init];
@@ -86,30 +162,27 @@
         
     }
     
-    NSString *qr=[NSString stringWithFormat:@"select * from Goals where goalDate='%@';",Data];
+    NSString *qr=[NSString stringWithFormat:@"select * from Logs where logDate='%@' AND userID='%d';",Data,[currentUserID integerValue]];
     
     
     FMResultSet *result =[db executeQuery:qr];
     
     while ([result next])
     {
-        NSLog(@"44");
+         Log*log=[[Log alloc]init];
         
-        Goal *goal=[[Goal alloc]init];
-        goal.goalID=[result intForColumn:@"goalId"];
-        goal.goalName=[result stringForColumn:@"GoalName"];
-        goal.goalDescription=[result stringForColumn:@"GoalDesc"];
-        goal.goalDeadline=[result stringForColumn:@"GoalDeadline"];
-        goal.isGoalCompleted=[result intForColumn:@"isGoalCompleted"];
-        goal.isGoalinProgress=[result intForColumn:@"isGoalinPregress"];
-        goal.goalProgress=[result doubleForColumn:@"goalPercentage"];
-        goal.createdBy =[result stringForColumn:@"CreatedBy"];
-        goal.goalDate=[result stringForColumn:@"goalDate"];
-        [list addObject:goal];
+        log.logID=[result intForColumn:@"logID"];
+        log.userID=[result intForColumn:@"userID"];
+        log.logDate=[result stringForColumn:@"logDate"];
+        log.logAction=[result stringForColumn:@"logAction"];
+        log.logContent=[result stringForColumn:@"logContent"];
+        log.logType=[result stringForColumn:@"logType"];
+        [list addObject:log];
     }
+    
     return list;
 }
-*/
+
 
 @end
 

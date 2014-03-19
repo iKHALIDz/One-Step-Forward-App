@@ -178,23 +178,38 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section==0){
-        
+    NSLog(@"%d",[array count]);
+    NSLog(@"%d",[array2 count]);
+    
+    if (indexPath.section==0)
+    {
+        //NSLog(@"array");
         cGoal.goalID=[[NSString stringWithFormat:@"%d",[[array objectAtIndex:indexPath.row] goalID]] integerValue];
         cGoal.goalName=[NSString stringWithFormat:@"%@",[[array objectAtIndex:indexPath.row] goalName]];
+        cGoal.goalDescription=[NSString stringWithFormat:@"%@",[[array objectAtIndex:indexPath.row] goalDescription]];
+        cGoal.goalDeadline=[NSString stringWithFormat:@"%@",[[array objectAtIndex:indexPath.row] goalDeadline]];
+        cGoal.goalProgress=[[array objectAtIndex:indexPath.row] goalProgress];
         cGoal.createdBy=[NSString stringWithFormat:@"%@",[[array objectAtIndex:indexPath.row] createdBy]];
-                    
+        cGoal.goalDate=[NSString stringWithFormat:@"%@",[[array objectAtIndex:indexPath.row] goalDate]];
+        
+        
+        //used by detailsViewController
         currentGoalProgressPercentage=[[array objectAtIndex:indexPath.row] goalProgress];
         currentGoal = [NSString stringWithFormat:@"%d",[[array objectAtIndex:indexPath.row] goalID]] ;
-        
     }
+    
     if (indexPath.section==1)
     {
         cGoal.goalID=[[NSString stringWithFormat:@"%d",[[array2 objectAtIndex:indexPath.row] goalID]] integerValue];
         cGoal.goalName=[NSString stringWithFormat:@"%@",[[array2 objectAtIndex:indexPath.row] goalName]];
-        cGoal.createdBy=[NSString stringWithFormat:@"%@",[[array objectAtIndex:indexPath.row] createdBy]];
+        cGoal.goalDescription=[NSString stringWithFormat:@"%@",[[array2 objectAtIndex:indexPath.row] goalDescription]];
+        cGoal.goalDeadline=[NSString stringWithFormat:@"%@",[[array2 objectAtIndex:indexPath.row] goalDeadline]];
+        cGoal.goalProgress=[[array2 objectAtIndex:indexPath.row] goalProgress];
+        cGoal.createdBy=[NSString stringWithFormat:@"%@",[[array2 objectAtIndex:indexPath.row] createdBy]];
+        cGoal.goalDate=[NSString stringWithFormat:@"%@",[[array2 objectAtIndex:indexPath.row] goalDate]];
         
-
+        
+        //used by detailsViewController
         currentGoalProgressPercentage=[[array2 objectAtIndex:indexPath.row] goalProgress];
         currentGoal = [NSString stringWithFormat:@"%d",[[array2 objectAtIndex:indexPath.row] goalID]] ;
     }
@@ -212,7 +227,12 @@
         [nav setCurrentGoalID:self.currentGoal];
         [nav setCurrentGoalProgressPercentage:currentGoalProgressPercentage];
         [nav setCurrentGoal:cGoal];
+    }
+    else if ([[segue identifier] isEqualToString:@"toLogs"])
+    {
+        CalenderLogsEventsViewController *nav = [segue destinationViewController];
         
+        [nav setCurrentUserID:self.currentUserID];
     }
 }
 

@@ -17,13 +17,16 @@
 
 -(void)setGoalPercentage:(double)goalPerc;
 
+
 @end
 
 @interface AddProgressViewController : UIViewController
 
+- (IBAction)isDonePressed:(UIBarButtonItem *)sender;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 
 - (IBAction)cancelIsPressed:(UIBarButtonItem *)sender;
-- (IBAction)addProgress:(UIButton *)sender;
 
 @property (weak, nonatomic) IBOutlet UITextField *progressTextField;
 

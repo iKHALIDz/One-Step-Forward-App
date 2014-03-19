@@ -11,12 +11,24 @@
 		E918E6C018ADF6B100D0F431 /* goalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E918E6BF18ADF6B100D0F431 /* goalTableViewCell.m */; };
 		E918E6C618AE001600D0F431 /* AddGoalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E918E6C518AE001600D0F431 /* AddGoalViewController.m */; };
 		E9275FBF18D2A493001BC20A /* CalenderLogsEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9275FBE18D2A493001BC20A /* CalenderLogsEventsViewController.m */; };
+		E9275FCC18D43F1A001BC20A /* RDVCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9275FC718D43F1A001BC20A /* RDVCalendarView.m */; };
+		E9275FCD18D43F1A001BC20A /* RDVCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9275FC718D43F1A001BC20A /* RDVCalendarView.m */; };
+		E9275FCE18D43F1A001BC20A /* RDVCalendarDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9275FC918D43F1A001BC20A /* RDVCalendarDayCell.m */; };
+		E9275FCF18D43F1A001BC20A /* RDVCalendarDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9275FC918D43F1A001BC20A /* RDVCalendarDayCell.m */; };
+		E9275FD318D44666001BC20A /* RDVExampleDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9275FD218D44666001BC20A /* RDVExampleDayCell.m */; };
+		E9275FD418D44666001BC20A /* RDVExampleDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9275FD218D44666001BC20A /* RDVExampleDayCell.m */; };
 		E93491D518C56CF200E4D3AF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93491D418C56CF200E4D3AF /* Parse.framework */; };
 		E93491D818C7079400E4D3AF /* AddProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93491D718C7079400E4D3AF /* AddProgressViewController.m */; };
 		E96641EB18BE7CF600E5EF1A /* progressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96641EA18BE7CF600E5EF1A /* progressTableViewCell.m */; };
 		E973FD5D18CDB23F006ED83F /* Database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E973FD5C18CDB23F006ED83F /* Database.sqlite */; };
 		E973FD5E18CDB23F006ED83F /* Database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E973FD5C18CDB23F006ED83F /* Database.sqlite */; };
 		E973FD6118D10555006ED83F /* MangeProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E973FD6018D10555006ED83F /* MangeProgressViewController.m */; };
+		E974BE4818D6BAD500B14F3A /* logCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E974BE4718D6BAD500B14F3A /* logCell.m */; };
+		E974BE4918D6BAD500B14F3A /* logCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E974BE4718D6BAD500B14F3A /* logCell.m */; };
+		E974BE5118D6E45B00B14F3A /* Log.m in Sources */ = {isa = PBXBuildFile; fileRef = E974BE5018D6E45B00B14F3A /* Log.m */; };
+		E974BE5218D6E45B00B14F3A /* Log.m in Sources */ = {isa = PBXBuildFile; fileRef = E974BE5018D6E45B00B14F3A /* Log.m */; };
+		E974BE5B18D82B0300B14F3A /* P.png in Resources */ = {isa = PBXBuildFile; fileRef = E974BE5918D82B0300B14F3A /* P.png */; };
+		E974BE5C18D82B0300B14F3A /* G.png in Resources */ = {isa = PBXBuildFile; fileRef = E974BE5A18D82B0300B14F3A /* G.png */; };
 		E97E633618CDAD17001AF751 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E632D18CDAD17001AF751 /* FMDatabase.m */; };
 		E97E633718CDAD17001AF751 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E632D18CDAD17001AF751 /* FMDatabase.m */; };
 		E97E633818CDAD17001AF751 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E632F18CDAD17001AF751 /* FMDatabaseAdditions.m */; };
@@ -68,7 +80,6 @@
 		E9AA299918B55A5B00719757 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AA299818B55A5B00719757 /* User.m */; };
 		E9B2298618B83EC400311007 /* detailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2298518B83EC400311007 /* detailsViewController.m */; };
 		E9B2298918B9A96F00311007 /* Progress.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2298818B9A96F00311007 /* Progress.m */; };
-		E9D9685318B1615600339A50 /* CKCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D9685118B1615600339A50 /* CKCalendarView.m */; };
 		E9D9685818B1619E00339A50 /* CalenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D9685718B1619E00339A50 /* CalenderViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +102,12 @@
 		E918E6C518AE001600D0F431 /* AddGoalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGoalViewController.m; sourceTree = "<group>"; };
 		E9275FBD18D2A493001BC20A /* CalenderLogsEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderLogsEventsViewController.h; sourceTree = "<group>"; };
 		E9275FBE18D2A493001BC20A /* CalenderLogsEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderLogsEventsViewController.m; sourceTree = "<group>"; };
+		E9275FC618D43F1A001BC20A /* RDVCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVCalendarView.h; sourceTree = "<group>"; };
+		E9275FC718D43F1A001BC20A /* RDVCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVCalendarView.m; sourceTree = "<group>"; };
+		E9275FC818D43F1A001BC20A /* RDVCalendarDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVCalendarDayCell.h; sourceTree = "<group>"; };
+		E9275FC918D43F1A001BC20A /* RDVCalendarDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVCalendarDayCell.m; sourceTree = "<group>"; };
+		E9275FD118D44666001BC20A /* RDVExampleDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVExampleDayCell.h; sourceTree = "<group>"; };
+		E9275FD218D44666001BC20A /* RDVExampleDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVExampleDayCell.m; sourceTree = "<group>"; };
 		E93491D418C56CF200E4D3AF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E93491D618C7079400E4D3AF /* AddProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddProgressViewController.h; sourceTree = "<group>"; };
 		E93491D718C7079400E4D3AF /* AddProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddProgressViewController.m; sourceTree = "<group>"; };
@@ -99,6 +116,12 @@
 		E973FD5C18CDB23F006ED83F /* Database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = Database.sqlite; path = ../Database.sqlite; sourceTree = "<group>"; };
 		E973FD5F18D10555006ED83F /* MangeProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MangeProgressViewController.h; sourceTree = "<group>"; };
 		E973FD6018D10555006ED83F /* MangeProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MangeProgressViewController.m; sourceTree = "<group>"; };
+		E974BE4618D6BAD500B14F3A /* logCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = logCell.h; path = ../logCell.h; sourceTree = "<group>"; };
+		E974BE4718D6BAD500B14F3A /* logCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = logCell.m; path = ../logCell.m; sourceTree = "<group>"; };
+		E974BE4F18D6E45B00B14F3A /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
+		E974BE5018D6E45B00B14F3A /* Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Log.m; sourceTree = "<group>"; };
+		E974BE5918D82B0300B14F3A /* P.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P.png; sourceTree = "<group>"; };
+		E974BE5A18D82B0300B14F3A /* G.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = G.png; sourceTree = "<group>"; };
 		E97E632C18CDAD17001AF751 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		E97E632D18CDAD17001AF751 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		E97E632E18CDAD17001AF751 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -162,8 +185,6 @@
 		E9B2298518B83EC400311007 /* detailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = detailsViewController.m; path = ../detailsViewController.m; sourceTree = "<group>"; };
 		E9B2298718B9A96F00311007 /* Progress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Progress.h; sourceTree = "<group>"; };
 		E9B2298818B9A96F00311007 /* Progress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Progress.m; sourceTree = "<group>"; };
-		E9D9685118B1615600339A50 /* CKCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKCalendarView.m; sourceTree = "<group>"; };
-		E9D9685218B1615600339A50 /* CKCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCalendarView.h; sourceTree = "<group>"; };
 		E9D9685618B1619E00339A50 /* CalenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderViewController.h; sourceTree = "<group>"; };
 		E9D9685718B1619E00339A50 /* CalenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -221,6 +242,8 @@
 				E9B2298818B9A96F00311007 /* Progress.m */,
 				E918E6BA18ADF68300D0F431 /* Goal.h */,
 				E918E6BB18ADF68300D0F431 /* Goal.m */,
+				E974BE4F18D6E45B00B14F3A /* Log.h */,
+				E974BE5018D6E45B00B14F3A /* Log.m */,
 			);
 			name = "Model Classes";
 			sourceTree = "<group>";
@@ -257,6 +280,43 @@
 				E9D9685718B1619E00339A50 /* CalenderViewController.m */,
 			);
 			name = Goal;
+			sourceTree = "<group>";
+		};
+		E9275FD018D43F22001BC20A /* RDVCalender */ = {
+			isa = PBXGroup;
+			children = (
+				E9275FD118D44666001BC20A /* RDVExampleDayCell.h */,
+				E9275FD218D44666001BC20A /* RDVExampleDayCell.m */,
+				E9275FC618D43F1A001BC20A /* RDVCalendarView.h */,
+				E9275FC718D43F1A001BC20A /* RDVCalendarView.m */,
+				E9275FC818D43F1A001BC20A /* RDVCalendarDayCell.h */,
+				E9275FC918D43F1A001BC20A /* RDVCalendarDayCell.m */,
+			);
+			name = RDVCalender;
+			sourceTree = "<group>";
+		};
+		E974BE5318D6ED2700B14F3A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E9275FC218D2F427001BC20A /* Goal */,
+				E9275FC118D2F410001BC20A /* Progress */,
+				E982D27518A6DAEF006F70E0 /* MainMenuViewController.h */,
+				E982D27618A6DAEF006F70E0 /* MainMenuViewController.m */,
+				E9B2298418B83EC400311007 /* detailsViewController.h */,
+				E9B2298518B83EC400311007 /* detailsViewController.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		E974BE5418D6ED6100B14F3A /* Logs */ = {
+			isa = PBXGroup;
+			children = (
+				E9275FBD18D2A493001BC20A /* CalenderLogsEventsViewController.h */,
+				E9275FBE18D2A493001BC20A /* CalenderLogsEventsViewController.m */,
+				E974BE4618D6BAD500B14F3A /* logCell.h */,
+				E974BE4718D6BAD500B14F3A /* logCell.m */,
+			);
+			name = Logs;
 			sourceTree = "<group>";
 		};
 		E97E634018CDAD23001AF751 /* Database Framwork */ = {
@@ -323,21 +383,14 @@
 		E982D24618A6DA4B006F70E0 /* One-Step-Forward */ = {
 			isa = PBXGroup;
 			children = (
-				E9275FC218D2F427001BC20A /* Goal */,
-				E9275FC118D2F410001BC20A /* Progress */,
-				E982D27518A6DAEF006F70E0 /* MainMenuViewController.h */,
-				E982D27618A6DAEF006F70E0 /* MainMenuViewController.m */,
-				E9B2298418B83EC400311007 /* detailsViewController.h */,
-				E9B2298518B83EC400311007 /* detailsViewController.m */,
+				E974BE5318D6ED2700B14F3A /* Core */,
 				E9275FC018D2F3F0001BC20A /* UITableViewCells */,
 				E918E6BD18ADF68D00D0F431 /* Model Classes */,
+				E974BE5418D6ED6100B14F3A /* Logs */,
 				E918E6B918ADF58400D0F431 /* Signin,Rigester */,
 				E982D24F18A6DA4B006F70E0 /* AppDelegate.h */,
 				E982D25018A6DA4B006F70E0 /* AppDelegate.m */,
 				E982D25218A6DA4B006F70E0 /* Main.storyboard */,
-				E9275FBD18D2A493001BC20A /* CalenderLogsEventsViewController.h */,
-				E9275FBE18D2A493001BC20A /* CalenderLogsEventsViewController.m */,
-				E982D25818A6DA4B006F70E0 /* Images.xcassets */,
 				E9D9685518B1616700339A50 /* External Resources */,
 				E982D24718A6DA4B006F70E0 /* Supporting Files */,
 			);
@@ -347,6 +400,9 @@
 		E982D24718A6DA4B006F70E0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E982D25818A6DA4B006F70E0 /* Images.xcassets */,
+				E974BE5918D82B0300B14F3A /* P.png */,
+				E974BE5A18D82B0300B14F3A /* G.png */,
 				E973FD5C18CDB23F006ED83F /* Database.sqlite */,
 				E982D28418A6DBC5006F70E0 /* Profile Picture.png */,
 				E982D24818A6DA4B006F70E0 /* One-Step-Forward-Info.plist */,
@@ -412,21 +468,12 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		E9D9685418B1615F00339A50 /* Calender View */ = {
-			isa = PBXGroup;
-			children = (
-				E9D9685118B1615600339A50 /* CKCalendarView.m */,
-				E9D9685218B1615600339A50 /* CKCalendarView.h */,
-			);
-			name = "Calender View";
-			sourceTree = "<group>";
-		};
 		E9D9685518B1616700339A50 /* External Resources */ = {
 			isa = PBXGroup;
 			children = (
 				E989757818D168E800714005 /* MDRadialProgres */,
 				E97E634018CDAD23001AF751 /* Database Framwork */,
-				E9D9685418B1615F00339A50 /* Calender View */,
+				E9275FD018D43F22001BC20A /* RDVCalender */,
 			);
 			name = "External Resources";
 			sourceTree = "<group>";
@@ -475,7 +522,7 @@
 		E982D23518A6DA4B006F70E0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Khalid;
 				TargetAttributes = {
 					E982D25D18A6DA4B006F70E0 = {
@@ -508,11 +555,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E982D25918A6DA4B006F70E0 /* Images.xcassets in Resources */,
+				E974BE5B18D82B0300B14F3A /* P.png in Resources */,
 				E982D24B18A6DA4B006F70E0 /* InfoPlist.strings in Resources */,
 				E989757C18D2609A00714005 /* goalTableViewCell.xib in Resources */,
 				E982D25418A6DA4B006F70E0 /* Main.storyboard in Resources */,
 				E973FD5D18CDB23F006ED83F /* Database.sqlite in Resources */,
 				E982D28518A6DBC5006F70E0 /* Profile Picture.png in Resources */,
+				E974BE5C18D82B0300B14F3A /* G.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,18 +583,23 @@
 			files = (
 				E973FD6118D10555006ED83F /* MangeProgressViewController.m in Sources */,
 				E9B2298918B9A96F00311007 /* Progress.m in Sources */,
+				E974BE5118D6E45B00B14F3A /* Log.m in Sources */,
 				E9275FBF18D2A493001BC20A /* CalenderLogsEventsViewController.m in Sources */,
 				E9AA299918B55A5B00719757 /* User.m in Sources */,
 				E982D27E18A6DAEF006F70E0 /* LoginViewController.m in Sources */,
 				E97E633618CDAD17001AF751 /* FMDatabase.m in Sources */,
 				E918E6C618AE001600D0F431 /* AddGoalViewController.m in Sources */,
+				E9275FD318D44666001BC20A /* RDVExampleDayCell.m in Sources */,
 				E982D25118A6DA4B006F70E0 /* AppDelegate.m in Sources */,
 				E918E6C018ADF6B100D0F431 /* goalTableViewCell.m in Sources */,
 				E9D9685818B1619E00339A50 /* CalenderViewController.m in Sources */,
 				E97E633E18CDAD17001AF751 /* FMResultSet.m in Sources */,
+				E9275FCC18D43F1A001BC20A /* RDVCalendarView.m in Sources */,
+				E974BE4818D6BAD500B14F3A /* logCell.m in Sources */,
 				E989757418D168DB00714005 /* MDRadialProgressTheme.m in Sources */,
 				E982D27D18A6DAEF006F70E0 /* MainMenuViewController.m in Sources */,
 				E9B2298618B83EC400311007 /* detailsViewController.m in Sources */,
+				E9275FCE18D43F1A001BC20A /* RDVCalendarDayCell.m in Sources */,
 				E982D24D18A6DA4B006F70E0 /* main.m in Sources */,
 				E96641EB18BE7CF600E5EF1A /* progressTableViewCell.m in Sources */,
 				E918E6BC18ADF68300D0F431 /* Goal.m in Sources */,
@@ -553,7 +607,6 @@
 				E989757618D168DB00714005 /* MDRadialProgressLabel.m in Sources */,
 				E93491D818C7079400E4D3AF /* AddProgressViewController.m in Sources */,
 				E97E633818CDAD17001AF751 /* FMDatabaseAdditions.m in Sources */,
-				E9D9685318B1615600339A50 /* CKCalendarView.m in Sources */,
 				E97E633C18CDAD17001AF751 /* FMDatabaseQueue.m in Sources */,
 				E97E633A18CDAD17001AF751 /* FMDatabasePool.m in Sources */,
 				E982D28318A6DB9F006F70E0 /* SignupViewController.m in Sources */,
@@ -566,13 +619,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E974BE5218D6E45B00B14F3A /* Log.m in Sources */,
+				E9275FD418D44666001BC20A /* RDVExampleDayCell.m in Sources */,
 				E989757518D168DB00714005 /* MDRadialProgressTheme.m in Sources */,
 				E97E633F18CDAD17001AF751 /* FMResultSet.m in Sources */,
 				E97E633D18CDAD17001AF751 /* FMDatabaseQueue.m in Sources */,
+				E9275FCF18D43F1A001BC20A /* RDVCalendarDayCell.m in Sources */,
+				E9275FCD18D43F1A001BC20A /* RDVCalendarView.m in Sources */,
 				E989757718D168DB00714005 /* MDRadialProgressLabel.m in Sources */,
 				E982D26C18A6DA4B006F70E0 /* One_Step_ForwardTests.m in Sources */,
 				E97E633B18CDAD17001AF751 /* FMDatabasePool.m in Sources */,
 				E989757318D168DB00714005 /* MDRadialProgressView.m in Sources */,
+				E974BE4918D6BAD500B14F3A /* logCell.m in Sources */,
 				E97E633718CDAD17001AF751 /* FMDatabase.m in Sources */,
 				E97E633918CDAD17001AF751 /* FMDatabaseAdditions.m in Sources */,
 			);
@@ -620,7 +678,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -659,7 +716,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -727,7 +783,6 @@
 		E982D27318A6DA4B006F70E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/One-Step-Forward.app/One-Step-Forward";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -750,7 +805,6 @@
 		E982D27418A6DA4B006F70E0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/One-Step-Forward.app/One-Step-Forward";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

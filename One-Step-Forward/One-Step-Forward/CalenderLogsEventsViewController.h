@@ -7,21 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CKCalendarView.h"
 #import "FMDatabase.h"
-#import "Goal.h"
+#import "Log.h"
+
+#import "RDVCalendarView.h"
+
+#import "logCell.h"
+
+@interface CalenderLogsEventsViewController : UIViewController <RDVCalendarViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
 
+@property (nonatomic, strong) RDVCalendarView *calendarView;
+@property (nonatomic) BOOL clearsSelectionOnViewWillAppear;
 
-@interface CalenderLogsEventsViewController : UIViewController <CKCalendarDelegate>
+@property (weak, nonatomic) IBOutlet UIScrollView *scroller;
 
+@property (weak, nonatomic) IBOutlet UITableView *calenderLog;
 
-@property(nonatomic, strong) CKCalendarView *calendar;
-@property (weak, nonatomic) IBOutlet UIView *CalenderView;
-@property(nonatomic, strong) NSString *selctedDate;
-@property(nonatomic, strong) NSDateFormatter *dateFormatter;
+@property (weak, nonatomic) IBOutlet UITableView *tableview;
+@property (nonatomic,strong) NSMutableArray *array;
 
+@property (nonatomic,strong) NSString *currentUserID;
 
--(NSMutableArray *) getGoalsList:(NSString*)Data;
+//-(NSMutableArray *) getGoalsList:(NSString*)Data;
 
 @end

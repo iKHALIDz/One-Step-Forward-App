@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CKCalendarView.h"
+#import "RDVCalendarView.h"
 
 
 @protocol passDate <NSObject>
@@ -16,24 +16,21 @@
 
 @end
 
+@interface CalenderViewController : UIViewController <RDVCalendarViewDelegate>
 
-@interface CalenderViewController : UIViewController <CKCalendarDelegate>
-
-
-@property(nonatomic, strong) CKCalendarView *calendar;
+@property (nonatomic, strong) RDVCalendarView *calendarView;
+@property (nonatomic) BOOL clearsSelectionOnViewWillAppear;
 
 @property (weak, nonatomic) IBOutlet UIView *CalenderView;
-
 - (IBAction)doneisPressed:(UIBarButtonItem *)sender;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 
 @property(nonatomic, strong) NSDateFormatter *dateFormatter;
 @property(nonatomic, strong) NSString *selctedDate;
 
-
-
 @property (retain) id <passDate> delegate;
 @property (nonatomic,retain) NSString *deadlinetext;
-
 
 
 @end
