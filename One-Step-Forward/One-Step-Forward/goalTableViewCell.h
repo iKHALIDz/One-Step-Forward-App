@@ -20,4 +20,5 @@
 
 @property (weak, nonatomic) IBOutlet UIView *progressPercentageView;
 
+
 @end

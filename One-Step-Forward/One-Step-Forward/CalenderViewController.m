@@ -35,7 +35,7 @@
     [super viewDidLoad];
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
-    [self.dateFormatter setDateFormat:@"dd/MM/yyyy"];
+    [self.dateFormatter setDateFormat:@"MM/dd/yyyy"];
     
     CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
     _calendarView = [[RDVCalendarView alloc] initWithFrame:applicationFrame];
@@ -71,10 +71,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)calendarView:(RDVCalendarView *)calendarView didSelectCellAtIndex:(NSInteger)index
+
+-(void) calendarView:(RDVCalendarView *)calendarView didSelectDate:(NSDate *)date
 {
- 
-    self.selctedDate=[dateFormatter stringFromDate:_calendarView.selectedDate];
+    ///self.selctedDate=[dateFormatter stringFromDate:_calendarView.selectedDate];
     
     NSDate *today = [NSDate date];
     NSString *todayDate=[dateFormatter stringFromDate:today];
@@ -94,10 +94,16 @@
     else
         isSelectedData=YES;
     
-    self.doneButton.enabled = YES;
+    //self.doneButton.enabled = YES;
 }
 
-
+- (void)calendarView:(RDVCalendarView *)calendarView didSelectCellAtIndex:(NSInteger)index
+{
+ 
+    self.selctedDate=[dateFormatter stringFromDate:_calendarView.selectedDate];
+    [self calendarView:self.calendarView didSelectDate:nil];
+    self.doneButton.enabled = YES;
+}
 
 - (IBAction)doneisPressed:(UIBarButtonItem *)sender
 {
@@ -107,7 +113,7 @@
         [[self delegate]setDeadline:self.selctedDate];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
-    
+
     else
     {
         
@@ -117,12 +123,10 @@
                                                 cancelButtonTitle:@"OK"
                                                 otherButtonTitles:nil];
         
-        
         [message show];
         self.doneButton.enabled = NO;
     }
-
+    
 }
-
 
 @end

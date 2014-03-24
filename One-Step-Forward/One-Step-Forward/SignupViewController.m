@@ -135,12 +135,17 @@
 
 
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if(buttonIndex == self.actionSheet.destructiveButtonIndex){
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == self.actionSheet.destructiveButtonIndex)
+    {
         NSLog(@"destuctivebutton clicked");
-    }else if(buttonIndex == self.actionSheet.cancelButtonIndex){
+    }
+    else if(buttonIndex == self.actionSheet.cancelButtonIndex){
         NSLog(@"cancel clicked");
-    }else{
+    }
+    else
+    {
         UIImagePickerController *picker = [[UIImagePickerController alloc]init];
         
         picker.allowsEditing = YES;
@@ -149,13 +154,12 @@
         NSString *choice = [actionSheet buttonTitleAtIndex:buttonIndex];
         if([choice isEqualToString:PHOTO_LIBRART_BUTTON_TITLE]){
             picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        }else if([choice isEqualToString:CAMERA_BUTTON_TITLE]){
+    }
+        else if([choice isEqualToString:CAMERA_BUTTON_TITLE]){
             picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        }
+    }
         [self presentViewController:picker animated:YES completion:^{
-            NSLog(@"complete picked image");
-        }];
-        
+            NSLog(@"complete picked image");}];
     }
 }
 

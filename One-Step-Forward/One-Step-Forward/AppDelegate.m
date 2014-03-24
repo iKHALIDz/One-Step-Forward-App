@@ -19,7 +19,6 @@
     
     if (curreUser)
     {
-        NSLog(@"Current User: %@",curreUser.username);
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         MainMenuViewController *mainMenuViewController = (MainMenuViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"MainMenuViewController"];
         self.window.rootViewController = mainMenuViewController;
@@ -27,7 +26,6 @@
 
     else
     {
-        NSLog(@"No Current User");
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         WelcomeViewController *wViewController = (WelcomeViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"WelcomeViewController"];
         self.window.rootViewController = wViewController;
@@ -42,7 +40,6 @@
         
     }
     
-    
     NSString *createSQL= @"create table IF NOT exists Goals(goalId integer primary key,GoalName text, GoalDesc text, GoalDeadline text, isGoalCompleted integer, isGoalinPregress integer, goalPercentage REAL,CreatedBy text,goalDate text,numberofStepTaken int);";
     [db executeUpdate:createSQL];
     
@@ -56,8 +53,6 @@
     
     [db executeUpdate:createSQL3];
     
-    
-
     NSString *createSQL4= @"create table IF NOT exists Logs(logID integer primary key, userID integer, logDate text,LogContent text, logType text,logAction text);";
     
     [db executeUpdate:createSQL4];

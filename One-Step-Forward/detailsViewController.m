@@ -15,9 +15,9 @@
 @implementation detailsViewController
 
 @synthesize currentProgress;
-@synthesize currentGoalID;
+//@synthesize currentGoalID;
 @synthesize postArray;
-@synthesize currentGoalProgressPercentage;
+//@synthesize currentGoalProgressPercentage;
 @synthesize tableView = _tableView;
 @synthesize doneProgress;
 @synthesize array;
@@ -36,6 +36,7 @@
 
 - (IBAction)deleteProgress:(UIButton *)sender
 {
+    
     
 }
 -(id) initWithCoder:(NSCoder *)aDecoder
@@ -58,6 +59,7 @@
     //goal.goalID=[currentGoalID integerValue];
     
     [goal DeleteGoalFromDatabase];
+    
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Success!"
                                                       message:@"The goal is deleteted"
                                                      delegate:nil
@@ -71,14 +73,45 @@
     
 }
 
+-(NSString *)getCurrentDataAndTime
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/YYYY"];
+    NSDate *Todaydata=[NSDate date];
+    
+    NSString *currentData= [dateFormatter stringFromDate:Todaydata];
+    
+    return currentData;
+}
+
+
 -(void) viewWillAppear:(BOOL)animated
 {
-    self.currentGoalProgressPercentage=currentGoalProgressPercentage;
+    //self.currentGoalProgressPercentage=currentGoalProgressPercentage;
+    
+    self.currentGoal=currentGoal;
+    
+    //self.currentGoalProgressPercentage=currentGoal.goalProgress;
+    self.CurrentGoalProgressLabel.text=[[NSString stringWithFormat:@"Total Percentage: %.2f",currentGoal.goalProgress] stringByAppendingString:@"%"];
+    
+    
+    self.numberOfSteps.text=[NSString stringWithFormat:@"Number of Steps Taken: %d",currentGoal.goalSteps];
     
     array=[self getProgressList];
     [self.tableView reloadData];
     
-    self.CurrentGoalProgressLabel.text=[[NSString stringWithFormat:@"%.2f",currentGoalProgressPercentage] stringByAppendingString:@"%"];
+    
+    NSLog(@"Deadline: %@",currentGoal.goalDeadline);
+    NSLog(@"Goal Created: %@",currentGoal.goalDate);
+    NSLog(@"current Date %@ ",[self getCurrentDataAndTime]);
+
+    
+    NSInteger days=[self daysBetweenDate:currentGoal.goalDate andDate:[self getCurrentDataAndTime]];
+    NSInteger days2=[self daysBetweenDate:[self getCurrentDataAndTime] andDate:currentGoal.goalDeadline];
+    
+    self.numberOfDaysSinceCreated.text=[NSString stringWithFormat:@"Number of days since Createted: %d",days];
+    
+    self.numberOfDaystillDeadline.text=[NSString stringWithFormat:@"Number of days till Deadline %d",days2];
     
 }
 
@@ -108,7 +141,8 @@
         
     }
     
-    NSString *qr=[NSString stringWithFormat:@"select * from Progress where goalId='%ld';",(long)[currentGoalID integerValue]];
+    NSString *qr=[NSString stringWithFormat:@"select * from Progress where goalId='%d';",currentGoal.goalID];
+    
     
     NSLog(@"%@",qr);
     
@@ -141,10 +175,10 @@
     array=[[NSMutableArray alloc]init];
     array=[self getProgressList];
 
-    NSLog(@"Progress: %f",currentGoalProgressPercentage);
-    self.CurrentGoalProgressLabel.text=[[NSString stringWithFormat:@"%.2f",currentGoalProgressPercentage] stringByAppendingString:@"%"];
+   // NSLog(@"Progress: %f",currentGoalProgressPercentage);
+    self.CurrentGoalProgressLabel.text=[[NSString stringWithFormat:@"%.2f",currentGoal.goalProgress] stringByAppendingString:@"%"];
+    self.numberOfSteps.text=[NSString stringWithFormat:@"%d",currentGoal.goalSteps];
 
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -158,7 +192,7 @@
     
     Goal *goal=self.currentGoal;
     
-    goal.goalID=[self.currentGoalID integerValue];
+    goal.goalID=self.currentGoal.goalID;
     [goal declareGoalAsAchieved];
     
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Congrats!"
@@ -170,9 +204,8 @@
     [message show];
     
     [self.navigationController popViewControllerAnimated:YES];
-    
+
     //[self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
 
@@ -197,13 +230,12 @@
         
         AddProgressViewController *vc =(AddProgressViewController*)nav.topViewController;
 
-        [vc setCurrentGoalID:self.currentGoalID];
-        [vc setCurrentGoalProgressPercentage:self.currentGoalProgressPercentage];
+        //[vc setCurrentGoalID:self.currentGoalID];
+        //[vc setCurrentGoalProgressPercentage:self.currentGoalProgressPercentage];
+        
         [vc setCurrentGoal:self.currentGoal];
         [vc setDelegate:self];
-        
     }
-    
     else  if ([[segue identifier] isEqualToString:@"mangeProgress"])
     {
         UINavigationController *nav = [segue destinationViewController];
@@ -211,8 +243,7 @@
         MangeProgressViewController *vc =(MangeProgressViewController*)nav.topViewController;
         
         [vc setCurrentProgress:currentProgress];
-        [vc setCurrentGoalProgressPercentage:currentGoalProgressPercentage];
-        
+        [vc setCurrentGoal:self.currentGoal];
         [vc setDelegate:self];
 
         
@@ -220,16 +251,12 @@
 }
 
 
--(void) setGoalPercentage:(double)goalPerc
-{
-    self.currentGoalProgressPercentage=goalPerc;
-}
 
--(void) setGoalPercentage2:(double)goalPerc
+-(void) setGoal:(Goal *)updatedGoal
 {
-    self.currentGoalProgressPercentage=goalPerc;
+    
+    self.currentGoal=updatedGoal;
 }
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -243,10 +270,9 @@
     currentProgress.progressID = [[array objectAtIndex:indexPath.row] progressID];
     
     currentProgress.progressPercentageToGoal =[[array objectAtIndex:indexPath.row] progressPercentageToGoal];
-    currentProgress.goalID=[currentGoalID integerValue];
+    currentProgress.goalID=currentGoal.goalID;
     currentProgress.LoggedBy=[currentGoal.createdBy integerValue];
     currentProgress.progressDescription=[[array objectAtIndex:indexPath.row]progressDescription];
-    
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -255,5 +281,30 @@
     
     cell.deleteButton.hidden=YES;
 }
+
+
+
+-(NSInteger)daysBetweenDate:(NSString*)fromDateTime andDate:(NSString*)toDateTime
+{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"mm/dd/yyyy"];
+    
+    NSDate *fromDate = [format dateFromString: fromDateTime];
+    NSDate *toDate = [format dateFromString: toDateTime];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&fromDate
+                 interval:NULL forDate:fromDate];
+    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&toDate
+                 interval:NULL forDate:toDate];
+    
+    
+    NSDateComponents *difference = [calendar components:NSDayCalendarUnit
+                                               fromDate:fromDate toDate:toDate options:0];
+    
+    return [difference day];
+}
+
 
 @end

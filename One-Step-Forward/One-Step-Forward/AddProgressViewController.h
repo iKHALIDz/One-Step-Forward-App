@@ -15,8 +15,8 @@
 
 @protocol updateGoalPercentage <NSObject>
 
--(void)setGoalPercentage:(double)goalPerc;
-
+//-(void)setGoalPercentage:(double)goalPerc;
+-(void)setGoal:(Goal*)updatedGoal;
 
 @end
 

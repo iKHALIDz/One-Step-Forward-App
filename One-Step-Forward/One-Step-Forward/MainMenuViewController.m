@@ -49,6 +49,8 @@
         
     }
     
+    
+    
     NSLog(@"User ID: %@",currentUserID);
     array=[[NSMutableArray alloc]init];
     array2=[[NSMutableArray alloc]init];
@@ -63,7 +65,6 @@
 {
 	MDRadialProgressView *view = [[MDRadialProgressView alloc] initWithFrame:frame];
     
-	// Only required in this demo to align vertically the progress views.
 	view.center = CGPointMake(30,30);
     
 	return view;
@@ -79,29 +80,24 @@
     [self.tableView reloadData];
     [self.tableView setBackgroundColor:[UIColor clearColor]];
     
+    self.numberofOngoingGoals.text=[NSString stringWithFormat:@"Number of ongoing goals: %d",[array count]];
+    
+    self.numberofAchieviedGoals.text=[NSString stringWithFormat:@"Number of achieved goals: %d",[array2 count]];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    
-    if (section==0)
-    {
         return array.count;
-    }
-    else return array2.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 50; // you can have your own choice, of course
-}
+
+
 
 - (IBAction)isSignOutPressed:(UIButton *)sender {
     
@@ -110,24 +106,7 @@
     
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 100;
-}
 
-
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (section==0)
-    {
-        return @"Goals In Progress";
-        
-    }
-    else
-        return @"Goals are Done";
-    
-}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -139,9 +118,7 @@
     
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"goalTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
-        
-    if (indexPath.section==0)
-    {
+
         [cell.goalName setText:(NSString *)[[array objectAtIndex:indexPath.row] goalName]];
         CGRect frame = CGRectMake(50,50, 50, 50);
         radialView = [self progressViewWithFrame:frame];
@@ -153,37 +130,14 @@
         radialView.label.textColor = [UIColor blueColor];
         radialView.label.shadowColor = [UIColor clearColor];
         [cell.progressPercentageView addSubview:radialView];
-    }
     
-    if (indexPath.section==1)
-    {
-        
-        [cell.goalName setText:(NSString *)[[array2 objectAtIndex:indexPath.row] goalName]];
-        CGRect frame = CGRectMake(50,20, 50, 50);
-        radialView = [self progressViewWithFrame:frame];
-        radialView.progressTotal = 100;
-        radialView.progressCounter = [[array2 objectAtIndex:indexPath.row] goalProgress];
-        radialView.startingSlice = 3;
-        radialView.theme.sliceDividerThickness = 1;
-        radialView.theme.sliceDividerHidden = NO;
-        radialView.label.textColor = [UIColor blueColor];
-        radialView.label.shadowColor = [UIColor clearColor];
-        [cell.progressPercentageView addSubview:radialView];
-        
-        
-    }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%d",[array count]);
-    NSLog(@"%d",[array2 count]);
-    
-    if (indexPath.section==0)
-    {
-        //NSLog(@"array");
+
         cGoal.goalID=[[NSString stringWithFormat:@"%d",[[array objectAtIndex:indexPath.row] goalID]] integerValue];
         cGoal.goalName=[NSString stringWithFormat:@"%@",[[array objectAtIndex:indexPath.row] goalName]];
         cGoal.goalDescription=[NSString stringWithFormat:@"%@",[[array objectAtIndex:indexPath.row] goalDescription]];
@@ -191,41 +145,16 @@
         cGoal.goalProgress=[[array objectAtIndex:indexPath.row] goalProgress];
         cGoal.createdBy=[NSString stringWithFormat:@"%@",[[array objectAtIndex:indexPath.row] createdBy]];
         cGoal.goalDate=[NSString stringWithFormat:@"%@",[[array objectAtIndex:indexPath.row] goalDate]];
-        
-        
-        //used by detailsViewController
-        currentGoalProgressPercentage=[[array objectAtIndex:indexPath.row] goalProgress];
-        currentGoal = [NSString stringWithFormat:@"%d",[[array objectAtIndex:indexPath.row] goalID]] ;
-    }
-    
-    if (indexPath.section==1)
-    {
-        cGoal.goalID=[[NSString stringWithFormat:@"%d",[[array2 objectAtIndex:indexPath.row] goalID]] integerValue];
-        cGoal.goalName=[NSString stringWithFormat:@"%@",[[array2 objectAtIndex:indexPath.row] goalName]];
-        cGoal.goalDescription=[NSString stringWithFormat:@"%@",[[array2 objectAtIndex:indexPath.row] goalDescription]];
-        cGoal.goalDeadline=[NSString stringWithFormat:@"%@",[[array2 objectAtIndex:indexPath.row] goalDeadline]];
-        cGoal.goalProgress=[[array2 objectAtIndex:indexPath.row] goalProgress];
-        cGoal.createdBy=[NSString stringWithFormat:@"%@",[[array2 objectAtIndex:indexPath.row] createdBy]];
-        cGoal.goalDate=[NSString stringWithFormat:@"%@",[[array2 objectAtIndex:indexPath.row] goalDate]];
-        
-        
-        //used by detailsViewController
-        currentGoalProgressPercentage=[[array2 objectAtIndex:indexPath.row] goalProgress];
-        currentGoal = [NSString stringWithFormat:@"%d",[[array2 objectAtIndex:indexPath.row] goalID]] ;
-    }
+        cGoal.goalSteps=[[array objectAtIndex:indexPath.row] goalSteps];
     
     [self performSegueWithIdentifier:@"GoalToDetails" sender:nil];
 }
-
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"GoalToDetails"])
     {
         detailsViewController *nav = [segue destinationViewController];
-        
-        [nav setCurrentGoalID:self.currentGoal];
-        [nav setCurrentGoalProgressPercentage:currentGoalProgressPercentage];
         [nav setCurrentGoal:cGoal];
     }
     else if ([[segue identifier] isEqualToString:@"toLogs"])
@@ -233,6 +162,13 @@
         CalenderLogsEventsViewController *nav = [segue destinationViewController];
         
         [nav setCurrentUserID:self.currentUserID];
+    }
+    
+    else if ([[segue identifier] isEqualToString:@"toAchievedGoals"])
+    {
+        achievedGoalsUIViewController *nav = [segue destinationViewController];
+        [nav setAchievedGoalsArray:array2];
+        
     }
 }
 
@@ -256,7 +192,6 @@
         
     }
     
-    
     FMResultSet *result =[db executeQuery:@"select * from Goals where isGoalCompleted='1' AND isGoalinPregress='0';"];
     
     while ([result next])
@@ -270,11 +205,16 @@
         goal.isGoalinProgress=[result intForColumn:@"isGoalinPregress"];
         goal.goalProgress=[result doubleForColumn:@"goalPercentage"];
         goal.createdBy =[result stringForColumn:@"CreatedBy"];
+        goal.goalSteps=[result intForColumn:@"numberofStepTaken"];
+        goal.goalDate=[result stringForColumn:@"goalDate"];
+
         
         [list addObject:goal];
     }
     return list;
 }
+
+
 
 -(NSMutableArray *) getinProgressGoalsFromDB
 {
@@ -302,11 +242,18 @@
         goal.isGoalinProgress=[result intForColumn:@"isGoalinPregress"];
         goal.goalProgress=[result doubleForColumn:@"goalPercentage"];
         goal.createdBy =[result stringForColumn:@"CreatedBy"];
+        goal.goalSteps=[result intForColumn:@"numberofStepTaken"];
+        goal.goalDate=[result stringForColumn:@"goalDate"];
         
         [list addObject:goal];
     }
     
     return list;
 }
+
+
+
+
+
 
 @end

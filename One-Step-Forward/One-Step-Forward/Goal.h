@@ -10,7 +10,7 @@
 //#import "Progress.h"
 #import "FMDatabase.h"
 
-typedef enum { OneTime,Weakly,Monthly,Yearly,Progressive } goalType;
+//typedef enum { OneTime,Weakly,Monthly,Yearly,Progressive } goalType;
 
 @interface Goal : NSObject
 
@@ -22,7 +22,7 @@ typedef enum { OneTime,Weakly,Monthly,Yearly,Progressive } goalType;
 @property BOOL isGoalCompleted;
 @property BOOL isGoalinProgress;
 @property int goalSteps;
-@property (nonatomic) goalType  goalType;
+@property (nonatomic) NSString *  goalType;
 @property (nonatomic,retain) NSString * createdBy;
 @property (nonatomic,retain) NSString *goalDate;
 

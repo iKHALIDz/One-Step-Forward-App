@@ -23,10 +23,8 @@
 
 -(BOOL) userLoging
 {
-    
     PFUser *d=[[PFUser alloc]init];
-     NSError *error = nil;
-    
+    NSError *error = nil;
     d=[PFUser logInWithUsername:userUsername password:userPassword error:&error];
     
     if (!error) {
@@ -66,10 +64,6 @@
         NSLog(@"Fail");
         
     }
-    
-    
-    NSString *createSQL= @"create table IF NOT exists Users(userId integer primary key,userFirstname text, userLastname text, userUsername text, userPassword text, userEmailAddress text, userProfileImage blob);";
-        [db executeUpdate:createSQL];
     
     NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Users (userId,userFirstname,userLastname,userUsername,userPassword,userEmailAddress) VALUES (%ld,'%@','%@','%@','%@','%@')",(long)[userID integerValue],userFirsname,userLastname,userUsername,userPassword,userEmailAddres];
     

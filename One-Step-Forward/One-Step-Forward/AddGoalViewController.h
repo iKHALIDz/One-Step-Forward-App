@@ -11,6 +11,7 @@
 #import "CalenderViewController.h"
 #import "FMDatabase.h"
 #import "Goal.h"
+#import <Social/Social.h>
 
 
 
@@ -21,6 +22,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *goalDesc;
 
 - (IBAction)isSavePressed:(UIBarButtonItem *)sender;
+
+- (IBAction)shareFacebook:(UIButton *)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *shareFacebook;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *deadlineLabel;

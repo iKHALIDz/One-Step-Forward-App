@@ -16,10 +16,10 @@
 @implementation MangeProgressViewController
 
 
-//@synthesize currentProgressID;
-//@synthesize currentProgress;
+
 @synthesize currentProgress;
 @synthesize currentGoalProgressPercentage;
+@synthesize currentGoal;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,7 +41,10 @@
     //    NSLog(@"%d",currentProgress.goalID);
     
     NSLog(@"Selected Progress %f",currentProgress.progressPercentageToGoal);
-    NSLog(@"Ovarall Progress %f",currentGoalProgressPercentage);
+    NSLog(@"Ovarall Progress %f",currentGoal.goalProgress);
+    
+    self.progressDescriptionTextField.text=self.currentProgress.progressDescription;
+    self.progressPersntageTextField.text=[NSString stringWithFormat:@"%.2f",self.currentProgress.progressPercentageToGoal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,27 +53,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (IBAction)deleteProgress:(UIButton *)sender {
     
     
     [currentProgress DeleteProgressFromDatabase];
     
-    Goal *goal=[[Goal alloc]init];
-    goal.goalID=currentProgress.goalID;
-    goal.goalProgress=currentGoalProgressPercentage;
-    
+    Goal *goal=currentGoal;
+    goal.goalSteps=goal.goalSteps-1;
     
     [goal UpdataGoalWithProgress:currentProgress.progressPercentageToGoal WithMark:@"-"];
     
-    currentGoalProgressPercentage=currentGoalProgressPercentage-currentProgress.progressPercentageToGoal;
-    [[self delegate]setGoalPercentage2:currentGoalProgressPercentage];
-    
-    
-    NSLog(@"%.2f",currentGoalProgressPercentage);
+    goal.goalProgress=goal.goalProgress-currentProgress.progressPercentageToGoal;
+    [[self delegate]setGoal:goal];
+
+
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
-
 
 - (IBAction)cancel:(UIBarButtonItem *)sender {
     
@@ -84,32 +84,28 @@
     progress.progressDescription=self.progressDescriptionTextField.text;
     progress.progressID=currentProgress.progressID;
     progress.goalID=currentProgress.goalID;
-    
+
     int check = [self checkTheEnteredProgress];
     
     if (check==1) // meaning the currentGoalProgress+new progress < 100
     {
         progress.progressPercentageToGoal=[self.progressPersntageTextField.text doubleValue];
         [progress UpdateProgress];
-        
-        Goal *goal=[[Goal alloc]init];
-        
-        goal.goalID=currentProgress.goalID;
-        goal.goalProgress=currentGoalProgressPercentage;
+
+        Goal *goal=currentGoal;
         
         [goal UpdataGoalWithProgress:currentProgress.progressPercentageToGoal WithMark:@"-"];
-        
-        goal.goalProgress=currentGoalProgressPercentage-currentProgress.progressPercentageToGoal;
-        
+        goal.goalProgress=goal.goalProgress-currentProgress.progressPercentageToGoal;
+
         [goal UpdataGoalWithProgress:[self.progressPersntageTextField.text doubleValue] WithMark:@"+"];
         
+        NSString *sum=[NSString stringWithFormat:@"%.2f",goal.goalProgress+[self.progressPersntageTextField.text doubleValue]];
         
-        NSString *sum=[NSString stringWithFormat:@"%.2f",currentGoalProgressPercentage-currentProgress.progressPercentageToGoal+[self.progressPersntageTextField.text doubleValue]];
+        goal.goalProgress=[sum doubleValue];
         
-        [[self delegate]setGoalPercentage2:[sum doubleValue]];
+        [[self delegate]setGoal:goal];
         
         [self dismissViewControllerAnimated:YES completion:nil];
-        
     }
     
     else if(check==0)
@@ -156,8 +152,9 @@
 
 -(int) checkTheEnteredProgress
 {
-    NSLog(@"min %f",(currentGoalProgressPercentage-currentProgress.progressPercentageToGoal)+[self.progressPersntageTextField.text doubleValue]);
+    NSLog(@"min %f",(currentGoal.goalProgress-currentProgress.progressPercentageToGoal)+[self.progressPersntageTextField.text doubleValue]);
     int X=-1;
+    
     
     //invalid input
     if ([self.progressPersntageTextField.text isEqual:@""])
@@ -167,7 +164,8 @@
     }
     
     // curent goal progress + new progress < 100
-    else if ((currentGoalProgressPercentage-currentProgress.progressPercentageToGoal)+[self.progressPersntageTextField.text doubleValue] < 100)
+    
+    else if ((currentGoal.goalProgress-currentProgress.progressPercentageToGoal)+[self.progressPersntageTextField.text doubleValue] < 100)
     {
         
         X=1;
@@ -175,7 +173,7 @@
     
     // curent goal progress + new progress = 100
     
-    else if ((currentGoalProgressPercentage-currentProgress.progressPercentageToGoal)+[self.progressPersntageTextField.text doubleValue] == 100)
+    else if ((currentGoal.goalProgress-currentProgress.progressPercentageToGoal)+[self.progressPersntageTextField.text doubleValue] == 100)
     {
         X=0;
     }

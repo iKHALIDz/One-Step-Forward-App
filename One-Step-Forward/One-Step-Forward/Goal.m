@@ -11,7 +11,6 @@
 @implementation Goal
 
 @synthesize goalID;
-
 @synthesize goalName;
 @synthesize goalDescription;
 @synthesize goalProgress;
@@ -22,8 +21,6 @@
 @synthesize isGoalinProgress;
 @synthesize createdBy;
 @synthesize goalDate;
-
-
 
 
 -(NSString*)DataFilePath
@@ -60,7 +57,7 @@
 -(NSString *)getCurrentDataAndTime
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy/MM/dd"];
+    [dateFormatter setDateFormat:@"MM/dd/YYYY"];
     NSDate *Todaydata=[NSDate date];
     
     NSString *currentData= [dateFormatter stringFromDate:Todaydata];
@@ -82,7 +79,7 @@
     // 0 means False
     // 1 means True
     [self nextIdentifies];
-    
+
     
     NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Goals (goalId,GoalName,GoalDesc,GoalDeadline,isGoalCompleted,isGoalinPregress,goalPercentage,CreatedBy,goalDate,numberofStepTaken) VALUES (%d,'%@','%@','%@','%d','%d','%f','%@','%@','%d')",self.goalID,self.goalName,self.goalDescription,self.goalDeadline,0,1,0.0,self.createdBy,[self getCurrentDataAndTime],0];
     
@@ -162,12 +159,12 @@
     
     if ([mark isEqualToString:@"+"])
     {
-        insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET goalPercentage='%f',numberofStepTaken='%d' where goalId='%d';",self.goalProgress+progress,self.goalSteps+1,self.goalID];
+        insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET goalPercentage='%f',numberofStepTaken='%d' where goalId='%d';",self.goalProgress+progress,self.goalSteps,self.goalID];
     }
     
     else
     {
-        insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET goalPercentage='%f',,numberofStepTaken='%d' where goalId='%d';",self.goalProgress-progress,self.goalSteps-1,self.goalID];
+        insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET goalPercentage='%f',numberofStepTaken='%d' where goalId='%d';",self.goalProgress-progress,self.goalSteps,self.goalID];
     }
     
     NSLog(@"%@",insertSQL);
@@ -182,6 +179,7 @@
     }
     [db close];
 }
+
 
 -(void)DeleteGoalFromDatabase
 {

@@ -73,7 +73,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Spl-hs-81B">
-                                <rect key="frame" x="14" y="404" width="116" height="39"/>
+                                <rect key="frame" x="12" y="367" width="116" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Sign Out">
@@ -84,23 +84,45 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="83" sectionHeaderHeight="22" sectionFooterHeight="22" id="Q7Y-qE-ZvC">
-                                <rect key="frame" x="0.0" y="66" width="320" height="275"/>
+                                <rect key="frame" x="0.0" y="154" width="320" height="197"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="iwz-Au-zOF" id="nH2-fN-FNl"/>
                                     <outlet property="delegate" destination="iwz-Au-zOF" id="hAV-zf-bO7"/>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mfu-Dg-Lna">
-                                <rect key="frame" x="185" y="409" width="62" height="30"/>
+                                <rect key="frame" x="168" y="372" width="62" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Calender">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="Ipn-6K-Iog" kind="push" identifier="toLogs" id="Ep5-LG-bOy"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of achieved goals " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h1f-Ld-aWK">
+                                <rect key="frame" x="12" y="119" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of ongoing goals " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PLR-1H-txi">
+                                <rect key="frame" x="12" y="90" width="288" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UUw-oj-LS6">
+                                <rect key="frame" x="93" y="414" width="105" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Achieved goals">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="qAp-y1-Pbz" kind="push" identifier="toAchievedGoals" id="TiP-hf-40p"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -114,13 +136,45 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="numberofAchieviedGoals" destination="h1f-Ld-aWK" id="hcu-Z2-0GV"/>
+                        <outlet property="numberofOngoingGoals" destination="PLR-1H-txi" id="LN7-Vj-ANg"/>
                         <outlet property="tableView" destination="Q7Y-qE-ZvC" id="kO2-7J-OtO"/>
                         <segue destination="O4s-Cb-ko1" kind="push" identifier="GoalToDetails" id="cbN-Yg-Qer"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTE-Iw-kOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1421" y="1095"/>
+            <point key="canvasLocation" x="1383" y="1095"/>
+        </scene>
+        <!--Achieved GoalsUI View Controller-->
+        <scene sceneID="JXW-pZ-eNU">
+            <objects>
+                <viewController id="qAp-y1-Pbz" customClass="achievedGoalsUIViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qzL-Mu-C8M">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="98I-Am-auf">
+                                <rect key="frame" x="0.0" y="65" width="320" height="415"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="qAp-y1-Pbz" id="7sP-aq-Kpx"/>
+                                    <outlet property="delegate" destination="qAp-y1-Pbz" id="hai-Y5-mkO"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CAl-tH-kAU"/>
+                    <connections>
+                        <outlet property="tableView" destination="98I-Am-auf" id="gfF-HB-MA1"/>
+                        <segue destination="O4s-Cb-ko1" kind="push" identifier="achievedGoalsToDetails" id="EHT-Lp-dtK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q5c-c9-YQh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1403" y="341"/>
         </scene>
         <!--Calender Logs Events View Controller-->
         <scene sceneID="lDp-xN-Ufx">
@@ -265,29 +319,29 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Percentage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IHj-mG-Wdv">
-                                <rect key="frame" x="20" y="156" width="129" height="21"/>
+                                <rect key="frame" x="20" y="156" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Steps Taken" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hnF-YI-IHF">
                                 <rect key="frame" x="20" y="185" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of days till Deadline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1T6-px-sun">
                                 <rect key="frame" x="20" y="246" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of days since Createted" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t8c-wQ-tUl">
                                 <rect key="frame" x="20" y="217" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Facebook" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Txe-ap-kw7">
@@ -308,6 +362,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="CurrentGoalProgressLabel" destination="IHj-mG-Wdv" id="2Sw-zP-wlP"/>
+                        <outlet property="numberOfDaysSinceCreated" destination="t8c-wQ-tUl" id="u1h-2v-ePb"/>
+                        <outlet property="numberOfDaystillDeadline" destination="1T6-px-sun" id="iAb-Fa-3d4"/>
+                        <outlet property="numberOfSteps" destination="hnF-YI-IHF" id="9bM-jL-v8a"/>
                         <outlet property="tableView" destination="f86-mR-SOF" id="KtS-x3-gc1"/>
                     </connections>
                 </viewController>
@@ -453,6 +510,10 @@
                                     <action selector="PickADeadlineDate:" destination="eG7-Cr-ta2" eventType="touchUpInside" id="MT0-rd-fUU"/>
                                     <segue destination="YCw-fn-nea" kind="modal" identifier="VC" id="xfJ-GD-zzd"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="aLo-7k-HBN">
+                                <rect key="frame" x="228" y="201" width="28" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -752,6 +813,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="fhC-bU-6R8"/>
+        <segue reference="F9C-LS-NcX"/>
+        <segue reference="EHT-Lp-dtK"/>
     </inferredMetricsTieBreakers>
 </document>

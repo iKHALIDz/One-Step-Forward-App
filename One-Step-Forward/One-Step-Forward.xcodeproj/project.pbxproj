@@ -29,6 +29,12 @@
 		E974BE5218D6E45B00B14F3A /* Log.m in Sources */ = {isa = PBXBuildFile; fileRef = E974BE5018D6E45B00B14F3A /* Log.m */; };
 		E974BE5B18D82B0300B14F3A /* P.png in Resources */ = {isa = PBXBuildFile; fileRef = E974BE5918D82B0300B14F3A /* P.png */; };
 		E974BE5C18D82B0300B14F3A /* G.png in Resources */ = {isa = PBXBuildFile; fileRef = E974BE5A18D82B0300B14F3A /* G.png */; };
+		E974BE5F18DA254200B14F3A /* RNBlurModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = E974BE5E18DA254200B14F3A /* RNBlurModalView.m */; };
+		E974BE6218DA25E200B14F3A /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E974BE6118DA25E200B14F3A /* CoreImage.framework */; };
+		E974BE6418DA25E800B14F3A /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E974BE6318DA25E800B14F3A /* Accelerate.framework */; };
+		E974BE6718DA4C9500B14F3A /* achievedGoalsUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E974BE6618DA4C9500B14F3A /* achievedGoalsUIViewController.m */; };
+		E974BE6D18DA633E00B14F3A /* FacebookButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E974BE6C18DA633E00B14F3A /* FacebookButton.png */; };
+		E974BE6F18DA870700B14F3A /* FacebookButton2.png in Resources */ = {isa = PBXBuildFile; fileRef = E974BE6E18DA870700B14F3A /* FacebookButton2.png */; };
 		E97E633618CDAD17001AF751 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E632D18CDAD17001AF751 /* FMDatabase.m */; };
 		E97E633718CDAD17001AF751 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E632D18CDAD17001AF751 /* FMDatabase.m */; };
 		E97E633818CDAD17001AF751 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E632F18CDAD17001AF751 /* FMDatabaseAdditions.m */; };
@@ -122,6 +128,14 @@
 		E974BE5018D6E45B00B14F3A /* Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Log.m; sourceTree = "<group>"; };
 		E974BE5918D82B0300B14F3A /* P.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P.png; sourceTree = "<group>"; };
 		E974BE5A18D82B0300B14F3A /* G.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = G.png; sourceTree = "<group>"; };
+		E974BE5D18DA254200B14F3A /* RNBlurModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNBlurModalView.h; sourceTree = "<group>"; };
+		E974BE5E18DA254200B14F3A /* RNBlurModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNBlurModalView.m; sourceTree = "<group>"; };
+		E974BE6118DA25E200B14F3A /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		E974BE6318DA25E800B14F3A /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		E974BE6518DA4C9500B14F3A /* achievedGoalsUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = achievedGoalsUIViewController.h; sourceTree = "<group>"; };
+		E974BE6618DA4C9500B14F3A /* achievedGoalsUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = achievedGoalsUIViewController.m; sourceTree = "<group>"; };
+		E974BE6C18DA633E00B14F3A /* FacebookButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FacebookButton.png; sourceTree = "<group>"; };
+		E974BE6E18DA870700B14F3A /* FacebookButton2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FacebookButton2.png; sourceTree = "<group>"; };
 		E97E632C18CDAD17001AF751 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		E97E632D18CDAD17001AF751 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		E97E632E18CDAD17001AF751 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -194,6 +208,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E974BE6418DA25E800B14F3A /* Accelerate.framework in Frameworks */,
+				E974BE6218DA25E200B14F3A /* CoreImage.framework in Frameworks */,
 				E97E634218CDAF29001AF751 /* libsqlite3.dylib in Frameworks */,
 				E982D29D18A6DCAF006F70E0 /* CoreLocation.framework in Frameworks */,
 				E982D29B18A6DCA8006F70E0 /* CFNetwork.framework in Frameworks */,
@@ -271,17 +287,6 @@
 			name = Progress;
 			sourceTree = "<group>";
 		};
-		E9275FC218D2F427001BC20A /* Goal */ = {
-			isa = PBXGroup;
-			children = (
-				E918E6C418AE001600D0F431 /* AddGoalViewController.h */,
-				E918E6C518AE001600D0F431 /* AddGoalViewController.m */,
-				E9D9685618B1619E00339A50 /* CalenderViewController.h */,
-				E9D9685718B1619E00339A50 /* CalenderViewController.m */,
-			);
-			name = Goal;
-			sourceTree = "<group>";
-		};
 		E9275FD018D43F22001BC20A /* RDVCalender */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,10 +303,11 @@
 		E974BE5318D6ED2700B14F3A /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				E9275FC218D2F427001BC20A /* Goal */,
 				E9275FC118D2F410001BC20A /* Progress */,
 				E982D27518A6DAEF006F70E0 /* MainMenuViewController.h */,
 				E982D27618A6DAEF006F70E0 /* MainMenuViewController.m */,
+				E974BE6518DA4C9500B14F3A /* achievedGoalsUIViewController.h */,
+				E974BE6618DA4C9500B14F3A /* achievedGoalsUIViewController.m */,
 				E9B2298418B83EC400311007 /* detailsViewController.h */,
 				E9B2298518B83EC400311007 /* detailsViewController.m */,
 			);
@@ -317,6 +323,15 @@
 				E974BE4718D6BAD500B14F3A /* logCell.m */,
 			);
 			name = Logs;
+			sourceTree = "<group>";
+		};
+		E974BE6018DA255700B14F3A /* RNBlurModelView */ = {
+			isa = PBXGroup;
+			children = (
+				E974BE5D18DA254200B14F3A /* RNBlurModalView.h */,
+				E974BE5E18DA254200B14F3A /* RNBlurModalView.m */,
+			);
+			name = RNBlurModelView;
 			sourceTree = "<group>";
 		};
 		E97E634018CDAD23001AF751 /* Database Framwork */ = {
@@ -359,6 +374,8 @@
 		E982D23F18A6DA4B006F70E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E974BE6318DA25E800B14F3A /* Accelerate.framework */,
+				E974BE6118DA25E200B14F3A /* CoreImage.framework */,
 				E97E634118CDAF29001AF751 /* libsqlite3.dylib */,
 				E93491D418C56CF200E4D3AF /* Parse.framework */,
 				E982D29C18A6DCAF006F70E0 /* CoreLocation.framework */,
@@ -383,6 +400,7 @@
 		E982D24618A6DA4B006F70E0 /* One-Step-Forward */ = {
 			isa = PBXGroup;
 			children = (
+				E9EA339418DFFA2000609052 /* Done */,
 				E974BE5318D6ED2700B14F3A /* Core */,
 				E9275FC018D2F3F0001BC20A /* UITableViewCells */,
 				E918E6BD18ADF68D00D0F431 /* Model Classes */,
@@ -400,6 +418,8 @@
 		E982D24718A6DA4B006F70E0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E974BE6E18DA870700B14F3A /* FacebookButton2.png */,
+				E974BE6C18DA633E00B14F3A /* FacebookButton.png */,
 				E982D25818A6DA4B006F70E0 /* Images.xcassets */,
 				E974BE5918D82B0300B14F3A /* P.png */,
 				E974BE5A18D82B0300B14F3A /* G.png */,
@@ -447,8 +467,6 @@
 		E9AA299A18B5CEED00719757 /* Model Classes */ = {
 			isa = PBXGroup;
 			children = (
-				E9AA299718B55A5B00719757 /* User.h */,
-				E9AA299818B55A5B00719757 /* User.m */,
 			);
 			name = "Model Classes";
 			sourceTree = "<group>";
@@ -456,6 +474,26 @@
 		E9AA299B18B5D4B300719757 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E9D9685518B1616700339A50 /* External Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E974BE6018DA255700B14F3A /* RNBlurModelView */,
+				E989757818D168E800714005 /* MDRadialProgres */,
+				E97E634018CDAD23001AF751 /* Database Framwork */,
+				E9275FD018D43F22001BC20A /* RDVCalender */,
+			);
+			name = "External Resources";
+			sourceTree = "<group>";
+		};
+		E9EA339418DFFA2000609052 /* Done */ = {
+			isa = PBXGroup;
+			children = (
+				E9AA299718B55A5B00719757 /* User.h */,
+				E9AA299818B55A5B00719757 /* User.m */,
 				E982D27718A6DAEF006F70E0 /* LoginViewController.h */,
 				E982D27818A6DAEF006F70E0 /* LoginViewController.m */,
 				E982D27918A6DAEF006F70E0 /* MainNavigationController.h */,
@@ -464,18 +502,12 @@
 				E982D27C18A6DAEF006F70E0 /* WelcomeViewController.m */,
 				E982D28118A6DB9F006F70E0 /* SignupViewController.h */,
 				E982D28218A6DB9F006F70E0 /* SignupViewController.m */,
+				E918E6C418AE001600D0F431 /* AddGoalViewController.h */,
+				E918E6C518AE001600D0F431 /* AddGoalViewController.m */,
+				E9D9685618B1619E00339A50 /* CalenderViewController.h */,
+				E9D9685718B1619E00339A50 /* CalenderViewController.m */,
 			);
-			name = ViewControllers;
-			sourceTree = "<group>";
-		};
-		E9D9685518B1616700339A50 /* External Resources */ = {
-			isa = PBXGroup;
-			children = (
-				E989757818D168E800714005 /* MDRadialProgres */,
-				E97E634018CDAD23001AF751 /* Database Framwork */,
-				E9275FD018D43F22001BC20A /* RDVCalender */,
-			);
-			name = "External Resources";
+			name = Done;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -560,7 +592,9 @@
 				E989757C18D2609A00714005 /* goalTableViewCell.xib in Resources */,
 				E982D25418A6DA4B006F70E0 /* Main.storyboard in Resources */,
 				E973FD5D18CDB23F006ED83F /* Database.sqlite in Resources */,
+				E974BE6D18DA633E00B14F3A /* FacebookButton.png in Resources */,
 				E982D28518A6DBC5006F70E0 /* Profile Picture.png in Resources */,
+				E974BE6F18DA870700B14F3A /* FacebookButton2.png in Resources */,
 				E974BE5C18D82B0300B14F3A /* G.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -585,11 +619,13 @@
 				E9B2298918B9A96F00311007 /* Progress.m in Sources */,
 				E974BE5118D6E45B00B14F3A /* Log.m in Sources */,
 				E9275FBF18D2A493001BC20A /* CalenderLogsEventsViewController.m in Sources */,
+				E974BE6718DA4C9500B14F3A /* achievedGoalsUIViewController.m in Sources */,
 				E9AA299918B55A5B00719757 /* User.m in Sources */,
 				E982D27E18A6DAEF006F70E0 /* LoginViewController.m in Sources */,
 				E97E633618CDAD17001AF751 /* FMDatabase.m in Sources */,
 				E918E6C618AE001600D0F431 /* AddGoalViewController.m in Sources */,
 				E9275FD318D44666001BC20A /* RDVExampleDayCell.m in Sources */,
+				E974BE5F18DA254200B14F3A /* RNBlurModalView.m in Sources */,
 				E982D25118A6DA4B006F70E0 /* AppDelegate.m in Sources */,
 				E918E6C018ADF6B100D0F431 /* goalTableViewCell.m in Sources */,
 				E9D9685818B1619E00339A50 /* CalenderViewController.m in Sources */,

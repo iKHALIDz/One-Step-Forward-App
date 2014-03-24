@@ -11,10 +11,7 @@
 #import "progressTableViewCell.h"
 #import "AddProgressViewController.h"
 #import "MangeProgressViewController.h"
-
-
 #import "FMDatabase.h"
-
 #import "Goal.h"
 
 
@@ -22,15 +19,19 @@
 
 - (IBAction) declareAchieved:(UIButton *)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *numberOfSteps;
+
 @property (weak, nonatomic) IBOutlet UILabel *CurrentGoalProgressLabel;
-@property (nonatomic,retain) NSString *currentGoalID;
-@property double currentGoalProgressPercentage;
+//@property (nonatomic,retain) NSString *currentGoalID;
+//@property double currentGoalProgressPercentage;
 @property (nonatomic, strong) NSArray *postArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *doneProgress;
 @property(nonatomic,retain) NSMutableArray *array;
 @property (nonatomic,strong) Progress *currentProgress;
 @property (nonatomic,strong) Goal *currentGoal;
+@property (weak, nonatomic) IBOutlet UILabel *numberOfDaysSinceCreated;
 
+@property (weak, nonatomic) IBOutlet UILabel *numberOfDaystillDeadline;
 
 @end

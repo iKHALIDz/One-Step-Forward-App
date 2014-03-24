@@ -25,8 +25,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-
-    
+        
+        
     }
     return self;
 }
@@ -34,7 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.shareFacebook.selected=NO;
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -51,27 +52,40 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-
+    
 }
 
 - (IBAction)isSavePressed:(UIBarButtonItem *)sender {
     
-            Goal *goal=[[Goal alloc]init];
-            PFUser *curreUser = [PFUser currentUser];
-            goal.createdBy=[curreUser objectForKey:@"UserID"];
-            goal.goalName=self.goalName.text;
-            goal.goalDescription=self.goalDesc.text;
-            goal.goalDeadline=self.deadlineLabel.text;
-            goal.isGoalCompleted=0;
-            goal.isGoalinProgress=1;
-            goal.goalProgress=0.0;
-            
-            [goal AddGoaltoDatabase];
-            [[self navigationController] popViewControllerAnimated:YES];
+    Goal *goal=[[Goal alloc]init];
+    PFUser *curreUser = [PFUser currentUser];
+    goal.createdBy=[curreUser objectForKey:@"UserID"];
+    goal.goalName=self.goalName.text;
+    goal.goalDescription=self.goalDesc.text;
+    goal.goalDeadline=self.deadlineLabel.text;
+    goal.isGoalCompleted=0;
+    goal.isGoalinProgress=1;
+    goal.goalProgress=0.0;
     
+    [goal AddGoaltoDatabase];
     
+    [self.navigationController popViewControllerAnimated:YES];
     
+}
 
+             
+
+- (IBAction)shareFacebook:(UIButton *)sender {
+    
+    if(!self.shareFacebook.selected)
+    {
+        self.shareFacebook.selected=YES;
+    }
+    else
+    {
+        
+        self.shareFacebook.selected=NO;
+    }
 }
 
 
@@ -80,7 +94,6 @@
     
     self.deadlineLabel.text=deadline;
 }
-
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -118,9 +131,6 @@
     
     
 }
-
-
-#pragma mark Create a random number 
 
 
 @end

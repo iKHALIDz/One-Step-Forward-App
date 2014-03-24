@@ -19,7 +19,6 @@
 @synthesize delegate;
 @synthesize currentGoal;
 
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -34,7 +33,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    NSLog(@"Goal ID: %@",currentGoalID);
+    //NSLog(@"Goal ID: %d",currentGoal.goalID);
+    
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
     
 }
 
@@ -45,13 +49,16 @@
 }
 
 
-
 - (IBAction)isDonePressed:(UIBarButtonItem *)sender {
     
     Progress *progress=[[Progress alloc]init];
     
     progress.progressDescription=self.progressTextField.text;
-    progress.goalID=[currentGoalID integerValue];
+    
+    //progress.goalID=[currentGoalID integerValue];
+    progress.goalID=[currentGoal goalID];
+    
+    
     progress.LoggedBy=[currentGoal.createdBy integerValue];
     
     int check=[self checkTheEnteredProgress];
@@ -63,6 +70,10 @@
         
         Goal*goal=currentGoal;
         
+        NSLog(@"Steps: %d",goal.goalSteps);
+        
+        goal.goalSteps=goal.goalSteps+1;
+        
         //Goal *goal=[[Goal alloc]init];
         //goal.goalID=[currentGoalID integerValue];
         //goal.goalProgress=currentGoalProgressPercentage;
@@ -70,8 +81,12 @@
         [goal UpdataGoalWithProgress:[self.progressPercentage.text doubleValue] WithMark:@"+"];
         
         //Update the curent overall goall Progress
-        NSString *sum=[NSString stringWithFormat:@"%.2f",[self.progressPercentage.text doubleValue]+currentGoalProgressPercentage];
-        [[self delegate]setGoalPercentage:[sum doubleValue]];
+        NSString *sum=[NSString stringWithFormat:@"%.2f",[self.progressPercentage.text doubleValue]+goal.goalProgress];
+        //[[self delegate]setGoalPercentage:[sum doubleValue]];
+
+        goal.goalProgress=[sum doubleValue];
+
+        [[self delegate]setGoal:goal];
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -80,12 +95,13 @@
     {
         progress.progressPercentageToGoal=[self.progressPercentage.text doubleValue];
         [progress AddProgressltoDatabase];
-        Goal *goal=[[Goal alloc]init];
-        goal.goalID=[currentGoalID integerValue];
+       
+        Goal *goal=currentGoal;
         [goal declareGoalAsAchieved];
         
+        currentGoal.goalProgress=100.00;
         
-        [[self delegate]setGoalPercentage:100.00];
+        [[self delegate]setGoal:currentGoal];
         
         [self dismissViewControllerAnimated:YES completion:nil];
         
@@ -144,14 +160,14 @@
     }
     
     // curent goal progress + new progress < 100
-    else if (currentGoalProgressPercentage+[self.progressPercentage.text doubleValue] < 100)
+    else if (currentGoal.goalProgress+[self.progressPercentage.text doubleValue] < 100)
     {
         
         X=1;
     }
     // curent goal progress + new progress = 100
     
-    else if (currentGoalProgressPercentage+[self.progressPercentage.text doubleValue] == 100)
+    else if (currentGoal.goalProgress+[self.progressPercentage.text doubleValue] == 100)
     {
         X=0;
     }
@@ -162,7 +178,7 @@
         X=-2;
     }
     
-    NSLog(@"x= %d",X);
+    //NSLog(@"x= %d",X);
     return X;
 }
 

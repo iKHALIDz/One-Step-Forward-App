@@ -14,7 +14,7 @@
 
 @protocol updateGoalPercentage2 <NSObject>
 
--(void)setGoalPercentage2:(double)goalPerc;
+-(void)setGoal:(Goal*)updatedGoal;
 
 @end
 
@@ -24,6 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *progressPersntageTextField;
 
+@property (nonatomic,retain) Goal *currentGoal;
 
 - (IBAction)deleteProgress:(UIButton *)sender;
 
