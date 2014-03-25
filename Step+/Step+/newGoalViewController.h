@@ -40,4 +40,6 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
+-(IBAction) isCancelisPressed;
+
 @end

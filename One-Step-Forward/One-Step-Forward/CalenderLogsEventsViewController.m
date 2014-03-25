@@ -29,7 +29,9 @@
     return self;
 }
 
+
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     [self.scroller setScrollEnabled:YES];
     [self.scroller setContentSize:CGSizeMake(320,450)];
@@ -54,8 +56,6 @@
     
     [self.navigationItem setRightBarButtonItem:todayButton];
     self.navigationItem.title=@"Logs";
-    
-    
 }
 
 

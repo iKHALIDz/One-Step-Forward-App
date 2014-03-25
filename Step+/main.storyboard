@@ -282,7 +282,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGt-xd-a4d">
-                                <rect key="frame" x="0.0" y="342" width="320" height="34"/>
+                                <rect key="frame" x="0.0" y="369" width="320" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Communities">
                                     <color key="titleColor" red="0.0" green="0.073474537529999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -300,6 +300,14 @@
                                     <segue destination="XMP-LL-N37" kind="push" id="MM9-hO-luI"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcm-he-DiP">
+                                <rect key="frame" x="0.0" y="336" width="320" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Stats">
+                                    <color key="titleColor" red="0.0" green="0.073474537529999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.91932744570000002" green="0.88792957429999997" blue="0.50293144670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -313,7 +321,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CCd-rE-K0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1441" y="-63"/>
+            <point key="canvasLocation" x="1345" y="-63"/>
         </scene>
         <!--In Progress Goals View Controller - In Progress Goals-->
         <scene sceneID="Ubq-Od-kFR">
@@ -327,8 +335,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="UITableBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="ulO-U4-NUP">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="e9l-Qt-jeR">
-                                <rect key="frame" x="0.0" y="7" width="320" height="473"/>
+                                <rect key="frame" x="20" y="69" width="280" height="411"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -348,11 +360,16 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="e9l-Qt-jeR" id="R0R-Zm-JmP"/>
+                        <segue destination="Zyq-05-19A" kind="push" identifier="GoalToDetails" id="6oc-fy-8iw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rh2-3t-lFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="lrN-5i-7JO">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </objects>
-            <point key="canvasLocation" x="1999" y="-626"/>
+            <point key="canvasLocation" x="1819" y="-626"/>
         </scene>
         <!--New Goal View Controller - New Goal-->
         <scene sceneID="H4M-js-K7D">
@@ -481,6 +498,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Goal" id="4Ie-a1-44o">
+                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="stop" id="rSl-QR-oe4">
+                            <connections>
+                                <action selector="isCancelisPressed" destination="nzy-sr-Se2" id="hXv-VJ-odU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="abC-kG-Ru0">
                             <connections>
                                 <action selector="isSavePressed:" destination="nzy-sr-Se2" id="PP4-TD-9lt"/>
@@ -500,29 +522,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RmV-dc-prv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2970" y="-626"/>
+            <point key="canvasLocation" x="2946" y="-626"/>
         </scene>
-        <!--View Controller - Achieved Goals-->
-        <scene sceneID="VYe-Pz-Rum">
-            <objects>
-                <viewController id="liE-Dw-itH" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dQQ-02-dYi"/>
-                        <viewControllerLayoutGuide type="bottom" id="wGW-Qo-Kyn"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Zbi-af-gRH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="d2P-TN-437"/>
-                    <navigationItem key="navigationItem" title="Achieved Goals" id="hhU-hB-Bc1"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w5j-k5-J5v" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1999" y="-25"/>
-        </scene>
-        <!--View Controller - Logs-->
+        <!--View Controller - Log-->
         <scene sceneID="BOc-WU-hWm">
             <objects>
                 <viewController id="XMP-LL-N37" sceneMemberID="viewController">
@@ -536,7 +538,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="ycF-SV-Yfb"/>
-                    <navigationItem key="navigationItem" title="Logs" id="aVh-Rc-fU0"/>
+                    <navigationItem key="navigationItem" title="Log" id="aVh-Rc-fU0"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="faB-3e-N0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -582,6 +584,116 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1005" y="-63"/>
         </scene>
+        <!--Goal Details View Controller-->
+        <scene sceneID="K5M-jS-zRH">
+            <objects>
+                <viewController id="Zyq-05-19A" customClass="goalDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h1o-df-EKs"/>
+                        <viewControllerLayoutGuide type="bottom" id="fRW-20-w5E"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3D7-XI-fV3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goal Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BiM-e0-CEw">
+                                <rect key="frame" x="20" y="79" width="86" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goal Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sa-T2-XQt">
+                                <rect key="frame" x="20" y="118" width="128" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goal Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceF-65-IAE">
+                                <rect key="frame" x="20" y="170" width="77" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of days till Deadline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozR-Gh-4li">
+                                <rect key="frame" x="20" y="245" width="217" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of days since Created" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YnC-3Y-DAP">
+                                <rect key="frame" x="20" y="219" width="234" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of Steps Taken" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u32-97-UFv">
+                                <rect key="frame" x="20" y="194" width="180" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Percentage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="217-7g-4KD">
+                                <rect key="frame" x="20" y="147" width="94" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biy-vb-cit">
+                                <rect key="frame" x="96" y="303" width="128" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Declare Achieaved">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OG7-2r-oc2">
+                                <rect key="frame" x="130" y="349" width="61" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Progress">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="nZW-ZT-qiC" kind="push" identifier="toProgressList" id="NLo-dd-GvW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zOx-8u-1Hk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="gJW-sn-bMt"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="GoalDescriptionLable" destination="2sa-T2-XQt" id="6Fb-Td-XvU"/>
+                        <outlet property="GoalNameLable" destination="BiM-e0-CEw" id="QC0-QA-7oF"/>
+                        <outlet property="GoalTypeLable" destination="ceF-65-IAE" id="DcO-Lf-88f"/>
+                        <outlet property="NumberofStepsTakenLable" destination="u32-97-UFv" id="D3h-Ku-zjb"/>
+                        <outlet property="NumberofdaysyillDeadline" destination="ozR-Gh-4li" id="zxz-4P-rAZ"/>
+                        <outlet property="TotalPercentageLable" destination="217-7g-4KD" id="LdJ-Fn-7q6"/>
+                        <outlet property="numberofDaysSinceCreated" destination="YnC-3Y-DAP" id="o2V-mH-l7U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="STg-9A-f8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2284" y="-1309"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="79r-jQ-5Ge">
+            <objects>
+                <viewController id="nZW-ZT-qiC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4l6-q4-dos"/>
+                        <viewControllerLayoutGuide type="bottom" id="uOo-DK-gWP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nrr-UO-1yB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iuZ-Bx-mdJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W7f-Qu-hXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2835" y="-1315"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="tXU-rk-3Al">
             <objects>
@@ -607,6 +719,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="LoginBox.png" width="588" height="329"/>
         <image name="Profile Picture.png" width="225" height="225"/>
         <image name="SignUPCellNoBo.png" width="1500" height="252"/>
+        <image name="UITableBackground.png" width="640" height="1136"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -614,6 +727,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Kcd-v5-oKC"/>
+        <segue reference="GYY-zl-9wo"/>
     </inferredMetricsTieBreakers>
 </document>

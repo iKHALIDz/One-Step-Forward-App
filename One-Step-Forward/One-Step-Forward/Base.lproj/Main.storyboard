@@ -144,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTE-Iw-kOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1383" y="1095"/>
+            <point key="canvasLocation" x="1311" y="1095"/>
         </scene>
         <!--Achieved GoalsUI View Controller-->
         <scene sceneID="JXW-pZ-eNU">
@@ -713,7 +713,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LWs-z8-N6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="892" y="1095"/>
+            <point key="canvasLocation" x="840" y="1095"/>
         </scene>
         <!--Calender View Controller-->
         <scene sceneID="nQI-dM-7vD">
@@ -813,7 +813,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="cbN-Yg-Qer"/>
         <segue reference="F9C-LS-NcX"/>
-        <segue reference="EHT-Lp-dtK"/>
     </inferredMetricsTieBreakers>
 </document>

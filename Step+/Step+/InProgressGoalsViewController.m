@@ -22,7 +22,6 @@
 @synthesize inProgressArrayFromParse;
 
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -57,8 +56,12 @@
     inProgressArray=[self getDoneGoalsFromDB];
     [self.tableView reloadData];
     
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"UITableBackground.png"]];
+    
+    self.tableView.backgroundView = imageView;
+
     self.tableView.separatorColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0];
-    self.tableView.opaque = NO;
+    
 }
 
 - (MDRadialProgressView *)progressViewWithFrame:(CGRect)frame
@@ -70,7 +73,6 @@
 	return view;
 }
 
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"newGoal"])
@@ -79,7 +81,15 @@
         newGoalViewController *vc =(newGoalViewController*)nav.topViewController;
         [vc setCurrentUser:self.currentUser];
     }
+    
+    else if ([[segue identifier] isEqualToString:@"GoalToDetails"])
+    {
+        goalDetailsViewController *nav = [segue destinationViewController];
+        [nav setCurrentGoal:currentGoal];
+        
+    }
 }
+
 
 -(NSString*)DataFilePath{
     
@@ -200,14 +210,44 @@
     radialView.label.shadowColor = [UIColor clearColor];
     [cell.contentView addSubview:radialView];
     
+    UIView *myBackView = [[UIView alloc] initWithFrame:cell.frame];
+    myBackView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+    cell.selectedBackgroundView = myBackView;
     
-    cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"SignUPCell.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:0.0] ];
-
-    cell.contentView.backgroundColor = [UIColor clearColor];
-
     
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    currentGoal.goalID=[[NSString stringWithFormat:@"%d",[[inProgressArray objectAtIndex:indexPath.row] goalID]] integerValue];
+    
+    currentGoal.goalName=[NSString stringWithFormat:@"%@",[[inProgressArray objectAtIndex:indexPath.row] goalName]];
+    
+    currentGoal.goalDescription=[NSString stringWithFormat:@"%@",[[inProgressArray objectAtIndex:indexPath.row] goalDescription]];
+    
+    currentGoal.goalDeadline=[NSString stringWithFormat:@"%@",[[inProgressArray objectAtIndex:indexPath.row] goalDeadline]];
+    
+    currentGoal.goalProgress=[[inProgressArray objectAtIndex:indexPath.row] goalProgress];
+    
+    currentGoal.createdBy=[NSString stringWithFormat:@"%@",[[inProgressArray objectAtIndex:indexPath.row] createdBy]];
+    
+    currentGoal.goalDate=[NSString stringWithFormat:@"%@",[[inProgressArray objectAtIndex:indexPath.row] goalDate]];
+    
+    currentGoal.numberOfGoalSteps=[[inProgressArray objectAtIndex:indexPath.row] numberOfGoalSteps];
+    currentGoal.isGoalinProgress=[[inProgressArray objectAtIndex:indexPath.row] isGoalinProgress];
+    currentGoal.isGoalCompleted=[[inProgressArray objectAtIndex:indexPath.row] isGoalCompleted];
+    currentGoal.goalType=[[inProgressArray objectAtIndex:indexPath.row] goalType];
+    
+    
+    [self performSegueWithIdentifier:@"GoalToDetails" sender:nil];
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 64;
+}
 
 @end

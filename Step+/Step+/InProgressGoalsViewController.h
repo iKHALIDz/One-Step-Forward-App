@@ -19,6 +19,7 @@
 
 #import "FMDatabase.h"
 #import "goalTableViewCell.h"
+#import "goalDetailsViewController.h"
 
 
 @interface InProgressGoalsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>

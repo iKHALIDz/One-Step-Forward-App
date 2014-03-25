@@ -32,6 +32,7 @@
 @property(nonatomic,retain) NSMutableArray *array;
 @property(nonatomic,retain) NSMutableArray *array2;
 
+
 @property (nonatomic,strong) MDRadialProgressView *radialView;
 @property (weak, nonatomic) IBOutlet UILabel *numberofOngoingGoals;
 @property (weak, nonatomic) IBOutlet UILabel *numberofAchieviedGoals;

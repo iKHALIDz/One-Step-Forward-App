@@ -29,6 +29,8 @@
 		E944C87C18DBE59B002714D8 /* LoginBackground-568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E944C87918DBE59B002714D8 /* LoginBackground-568@2x.png */; };
 		E944C87D18DBE59B002714D8 /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E944C87A18DBE59B002714D8 /* LoginBackground@2x.png */; };
 		E944C87E18DBE59B002714D8 /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E944C87A18DBE59B002714D8 /* LoginBackground@2x.png */; };
+		E9510E3418E16C0C000C30B8 /* UITableBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E9510E3318E16C0C000C30B8 /* UITableBackground.png */; };
+		E995330D18E15D7F00F42C08 /* AddButton.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E995330C18E15D7F00F42C08 /* AddButton.jpg */; };
 		E9B8AD2818DBEC4600035AC8 /* LoginBox.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B8AD2718DBEC4600035AC8 /* LoginBox.png */; };
 		E9B8AD2A18DBEFAC00035AC8 /* FacebookLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B8AD2918DBEFAC00035AC8 /* FacebookLogin.png */; };
 		E9B8AD2D18DC02FC00035AC8 /* SingupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B8AD2C18DC02FC00035AC8 /* SingupViewController.m */; };
@@ -91,6 +93,8 @@
 		E9EA339D18DFFFF700609052 /* goalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9EA339C18DFFFF700609052 /* goalTableViewCell.xib */; };
 		E9EA33A018E0011700609052 /* goalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA339F18E0011700609052 /* goalTableViewCell.m */; };
 		E9EA33A218E00B7200609052 /* SignupBackgroundv2-568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EA33A118E00B7200609052 /* SignupBackgroundv2-568@2x.png */; };
+		E9EA33A518E10F2200609052 /* goalDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA33A418E10F2200609052 /* goalDetailsViewController.m */; };
+		E9EA33A618E10F2200609052 /* goalDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA33A418E10F2200609052 /* goalDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +130,8 @@
 		E944C86F18DBDC9A002714D8 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E944C87918DBE59B002714D8 /* LoginBackground-568@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginBackground-568@2x.png"; sourceTree = "<group>"; };
 		E944C87A18DBE59B002714D8 /* LoginBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginBackground@2x.png"; sourceTree = "<group>"; };
+		E9510E3318E16C0C000C30B8 /* UITableBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UITableBackground.png; sourceTree = "<group>"; };
+		E995330C18E15D7F00F42C08 /* AddButton.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = AddButton.jpg; sourceTree = "<group>"; };
 		E9B8AD2718DBEC4600035AC8 /* LoginBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginBox.png; sourceTree = "<group>"; };
 		E9B8AD2918DBEFAC00035AC8 /* FacebookLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FacebookLogin.png; sourceTree = "<group>"; };
 		E9B8AD2B18DC02FC00035AC8 /* SingupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingupViewController.h; sourceTree = "<group>"; };
@@ -190,6 +196,8 @@
 		E9EA339E18E0011700609052 /* goalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goalTableViewCell.h; sourceTree = "<group>"; };
 		E9EA339F18E0011700609052 /* goalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goalTableViewCell.m; sourceTree = "<group>"; };
 		E9EA33A118E00B7200609052 /* SignupBackgroundv2-568@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SignupBackgroundv2-568@2x.png"; sourceTree = "<group>"; };
+		E9EA33A318E10F2200609052 /* goalDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goalDetailsViewController.h; sourceTree = "<group>"; };
+		E9EA33A418E10F2200609052 /* goalDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goalDetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +298,8 @@
 				E944C86B18DBDC1A002714D8 /* main.storyboard */,
 				E9EA338318DF96D500609052 /* InProgressGoalsViewController.h */,
 				E9EA338418DF96D500609052 /* InProgressGoalsViewController.m */,
+				E9EA33A318E10F2200609052 /* goalDetailsViewController.h */,
+				E9EA33A418E10F2200609052 /* goalDetailsViewController.m */,
 				E9EA337B18DF90C300609052 /* Goal.h */,
 				E9EA337C18DF90C300609052 /* Goal.m */,
 				E9EA338F18DFB94400609052 /* newGoalViewController.h */,
@@ -335,6 +345,8 @@
 		E944C87818DBE0B6002714D8 /* Image Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				E995330C18E15D7F00F42C08 /* AddButton.jpg */,
+				E9510E3318E16C0C000C30B8 /* UITableBackground.png */,
 				E9B8AD4018DC2BA000035AC8 /* Login */,
 				E9B8AD4118DC2BB000035AC8 /* Signup */,
 			);
@@ -520,7 +532,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E995330D18E15D7F00F42C08 /* AddButton.jpg in Resources */,
 				E944C87D18DBE59B002714D8 /* LoginBackground@2x.png in Resources */,
+				E9510E3418E16C0C000C30B8 /* UITableBackground.png in Resources */,
 				E9B8AD5118DCBE6D00035AC8 /* SignUPCellNoBo.png in Resources */,
 				E9B8AD2818DBEC4600035AC8 /* LoginBox.png in Resources */,
 				E9B8AD5818DCE9E200035AC8 /* SignupNavigationBar.png in Resources */,
@@ -571,6 +585,7 @@
 				E9EA333918DCFFA000609052 /* RDVCalendarView.m in Sources */,
 				E9EA334C18DCFFD000609052 /* FMDatabasePool.m in Sources */,
 				E9EA338518DF96D500609052 /* InProgressGoalsViewController.m in Sources */,
+				E9EA33A518E10F2200609052 /* goalDetailsViewController.m in Sources */,
 				E9B8AD2D18DC02FC00035AC8 /* SingupViewController.m in Sources */,
 				E9EA339118DFB94400609052 /* newGoalViewController.m in Sources */,
 				E9EA334E18DCFFD000609052 /* FMDatabaseQueue.m in Sources */,
@@ -602,6 +617,7 @@
 				E9EA338618DF96D500609052 /* InProgressGoalsViewController.m in Sources */,
 				E9EA334B18DCFFD000609052 /* FMDatabaseAdditions.m in Sources */,
 				E9EA333A18DCFFA000609052 /* RDVCalendarView.m in Sources */,
+				E9EA33A618E10F2200609052 /* goalDetailsViewController.m in Sources */,
 				E9EA333818DCFFA000609052 /* RDVExampleDayCell.m in Sources */,
 				E9EA339218DFB94400609052 /* newGoalViewController.m in Sources */,
 				E9EA332B18DCFF6200609052 /* MDRadialProgressView.m in Sources */,

@@ -22,8 +22,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *numberOfSteps;
 
 @property (weak, nonatomic) IBOutlet UILabel *CurrentGoalProgressLabel;
+
 //@property (nonatomic,retain) NSString *currentGoalID;
 //@property double currentGoalProgressPercentage;
+
 @property (nonatomic, strong) NSArray *postArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *doneProgress;

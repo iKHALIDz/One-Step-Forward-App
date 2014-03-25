@@ -225,4 +225,12 @@
 
 
 
+-(IBAction) isCancelisPressed
+{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+
 @end
