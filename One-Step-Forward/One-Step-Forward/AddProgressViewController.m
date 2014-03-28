@@ -54,12 +54,9 @@
     Progress *progress=[[Progress alloc]init];
     
     progress.progressDescription=self.progressTextField.text;
-    
-    //progress.goalID=[currentGoalID integerValue];
     progress.goalID=[currentGoal goalID];
-    
-    
     progress.LoggedBy=[currentGoal.createdBy integerValue];
+    progress.progressID=[[self nextIdentifies] integerValue];
     
     int check=[self checkTheEnteredProgress];
     
@@ -74,12 +71,7 @@
         
         goal.goalSteps=goal.goalSteps+1;
         
-        //Goal *goal=[[Goal alloc]init];
-        //goal.goalID=[currentGoalID integerValue];
-        //goal.goalProgress=currentGoalProgressPercentage;
-        
         [goal UpdataGoalWithProgress:[self.progressPercentage.text doubleValue] WithMark:@"+"];
-        
         //Update the curent overall goall Progress
         NSString *sum=[NSString stringWithFormat:@"%.2f",[self.progressPercentage.text doubleValue]+goal.goalProgress];
         //[[self delegate]setGoalPercentage:[sum doubleValue]];
@@ -91,7 +83,7 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     
-    else if (check==0) // meaning the currentGoalProgress+new progress < 100
+    else if (check==0) // meaning the currentGoalProgress+new progress = 100
     {
         progress.progressPercentageToGoal=[self.progressPercentage.text doubleValue];
         [progress AddProgressltoDatabase];
@@ -182,6 +174,16 @@
     return X;
 }
 
+
+-(NSString *)nextIdentifies
+{
+    static NSString* lastID = @"lastID";
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger identifier = [defaults integerForKey:lastID] + 1;
+    [defaults setInteger:identifier forKey:lastID];
+    [defaults synchronize];
+    return [NSString stringWithFormat:@"%ld",(long)identifier];
+}
 
 
 @end

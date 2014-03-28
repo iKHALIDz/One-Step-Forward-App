@@ -1,8 +1,8 @@
 //
-//  InProgressGoalsViewController.h
+//  achievedGoalsUIViewController.h
 //  Step+
 //
-//  Created by KHALID ALAHMARI on 3/23/14.
+//  Created by KHALID ALAHMARI on 3/27/14.
 //  Copyright (c) 2014 Khalid. All rights reserved.
 //
 
@@ -21,15 +21,16 @@
 #import "goalDetailsViewController.h"
 
 
-@interface InProgressGoalsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@interface achievedGoalsUIViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) User *currentUser;
 @property(nonatomic,strong) Goal *currentGoal;
-@property(nonatomic,retain) NSMutableArray *inProgressArray;
-@property(nonatomic,retain) NSMutableArray *inProgressArrayFromParse;
+@property(nonatomic,retain) NSMutableArray *achievedGoalsArray;
+@property(nonatomic,retain) NSMutableArray *achievedGoalsArrayFromParse;
 
 @property (nonatomic,strong) MDRadialProgressView *radialView;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableviw;
 
 
 @end

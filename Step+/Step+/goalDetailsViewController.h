@@ -8,10 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "Goal.h"
+#import "newProgressViewController.h"
+#import "FMDatabase.h"
+#import "ProgressTableViewCell.h"
 
-@interface goalDetailsViewController : UIViewController
+
+@interface goalDetailsViewController : UIViewController <updateGoal,UITableViewDataSource,UITableViewDelegate>
+
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scroller;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableview;
+
 @property (weak, nonatomic) IBOutlet UILabel *GoalNameLable;
 
 @property (weak, nonatomic) IBOutlet UILabel *GoalDescriptionLable;
@@ -24,9 +32,13 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *NumberofdaysyillDeadline;
 
+@property(nonatomic,retain) NSMutableArray *progressList;
+@property(nonatomic,retain) NSMutableArray *progressListFromParse;
+
 
 @property(nonatomic,strong) Goal *currentGoal;
-
 @property (weak, nonatomic) IBOutlet UILabel *numberofDaysSinceCreated;
+
+- (IBAction)deleteGoal:(UIBarButtonItem *)sender;
 
 @end

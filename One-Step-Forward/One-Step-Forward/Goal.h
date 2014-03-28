@@ -28,6 +28,7 @@
 
 -(void)AddGoaltoDatabase;
 -(void)declareGoalAsAchieved;
+
 -(void) UpdataGoalWithProgress:(double) progress WithMark:(NSString*)mark;
 -(void)DeleteGoalFromDatabase;
 

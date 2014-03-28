@@ -55,8 +55,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
 - (IBAction)chooseDeadline:(UIButton *)sender
 {
     [self.goalNameTextfield resignFirstResponder];
@@ -79,7 +77,7 @@
     if (correctDate==YES )
     {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"MM/dd/YYYY"];
+        [dateFormatter setDateFormat:@"MM/dd/YYYY hh:mm:ss"];
         
         NSString *currentData= [dateFormatter stringFromDate:selectedDate];
         
@@ -215,7 +213,7 @@
 -(NSString *)getCurrentDataAndTime
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/YYYY"];
+    [dateFormatter setDateFormat:@"MM/dd/YYYY hh:mm:ss"];
     NSDate *Todaydata=[NSDate date];
     
     NSString *currentData= [dateFormatter stringFromDate:Todaydata];

@@ -44,7 +44,6 @@
 
     currentUser.userUsername=curreUser.username;
     
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -93,6 +92,13 @@
     if ([[segue identifier] isEqualToString:@"toInProgressGoals"])
     {
          InProgressGoalsViewController*vc =[segue destinationViewController];
+        
+        [vc setCurrentUser:self.currentUser];
+    }
+    
+    if ([[segue identifier] isEqualToString:@"toDoneGoals"])
+    {
+        InProgressGoalsViewController*vc =[segue destinationViewController];
         
         [vc setCurrentUser:self.currentUser];
     }

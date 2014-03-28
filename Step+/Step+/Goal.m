@@ -23,31 +23,6 @@
 @synthesize goalDate;
 
 
-
-//-(void)nextIdentifies
-//{
-//    static NSString* lastID = @"lastID";
-//    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-//    NSInteger identifier = [defaults integerForKey:lastID] + 1;
-//    [defaults setInteger:identifier forKey:lastID];
-//    [defaults synchronize];
-//    self.goalID= [[NSString stringWithFormat:@"%ld",(long)identifier] integerValue];
-//}
-//
-//
-//-(NSString *)getCurrentDataAndTime
-//{
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"MM/dd/YYYY"];
-//    NSDate *Todaydata=[NSDate date];
-//    
-//    NSString *currentData= [dateFormatter stringFromDate:Todaydata];
-//    
-//    return currentData;
-//}
-
-
-
 -(void)AddGoaltoDatabase
 {
     FMDatabase *db=[FMDatabase databaseWithPath:[[self DataFilePath] stringByAppendingPathComponent:@"Database.sqlite"]];
@@ -86,6 +61,7 @@
     
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
+    NSLog(@"PATH: %@",[paths objectAtIndex:0]);
     return [paths objectAtIndex:0];
 }
 
@@ -107,6 +83,175 @@
     [newGoal setObject:self.goalType forKey:@"goalType"];
     
     [newGoal saveEventually];
+}
+
+
+-(void) UpdataGoalWithProgress:(double) progress WithMark:(NSString*)mark
+{
+    FMDatabase *db=[FMDatabase databaseWithPath:[[self DataFilePath] stringByAppendingPathComponent:@"Database.sqlite"]];
+    
+    BOOL isOpen=[db open];
+    
+    if (isOpen==NO)
+    {
+        NSLog(@"Fail to open");
+        
+    }
+    
+    NSString *insertSQL;
+    
+    if ([mark isEqualToString:@"+"])
+    {
+        insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET goalPercentage='%f',numberofStepTaken='%d' where goalId='%d' AND createdBy='%@';",self.goalProgress+progress,self.numberOfGoalSteps,self.goalID,self.createdBy];
+    }
+    
+    else
+    {
+        insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET goalPercentage='%f',numberofStepTaken='%d' where goalId='%d' AND createdBy='%@';",self.goalProgress-progress,self.numberOfGoalSteps,self.goalID,self.createdBy];
+    }
+    
+    NSLog(@"%@",insertSQL);
+    BOOL succ=[db executeUpdate:insertSQL];
+    if (succ==YES)
+    {
+        NSLog(@"Succseed");
+    }
+    else
+    {
+        NSLog(@"Fail");
+    }
+    [db close];
+}
+
+-(void) UpdataGoalWithProgressInParse:(double) progress WithMark:(NSString*)mark
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Goal"];
+    
+    [query whereKey:@"goalID" equalTo:[NSString stringWithFormat:@"%d",self.goalID]];
+    [query whereKey:@"createdBy" equalTo:self.createdBy];
+
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * updateGoal, NSError *error){
+        if (!error) {
+            
+            if ([mark isEqualToString:@"+"])
+            {
+            [updateGoal setObject: [NSString stringWithFormat:@"%f",[[updateGoal objectForKey:@"goalPercentage"] doubleValue]+progress] forKey:@"goalPercentage"];
+                
+            [updateGoal setObject: [NSString stringWithFormat:@"%d",self.numberOfGoalSteps] forKey:@"numberOfGoalSteps"];
+            }
+            
+            else
+            {
+                [updateGoal setObject: [NSString stringWithFormat:@"%f",self.goalProgress-progress] forKey:@"goalPercentage"];
+                [updateGoal setObject: [NSString stringWithFormat:@"%d",self.numberOfGoalSteps] forKey:@"numberOfGoalSteps"];
+            }
+            
+            [updateGoal saveEventually];
+        }
+        
+        else
+        {
+
+            NSLog(@"Error: %@", error);
+        }
+    }];
+    
+}
+
+- (void) declareGoalAsAchieved
+{
+    FMDatabase *db=[FMDatabase databaseWithPath:[[self DataFilePath] stringByAppendingPathComponent:@"Database.sqlite"]];
+    
+    BOOL isOpen=[db open];
+    
+    if (isOpen==NO)
+    {
+        NSLog(@"Fail to open");
+        
+    }
+    
+    NSString *insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET isGoalCompleted='1',isGoalinPregress='0',numberofStepTaken='%d',goalPercentage='100.00' where goalId='%d' AND createdBy='%@';",self.numberOfGoalSteps,self.goalID,self.createdBy];
+    
+    
+    NSLog(@"%@",insertSQL);
+    
+    BOOL succ=[db executeUpdate:insertSQL];
+    
+    if (succ==YES)
+    {
+        NSLog(@"Succseed");
+        
+    }
+    
+    else
+    {
+        NSLog(@"Fail");
+    }
+    [db close];
+}
+
+
+-(void)declareGoalAsAchievedinParse
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Goal"];
+    
+    [query whereKey:@"goalID" equalTo:[NSString stringWithFormat:@"%d",self.goalID]];
+    [query whereKey:@"createdBy" equalTo:self.createdBy];
+    
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * updateGoal, NSError *error){
+        if (!error) {
+            
+            [updateGoal setObject: @"100.00" forKey:@"goalPercentage"];
+            [updateGoal setObject: [NSString stringWithFormat:@"%d",self.numberOfGoalSteps] forKey:@"numberOfGoalSteps"];
+            [updateGoal setObject: @YES forKey:@"isGoalCompleted"];
+            [updateGoal setObject: @NO forKey:@"isGoalinProgress"];
+        }
+        
+        [updateGoal saveEventually];
+    }];
+}
+
+-(void)DeleteGoalFromDatabase
+{
+    FMDatabase *db=[FMDatabase databaseWithPath:[[self DataFilePath] stringByAppendingPathComponent:@"Database.sqlite"]];
+    BOOL isOpen=[db open];
+    if (isOpen==NO)
+    {
+        NSLog(@"Fail to open");
+        
+    }
+    
+    NSString *deleteSQL = [NSString stringWithFormat:@"DELETE FROM Goals WHERE goalId='%d' AND createdBy='%@';",self.goalID,self.createdBy];
+    
+    NSLog(@"%@",deleteSQL);
+    
+    
+    BOOL succ=[db executeUpdate:deleteSQL];
+    
+    if (succ==YES) {
+        NSLog(@"Succseed");
+    }
+    
+    else
+    {
+        NSLog(@"Fail");
+    }
+    
+    [db close];
+}
+
+-(void)DeleteGoalFromParse
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Goal"];
+    
+    [query whereKey:@"goalID" equalTo:[NSString stringWithFormat:@"%d",self.goalID]];
+    [query whereKey:@"createdBy" equalTo:self.createdBy];
+    
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * updateGoal, NSError *error){
+        if (!error) {
+            [updateGoal deleteEventually];
+        }
+    }];
 }
 
 @end

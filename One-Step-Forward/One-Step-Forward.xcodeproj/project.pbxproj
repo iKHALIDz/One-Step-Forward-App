@@ -258,8 +258,6 @@
 				E9B2298818B9A96F00311007 /* Progress.m */,
 				E918E6BA18ADF68300D0F431 /* Goal.h */,
 				E918E6BB18ADF68300D0F431 /* Goal.m */,
-				E974BE4F18D6E45B00B14F3A /* Log.h */,
-				E974BE5018D6E45B00B14F3A /* Log.m */,
 			);
 			name = "Model Classes";
 			sourceTree = "<group>";
@@ -317,6 +315,10 @@
 		E974BE5418D6ED6100B14F3A /* Logs */ = {
 			isa = PBXGroup;
 			children = (
+				E982D24F18A6DA4B006F70E0 /* AppDelegate.h */,
+				E982D25018A6DA4B006F70E0 /* AppDelegate.m */,
+				E974BE4F18D6E45B00B14F3A /* Log.h */,
+				E974BE5018D6E45B00B14F3A /* Log.m */,
 				E9275FBD18D2A493001BC20A /* CalenderLogsEventsViewController.h */,
 				E9275FBE18D2A493001BC20A /* CalenderLogsEventsViewController.m */,
 				E974BE4618D6BAD500B14F3A /* logCell.h */,
@@ -401,13 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				E9EA339418DFFA2000609052 /* Done */,
-				E974BE5318D6ED2700B14F3A /* Core */,
-				E9275FC018D2F3F0001BC20A /* UITableViewCells */,
-				E918E6BD18ADF68D00D0F431 /* Model Classes */,
 				E974BE5418D6ED6100B14F3A /* Logs */,
-				E918E6B918ADF58400D0F431 /* Signin,Rigester */,
-				E982D24F18A6DA4B006F70E0 /* AppDelegate.h */,
-				E982D25018A6DA4B006F70E0 /* AppDelegate.m */,
 				E982D25218A6DA4B006F70E0 /* Main.storyboard */,
 				E9D9685518B1616700339A50 /* External Resources */,
 				E982D24718A6DA4B006F70E0 /* Supporting Files */,
@@ -492,6 +488,10 @@
 		E9EA339418DFFA2000609052 /* Done */ = {
 			isa = PBXGroup;
 			children = (
+				E918E6B918ADF58400D0F431 /* Signin,Rigester */,
+				E9275FC018D2F3F0001BC20A /* UITableViewCells */,
+				E974BE5318D6ED2700B14F3A /* Core */,
+				E918E6BD18ADF68D00D0F431 /* Model Classes */,
 				E9AA299718B55A5B00719757 /* User.h */,
 				E9AA299818B55A5B00719757 /* User.m */,
 				E982D27718A6DAEF006F70E0 /* LoginViewController.h */,

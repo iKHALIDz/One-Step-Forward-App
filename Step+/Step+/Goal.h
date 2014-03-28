@@ -27,4 +27,13 @@
 -(void)AddGoaltoDatabase;
 -(void) AddGoalToParse;
 
+-(void) UpdataGoalWithProgress:(double) progress WithMark:(NSString*)mark;
+-(void) UpdataGoalWithProgressInParse:(double) progress WithMark:(NSString *)mark;
+
+-(void)declareGoalAsAchieved;
+-(void)declareGoalAsAchievedinParse;
+
+-(void)DeleteGoalFromDatabase;
+-(void)DeleteGoalFromParse;
+
 @end
