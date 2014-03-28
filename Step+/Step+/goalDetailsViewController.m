@@ -81,7 +81,7 @@
 -(NSInteger)daysBetweenDate:(NSString*)fromDateTime andDate:(NSString*)toDateTime
 {
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"MM/dd/YYYY hh:mm:ss"];
+    [format setDateFormat:@"MM/dd/yyyy hh:mm:ss"];
     
     NSDate *fromDate = [format dateFromString: fromDateTime];
     NSDate *toDate = [format dateFromString: toDateTime];
@@ -104,7 +104,7 @@
 -(NSString *)getCurrentDataAndTime
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/YYYY hh:mm:ss"];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm:ss"];
     NSDate *Todaydata=[NSDate date];
     
     NSString *currentData= [dateFormatter stringFromDate:Todaydata];
@@ -290,10 +290,16 @@
     
     [cell.progressName setText:(NSString *)[[progressList objectAtIndex:indexPath.row] progressDescription]];
     
-    
     [cell.progressPercentage setText:[NSString stringWithFormat:@"%.2f",[[progressList objectAtIndex:indexPath.row] progressPercentageToGoal]]];
     
     [cell.cellStepOrder setText:[NSString stringWithFormat:@"Step: %d",[[progressList objectAtIndex:indexPath.row] stepOrder]]];
+    
+    
+    
+    cell.ProgressDate.text=[self GetWordyTime:[[progressList objectAtIndex:indexPath.row] progressDate]];
+
+;
+
     
     return cell;
 }
@@ -331,4 +337,31 @@
     [self.navigationController popViewControllerAnimated:YES];
     
 }
+
+-(NSString *) GetWordyTime: (NSString *) Y
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm:ss"];
+    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+    
+    NSDate *dateFromString = [[NSDate alloc]init];
+    
+    dateFromString = [dateFormatter dateFromString:Y];
+    
+    NSLog(@"%@",Y);
+    
+    NSString *strDate = [dateFormatter stringFromDate:dateFromString];
+    
+    NSLog(@"%@",strDate);
+    
+    NSString * I=[dateFromString prettyDate];
+    
+    
+    NSLog(@"%@",I);
+    
+    
+    return I;
+    
+}
+
 @end

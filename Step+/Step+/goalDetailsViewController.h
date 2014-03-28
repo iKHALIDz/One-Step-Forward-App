@@ -11,6 +11,8 @@
 #import "newProgressViewController.h"
 #import "FMDatabase.h"
 #import "ProgressTableViewCell.h"
+#import "NSDate+PrettyDate.h"
+
 
 
 @interface goalDetailsViewController : UIViewController <updateGoal,UITableViewDataSource,UITableViewDelegate>

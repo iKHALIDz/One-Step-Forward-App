@@ -77,7 +77,7 @@
     if (correctDate==YES )
     {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"MM/dd/YYYY hh:mm:ss"];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm:ss"];
         
         NSString *currentData= [dateFormatter stringFromDate:selectedDate];
         
@@ -213,7 +213,7 @@
 -(NSString *)getCurrentDataAndTime
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/YYYY hh:mm:ss"];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm:ss"];
     NSDate *Todaydata=[NSDate date];
     
     NSString *currentData= [dateFormatter stringFromDate:Todaydata];

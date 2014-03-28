@@ -43,7 +43,10 @@
     NSLog(@"mm%@",curreUser.username);
 
     currentUser.userUsername=curreUser.username;
-    
+    self.img.layer.borderWidth = 1.0f;
+    self.img.clipsToBounds = YES;
+    self.img.layer.cornerRadius = 2.0f;
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,6 +85,8 @@
             self.NumberInProgressGoals.text=[NSString stringWithFormat:@"%@",[object objectForKey:@"numberOfInProgressGoals"]];
             PFFile *image = (PFFile *)[object objectForKey:@"ProfileImage"];
             self.img.image=[UIImage imageWithData:[image getData]];
+
+            
         }
     }];
 }

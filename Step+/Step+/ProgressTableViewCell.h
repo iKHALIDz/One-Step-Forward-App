@@ -17,4 +17,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *cellStepOrder;
 
+@property (weak, nonatomic) IBOutlet UILabel *ProgressDate;
+
 @end

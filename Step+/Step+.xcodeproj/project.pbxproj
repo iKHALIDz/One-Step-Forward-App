@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E909908A18E51D66005D30BB /* achievedGoalsUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E909908918E51D66005D30BB /* achievedGoalsUIViewController.m */; };
+		E90990AE18E56D46005D30BB /* NSDate+PrettyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = E90990AD18E56D46005D30BB /* NSDate+PrettyDate.m */; };
 		E944C83718DBDBF9002714D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944C83618DBDBF9002714D8 /* Foundation.framework */; };
 		E944C83918DBDBF9002714D8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944C83818DBDBF9002714D8 /* CoreGraphics.framework */; };
 		E944C83B18DBDBF9002714D8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944C83A18DBDBF9002714D8 /* UIKit.framework */; };
@@ -113,6 +114,8 @@
 /* Begin PBXFileReference section */
 		E909908818E51D66005D30BB /* achievedGoalsUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = achievedGoalsUIViewController.h; sourceTree = "<group>"; };
 		E909908918E51D66005D30BB /* achievedGoalsUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = achievedGoalsUIViewController.m; sourceTree = "<group>"; };
+		E90990AC18E56D46005D30BB /* NSDate+PrettyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+PrettyDate.h"; sourceTree = "<group>"; };
+		E90990AD18E56D46005D30BB /* NSDate+PrettyDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PrettyDate.m"; sourceTree = "<group>"; };
 		E944C83318DBDBF9002714D8 /* Step+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Step+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E944C83618DBDBF9002714D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E944C83818DBDBF9002714D8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -323,6 +326,8 @@
 				E9EA337C18DF90C300609052 /* Goal.m */,
 				E9EA338F18DFB94400609052 /* newGoalViewController.h */,
 				E9EA339018DFB94400609052 /* newGoalViewController.m */,
+				E90990AC18E56D46005D30BB /* NSDate+PrettyDate.h */,
+				E90990AD18E56D46005D30BB /* NSDate+PrettyDate.m */,
 				E9EA337F18DF90CD00609052 /* Phase 1 */,
 				E9EA335318DCFFEB00609052 /* External Libararies */,
 				E944C83F18DBDBF9002714D8 /* Supporting Files */,
@@ -595,6 +600,7 @@
 				E9EA333918DCFFA000609052 /* RDVCalendarView.m in Sources */,
 				E9EA334C18DCFFD000609052 /* FMDatabasePool.m in Sources */,
 				E909908A18E51D66005D30BB /* achievedGoalsUIViewController.m in Sources */,
+				E90990AE18E56D46005D30BB /* NSDate+PrettyDate.m in Sources */,
 				E9EA338518DF96D500609052 /* InProgressGoalsViewController.m in Sources */,
 				E9EA33A518E10F2200609052 /* goalDetailsViewController.m in Sources */,
 				E9B8AD2D18DC02FC00035AC8 /* SingupViewController.m in Sources */,
