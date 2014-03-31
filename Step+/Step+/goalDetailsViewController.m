@@ -15,9 +15,10 @@
 @implementation goalDetailsViewController
 
 @synthesize currentGoal;
+@synthesize currentUser;
+
 @synthesize progressList;
 @synthesize progressListFromParse;
-
 @synthesize tableview = _tableview;
 
 
@@ -29,6 +30,7 @@
     }
     return self;
 }
+
 
 - (void)viewDidLoad
 {
@@ -52,6 +54,10 @@
             [newProgress AddProgressltoDatabase];
         }
     }
+    
+    NSLog(@"%d",self.currentUser.numberOfInProgressGoals);
+    NSLog(@"%d",self.currentUser.numberOfAchievedGoals);
+
 }
 
 
@@ -125,7 +131,6 @@
 
 -(void) setGoal:(Goal *)updatedGoal
 {
-    
     self.currentGoal=updatedGoal;
 }
 
@@ -140,6 +145,10 @@
     [goal declareGoalAsAchieved];
     [goal declareGoalAsAchievedinParse];
     
+    currentUser.numberOfAchievedGoals=currentUser.numberOfAchievedGoals+1;
+    currentUser.numberOfInProgressGoals=currentUser.numberOfInProgressGoals-1;
+    
+    [currentUser UpdateUserDataDB];
     
     Progress *progress=[[Progress alloc]init];
     progress.progressDescription=@"Achieved Peogress";
@@ -219,7 +228,6 @@
     return list;
 }
 
-
 -(NSMutableArray *) getProgressFromParse
 {
     NSMutableArray *list=[[NSMutableArray alloc]init];
@@ -251,7 +259,6 @@
     return list;
     
 }
-
 
 
 -(NSString *)nextIdentifies
@@ -359,9 +366,7 @@
     
     NSLog(@"%@",I);
     
-    
     return I;
-    
 }
 
 @end

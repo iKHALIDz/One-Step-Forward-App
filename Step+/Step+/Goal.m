@@ -21,6 +21,7 @@
 @synthesize isGoalinProgress;
 @synthesize createdBy;
 @synthesize goalDate;
+@synthesize goalPriority;
 
 
 -(void)AddGoaltoDatabase
@@ -36,7 +37,7 @@
     // 1 means True
 
     
-    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Goals (goalId,GoalName,GoalDesc,GoalDeadline,isGoalCompleted,isGoalinPregress,goalPercentage,CreatedBy,goalDate,numberofStepTaken,goalType) VALUES (%d,'%@','%@','%@','%d','%d','%f','%@','%@','%d','%@')",self.goalID,self.goalName,self.goalDescription,self.goalDeadline,isGoalCompleted,isGoalinProgress,goalProgress,self.createdBy,self.goalDate,self.numberOfGoalSteps,goalType];
+    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Goals (goalId,GoalName,GoalDesc,GoalDeadline,isGoalCompleted,isGoalinPregress,goalPercentage,CreatedBy,goalDate,numberofStepTaken,goalType,goalpriority) VALUES (%d,'%@','%@','%@','%d','%d','%f','%@','%@','%d','%@','%d')",self.goalID,self.goalName,self.goalDescription,self.goalDeadline,isGoalCompleted,isGoalinProgress,goalProgress,self.createdBy,self.goalDate,self.numberOfGoalSteps,goalType,goalPriority];
     
     
     NSLog(@"%@",insertSQL);
@@ -81,6 +82,7 @@
     [newGoal setObject:goalDate forKey:@"goalDate"];
     [newGoal setObject:[NSString stringWithFormat:@"%d",self.numberOfGoalSteps] forKey:@"numberOfGoalSteps"];
     [newGoal setObject:self.goalType forKey:@"goalType"];
+    [newGoal setObject:[NSString stringWithFormat:@"%d",self.goalPriority] forKey:@"goalpriority"];
     
     [newGoal saveEventually];
 }
@@ -172,6 +174,8 @@
     
     NSString *insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET isGoalCompleted='1',isGoalinPregress='0',numberofStepTaken='%d',goalPercentage='100.00' where goalId='%d' AND createdBy='%@';",self.numberOfGoalSteps,self.goalID,self.createdBy];
     
+
+    
     
     NSLog(@"%@",insertSQL);
     
@@ -253,5 +257,39 @@
         }
     }];
 }
+
+
+-(void) UpdateGoalPriority:(NSInteger) indexP
+{
+    
+    FMDatabase *db=[FMDatabase databaseWithPath:[[self DataFilePath] stringByAppendingPathComponent:@"Database.sqlite"]];
+    
+    BOOL isOpen=[db open];
+    
+    if (isOpen==NO)
+    {
+        NSLog(@"Fail to open");
+        
+    }
+    
+    NSString *insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET goalPriority='%d' where goalId='%d' AND createdBy='%@';",indexP,self.goalID,self.createdBy];
+    
+    NSLog(@"%@",insertSQL);
+    
+    BOOL succ=[db executeUpdate:insertSQL];
+    
+    if (succ==YES)
+    {
+        NSLog(@"Succseed");
+        
+    }
+    
+    else
+    {
+        NSLog(@"Fail");
+    }
+    [db close];
+}
+
 
 @end

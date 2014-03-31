@@ -23,6 +23,7 @@
 @property (nonatomic) NSString *  goalType;
 @property (nonatomic,retain) NSString * createdBy;
 @property (nonatomic,retain) NSString *goalDate;
+@property int goalPriority;
 
 -(void)AddGoaltoDatabase;
 -(void) AddGoalToParse;
@@ -35,5 +36,8 @@
 
 -(void)DeleteGoalFromDatabase;
 -(void)DeleteGoalFromParse;
+
+-(void) UpdateGoalPriority:(NSInteger) indexP;
+
 
 @end

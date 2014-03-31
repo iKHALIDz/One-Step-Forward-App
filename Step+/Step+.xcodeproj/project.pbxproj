@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E907C21E18E9FAAC0059D19A /* gradientBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E907C21D18E9FAAC0059D19A /* gradientBackground.png */; };
+		E907C22018E9FAC10059D19A /* topAndBottomRow.png in Resources */ = {isa = PBXBuildFile; fileRef = E907C21F18E9FAC10059D19A /* topAndBottomRow.png */; };
 		E909908A18E51D66005D30BB /* achievedGoalsUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E909908918E51D66005D30BB /* achievedGoalsUIViewController.m */; };
 		E90990AE18E56D46005D30BB /* NSDate+PrettyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = E90990AD18E56D46005D30BB /* NSDate+PrettyDate.m */; };
+		E923993C18E91FE100F7AB19 /* MoveCell-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E923993B18E91FE100F7AB19 /* MoveCell-Icon.png */; };
+		E923993E18E92FF100F7AB19 /* SettingIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E923993D18E92FF100F7AB19 /* SettingIcon.png */; };
+		E923994118E9316100F7AB19 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E923994018E9316100F7AB19 /* SettingViewController.m */; };
 		E944C83718DBDBF9002714D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944C83618DBDBF9002714D8 /* Foundation.framework */; };
 		E944C83918DBDBF9002714D8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944C83818DBDBF9002714D8 /* CoreGraphics.framework */; };
 		E944C83B18DBDBF9002714D8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944C83A18DBDBF9002714D8 /* UIKit.framework */; };
@@ -112,10 +117,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E907C21D18E9FAAC0059D19A /* gradientBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradientBackground.png; sourceTree = "<group>"; };
+		E907C21F18E9FAC10059D19A /* topAndBottomRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topAndBottomRow.png; sourceTree = "<group>"; };
 		E909908818E51D66005D30BB /* achievedGoalsUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = achievedGoalsUIViewController.h; sourceTree = "<group>"; };
 		E909908918E51D66005D30BB /* achievedGoalsUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = achievedGoalsUIViewController.m; sourceTree = "<group>"; };
 		E90990AC18E56D46005D30BB /* NSDate+PrettyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+PrettyDate.h"; sourceTree = "<group>"; };
 		E90990AD18E56D46005D30BB /* NSDate+PrettyDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PrettyDate.m"; sourceTree = "<group>"; };
+		E923993B18E91FE100F7AB19 /* MoveCell-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MoveCell-Icon.png"; sourceTree = "<group>"; };
+		E923993D18E92FF100F7AB19 /* SettingIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingIcon.png; sourceTree = "<group>"; };
+		E923993F18E9316100F7AB19 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		E923994018E9316100F7AB19 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		E944C83318DBDBF9002714D8 /* Step+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Step+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E944C83618DBDBF9002714D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E944C83818DBDBF9002714D8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -309,6 +320,8 @@
 				E944C84818DBDBF9002714D8 /* AppDelegate.m */,
 				E944C84D18DBDBF9002714D8 /* Images.xcassets */,
 				E944C86B18DBDC1A002714D8 /* main.storyboard */,
+				E923993F18E9316100F7AB19 /* SettingViewController.h */,
+				E923994018E9316100F7AB19 /* SettingViewController.m */,
 				E9510E4218E210E7000C30B8 /* progressTableViewCell.xib */,
 				E9510E4418E21136000C30B8 /* ProgressTableViewCell.h */,
 				E9510E4518E21136000C30B8 /* ProgressTableViewCell.m */,
@@ -369,6 +382,10 @@
 		E944C87818DBE0B6002714D8 /* Image Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				E907C21F18E9FAC10059D19A /* topAndBottomRow.png */,
+				E907C21D18E9FAAC0059D19A /* gradientBackground.png */,
+				E923993D18E92FF100F7AB19 /* SettingIcon.png */,
+				E923993B18E91FE100F7AB19 /* MoveCell-Icon.png */,
 				E995330C18E15D7F00F42C08 /* AddButton.jpg */,
 				E9510E3318E16C0C000C30B8 /* UITableBackground.png */,
 				E9B8AD4018DC2BA000035AC8 /* Login */,
@@ -547,6 +564,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E995330D18E15D7F00F42C08 /* AddButton.jpg in Resources */,
+				E907C21E18E9FAAC0059D19A /* gradientBackground.png in Resources */,
 				E944C87D18DBE59B002714D8 /* LoginBackground@2x.png in Resources */,
 				E9510E4318E210E7000C30B8 /* progressTableViewCell.xib in Resources */,
 				E9510E3418E16C0C000C30B8 /* UITableBackground.png in Resources */,
@@ -554,15 +572,18 @@
 				E9B8AD2818DBEC4600035AC8 /* LoginBox.png in Resources */,
 				E9B8AD5818DCE9E200035AC8 /* SignupNavigationBar.png in Resources */,
 				E944C87B18DBE59B002714D8 /* LoginBackground-568@2x.png in Resources */,
+				E923993E18E92FF100F7AB19 /* SettingIcon.png in Resources */,
 				E9EA339D18DFFFF700609052 /* goalTableViewCell.xib in Resources */,
 				E944C84318DBDBF9002714D8 /* InfoPlist.strings in Resources */,
 				E9B8AD4418DC2E2A00035AC8 /* SignupBackground-568@2x.png in Resources */,
 				E9EA33A218E00B7200609052 /* SignupBackgroundv2-568@2x.png in Resources */,
 				E9B8AD5318DCC01E00035AC8 /* Profile Picture.png in Resources */,
+				E923993C18E91FE100F7AB19 /* MoveCell-Icon.png in Resources */,
 				E9B8AD4918DC304400035AC8 /* SignupBackground@2x.png in Resources */,
 				E9B8AD2A18DBEFAC00035AC8 /* FacebookLogin.png in Resources */,
 				E944C84E18DBDBF9002714D8 /* Images.xcassets in Resources */,
 				E944C86C18DBDC1A002714D8 /* main.storyboard in Resources */,
+				E907C22018E9FAC10059D19A /* topAndBottomRow.png in Resources */,
 				E9B8AD4D18DCBAC800035AC8 /* SignUPCell.png in Resources */,
 				E9B8AD4B18DCB5D500035AC8 /* SineupBox.png in Resources */,
 			);
@@ -593,6 +614,7 @@
 				E9EA337D18DF90C300609052 /* Goal.m in Sources */,
 				E9EA334818DCFFD000609052 /* FMDatabase.m in Sources */,
 				E9EA337A18DD1C0800609052 /* MainMenuViewController.m in Sources */,
+				E923994118E9316100F7AB19 /* SettingViewController.m in Sources */,
 				E944C87018DBDC9A002714D8 /* LoginViewController.m in Sources */,
 				E9EA333B18DCFFA000609052 /* RDVCalendarDayCell.m in Sources */,
 				E9510E4618E21136000C30B8 /* ProgressTableViewCell.m in Sources */,

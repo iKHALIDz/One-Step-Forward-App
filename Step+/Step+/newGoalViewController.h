@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Goal.h"
 #import "User.h"
+#import "FMDatabase.h"
 
 @interface newGoalViewController : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate>
 

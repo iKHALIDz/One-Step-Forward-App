@@ -30,6 +30,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,7 +96,6 @@
     [defaults synchronize];
     return [NSString stringWithFormat:@"%ld",(long)identifier];
 }
-
 
 
 - (IBAction)isSaveisPressed:(UIBarButtonItem *)sender {

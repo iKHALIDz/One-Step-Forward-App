@@ -7,10 +7,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="goalCell" rowHeight="64" id="HFs-qj-dQn" customClass="goalTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="367" height="64"/>
+            <rect key="frame" x="0.0" y="0.0" width="286" height="64"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HFs-qj-dQn" id="thP-RD-h6X">
-                <rect key="frame" x="0.0" y="0.0" width="367" height="63"/>
+                <rect key="frame" x="0.0" y="0.0" width="286" height="63"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Up9-ab-eyA">
@@ -24,14 +24,23 @@
                         <rect key="frame" x="-1" y="49" width="376" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZU-BH-MRB">
+                        <rect key="frame" x="218" y="12" width="73" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" image="MoveCell-Icon.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="GoalName" destination="Up9-ab-eyA" id="hXS-Rd-VPE"/>
+                <outlet property="MoveCell" destination="yZU-BH-MRB" id="8AS-rO-kJK"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="MoveCell-Icon.png" width="18" height="18"/>
         <image name="UITableBackground.png" width="640" height="1136"/>
     </resources>
 </document>

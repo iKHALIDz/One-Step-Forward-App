@@ -123,8 +123,126 @@
     myBackView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
     cell.selectedBackgroundView = myBackView;
     
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
+    
+    [cell.MoveCell addGestureRecognizer:longPress];
+
     
     return cell;
+}
+
+- (IBAction)longPressGestureRecognized:(id)sender {
+    
+    UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer *)sender;
+    UIGestureRecognizerState state = longPress.state;
+    
+    CGPoint location = [longPress locationInView:self.tableviw];
+    NSIndexPath *indexPath = [self.tableviw indexPathForRowAtPoint:location];
+    
+    static UIView       *snapshot = nil;        ///< A snapshot of the row user is moving.
+    static NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begins.
+    
+    switch (state) {
+        case UIGestureRecognizerStateBegan: {
+            if (indexPath) {
+                sourceIndexPath = indexPath;
+                
+                UITableViewCell *cell = [self.tableviw cellForRowAtIndexPath:indexPath];
+                
+                // Take a snapshot of the selected row using helper method.
+                snapshot = [self customSnapshotFromView:cell];
+                
+                // Add the snapshot as subview, centered at cell's center...
+                __block CGPoint center = cell.center;
+                snapshot.center = center;
+                snapshot.alpha = 0.0;
+                [self.tableviw addSubview:snapshot];
+                [UIView animateWithDuration:0.25 animations:^{
+                    
+                    // Offset for gesture location.
+                    center.y = location.y;
+                    snapshot.center = center;
+                    snapshot.transform = CGAffineTransformMakeScale(1.05, 1.05);
+                    snapshot.alpha = 0.98;
+                    
+                    // Black out.
+                    cell.backgroundColor = [UIColor blackColor];
+                } completion:nil];
+            }
+            break;
+        }
+            
+        case UIGestureRecognizerStateChanged: {
+            CGPoint center = snapshot.center;
+            center.y = location.y;
+            snapshot.center = center;
+            
+            // Is destination valid and is it different from source?
+            if (indexPath && ![indexPath isEqual:sourceIndexPath])
+            {
+                
+                int sourceP=[[achievedGoalsArray objectAtIndex:sourceIndexPath.row]goalPriority];
+                
+                int DestnationP=[[achievedGoalsArray objectAtIndex:indexPath.row]goalPriority];
+                
+                NSLog(@"Source: %d",sourceP);
+                NSLog(@"Destination: %d",DestnationP);
+                
+                
+                // ... update data source.
+                [self.achievedGoalsArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:sourceIndexPath.row];
+                
+                
+                [[achievedGoalsArray objectAtIndex:sourceIndexPath.row] UpdateGoalPriority:(sourceP)];
+                
+                
+                [[achievedGoalsArray objectAtIndex:indexPath.row] UpdateGoalPriority:(DestnationP)];
+                
+                
+                
+                [self.tableviw moveRowAtIndexPath:sourceIndexPath toIndexPath:indexPath];
+                
+                // ... and update source so it is in sync with UI changes.
+                sourceIndexPath = indexPath;
+            }
+            break;
+        }
+        default: {
+            // Clean up.
+            UITableViewCell *cell = [self.tableviw cellForRowAtIndexPath:sourceIndexPath];
+            [UIView animateWithDuration:0.25 animations:^{
+                
+                snapshot.center = cell.center;
+                snapshot.transform = CGAffineTransformIdentity;
+                snapshot.alpha = 0.0;
+                
+                // Undo the black-out effect we did.
+                cell.backgroundColor = [UIColor whiteColor];
+                
+            } completion:^(BOOL finished) {
+                
+                [snapshot removeFromSuperview];
+                snapshot = nil;
+                
+            }];
+            sourceIndexPath = nil;
+            
+            break;
+        }
+    }
+    
+}
+
+- (UIView *)customSnapshotFromView:(UIView *)inputView {
+    
+    UIView *snapshot = [inputView snapshotViewAfterScreenUpdates:YES];
+    snapshot.layer.masksToBounds = NO;
+    snapshot.layer.cornerRadius = 0.0;
+    snapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
+    snapshot.layer.shadowRadius = 5.0;
+    snapshot.layer.shadowOpacity = 0.4;
+    
+    return snapshot;
 }
 
 
@@ -175,12 +293,15 @@
         
     }
     
-    NSString *query=[NSString stringWithFormat:@"select * from Goals where isGoalCompleted='1' AND isGoalinPregress='0' AND CreatedBy='%@';",currentUser.userUsername];
+    NSString *query=[NSString stringWithFormat:@"select * from Goals where isGoalCompleted='1' AND isGoalinPregress='0' AND CreatedBy='%@'",currentUser.userUsername];
     
-    NSLog(@"%@",query);
+    NSString *Finalquery= [query stringByAppendingString:@"ORDER BY goalpriority DESC;"];
     
+    NSLog(@"%@",Finalquery);
     
-    FMResultSet *result =[db executeQuery:query];
+    FMResultSet *result =[db executeQuery:Finalquery];
+    
+
     
     while ([result next])
     {
@@ -196,7 +317,8 @@
         goal.numberOfGoalSteps=[result intForColumn:@"numberofStepTaken"];
         goal.goalDate=[result stringForColumn:@"goalDate"];
         goal.goalType=[result stringForColumn:@"goalType"];
-        
+        goal.goalPriority=[result intForColumn:@"goalPriority"];
+
         [list addObject:goal];
     }
     return list;
@@ -259,5 +381,6 @@
         
     }
 }
+
 
 @end

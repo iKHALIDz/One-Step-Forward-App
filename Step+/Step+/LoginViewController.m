@@ -16,7 +16,7 @@
 
 @implementation LoginViewController
 
-@synthesize user;
+@synthesize currentUser;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,18 +47,19 @@
 
 - (IBAction)isLoginisPressed:(UIButton *)sender {
     
-    user=[[User alloc]init];
+    User *user=[[User alloc]init];
+    currentUser=[[User alloc]init];
     
     [user setUserUsername:self.usernameTextField.text];
     [user setUserPassword:self.passwordTextField.text];
     
     
     BOOL x=[user loginToAccountUsingParse];
-    
     if (x==YES)
     {
-        [self performSegueWithIdentifier:@"LoginSuccessfuly" sender:self];
+        currentUser=[currentUser getUserInfo:self.usernameTextField.text];
         
+        [self performSegueWithIdentifier:@"LoginSuccessfuly" sender:self];
     }
     
 }
@@ -81,8 +82,6 @@
     
 }
 
-
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if ([self.usernameTextField isFirstResponder]) {
@@ -96,7 +95,6 @@
     return YES;
 }
 
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"LoginSuccessfuly"])
@@ -104,7 +102,8 @@
         UINavigationController *nav = [segue destinationViewController];
         MainMenuViewController *vc =(MainMenuViewController*)nav.topViewController;
         
-        [vc setCurrentUser:user];
+        [vc setCurrentUser:currentUser];
     }
 }
+
 @end

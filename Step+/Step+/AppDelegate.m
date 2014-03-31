@@ -52,7 +52,7 @@
     [db executeUpdate:createSQL1];
     
 
-    NSString *createSQL= @"create table IF NOT exists Goals(goalId integer,GoalName text, GoalDesc text, GoalDeadline text, isGoalCompleted integer, isGoalinPregress integer, goalPercentage REAL,CreatedBy text,goalDate text,numberofStepTaken int,goalType text);";
+    NSString *createSQL= @"create table IF NOT exists Goals(goalId integer,GoalName text, GoalDesc text, GoalDeadline text, isGoalCompleted integer, isGoalinPregress integer, goalPercentage REAL,CreatedBy text,goalDate text,numberofStepTaken int,goalType text,goalpriority int);";
     
     [db executeUpdate:createSQL];
     

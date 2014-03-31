@@ -13,4 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *GoalName;
 
 
+@property (weak, nonatomic) IBOutlet UIButton *MoveCell;
+
 @end

@@ -15,7 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 
-@property (nonatomic,strong) User *user;
 
 @property (weak, nonatomic) IBOutlet UITextField* usernameTextField;
 
@@ -23,6 +22,7 @@
 
 - (IBAction)isLoginisPressed:(UIButton *)sender;
 
+@property (nonatomic,strong) User *currentUser;
 
 
 @end

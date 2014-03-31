@@ -26,6 +26,10 @@
 -(BOOL) loginToAccountUsingParse;
 -(BOOL) createAnAccountUsingParse;
 -(void)UserRegistrationUsingDatabase;
-- (void) getUserInfo: (NSString*) username;
+- (User*) getUserInfo: (NSString*) username;
+
+-(void)UpdateUserDataUsingParse;
+-(void)UpdateUserDataDB;
+
 
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Goal.h"
+#import "User.h"
 #import "newProgressViewController.h"
 #import "FMDatabase.h"
 #import "ProgressTableViewCell.h"
@@ -39,6 +40,8 @@
 
 
 @property(nonatomic,strong) Goal *currentGoal;
+@property (nonatomic,strong) User *currentUser;
+
 @property (weak, nonatomic) IBOutlet UILabel *numberofDaysSinceCreated;
 
 - (IBAction)deleteGoal:(UIBarButtonItem *)sender;

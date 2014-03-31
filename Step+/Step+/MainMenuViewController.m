@@ -27,26 +27,51 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)viewDidAppear:(BOOL)animated
 {
     
-    [super viewDidLoad];
-    currentUser=[[User alloc]init];
-    
-    [self getUserProfileInfoFromParse];
+    [super viewDidAppear:YES];
     
     PFUser *curreUser =[PFUser currentUser];
-//    
-//    User *u=[[User alloc]init];
-//    [u getUserInfo:curreUser.username];
-
-    NSLog(@"mm%@",curreUser.username);
-
-    currentUser.userUsername=curreUser.username;
+    
+    if (currentUser==nil) // in Case if the user is already logged in
+    {
+        currentUser=[[User alloc]init];
+        
+        currentUser=[currentUser getUserInfo:curreUser.username];
+        
+        if (currentUser ==nil)
+        {
+            NSLog(@"User isn't in the Database");
+            currentUser=[self getUserInfromationAsObject];
+            NSLog(@"Username %@",currentUser.userUsername);
+            
+            [currentUser UserRegistrationUsingDatabase];
+            NSLog(@"Got Data From Parse");
+        }
+        
+        else
+        {
+            
+        }
+    }
+    
+    else
+    {
+        currentUser=[currentUser getUserInfo:curreUser.username];
+        NSLog(@"User exist in the Database");
+    }
+    
+    self.userFullname.text=[NSString stringWithFormat:@"%@ %@",currentUser.userFirsname,currentUser.userLastname];
+    self.NumberAchievedGoals.text=[NSString stringWithFormat:@"%d",currentUser.numberOfAchievedGoals];
+    self.NumberInProgressGoals.text=[NSString stringWithFormat:@"%d",currentUser.numberOfInProgressGoals];
+    
+    [self getProfileImageInfoFromParse];
+    
     self.img.layer.borderWidth = 1.0f;
     self.img.clipsToBounds = YES;
     self.img.layer.cornerRadius = 2.0f;
-
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,18 +80,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)SignOut:(UIBarButtonItem *)sender
-{
-    
-    [PFUser logOut];
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"main" bundle: nil];
-    LoginViewController*wViewController = (LoginViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    
-    [self presentViewController:wViewController animated:YES completion:nil];
-}
 
-
--(void)getUserProfileInfoFromParse
+-(void)getProfileImageInfoFromParse
 {
     PFUser *curreUser = [PFUser currentUser];
     
@@ -80,17 +95,44 @@
             NSLog(@"The getFirstObject request failed.");
         } else {
             // The find succeeded.
-            self.userFullname.text=[NSString stringWithFormat:@"%@ %@",[object objectForKey:@"FirstName"],[object objectForKey:@"LastName"]];
-            self.NumberAchievedGoals.text=[NSString stringWithFormat:@"%@",[object objectForKey:@"numberOfAchievedGoals"]];
-            self.NumberInProgressGoals.text=[NSString stringWithFormat:@"%@",[object objectForKey:@"numberOfInProgressGoals"]];
             PFFile *image = (PFFile *)[object objectForKey:@"ProfileImage"];
             self.img.image=[UIImage imageWithData:[image getData]];
-
             
         }
     }];
 }
 
+-(User *)getUserInfromationAsObject
+{
+    PFUser *curreUser = [PFUser currentUser];
+    
+    PFQuery *query = [PFUser query];
+    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+    
+    [query whereKey:@"username" equalTo:curreUser.username];
+    
+    User *user=[[User alloc]init];
+    PFObject *object=[query getFirstObject];
+        if (!object) {
+            NSLog(@"The getFirstObject request failed.");
+        } else {
+            // The find succeeded.
+            user.userFirsname=[NSString stringWithFormat:@"%@",[object objectForKey:@"FirstName"]];
+            user.userLastname=[NSString stringWithFormat:@"%@",[object objectForKey:@"LastName"]];
+            user.userUsername=[NSString stringWithFormat:@"%@",[object objectForKey:@"username"]];
+            user.userPassword=[NSString stringWithFormat:@"%@",[object objectForKey:@"password"]];
+            user.userEmailAddres=[NSString stringWithFormat:@"%@",[object objectForKey:@"email"]];
+            
+            user.numberOfAchievedGoals=[[NSString stringWithFormat:@"%@",[object objectForKey:@"numberOfAchievedGoals"]] integerValue];
+            user.numberOfInProgressGoals=[[NSString stringWithFormat:@"%@",[object objectForKey:@"numberOfInProgressGoals"]]integerValue];
+            PFFile *image = (PFFile *)[object objectForKey:@"ProfileImage"];
+            
+            user.userProfileImage=[UIImage imageWithData:[image getData]];
+            
+        }
+    
+    return user;
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -108,6 +150,5 @@
         [vc setCurrentUser:self.currentUser];
     }
 }
-
 
 @end

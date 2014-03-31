@@ -17,7 +17,6 @@
 
 @property (nonatomic,strong) User *currentUser;
 
-- (IBAction)SignOut:(UIBarButtonItem *)sender;
 
 @property (weak, nonatomic) IBOutlet UIImageView *img;
 

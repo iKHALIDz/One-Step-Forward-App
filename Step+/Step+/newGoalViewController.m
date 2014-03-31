@@ -45,7 +45,13 @@
     
     self.goalTypes  = [[NSArray alloc]         initWithObjects:@"Health",@"Work",@"Travel",@"Fun",@"Learn",@"Money",@"Relatioship",@"Event",@"Spirit",@"Home",nil];
     
+    NSLog(@"%d",self.currentUser.numberOfInProgressGoals);
+    NSLog(@"%d",self.currentUser.numberOfAchievedGoals);
+    
+    
     self.saveButton.enabled=NO;
+    
+    
     
 }
 
@@ -154,8 +160,6 @@
 
 - (IBAction)isSavePressed:(UIBarButtonItem *)sender {
     
-    
-    
     goal=[[Goal alloc]init];
     goal.goalID=[[self nextIdentifies] integerValue];
     goal.createdBy=currentUser.userUsername;
@@ -167,9 +171,13 @@
     goal.goalProgress=0.0;
     goal.goalType=self.goalTypeTextFiled.text;
     goal.goalDate=[self getCurrentDataAndTime];
+    goal.goalPriority=[self getLargestGoalPriority]+1;
+    
     
     [goal AddGoaltoDatabase];
     [goal AddGoalToParse];
+    currentUser.numberOfInProgressGoals=currentUser.numberOfInProgressGoals+1;
+    [currentUser UpdateUserDataDB];
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
@@ -230,5 +238,40 @@
     
 }
 
+-(NSString*)DataFilePath{
+    
+    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    return [paths objectAtIndex:0];
+}
+
+
+-(int ) getLargestGoalPriority;
+{
+    int list = 0;
+    
+    FMDatabase *db=[FMDatabase databaseWithPath:[[self DataFilePath] stringByAppendingPathComponent:@"Database.sqlite"]];
+    
+    BOOL isOpen=[db open];
+    
+    if (isOpen==NO)
+    {
+        NSLog(@"Fail to open");
+        
+    }
+    
+    NSString *query=[NSString stringWithFormat:@"select MAX(goalpriority) from Goals;"];
+    
+    NSLog(@"%@",query);
+    
+    FMResultSet *result =[db executeQuery:query];
+    
+    while ([result next])
+    {
+        list=[result intForColumnIndex:0];
+    }
+    
+    return list;
+}
 
 @end

@@ -117,7 +117,8 @@
     }
     
     
-    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Users (userId,userFirstname,userLastname,userUsername,userPassword,userEmailAddress,numberOfInProgressGoals,numberOfAchievedGoals) VALUES (%ld,'%@','%@','%@','%@','%@','%d','%d')",(long)[userID integerValue],userFirsname,userLastname,userUsername,userPassword,userEmailAddres,numberOfInProgressGoals,numberOfAchievedGoals];
+    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Users (userId,userFirstname,userLastname,userUsername,userPassword,userEmailAddress,numberOfInProgressGoals,numberOfAchievedGoals) VALUES (%@,'%@','%@','%@','%@','%@','%d','%d')",userID,userFirsname,userLastname,userUsername,userPassword,userEmailAddres,numberOfInProgressGoals,numberOfAchievedGoals];
+    
     
     NSLog(@"%@",insertSQL);
     
@@ -136,9 +137,7 @@
     [db close];
 }
 
-
-
-- (void) getUserInfo: (NSString*) username
+- (User*) getUserInfo: (NSString*) username
 {
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
@@ -162,11 +161,57 @@
     
     while ([result next])
     {
+        
         user=[[User alloc]init];
+        user.userID= [result stringForColumn:@"userId"];
         user.userUsername=[result stringForColumn:@"userUsername"];
+        user.userEmailAddres=[result stringForColumn:@"userEmailAddress"];
+        user.userFirsname=[result stringForColumn:@"userFirstname"];
+        user.userLastname=[result stringForColumn:@"userLastname"];
+        user.userPassword=[result stringForColumn:@"userPassword"];
+        user.numberOfAchievedGoals=[result intForColumn:@"numberOfAchievedGoals"];
+        user.numberOfInProgressGoals=[result intForColumn:@"numberOfInProgressGoals"];
+    }
+    
+    return user;
+}
+
+
+-(void)UpdateUserDataUsingParse
+{
+    
+}
+
+-(void)UpdateUserDataDB
+{
+    FMDatabase *db=[FMDatabase databaseWithPath:[[self DataFilePath] stringByAppendingPathComponent:@"Database.sqlite"]];
+    
+    BOOL isOpen=[db open];
+    
+    if (isOpen==NO)
+    {
+        NSLog(@"Fail to open");
         
     }
-
+    
+    NSString *insertSQL = [NSString stringWithFormat:@"UPDATE Users SET numberOfInProgressGoals='%d',numberOfAchievedGoals='%d' WHERE userUsername='%@';",self.numberOfInProgressGoals,self.numberOfAchievedGoals,self.userUsername];
+    
+    NSLog(@"%@",insertSQL);
+    
+    BOOL succ=[db executeUpdate:insertSQL];
+    
+    if (succ==YES)
+    {
+        NSLog(@"Succseed");
+        
+    }
+    
+    else
+    {
+        NSLog(@"Fail");
+    }
+    [db close];
+    
 }
 
 -(NSString*)DataFilePath
@@ -174,7 +219,5 @@
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     return [paths objectAtIndex:0];
 }
-
-
 
 @end

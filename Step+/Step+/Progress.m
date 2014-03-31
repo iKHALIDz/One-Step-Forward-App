@@ -42,15 +42,14 @@
     
     NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Progress (progressID,progressDescription,progressPercentageToGoal,goalID,progressDate,createdBy,stepOrder) VALUES (%d,'%@','%f','%d','%@','%@','%d')",self.progressID,self.progressDescription,self.progressPercentageToGoal,self.goalID,progressDate,self.LoggedBy,self.stepOrder];
     
-    
     NSLog(@"%@",insertSQL);
     
     BOOL succ=[db executeUpdate:insertSQL];
     
     if (succ==YES) {
         NSLog(@"Succseed");
-        
     }
+    
     else
     {
         NSLog(@"Fail");
@@ -122,6 +121,5 @@
         }
     }];
 }
-
 
 @end
