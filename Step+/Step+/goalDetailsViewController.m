@@ -31,7 +31,6 @@
     return self;
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -60,8 +59,6 @@
 
 }
 
-
-
 -(void) viewWillAppear:(BOOL)animated
 {
     self.GoalNameLable.text=currentGoal.goalName;
@@ -87,7 +84,7 @@
 -(NSInteger)daysBetweenDate:(NSString*)fromDateTime andDate:(NSString*)toDateTime
 {
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"MM/dd/yyyy hh:mm:ss"];
+    [format setDateFormat:@"MM/DD/YYYY hh:mm:ss"];
     
     NSDate *fromDate = [format dateFromString: fromDateTime];
     NSDate *toDate = [format dateFromString: toDateTime];
@@ -110,7 +107,7 @@
 -(NSString *)getCurrentDataAndTime
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm:ss"];
+    [dateFormatter setDateFormat:@"MM/DD/YYYY hh:mm:ss"];
     NSDate *Todaydata=[NSDate date];
     
     NSString *currentData= [dateFormatter stringFromDate:Todaydata];
@@ -348,7 +345,7 @@
 -(NSString *) GetWordyTime: (NSString *) Y
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm:ss"];
+    [dateFormatter setDateFormat:@"MM/DD/YYYY hh:mm:ss"];
     [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
     
     NSDate *dateFromString = [[NSDate alloc]init];

@@ -43,15 +43,12 @@
     self.pickerToolbar.hidden=YES;
     self.goalTypepicker.hidden=YES;
     
-    self.goalTypes  = [[NSArray alloc]         initWithObjects:@"Health",@"Work",@"Travel",@"Fun",@"Learn",@"Money",@"Relatioship",@"Event",@"Spirit",@"Home",nil];
+    self.goalTypes  = [[NSArray alloc] initWithObjects:@"Health",@"Work",@"Travel",@"Fun",@"Learn",@"Money",@"Relatioship",@"Event",@"Spirit",@"Home",nil];
     
     NSLog(@"%d",self.currentUser.numberOfInProgressGoals);
     NSLog(@"%d",self.currentUser.numberOfAchievedGoals);
     
-    
     self.saveButton.enabled=NO;
-    
-    
     
 }
 
@@ -83,7 +80,7 @@
     if (correctDate==YES )
     {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm:ss"];
+        [dateFormatter setDateFormat:@"MM/DD/YYYY hh:mm:ss"];
         
         NSString *currentData= [dateFormatter stringFromDate:selectedDate];
         
@@ -146,11 +143,10 @@
 {
     // make sure all fields are have something in them
     
-    if ((self.goalNameTextfield.text.length > 0) &&  (self.goalDescriptionTextfield.text.length > 0) && ( self.goalDeadlineTextField.text.length > 0)&& (self.goalTypeTextFiled.text.length > 0))
+    if ((self.goalNameTextfield.text.length > 0) &&  (self.goalDescriptionTextfield.text.length > 0) && (self.goalDeadlineTextField.text.length > 0)&& (self.goalTypeTextFiled.text.length > 0))
     {
         self.saveButton.enabled=YES;
     }
-    
     else
     {
         self.saveButton.enabled=NO;
@@ -221,7 +217,7 @@
 -(NSString *)getCurrentDataAndTime
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm:ss"];
+    [dateFormatter setDateFormat:@"MM/DD/YYYY hh:mm:ss"];
     NSDate *Todaydata=[NSDate date];
     
     NSString *currentData= [dateFormatter stringFromDate:Todaydata];

@@ -77,7 +77,7 @@
 -(NSString *)getCurrentDataAndTime
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm:ss"];
+    [dateFormatter setDateFormat:@"MM/DD/YYYY hh:mm:ss"];
     
     NSDate *Todaydata=[NSDate date];
     

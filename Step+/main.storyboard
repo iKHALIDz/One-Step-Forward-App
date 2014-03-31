@@ -380,7 +380,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="8B6809AF-E7AD-4324-A49F-1B88B58043BC" translatesAutoresizingMaskIntoConstraints="NO" id="Nj3-IQ-dUR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2DCF0898-6596-4061-ABCD-D2970ED227EF" translatesAutoresizingMaskIntoConstraints="NO" id="Nj3-IQ-dUR">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -472,38 +472,37 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="editingChanged" destination="nzy-sr-Se2" eventType="editingChanged" id="WTR-FX-jfB"/>
+                                    <action selector="editingChanged" destination="nzy-sr-Se2" eventType="editingChanged" id="GpA-UH-q60"/>
                                     <outlet property="delegate" destination="nzy-sr-Se2" id="7sY-1h-BaF"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Goal Description" minimumFontSize="17" background="SignUPCellNoBo.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Hk6-H4-Hrl">
                                 <rect key="frame" x="0.0" y="93" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
-                                    <action selector="editingChanged" destination="nzy-sr-Se2" eventType="editingChanged" id="2Mg-u1-aEy"/>
+                                    <action selector="editingChanged" destination="nzy-sr-Se2" eventType="editingChanged" id="q6g-iq-NJI"/>
                                     <outlet property="delegate" destination="nzy-sr-Se2" id="y8Y-eA-NkX"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Deadline" minimumFontSize="17" background="SignUPCellNoBo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gcc-5B-DG5">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Deadline" minimumFontSize="17" background="SignUPCellNoBo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gcc-5B-DG5">
                                 <rect key="frame" x="1" y="152" width="319" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="editingChanged" destination="nzy-sr-Se2" eventType="editingChanged" id="E3f-uc-L1W"/>
+                                    <action selector="editingChanged" destination="nzy-sr-Se2" eventType="editingChanged" id="NWw-iN-G4p"/>
                                     <outlet property="delegate" destination="nzy-sr-Se2" id="Lc3-R3-Exp"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Goal Type " minimumFontSize="17" background="SignUPCellNoBo.png" translatesAutoresizingMaskIntoConstraints="NO" id="1vu-9M-75g">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Goal Type " minimumFontSize="17" background="SignUPCellNoBo.png" translatesAutoresizingMaskIntoConstraints="NO" id="1vu-9M-75g">
                                 <rect key="frame" x="1" y="180" width="319" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="editingChanged" destination="nzy-sr-Se2" eventType="editingChanged" id="uw4-Kt-xZC"/>
+                                    <action selector="editingChanged" destination="nzy-sr-Se2" eventType="editingChanged" id="gBN-k9-9dA"/>
                                     <outlet property="delegate" destination="nzy-sr-Se2" id="nov-ds-s1I"/>
                                 </connections>
                             </textField>
@@ -839,7 +838,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
-        <image name="8B6809AF-E7AD-4324-A49F-1B88B58043BC" width="640" height="1136">
+        <image name="2DCF0898-6596-4061-ABCD-D2970ED227EF" width="640" height="1136">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -49377,7 +49376,7 @@ ACxqzQAsatAALGriACxq5QAsauoAAAAAAAAEAQAAAAAAAABCAAAAAAAAAAAAAAAAACxq7A
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="GYY-zl-9wo"/>
         <segue reference="nG7-90-PY7"/>
+        <segue reference="Kcd-v5-oKC"/>
     </inferredMetricsTieBreakers>
 </document>
