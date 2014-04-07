@@ -13,6 +13,7 @@
 #import "FMDatabase.h"
 #import "ProgressTableViewCell.h"
 #import "NSDate+PrettyDate.h"
+#import "TimelinePost.h"
 
 
 

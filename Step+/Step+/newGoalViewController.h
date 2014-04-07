@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Goal.h"
 #import "User.h"
+#import "TimelinePost.h"
 #import "FMDatabase.h"
+#import <Parse/Parse.h>
 
 @interface newGoalViewController : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate>
 
@@ -42,5 +44,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
 -(IBAction) isCancelisPressed;
+
 
 @end

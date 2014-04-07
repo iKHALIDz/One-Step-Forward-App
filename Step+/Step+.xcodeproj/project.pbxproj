@@ -40,6 +40,11 @@
 		E9510E3A18E20663000C30B8 /* Progress.m in Sources */ = {isa = PBXBuildFile; fileRef = E9510E3918E20663000C30B8 /* Progress.m */; };
 		E9510E4318E210E7000C30B8 /* progressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9510E4218E210E7000C30B8 /* progressTableViewCell.xib */; };
 		E9510E4618E21136000C30B8 /* ProgressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9510E4518E21136000C30B8 /* ProgressTableViewCell.m */; };
+		E96F179518F24AA80057C3CA /* TimelinePost.m in Sources */ = {isa = PBXBuildFile; fileRef = E96F179418F24AA80057C3CA /* TimelinePost.m */; };
+		E96F179718F31A100057C3CA /* timelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E96F179618F31A100057C3CA /* timelineCell.xib */; };
+		E96F179A18F320040057C3CA /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E96F179918F320040057C3CA /* TimelineViewController.m */; };
+		E96F179D18F320B70057C3CA /* timelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96F179C18F320B70057C3CA /* timelineCell.m */; };
+		E96F17A018F364B30057C3CA /* TimelinePostDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E96F179F18F364B30057C3CA /* TimelinePostDetailsViewController.m */; };
 		E995330D18E15D7F00F42C08 /* AddButton.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E995330C18E15D7F00F42C08 /* AddButton.jpg */; };
 		E9A1108B18E28BBC00252364 /* newProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A1108A18E28BBC00252364 /* newProgressViewController.m */; };
 		E9B8AD2818DBEC4600035AC8 /* LoginBox.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B8AD2718DBEC4600035AC8 /* LoginBox.png */; };
@@ -155,6 +160,15 @@
 		E9510E4218E210E7000C30B8 /* progressTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = progressTableViewCell.xib; sourceTree = "<group>"; };
 		E9510E4418E21136000C30B8 /* ProgressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressTableViewCell.h; sourceTree = "<group>"; };
 		E9510E4518E21136000C30B8 /* ProgressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressTableViewCell.m; sourceTree = "<group>"; };
+		E96F179318F24AA80057C3CA /* TimelinePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelinePost.h; sourceTree = "<group>"; };
+		E96F179418F24AA80057C3CA /* TimelinePost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelinePost.m; sourceTree = "<group>"; };
+		E96F179618F31A100057C3CA /* timelineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = timelineCell.xib; sourceTree = "<group>"; };
+		E96F179818F320040057C3CA /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimelineViewController.h; path = ../TimelineViewController.h; sourceTree = "<group>"; };
+		E96F179918F320040057C3CA /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimelineViewController.m; path = ../TimelineViewController.m; sourceTree = "<group>"; };
+		E96F179B18F320B70057C3CA /* timelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timelineCell.h; sourceTree = "<group>"; };
+		E96F179C18F320B70057C3CA /* timelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = timelineCell.m; sourceTree = "<group>"; };
+		E96F179E18F364B30057C3CA /* TimelinePostDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelinePostDetailsViewController.h; sourceTree = "<group>"; };
+		E96F179F18F364B30057C3CA /* TimelinePostDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelinePostDetailsViewController.m; sourceTree = "<group>"; };
 		E995330C18E15D7F00F42C08 /* AddButton.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = AddButton.jpg; sourceTree = "<group>"; };
 		E9A1108918E28BBC00252364 /* newProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newProgressViewController.h; sourceTree = "<group>"; };
 		E9A1108A18E28BBC00252364 /* newProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newProgressViewController.m; sourceTree = "<group>"; };
@@ -320,6 +334,9 @@
 				E944C84818DBDBF9002714D8 /* AppDelegate.m */,
 				E944C84D18DBDBF9002714D8 /* Images.xcassets */,
 				E944C86B18DBDC1A002714D8 /* main.storyboard */,
+				E96F179618F31A100057C3CA /* timelineCell.xib */,
+				E96F179B18F320B70057C3CA /* timelineCell.h */,
+				E96F179C18F320B70057C3CA /* timelineCell.m */,
 				E923993F18E9316100F7AB19 /* SettingViewController.h */,
 				E923994018E9316100F7AB19 /* SettingViewController.m */,
 				E9510E4218E210E7000C30B8 /* progressTableViewCell.xib */,
@@ -337,6 +354,12 @@
 				E9510E3918E20663000C30B8 /* Progress.m */,
 				E9EA337B18DF90C300609052 /* Goal.h */,
 				E9EA337C18DF90C300609052 /* Goal.m */,
+				E96F179318F24AA80057C3CA /* TimelinePost.h */,
+				E96F179418F24AA80057C3CA /* TimelinePost.m */,
+				E96F179818F320040057C3CA /* TimelineViewController.h */,
+				E96F179918F320040057C3CA /* TimelineViewController.m */,
+				E96F179E18F364B30057C3CA /* TimelinePostDetailsViewController.h */,
+				E96F179F18F364B30057C3CA /* TimelinePostDetailsViewController.m */,
 				E9EA338F18DFB94400609052 /* newGoalViewController.h */,
 				E9EA339018DFB94400609052 /* newGoalViewController.m */,
 				E90990AC18E56D46005D30BB /* NSDate+PrettyDate.h */,
@@ -579,6 +602,7 @@
 				E9EA33A218E00B7200609052 /* SignupBackgroundv2-568@2x.png in Resources */,
 				E9B8AD5318DCC01E00035AC8 /* Profile Picture.png in Resources */,
 				E923993C18E91FE100F7AB19 /* MoveCell-Icon.png in Resources */,
+				E96F179718F31A100057C3CA /* timelineCell.xib in Resources */,
 				E9B8AD4918DC304400035AC8 /* SignupBackground@2x.png in Resources */,
 				E9B8AD2A18DBEFAC00035AC8 /* FacebookLogin.png in Resources */,
 				E944C84E18DBDBF9002714D8 /* Images.xcassets in Resources */,
@@ -607,9 +631,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E96F179D18F320B70057C3CA /* timelineCell.m in Sources */,
 				E9EA33A018E0011700609052 /* goalTableViewCell.m in Sources */,
+				E96F17A018F364B30057C3CA /* TimelinePostDetailsViewController.m in Sources */,
 				E9EA333718DCFFA000609052 /* RDVExampleDayCell.m in Sources */,
 				E9EA332C18DCFF6200609052 /* MDRadialProgressTheme.m in Sources */,
+				E96F179A18F320040057C3CA /* TimelineViewController.m in Sources */,
 				E9EA335918DD00D700609052 /* User.m in Sources */,
 				E9EA337D18DF90C300609052 /* Goal.m in Sources */,
 				E9EA334818DCFFD000609052 /* FMDatabase.m in Sources */,
@@ -635,6 +662,7 @@
 				E9EA335018DCFFD000609052 /* FMResultSet.m in Sources */,
 				E9EA332A18DCFF6200609052 /* MDRadialProgressView.m in Sources */,
 				E9A1108B18E28BBC00252364 /* newProgressViewController.m in Sources */,
+				E96F179518F24AA80057C3CA /* TimelinePost.m in Sources */,
 				E944C84518DBDBF9002714D8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

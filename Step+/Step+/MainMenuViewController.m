@@ -139,6 +139,7 @@
     if ([[segue identifier] isEqualToString:@"toInProgressGoals"])
     {
          InProgressGoalsViewController*vc =[segue destinationViewController];
+        currentUser.userProfileImage=self.img.image;
         
         [vc setCurrentUser:self.currentUser];
     }
@@ -146,7 +147,7 @@
     if ([[segue identifier] isEqualToString:@"toDoneGoals"])
     {
         InProgressGoalsViewController*vc =[segue destinationViewController];
-        
+        currentUser.userProfileImage=self.img.image;
         [vc setCurrentUser:self.currentUser];
     }
 }

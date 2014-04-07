@@ -15,6 +15,7 @@
 @implementation newProgressViewController
 
 @synthesize currentGoal;
+@synthesize currentUser;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -133,6 +134,21 @@
         
         [[self delegate]setGoal:goal];
         
+        // New timeline Post
+        TimelinePost *newPost=[[TimelinePost alloc]init];
+        
+        newPost.userFirstName=currentUser.userFirsname;
+        newPost.userLastName=currentUser.userLastname;
+        newPost.username=currentUser.userUsername;
+        newPost.userProfilePic=currentUser.userProfileImage;
+        
+        newPost.PostContent=[NSString stringWithFormat:@"%@ made a progress: %@ in %@",currentUser.userFirsname,progress.progressDescription,currentGoal.goalName];
+        newPost.PostOtherRelatedInFormationContent=@"";
+        newPost.PostType=@"Progress";
+        newPost.PostDate=progress.progressDate;
+        
+        [newPost NewTimelinePost];
+        
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     
@@ -147,11 +163,42 @@
         
         [progress AddProgressltoDatabase];
         
-        Goal *goal=currentGoal;
+        // New timeline Post
+        TimelinePost *newPost=[[TimelinePost alloc]init];
         
+        newPost.userFirstName=currentUser.userFirsname;
+        newPost.userLastName=currentUser.userLastname;
+        newPost.username=currentUser.userUsername;
+        newPost.userProfilePic=currentUser.userProfileImage;
+        
+        newPost.PostContent=[NSString stringWithFormat:@"%@ made a progress: %@ in %@",currentUser.userFirsname,progress.progressDescription,currentGoal.goalName];
+        newPost.PostOtherRelatedInFormationContent=@"";
+        newPost.PostType=@"Progress";
+        Goal *goal=currentGoal;
+
+        newPost.PostDate=progress.progressDate;
+        
+        [newPost NewTimelinePost];
+
         goal.numberOfGoalSteps=goal.numberOfGoalSteps+1;
         [goal declareGoalAsAchieved];
         [goal declareGoalAsAchievedinParse];
+        
+        
+        TimelinePost *newPost2=[[TimelinePost alloc]init];
+        
+        newPost2.userFirstName=currentUser.userFirsname;
+        newPost2.userLastName=currentUser.userLastname;
+        newPost2.username=currentUser.userUsername;
+        newPost2.userProfilePic=currentUser.userProfileImage;
+        
+        newPost2.PostContent=[NSString stringWithFormat:@"%@ has achieved a goal: %@",currentUser.userFirsname,goal.goalName];
+        newPost2.PostOtherRelatedInFormationContent=@"";
+        newPost2.PostType=@"Goal";
+        newPost2.PostDate=progress.progressDate;
+        
+        [newPost2 NewTimelinePost];
+
         
         currentGoal.goalProgress=100.00;
         
@@ -172,7 +219,6 @@
         
         [message show];
     }
-    
     
     else if (check==-2 || check==-3) //invalid
     {

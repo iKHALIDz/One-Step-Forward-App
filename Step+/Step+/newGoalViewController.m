@@ -172,11 +172,28 @@
     
     [goal AddGoaltoDatabase];
     [goal AddGoalToParse];
+    
+    // Add Post To Timeline
+    
+    TimelinePost *newPost=[[TimelinePost alloc]init];
+    
+    newPost.userFirstName=currentUser.userFirsname;
+    newPost.userLastName=currentUser.userLastname;
+    newPost.username=currentUser.userUsername;
+    newPost.userProfilePic=currentUser.userProfileImage;
+    
+    newPost.PostContent=[NSString stringWithFormat:@"%@ started new goal: %@",currentUser.userFirsname,goal.goalName];
+    newPost.PostOtherRelatedInFormationContent=@"";
+    newPost.PostType=@"Goal";
+    newPost.PostDate=goal.goalDate;
+    
+    [newPost NewTimelinePost];
+
     currentUser.numberOfInProgressGoals=currentUser.numberOfInProgressGoals+1;
     [currentUser UpdateUserDataDB];
-    
+
+
     [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
 -(NSString *)nextIdentifies

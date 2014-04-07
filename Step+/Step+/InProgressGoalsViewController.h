@@ -28,8 +28,6 @@
 @property(nonatomic,strong) Goal *currentGoal;
 @property(nonatomic,retain) NSMutableArray *inProgressArray;
 @property(nonatomic,retain) NSMutableArray *inProgressArrayFromParse;
-
 @property (nonatomic,strong) MDRadialProgressView *radialView;
-
 
 @end

@@ -1,0 +1,20 @@
+//
+//  TimelineViewController.h
+//  Step+
+//
+//  Created by KHALID ALAHMARI on 4/7/14.
+//  Copyright (c) 2014 Khalid. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "timelineCell.h"
+#import "TimelinePost.h"
+#import "TimelinePostDetailsViewController.h"
+
+@interface TimelineViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableview;
+@property(nonatomic,retain) NSMutableArray *timelinePosts;
+@property (nonatomic,retain) TimelinePost *selectedtimeLinePost;
+
+@end

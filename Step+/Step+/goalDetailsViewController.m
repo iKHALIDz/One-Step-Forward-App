@@ -122,6 +122,8 @@
     {
         newProgressViewController* nav = [segue destinationViewController];
         [nav setCurrentGoal:currentGoal];
+        [nav setCurrentUser:currentUser];
+        
         [nav setDelegate:self];
     }
 }
@@ -171,10 +173,22 @@
     
     [message show];
     
-    [self.navigationController popViewControllerAnimated:YES];
+    TimelinePost *newPost=[[TimelinePost alloc]init];
     
+    newPost.userFirstName=currentUser.userFirsname;
+    newPost.userLastName=currentUser.userLastname;
+    newPost.username=currentUser.userUsername;
+    newPost.userProfilePic=currentUser.userProfileImage;
+    
+    newPost.PostContent=[NSString stringWithFormat:@"%@ has achieved a goal: %@",currentUser.userFirsname,goal.goalName];
+    newPost.PostOtherRelatedInFormationContent=@"";
+    newPost.PostType=@"Goal";
+    newPost.PostDate=progress.progressDate;
+    
+    [newPost NewTimelinePost];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 -(NSString*)DataFilePath{
     

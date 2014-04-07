@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Goal.h"
 #import "Progress.h"
+#import "TimelinePost.h"
+#import "User.h"
 
 @protocol updateGoal<NSObject>
 
@@ -29,6 +31,7 @@
 
 
 @property (retain) id <updateGoal> delegate;
+@property (nonatomic,strong) User *currentUser;
 
 
 @end

@@ -33,9 +33,6 @@
         NSLog(@"Fail to open");
         
     }
-    // 0 means False
-    // 1 means True
-
     
     NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Goals (goalId,GoalName,GoalDesc,GoalDeadline,isGoalCompleted,isGoalinPregress,goalPercentage,CreatedBy,goalDate,numberofStepTaken,goalType,goalpriority) VALUES (%d,'%@','%@','%@','%d','%d','%f','%@','%@','%d','%@','%d')",self.goalID,self.goalName,self.goalDescription,self.goalDeadline,isGoalCompleted,isGoalinProgress,goalProgress,self.createdBy,self.goalDate,self.numberOfGoalSteps,goalType,goalPriority];
     
@@ -86,6 +83,7 @@
     
     [newGoal saveEventually];
 }
+
 
 
 -(void) UpdataGoalWithProgress:(double) progress WithMark:(NSString*)mark
@@ -290,6 +288,8 @@
     }
     [db close];
 }
+
+
 
 
 @end

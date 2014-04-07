@@ -30,6 +30,7 @@
 
 -(void)UpdateUserDataUsingParse;
 -(void)UpdateUserDataDB;
+-(void)UpdateUserParse;
 
 
 @end
