@@ -46,12 +46,20 @@
                             <action selector="comment:" destination="lK7-SG-gpm" eventType="touchUpInside" id="LhH-1p-GR0"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5t-6Z-KoS">
+                        <rect key="frame" x="14" y="17" width="54" height="47"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="name" destination="0Su-e0-LY8" id="2uS-EH-Fbj"/>
                 <outlet property="postContent" destination="NwG-IX-g0E" id="P9E-fL-5N9"/>
                 <outlet property="timedate" destination="BN1-co-4dy" id="mNJ-3w-A0D"/>
+                <outlet property="toUserinfo" destination="h5t-6Z-KoS" id="wFu-18-BZl"/>
                 <outlet property="userpic" destination="Kp8-HW-7Ts" id="Tlj-tY-8s5"/>
             </connections>
         </tableViewCell>

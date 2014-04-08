@@ -39,7 +39,6 @@
 @property(nonatomic,retain) NSMutableArray *progressList;
 @property(nonatomic,retain) NSMutableArray *progressListFromParse;
 
-
 @property(nonatomic,strong) Goal *currentGoal;
 @property (nonatomic,strong) User *currentUser;
 

@@ -148,6 +148,8 @@
     currentUser.numberOfInProgressGoals=currentUser.numberOfInProgressGoals-1;
     
     [currentUser UpdateUserDataDB];
+    [currentUser UpdateUserParse];
+
     
     Progress *progress=[[Progress alloc]init];
     progress.progressDescription=@"Achieved Peogress";
@@ -190,14 +192,12 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
 -(NSString*)DataFilePath{
     
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    
-    
     return [paths objectAtIndex:0];
 }
-
 
 -(NSMutableArray *) getProgressList
 {
@@ -343,6 +343,22 @@
     [goal DeleteGoalFromParse];
     [progress DeleteProgressFromParse];
     
+    if (goal.isGoalCompleted==NO)
+    {
+        currentUser.numberOfInProgressGoals=currentUser.numberOfInProgressGoals-1;
+        [currentUser UpdateUserDataDB];
+        [currentUser UpdateUserParse];
+        
+        
+    }
+    else
+    {
+        currentUser.numberOfAchievedGoals=currentUser.numberOfAchievedGoals-1;
+        
+        [currentUser UpdateUserDataDB];
+        [currentUser UpdateUserParse];
+
+    }
     
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Success!"
                                                       message:@"The goal is deleteted"

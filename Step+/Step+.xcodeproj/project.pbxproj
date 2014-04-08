@@ -45,6 +45,10 @@
 		E96F179A18F320040057C3CA /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E96F179918F320040057C3CA /* TimelineViewController.m */; };
 		E96F179D18F320B70057C3CA /* timelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96F179C18F320B70057C3CA /* timelineCell.m */; };
 		E96F17A018F364B30057C3CA /* TimelinePostDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E96F179F18F364B30057C3CA /* TimelinePostDetailsViewController.m */; };
+		E96F17A318F3833A0057C3CA /* TimelinePostCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96F17A218F3833A0057C3CA /* TimelinePostCommentTableViewCell.m */; };
+		E96F17A518F3838C0057C3CA /* TimelinePostCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E96F17A418F3838C0057C3CA /* TimelinePostCommentTableViewCell.xib */; };
+		E96F17A818F385CD0057C3CA /* timelinePostComment.m in Sources */ = {isa = PBXBuildFile; fileRef = E96F17A718F385CD0057C3CA /* timelinePostComment.m */; };
+		E99348BD18F39E4000844C2C /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99348BC18F39E4000844C2C /* UserProfileViewController.m */; };
 		E995330D18E15D7F00F42C08 /* AddButton.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E995330C18E15D7F00F42C08 /* AddButton.jpg */; };
 		E9A1108B18E28BBC00252364 /* newProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A1108A18E28BBC00252364 /* newProgressViewController.m */; };
 		E9B8AD2818DBEC4600035AC8 /* LoginBox.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B8AD2718DBEC4600035AC8 /* LoginBox.png */; };
@@ -169,6 +173,13 @@
 		E96F179C18F320B70057C3CA /* timelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = timelineCell.m; sourceTree = "<group>"; };
 		E96F179E18F364B30057C3CA /* TimelinePostDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelinePostDetailsViewController.h; sourceTree = "<group>"; };
 		E96F179F18F364B30057C3CA /* TimelinePostDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelinePostDetailsViewController.m; sourceTree = "<group>"; };
+		E96F17A118F3833A0057C3CA /* TimelinePostCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelinePostCommentTableViewCell.h; sourceTree = "<group>"; };
+		E96F17A218F3833A0057C3CA /* TimelinePostCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelinePostCommentTableViewCell.m; sourceTree = "<group>"; };
+		E96F17A418F3838C0057C3CA /* TimelinePostCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelinePostCommentTableViewCell.xib; sourceTree = "<group>"; };
+		E96F17A618F385CD0057C3CA /* timelinePostComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timelinePostComment.h; sourceTree = "<group>"; };
+		E96F17A718F385CD0057C3CA /* timelinePostComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = timelinePostComment.m; sourceTree = "<group>"; };
+		E99348BB18F39E4000844C2C /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
+		E99348BC18F39E4000844C2C /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		E995330C18E15D7F00F42C08 /* AddButton.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = AddButton.jpg; sourceTree = "<group>"; };
 		E9A1108918E28BBC00252364 /* newProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newProgressViewController.h; sourceTree = "<group>"; };
 		E9A1108A18E28BBC00252364 /* newProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newProgressViewController.m; sourceTree = "<group>"; };
@@ -327,44 +338,28 @@
 		E944C83E18DBDBF9002714D8 /* Step+ */ = {
 			isa = PBXGroup;
 			children = (
-				E9EA339C18DFFFF700609052 /* goalTableViewCell.xib */,
-				E9EA339E18E0011700609052 /* goalTableViewCell.h */,
-				E9EA339F18E0011700609052 /* goalTableViewCell.m */,
+				E99348BA18F39CA700844C2C /* Setting */,
+				E96F17A918F38FD80057C3CA /* Local Part */,
 				E944C84718DBDBF9002714D8 /* AppDelegate.h */,
 				E944C84818DBDBF9002714D8 /* AppDelegate.m */,
 				E944C84D18DBDBF9002714D8 /* Images.xcassets */,
 				E944C86B18DBDC1A002714D8 /* main.storyboard */,
+				E96F17A118F3833A0057C3CA /* TimelinePostCommentTableViewCell.h */,
+				E96F17A418F3838C0057C3CA /* TimelinePostCommentTableViewCell.xib */,
+				E96F17A218F3833A0057C3CA /* TimelinePostCommentTableViewCell.m */,
 				E96F179618F31A100057C3CA /* timelineCell.xib */,
 				E96F179B18F320B70057C3CA /* timelineCell.h */,
 				E96F179C18F320B70057C3CA /* timelineCell.m */,
-				E923993F18E9316100F7AB19 /* SettingViewController.h */,
-				E923994018E9316100F7AB19 /* SettingViewController.m */,
-				E9510E4218E210E7000C30B8 /* progressTableViewCell.xib */,
-				E9510E4418E21136000C30B8 /* ProgressTableViewCell.h */,
-				E9510E4518E21136000C30B8 /* ProgressTableViewCell.m */,
-				E9A1108918E28BBC00252364 /* newProgressViewController.h */,
-				E9A1108A18E28BBC00252364 /* newProgressViewController.m */,
-				E9EA338318DF96D500609052 /* InProgressGoalsViewController.h */,
-				E9EA338418DF96D500609052 /* InProgressGoalsViewController.m */,
-				E909908818E51D66005D30BB /* achievedGoalsUIViewController.h */,
-				E909908918E51D66005D30BB /* achievedGoalsUIViewController.m */,
-				E9EA33A318E10F2200609052 /* goalDetailsViewController.h */,
-				E9EA33A418E10F2200609052 /* goalDetailsViewController.m */,
-				E9510E3818E20663000C30B8 /* Progress.h */,
-				E9510E3918E20663000C30B8 /* Progress.m */,
-				E9EA337B18DF90C300609052 /* Goal.h */,
-				E9EA337C18DF90C300609052 /* Goal.m */,
 				E96F179318F24AA80057C3CA /* TimelinePost.h */,
 				E96F179418F24AA80057C3CA /* TimelinePost.m */,
 				E96F179818F320040057C3CA /* TimelineViewController.h */,
 				E96F179918F320040057C3CA /* TimelineViewController.m */,
 				E96F179E18F364B30057C3CA /* TimelinePostDetailsViewController.h */,
 				E96F179F18F364B30057C3CA /* TimelinePostDetailsViewController.m */,
-				E9EA338F18DFB94400609052 /* newGoalViewController.h */,
-				E9EA339018DFB94400609052 /* newGoalViewController.m */,
-				E90990AC18E56D46005D30BB /* NSDate+PrettyDate.h */,
-				E90990AD18E56D46005D30BB /* NSDate+PrettyDate.m */,
-				E9EA337F18DF90CD00609052 /* Phase 1 */,
+				E99348BB18F39E4000844C2C /* UserProfileViewController.h */,
+				E99348BC18F39E4000844C2C /* UserProfileViewController.m */,
+				E96F17A618F385CD0057C3CA /* timelinePostComment.h */,
+				E96F17A718F385CD0057C3CA /* timelinePostComment.m */,
 				E9EA335318DCFFEB00609052 /* External Libararies */,
 				E944C83F18DBDBF9002714D8 /* Supporting Files */,
 			);
@@ -415,6 +410,43 @@
 				E9B8AD4118DC2BB000035AC8 /* Signup */,
 			);
 			name = "Image Resourses";
+			sourceTree = "<group>";
+		};
+		E96F17A918F38FD80057C3CA /* Local Part */ = {
+			isa = PBXGroup;
+			children = (
+				E9EA337F18DF90CD00609052 /* Phase 1 */,
+				E9EA339C18DFFFF700609052 /* goalTableViewCell.xib */,
+				E9EA339E18E0011700609052 /* goalTableViewCell.h */,
+				E9EA339F18E0011700609052 /* goalTableViewCell.m */,
+				E9510E4218E210E7000C30B8 /* progressTableViewCell.xib */,
+				E9510E4418E21136000C30B8 /* ProgressTableViewCell.h */,
+				E9510E4518E21136000C30B8 /* ProgressTableViewCell.m */,
+				E9A1108918E28BBC00252364 /* newProgressViewController.h */,
+				E9A1108A18E28BBC00252364 /* newProgressViewController.m */,
+				E9EA338318DF96D500609052 /* InProgressGoalsViewController.h */,
+				E9EA338418DF96D500609052 /* InProgressGoalsViewController.m */,
+				E909908818E51D66005D30BB /* achievedGoalsUIViewController.h */,
+				E909908918E51D66005D30BB /* achievedGoalsUIViewController.m */,
+				E9EA33A318E10F2200609052 /* goalDetailsViewController.h */,
+				E9EA33A418E10F2200609052 /* goalDetailsViewController.m */,
+				E9510E3818E20663000C30B8 /* Progress.h */,
+				E9510E3918E20663000C30B8 /* Progress.m */,
+				E9EA337B18DF90C300609052 /* Goal.h */,
+				E9EA337C18DF90C300609052 /* Goal.m */,
+				E9EA338F18DFB94400609052 /* newGoalViewController.h */,
+				E9EA339018DFB94400609052 /* newGoalViewController.m */,
+			);
+			name = "Local Part";
+			sourceTree = "<group>";
+		};
+		E99348BA18F39CA700844C2C /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				E923993F18E9316100F7AB19 /* SettingViewController.h */,
+				E923994018E9316100F7AB19 /* SettingViewController.m */,
+			);
+			name = Setting;
 			sourceTree = "<group>";
 		};
 		E9B8AD4018DC2BA000035AC8 /* Login */ = {
@@ -489,6 +521,8 @@
 		E9EA335318DCFFEB00609052 /* External Libararies */ = {
 			isa = PBXGroup;
 			children = (
+				E90990AC18E56D46005D30BB /* NSDate+PrettyDate.h */,
+				E90990AD18E56D46005D30BB /* NSDate+PrettyDate.m */,
 				E9EA333018DCFF7300609052 /* RadialProgress */,
 				E9EA333D18DCFFAE00609052 /* RDVECalendar */,
 				E9EA335218DCFFDE00609052 /* Database */,
@@ -597,6 +631,7 @@
 				E944C87B18DBE59B002714D8 /* LoginBackground-568@2x.png in Resources */,
 				E923993E18E92FF100F7AB19 /* SettingIcon.png in Resources */,
 				E9EA339D18DFFFF700609052 /* goalTableViewCell.xib in Resources */,
+				E96F17A518F3838C0057C3CA /* TimelinePostCommentTableViewCell.xib in Resources */,
 				E944C84318DBDBF9002714D8 /* InfoPlist.strings in Resources */,
 				E9B8AD4418DC2E2A00035AC8 /* SignupBackground-568@2x.png in Resources */,
 				E9EA33A218E00B7200609052 /* SignupBackgroundv2-568@2x.png in Resources */,
@@ -631,6 +666,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E96F17A318F3833A0057C3CA /* TimelinePostCommentTableViewCell.m in Sources */,
 				E96F179D18F320B70057C3CA /* timelineCell.m in Sources */,
 				E9EA33A018E0011700609052 /* goalTableViewCell.m in Sources */,
 				E96F17A018F364B30057C3CA /* TimelinePostDetailsViewController.m in Sources */,
@@ -639,6 +675,7 @@
 				E96F179A18F320040057C3CA /* TimelineViewController.m in Sources */,
 				E9EA335918DD00D700609052 /* User.m in Sources */,
 				E9EA337D18DF90C300609052 /* Goal.m in Sources */,
+				E99348BD18F39E4000844C2C /* UserProfileViewController.m in Sources */,
 				E9EA334818DCFFD000609052 /* FMDatabase.m in Sources */,
 				E9EA337A18DD1C0800609052 /* MainMenuViewController.m in Sources */,
 				E923994118E9316100F7AB19 /* SettingViewController.m in Sources */,
@@ -663,6 +700,7 @@
 				E9EA332A18DCFF6200609052 /* MDRadialProgressView.m in Sources */,
 				E9A1108B18E28BBC00252364 /* newProgressViewController.m in Sources */,
 				E96F179518F24AA80057C3CA /* TimelinePost.m in Sources */,
+				E96F17A818F385CD0057C3CA /* timelinePostComment.m in Sources */,
 				E944C84518DBDBF9002714D8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -21,6 +21,7 @@
 
 - (IBAction)comment:(UIButton *)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *toUserinfo;
 
 
 @end

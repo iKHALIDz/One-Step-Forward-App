@@ -10,11 +10,17 @@
 #import "timelineCell.h"
 #import "TimelinePost.h"
 #import "TimelinePostDetailsViewController.h"
+#import "User.h"
+#import "UserProfileViewController.h"
 
 @interface TimelineViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property(nonatomic,retain) NSMutableArray *timelinePosts;
 @property (nonatomic,retain) TimelinePost *selectedtimeLinePost;
+@property (nonatomic,strong) User *currentUser;
+
+@property (nonatomic,retain) NSString *currentUsername;
+
 
 @end

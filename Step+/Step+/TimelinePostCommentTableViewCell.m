@@ -1,14 +1,14 @@
 //
-//  timelineCell.m
+//  TimelinePostCommentTableViewCell.m
 //  Step+
 //
 //  Created by KHALID ALAHMARI on 4/7/14.
 //  Copyright (c) 2014 Khalid. All rights reserved.
 //
 
-#import "timelineCell.h"
+#import "TimelinePostCommentTableViewCell.h"
 
-@implementation timelineCell
+@implementation TimelinePostCommentTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -31,7 +31,4 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)comment:(UIButton *)sender {
-    
-}
 @end

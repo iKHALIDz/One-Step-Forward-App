@@ -18,11 +18,15 @@
 @synthesize userLastName;
 @synthesize userProfilePic;
 @synthesize PostType;
+@synthesize postID;
+
 
 -(void) NewTimelinePost
 {
-    PFObject *newPost = [PFObject objectWithClassName:@"Timeline"];
+    self.postID=[self nextIdentifies];
     
+    PFObject *newPost = [PFObject objectWithClassName:@"Timeline"];
+    [newPost setObject:self.postID forKey:@"postID"];
     [newPost setObject:self.username forKey:@"username"];
     [newPost setObject:self.userFirstName forKey:@"userFirstName"];
     [newPost setObject:self.userLastName forKey:@"userLastName"];
@@ -39,6 +43,19 @@
         [newPost saveEventually];
     }];
 }
+
+
+-(NSString *)nextIdentifies
+{
+    static NSString* lastID = @"PostlastID";
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger identifier = [defaults integerForKey:lastID] + 1;
+    [defaults setInteger:identifier forKey:lastID];
+    [defaults synchronize];
+    return [NSString stringWithFormat:@"%ld",(long)identifier];
+}
+
+
 
 @end
 

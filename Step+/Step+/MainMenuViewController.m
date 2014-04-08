@@ -150,6 +150,14 @@
         currentUser.userProfileImage=self.img.image;
         [vc setCurrentUser:self.currentUser];
     }
+    
+    if ([[segue identifier] isEqualToString:@"toSocialPart"])
+    {
+        TimelineViewController*vc =[segue destinationViewController];
+        currentUser.userProfileImage=self.img.image;
+        [vc setCurrentUser:self.currentUser];
+    }
+    
 }
 
 @end

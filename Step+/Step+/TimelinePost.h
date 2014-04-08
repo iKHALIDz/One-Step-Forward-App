@@ -19,6 +19,8 @@
 @property (nonatomic,retain) NSString *PostContent;
 @property (nonatomic,retain) NSString *PostOtherRelatedInFormationContent;
 @property (nonatomic,retain) NSString * PostType;
+@property (nonatomic,retain) NSString * postID;
+
 
 -(void) NewTimelinePost;
 

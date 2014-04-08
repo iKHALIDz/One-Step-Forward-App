@@ -191,8 +191,9 @@
 
     currentUser.numberOfInProgressGoals=currentUser.numberOfInProgressGoals+1;
     [currentUser UpdateUserDataDB];
-
-
+    [currentUser UpdateUserParse];
+    
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

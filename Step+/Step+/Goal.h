@@ -39,5 +39,4 @@
 
 -(void) UpdateGoalPriority:(NSInteger) indexP;
 
-
 @end

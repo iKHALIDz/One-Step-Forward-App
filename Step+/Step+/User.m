@@ -214,6 +214,24 @@
     
 }
 
+-(void)UpdateUserParse
+{
+    PFQuery *query = [PFUser query];
+    
+    [query whereKey:@"username" equalTo:self.userUsername];
+    
+
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * updateUser, NSError *error){
+        if (!error) {
+            [updateUser setObject:[NSString stringWithFormat:@"%d",numberOfInProgressGoals] forKey:@"numberOfInProgressGoals"];
+            [updateUser setObject:[NSString stringWithFormat:@"%d",numberOfAchievedGoals] forKey:@"numberOfAchievedGoals"];
+            [updateUser saveEventually];
+            
+        }}];
+    
+    
+    
+}
 -(NSString*)DataFilePath
 {
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

@@ -15,6 +15,8 @@
 @implementation TimelineViewController
 @synthesize timelinePosts;
 @synthesize selectedtimeLinePost;
+@synthesize currentUser;
+@synthesize currentUsername;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -79,8 +81,27 @@
 
     cell.userpic.image=[[timelinePosts objectAtIndex:indexPath.row] userProfilePic];
     
+    [cell.toUserinfo addTarget:self action:@selector(GoToUserInfo:)  forControlEvents:UIControlEventTouchUpInside];
+    [cell.toUserinfo setTag:indexPath.row];
+    
     return cell;
 }
+
+- (IBAction)GoToUserInfo:(id)sender
+{
+    
+    UIButton *button = (UIButton *)sender;
+    
+    int row = button.tag;
+    NSLog(@"isPressed");
+
+    
+    currentUsername=[[timelinePosts objectAtIndex:row] username];
+    
+
+    [self performSegueWithIdentifier:@"GoToUserProfile" sender:self];
+}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -106,9 +127,9 @@
         post.userFirstName=[obj objectForKey:@"userFirstName"];
         post.userLastName=[obj objectForKey:@"userLastName"];
         post.username=[obj objectForKey:@"username"];
-        
         post.PostDate=[obj objectForKey:@"PostDate"];
         post.PostContent=[obj objectForKey:@"PostContent"];
+        post.postID=[obj objectForKey:@"postID"];
         
         PFFile *image = (PFFile *)[obj objectForKey:@"userProfilePic"];
         post.userProfilePic=[UIImage imageWithData:[image getData]];
@@ -119,9 +140,9 @@
     return list;
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     selectedtimeLinePost.userFirstName=[NSString stringWithFormat:@"%@",[[timelinePosts objectAtIndex:indexPath.row] userFirstName]];
     
     selectedtimeLinePost.userLastName=[NSString stringWithFormat:@"%@",[[timelinePosts objectAtIndex:indexPath.row] userLastName]];
@@ -134,12 +155,11 @@
     
     selectedtimeLinePost.PostContent=[NSString stringWithFormat:@"%@",[[timelinePosts objectAtIndex:indexPath.row] PostContent]];
 
-
+    selectedtimeLinePost.postID=[NSString stringWithFormat:@"%@",[[timelinePosts objectAtIndex:indexPath.row] postID]];
+    
     [self performSegueWithIdentifier:@"TimelinePostToDetails" sender:nil];
     
 }
-
-
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -147,7 +167,16 @@
     {
         TimelinePostDetailsViewController *nav = [segue destinationViewController];
         [nav setCurrentSelectedtimeLinePost:selectedtimeLinePost];
+        [nav setCurrentUser:currentUser];
+        
+    }
+    
+    if ([[segue identifier] isEqualToString:@"GoToUserProfile"])
+    {
+        UserProfileViewController *nav = [segue destinationViewController];
+        [nav setSelectedUsername:self.currentUsername];
     }
 }
+
 
 @end

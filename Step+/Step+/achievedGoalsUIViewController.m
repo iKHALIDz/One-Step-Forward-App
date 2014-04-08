@@ -378,7 +378,7 @@
     {
         goalDetailsViewController *nav = [segue destinationViewController];
         [nav setCurrentGoal:currentGoal];
-        
+        [nav setCurrentUser:self.currentUser];
     }
 }
 

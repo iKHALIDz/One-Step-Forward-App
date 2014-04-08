@@ -11,6 +11,7 @@
 #import <Parse/Parse.h>
 #import "LoginViewController.h"
 #import "InProgressGoalsViewController.h"
+#import "TimelineViewController.h"
 
 
 @interface MainMenuViewController : UIViewController
@@ -25,5 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel* NumberAchievedGoals;
 
 @property (weak, nonatomic) IBOutlet UILabel *userFullname;
+
+
 
 @end
