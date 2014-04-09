@@ -143,7 +143,8 @@
         newPost.userProfilePic=currentUser.userProfileImage;
         
         newPost.PostContent=[NSString stringWithFormat:@"%@ made a progress: %@ in %@",currentUser.userFirsname,progress.progressDescription,currentGoal.goalName];
-        newPost.PostOtherRelatedInFormationContent=@"";
+        newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",progress.progressID];
+        
         newPost.PostType=@"Progress";
         newPost.PostDate=progress.progressDate;
         
@@ -172,7 +173,10 @@
         newPost.userProfilePic=currentUser.userProfileImage;
         
         newPost.PostContent=[NSString stringWithFormat:@"%@ made a progress: %@ in %@",currentUser.userFirsname,progress.progressDescription,currentGoal.goalName];
-        newPost.PostOtherRelatedInFormationContent=@"";
+        
+        
+        newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",progress.progressID];
+        
         newPost.PostType=@"Progress";
         Goal *goal=currentGoal;
 
@@ -193,7 +197,8 @@
         newPost2.userProfilePic=currentUser.userProfileImage;
         
         newPost2.PostContent=[NSString stringWithFormat:@"%@ has achieved a goal: %@",currentUser.userFirsname,goal.goalName];
-        newPost2.PostOtherRelatedInFormationContent=@"";
+        newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",goal.goalID];
+        
         newPost2.PostType=@"Goal";
         newPost2.PostDate=progress.progressDate;
         

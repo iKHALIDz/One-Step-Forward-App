@@ -20,6 +20,7 @@
 @synthesize progressList;
 @synthesize progressListFromParse;
 @synthesize tableview = _tableview;
+@synthesize currentProgress;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,6 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    currentProgress=[[Progress alloc]init];
     
 
     // Do any additional setup after loading the view.
@@ -126,6 +129,24 @@
         
         [nav setDelegate:self];
     }
+    
+    if ([[segue identifier] isEqualToString:@"toGoalSuggestion"])
+    {
+        goalSuggestionsViewController* nav = [segue destinationViewController];
+        [nav setCurrentGoal:currentGoal];
+        [nav setCurrentUser:currentUser];
+        
+    }
+    
+    if ([[segue identifier] isEqualToString:@"toProgressDetails"])
+    {
+        ProgressDetailsViewController* nav = [segue destinationViewController];
+        [nav setCurrentProgress:currentProgress];
+        [nav setCurrentUser:currentUser];
+        
+    }
+    
+
 }
 
 -(void) setGoal:(Goal *)updatedGoal
@@ -183,7 +204,8 @@
     newPost.userProfilePic=currentUser.userProfileImage;
     
     newPost.PostContent=[NSString stringWithFormat:@"%@ has achieved a goal: %@",currentUser.userFirsname,goal.goalName];
-    newPost.PostOtherRelatedInFormationContent=@"";
+    newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",goal.goalID];
+    
     newPost.PostType=@"Goal";
     newPost.PostDate=progress.progressDate;
     
@@ -191,7 +213,6 @@
     
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 -(NSString*)DataFilePath{
     
@@ -394,6 +415,22 @@
     NSLog(@"%@",I);
     
     return I;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    currentProgress.progressID = [[progressList objectAtIndex:indexPath.row] progressID];
+    currentProgress.progressPercentageToGoal =[[progressList objectAtIndex:indexPath.row] progressPercentageToGoal];
+    
+    currentProgress.goalID=currentGoal.goalID;
+    
+    currentProgress.LoggedBy=currentGoal.createdBy;
+    
+    currentProgress.progressDescription=[[progressList objectAtIndex:indexPath.row]progressDescription];
+    currentProgress.progressDate=[[progressList objectAtIndex:indexPath.row]progressDate];
+    currentProgress.stepOrder=[[progressList objectAtIndex:indexPath.row]stepOrder];
+    
+    [self performSegueWithIdentifier:@"toProgressDetails" sender:nil];
 }
 
 @end

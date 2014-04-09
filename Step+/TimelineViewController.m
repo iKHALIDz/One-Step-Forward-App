@@ -130,7 +130,8 @@
         post.PostDate=[obj objectForKey:@"PostDate"];
         post.PostContent=[obj objectForKey:@"PostContent"];
         post.postID=[obj objectForKey:@"postID"];
-        
+        post.PostOtherRelatedInFormationContent=[obj objectForKey:@"PostOtherRelatedInFormationContent"];
+
         PFFile *image = (PFFile *)[obj objectForKey:@"userProfilePic"];
         post.userProfilePic=[UIImage imageWithData:[image getData]];
         
@@ -157,6 +158,8 @@
 
     selectedtimeLinePost.postID=[NSString stringWithFormat:@"%@",[[timelinePosts objectAtIndex:indexPath.row] postID]];
     
+    selectedtimeLinePost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%@",[[timelinePosts objectAtIndex:indexPath.row] PostOtherRelatedInFormationContent]];
+
     [self performSegueWithIdentifier:@"TimelinePostToDetails" sender:nil];
     
 }
@@ -175,6 +178,8 @@
     {
         UserProfileViewController *nav = [segue destinationViewController];
         [nav setSelectedUsername:self.currentUsername];
+        [nav setCurrentUser:currentUser];
+
     }
 }
 

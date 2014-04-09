@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Goal.h"
 #import "User.h"
+#import "Progress.h"
+
 #import "newProgressViewController.h"
 #import "FMDatabase.h"
 #import "ProgressTableViewCell.h"
 #import "NSDate+PrettyDate.h"
 #import "TimelinePost.h"
+#import "goalSuggestionsViewController.h"
+#import "ProgressDetailsViewController.h"
 
 
 
@@ -22,6 +26,7 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scroller;
 
+@property (strong,nonatomic) Progress * currentProgress;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
 @property (weak, nonatomic) IBOutlet UILabel *GoalNameLable;

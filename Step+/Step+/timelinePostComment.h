@@ -15,5 +15,6 @@
 @property (nonatomic,retain) NSString * commentContent;
 @property (nonatomic,retain) UIImage *FromuserProfilePic;
 @property (nonatomic,retain) NSString *PostID;
+@property (nonatomic,retain) NSString *ItemID;
 
 @end

@@ -49,6 +49,9 @@
 		E96F17A518F3838C0057C3CA /* TimelinePostCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E96F17A418F3838C0057C3CA /* TimelinePostCommentTableViewCell.xib */; };
 		E96F17A818F385CD0057C3CA /* timelinePostComment.m in Sources */ = {isa = PBXBuildFile; fileRef = E96F17A718F385CD0057C3CA /* timelinePostComment.m */; };
 		E99348BD18F39E4000844C2C /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99348BC18F39E4000844C2C /* UserProfileViewController.m */; };
+		E99348C018F4639200844C2C /* UserProfileViewControllerDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99348BF18F4639200844C2C /* UserProfileViewControllerDetailsViewController.m */; };
+		E99348C318F47D1600844C2C /* goalSuggestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99348C218F47D1600844C2C /* goalSuggestionsViewController.m */; };
+		E99348C618F4D03500844C2C /* ProgressDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99348C518F4D03500844C2C /* ProgressDetailsViewController.m */; };
 		E995330D18E15D7F00F42C08 /* AddButton.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E995330C18E15D7F00F42C08 /* AddButton.jpg */; };
 		E9A1108B18E28BBC00252364 /* newProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A1108A18E28BBC00252364 /* newProgressViewController.m */; };
 		E9B8AD2818DBEC4600035AC8 /* LoginBox.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B8AD2718DBEC4600035AC8 /* LoginBox.png */; };
@@ -180,6 +183,12 @@
 		E96F17A718F385CD0057C3CA /* timelinePostComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = timelinePostComment.m; sourceTree = "<group>"; };
 		E99348BB18F39E4000844C2C /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		E99348BC18F39E4000844C2C /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
+		E99348BE18F4639200844C2C /* UserProfileViewControllerDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewControllerDetailsViewController.h; sourceTree = "<group>"; };
+		E99348BF18F4639200844C2C /* UserProfileViewControllerDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewControllerDetailsViewController.m; sourceTree = "<group>"; };
+		E99348C118F47D1600844C2C /* goalSuggestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goalSuggestionsViewController.h; sourceTree = "<group>"; };
+		E99348C218F47D1600844C2C /* goalSuggestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goalSuggestionsViewController.m; sourceTree = "<group>"; };
+		E99348C418F4D03500844C2C /* ProgressDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressDetailsViewController.h; sourceTree = "<group>"; };
+		E99348C518F4D03500844C2C /* ProgressDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressDetailsViewController.m; sourceTree = "<group>"; };
 		E995330C18E15D7F00F42C08 /* AddButton.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = AddButton.jpg; sourceTree = "<group>"; };
 		E9A1108918E28BBC00252364 /* newProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newProgressViewController.h; sourceTree = "<group>"; };
 		E9A1108A18E28BBC00252364 /* newProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newProgressViewController.m; sourceTree = "<group>"; };
@@ -358,6 +367,8 @@
 				E96F179F18F364B30057C3CA /* TimelinePostDetailsViewController.m */,
 				E99348BB18F39E4000844C2C /* UserProfileViewController.h */,
 				E99348BC18F39E4000844C2C /* UserProfileViewController.m */,
+				E99348BE18F4639200844C2C /* UserProfileViewControllerDetailsViewController.h */,
+				E99348BF18F4639200844C2C /* UserProfileViewControllerDetailsViewController.m */,
 				E96F17A618F385CD0057C3CA /* timelinePostComment.h */,
 				E96F17A718F385CD0057C3CA /* timelinePostComment.m */,
 				E9EA335318DCFFEB00609052 /* External Libararies */,
@@ -430,6 +441,10 @@
 				E909908918E51D66005D30BB /* achievedGoalsUIViewController.m */,
 				E9EA33A318E10F2200609052 /* goalDetailsViewController.h */,
 				E9EA33A418E10F2200609052 /* goalDetailsViewController.m */,
+				E99348C418F4D03500844C2C /* ProgressDetailsViewController.h */,
+				E99348C518F4D03500844C2C /* ProgressDetailsViewController.m */,
+				E99348C118F47D1600844C2C /* goalSuggestionsViewController.h */,
+				E99348C218F47D1600844C2C /* goalSuggestionsViewController.m */,
 				E9510E3818E20663000C30B8 /* Progress.h */,
 				E9510E3918E20663000C30B8 /* Progress.m */,
 				E9EA337B18DF90C300609052 /* Goal.h */,
@@ -672,6 +687,7 @@
 				E96F17A018F364B30057C3CA /* TimelinePostDetailsViewController.m in Sources */,
 				E9EA333718DCFFA000609052 /* RDVExampleDayCell.m in Sources */,
 				E9EA332C18DCFF6200609052 /* MDRadialProgressTheme.m in Sources */,
+				E99348C618F4D03500844C2C /* ProgressDetailsViewController.m in Sources */,
 				E96F179A18F320040057C3CA /* TimelineViewController.m in Sources */,
 				E9EA335918DD00D700609052 /* User.m in Sources */,
 				E9EA337D18DF90C300609052 /* Goal.m in Sources */,
@@ -693,10 +709,12 @@
 				E9EA339118DFB94400609052 /* newGoalViewController.m in Sources */,
 				E9EA334E18DCFFD000609052 /* FMDatabaseQueue.m in Sources */,
 				E9510E3A18E20663000C30B8 /* Progress.m in Sources */,
+				E99348C318F47D1600844C2C /* goalSuggestionsViewController.m in Sources */,
 				E9EA332E18DCFF6200609052 /* MDRadialProgressLabel.m in Sources */,
 				E944C84C18DBDBF9002714D8 /* Step_.xcdatamodeld in Sources */,
 				E944C84918DBDBF9002714D8 /* AppDelegate.m in Sources */,
 				E9EA335018DCFFD000609052 /* FMResultSet.m in Sources */,
+				E99348C018F4639200844C2C /* UserProfileViewControllerDetailsViewController.m in Sources */,
 				E9EA332A18DCFF6200609052 /* MDRadialProgressView.m in Sources */,
 				E9A1108B18E28BBC00252364 /* newProgressViewController.m in Sources */,
 				E96F179518F24AA80057C3CA /* TimelinePost.m in Sources */,

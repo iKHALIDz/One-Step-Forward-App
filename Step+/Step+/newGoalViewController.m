@@ -183,7 +183,8 @@
     newPost.userProfilePic=currentUser.userProfileImage;
     
     newPost.PostContent=[NSString stringWithFormat:@"%@ started new goal: %@",currentUser.userFirsname,goal.goalName];
-    newPost.PostOtherRelatedInFormationContent=@"";
+    newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",goal.goalID];
+    
     newPost.PostType=@"Goal";
     newPost.PostDate=goal.goalDate;
     
@@ -206,7 +207,7 @@
     [defaults synchronize];
     return [NSString stringWithFormat:@"%ld",(long)identifier];
 }
-            
+
 
 -(BOOL) compareBetweenTwoDates:(NSDate*) pickerDate
 {

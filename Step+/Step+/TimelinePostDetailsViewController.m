@@ -69,6 +69,7 @@
     [newPostComment setObject:currentUser.userUsername forKey:@"From"];
     [newPostComment setObject:self.commentTextField.text forKey:@"commentContent"];
     [newPostComment setObject:self.currentSelectedtimeLinePost.postID forKey:@"PostID"];
+    [newPostComment setObject:self.currentSelectedtimeLinePost.PostOtherRelatedInFormationContent forKey:@"ItemID"];
     
     NSData *pictureData = UIImagePNGRepresentation(currentUser.userProfileImage);
     PFFile *file = [PFFile fileWithName:@"img" data:pictureData];
@@ -149,6 +150,8 @@
     {
         UserProfileViewController *nav = [segue destinationViewController];
         [nav setSelectedUsername:currentUsername];
+        [nav setCurrentUser:currentUser];
+
         
     }
 }

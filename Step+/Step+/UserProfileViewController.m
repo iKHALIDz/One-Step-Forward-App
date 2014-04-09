@@ -19,6 +19,10 @@
 @synthesize tableview=_tableview;
 @synthesize inProgressArrayFromParse;
 @synthesize radialView;
+@synthesize goalPosts;
+@synthesize currentGoal;
+@synthesize currentUser;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,6 +54,11 @@
 
     inProgressArrayFromParse=[self getDoneGoalsFromParse];
     [self.tableview reloadData];
+    
+    goalPosts=[[NSMutableArray alloc]init];
+    
+    currentGoal=[[Goal alloc]init];
+    
     
     
 }
@@ -182,6 +191,91 @@
     }
     
     return list;
+}
+
+
+-(NSMutableArray *) getPostsFromSelectedGoal:(int) goalID AndUsername :(NSString *)username
+{
+    NSMutableArray *list=[[NSMutableArray alloc]init];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Timeline"];
+    
+    NSLog(@"username: %@",username);
+    NSLog(@"username: %d",goalID);
+    
+    [query whereKey:@"username" equalTo:username];
+    [query whereKey:@"PostOtherRelatedInFormationContent" equalTo:[NSString stringWithFormat:@"%d",goalID]];
+    
+    [query orderByDescending:@"PostDate"];
+    
+    NSError *error=nil;
+
+    NSArray* goals=[query findObjects:&error];
+    
+    for(PFObject *obj in goals)
+    {
+        TimelinePost *post=[[TimelinePost alloc]init];
+        post.userFirstName=[obj objectForKey:@"userFirstName"];
+        post.userLastName=[obj objectForKey:@"userLastName"];
+        post.username=[obj objectForKey:@"username"];
+        post.PostDate=[obj objectForKey:@"PostDate"];
+        post.PostContent=[obj objectForKey:@"PostContent"];
+        post.postID=[obj objectForKey:@"postID"];
+        post.PostOtherRelatedInFormationContent=[obj objectForKey:@"PostOtherRelatedInFormationContent"];
+        
+        PFFile *image = (PFFile *)[obj objectForKey:@"userProfilePic"];
+        post.userProfilePic=[UIImage imageWithData:[image getData]];
+        
+        [list addObject:post];
+    }
+    
+    NSLog(@"List Count %d",[list count]);
+    
+
+    return list;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    currentGoal.goalID=[[NSString stringWithFormat:@"%d",[[inProgressArrayFromParse objectAtIndex:indexPath.row] goalID]] integerValue];
+    
+    currentGoal.goalName=[NSString stringWithFormat:@"%@",[[inProgressArrayFromParse objectAtIndex:indexPath.row] goalName]];
+    
+    currentGoal.goalDescription=[NSString stringWithFormat:@"%@",[[inProgressArrayFromParse objectAtIndex:indexPath.row] goalDescription]];
+    
+    currentGoal.goalDeadline=[NSString stringWithFormat:@"%@",[[inProgressArrayFromParse objectAtIndex:indexPath.row] goalDeadline]];
+    
+    currentGoal.goalProgress=[[inProgressArrayFromParse objectAtIndex:indexPath.row] goalProgress];
+    
+    currentGoal.createdBy=[NSString stringWithFormat:@"%@",[[inProgressArrayFromParse objectAtIndex:indexPath.row] createdBy]];
+    
+    currentGoal.goalDate=[NSString stringWithFormat:@"%@",[[inProgressArrayFromParse objectAtIndex:indexPath.row] goalDate]];
+    
+    currentGoal.numberOfGoalSteps=[[inProgressArrayFromParse objectAtIndex:indexPath.row] numberOfGoalSteps];
+    currentGoal.isGoalinProgress=[[inProgressArrayFromParse objectAtIndex:indexPath.row] isGoalinProgress];
+    currentGoal.isGoalCompleted=[[inProgressArrayFromParse objectAtIndex:indexPath.row] isGoalCompleted];
+    currentGoal.goalType=[[inProgressArrayFromParse objectAtIndex:indexPath.row] goalType];
+    currentGoal.goalPriority=[[inProgressArrayFromParse objectAtIndex:indexPath.row] goalPriority];
+    
+    
+    goalPosts=[self getPostsFromSelectedGoal:[[NSString stringWithFormat:@"%d",[[inProgressArrayFromParse objectAtIndex:indexPath.row] goalID]] integerValue]
+                                 AndUsername:[NSString stringWithFormat:@"%@",[[inProgressArrayFromParse objectAtIndex:indexPath.row] createdBy]]];
+    
+    
+    [self performSegueWithIdentifier:@"userProfileToD" sender:nil];
+    
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"userProfileToD"])
+    {
+        UserProfileViewControllerDetailsViewController *nav = [segue destinationViewController];
+        [nav setCgoal:currentGoal];
+        [nav setGPosts:goalPosts];
+        [nav setCurrentUser:currentUser];
+    }
 }
 
 @end

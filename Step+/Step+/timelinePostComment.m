@@ -10,6 +10,6 @@
 
 @implementation timelinePostComment
 
-@synthesize commentContent,PostID,From,To,FromuserProfilePic;
+@synthesize commentContent,PostID,From,To,FromuserProfilePic,ItemID;
 
 @end
