@@ -12,6 +12,7 @@
 #import "TimelinePost.h"
 #import "FMDatabase.h"
 #import <Parse/Parse.h>
+#import "Progress.h"
 
 @interface newGoalViewController : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate>
 

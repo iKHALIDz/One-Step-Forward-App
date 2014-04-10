@@ -1,22 +1,24 @@
 //
-//  ProgressDetailsViewController.m
+//  ProgressDetailsLikeListViewController.m
 //  Step+
 //
-//  Created by KHALID ALAHMARI on 4/8/14.
+//  Created by KHALID ALAHMARI on 4/9/14.
 //  Copyright (c) 2014 Khalid. All rights reserved.
 //
 
-#import "ProgressDetailsViewController.h"
+#import "ProgressDetailsLikeListViewController.h"
 
-@interface ProgressDetailsViewController ()
+@interface ProgressDetailsLikeListViewController ()
+
 @end
 
-@implementation ProgressDetailsViewController
+@implementation ProgressDetailsLikeListViewController
 
 
 @synthesize currentProgress,currentUser;
 @synthesize sPosts;
-@synthesize tableview=_tableview;
+@synthesize tableView=_tableView;
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -30,20 +32,15 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
     sPosts=[[NSMutableArray alloc]init];
-    
+
+    // Do any additional setup after loading the view.
     sPosts=[self getPostsCommments];
-    
-    NSLog(@"RRR%d",currentProgress.progressID);
-    NSLog(@"RRR%d",[sPosts count]);
-    
-    self.progressDateTextFiled.text=currentProgress.progressDate;
-    self.progressDescription.text=currentProgress.progressDescription;
-    self.stepOrderTextField.text=[NSString stringWithFormat:@"Step: %d",currentProgress.stepOrder];
-    self.progressPercentageTextField.text=[NSString stringWithFormat:@"Step: %.2f",currentProgress.progressPercentageToGoal];
+    NSLog(@"444:  %d",[sPosts count]);
+    NSLog(@"curent %d",currentProgress.progressID);
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,14 +49,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 -(NSMutableArray *) getPostsCommments
 {
     NSMutableArray *list=[[NSMutableArray alloc]init];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"PostComment"];
+    PFQuery *query = [PFQuery queryWithClassName:@"PostLike"];
     
     [query whereKey:@"To" equalTo:self.currentUser.userUsername];
     [query whereKey:@"ItemID" equalTo:[NSString stringWithFormat:@"%d",self.currentProgress.progressID]];
+    [query whereKey:@"isLiked" equalTo:@YES];
     
     NSError *error=nil;
     
@@ -67,18 +66,19 @@
     
     for(PFObject *obj in goals)
     {
-        timelinePostComment *postcomment=[[timelinePostComment alloc]init];
+        timelinePostLike *postlike=[[timelinePostLike alloc]init];
         
-        postcomment.To=[obj objectForKey:@"To"];
-        postcomment.From=[obj objectForKey:@"From"];
-        postcomment.commentContent=[obj objectForKey:@"commentContent"];
-        postcomment.PostID=[obj objectForKey:@"PostID"];
-        postcomment.ItemID=[obj objectForKey:@"ItemID"];
+        postlike.To=[obj objectForKey:@"To"];
+        postlike.From=[obj objectForKey:@"From"];
+        postlike.isLiked=[[obj objectForKey:@"isLiked"] boolValue];
+        postlike.PostID=[obj objectForKey:@"PostID"];
+        postlike.ItemRID=[obj objectForKey:@"ItemID"];
         PFFile *image = (PFFile *)[obj objectForKey:@"FromuserProfilePic"];
-        postcomment.FromuserProfilePic=[UIImage imageWithData:[image getData]];
+        postlike.FromuserProfilePic=[UIImage imageWithData:[image getData]];
         
-        [list addObject:postcomment];
+        [list addObject:postlike];
     }
+    
     return list;
 }
 
@@ -107,8 +107,6 @@
     
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TimelinePostCommentTableViewCell" owner:self options:nil];
     cell = [nib objectAtIndex:0];
-    
-    cell.FromUserComment.text=[NSString stringWithFormat:@"%@",[[sPosts objectAtIndex:indexPath.row] commentContent]];
     
     cell.FromUserimage.image=[[sPosts objectAtIndex:indexPath.row] FromuserProfilePic];
     
@@ -140,5 +138,6 @@
         [nav setCurrentUser:currentUser];
     }
 }
+
 
 @end

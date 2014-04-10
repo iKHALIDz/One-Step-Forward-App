@@ -21,6 +21,8 @@
 @property (nonatomic,retain) NSString * LoggedBy;
 @property int stepOrder;
 @property (nonatomic,retain) NSString * progressDate;
+@property int numberOfCommentss;
+@property int numberOfLikes;
 
 
 -(void)AddProgressltoDatabase;

@@ -40,14 +40,49 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gtk-me-dy1">
+                        <rect key="frame" x="244" y="8" width="18" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" image="MoveCell-Icon.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7l-Tk-PMu">
+                        <rect key="frame" x="194" y="8" width="42" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TdA-co-dMM">
+                        <rect key="frame" x="194" y="39" width="42" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydh-cF-hbM">
+                        <rect key="frame" x="244" y="34" width="19" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" image="Like1.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="ProgressDate" destination="6tA-IU-Uu4" id="F6t-pI-w1U"/>
                 <outlet property="cellStepOrder" destination="BTw-fL-dnC" id="gXx-Jc-dQs"/>
+                <outlet property="comments" destination="Gtk-me-dy1" id="o3k-7T-lAd"/>
+                <outlet property="likes" destination="ydh-cF-hbM" id="zbk-VA-xSP"/>
+                <outlet property="nLikes" destination="TdA-co-dMM" id="xSb-Tx-N1H"/>
+                <outlet property="numberOfComments" destination="A7l-Tk-PMu" id="DGf-02-nyP"/>
                 <outlet property="progressName" destination="R1l-yZ-arB" id="YCG-6E-6uF"/>
                 <outlet property="progressPercentage" destination="0VX-ae-bhp" id="V3c-Ol-GCe"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Like1.png" width="98" height="98"/>
+        <image name="MoveCell-Icon.png" width="18" height="18"/>
+    </resources>
 </document>

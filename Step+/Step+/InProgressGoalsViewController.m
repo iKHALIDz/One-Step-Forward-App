@@ -368,7 +368,6 @@
     currentGoal.goalPriority=[[inProgressArray objectAtIndex:indexPath.row] goalPriority];
     
     [self performSegueWithIdentifier:@"GoalToDetails" sender:nil];
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

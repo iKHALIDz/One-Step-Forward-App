@@ -17,7 +17,6 @@
 @synthesize currentGoal;
 @synthesize currentUser;
 
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,10 +26,17 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    if (currentGoal.goalProgress==100.00)
+    {
+        self.progressPercenatge.enabled=NO;
+        
+    }
     
 }
 
@@ -39,7 +45,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 -(int) checkTheEnteredProgress
 {
@@ -75,10 +80,11 @@
     return X;
 }
 
+
 -(NSString *)getCurrentDataAndTime
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/DD/YYYY hh:mm:ss"];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
     
     NSDate *Todaydata=[NSDate date];
     
@@ -105,8 +111,9 @@
     progress.progressDescription=self.progressDescription.text;
     progress.goalID=self.currentGoal.goalID;
     progress.LoggedBy=self.currentGoal.createdBy;
-    
-    
+    progress.numberOfCommentss=0;
+    progress.numberOfLikes=0;
+
     int check=[self checkTheEnteredProgress];
     
     if (check==1) // meaning the currentGoalProgress+new progress < 100
@@ -127,7 +134,7 @@
         
         [goal UpdataGoalWithProgress:[self.progressPercenatge.text doubleValue] WithMark:@"+"];
         [parseGoal UpdataGoalWithProgressInParse:[self.progressPercenatge.text doubleValue] WithMark:@"+"];
-
+        
         
         NSString *sum=[NSString stringWithFormat:@"%.2f",[self.progressPercenatge.text doubleValue]+goal.goalProgress];
         goal.goalProgress=[sum doubleValue];
@@ -220,7 +227,7 @@
                                                          delegate:nil
                                                 cancelButtonTitle:@"OK"
                                                 otherButtonTitles:nil];
-        
+
         
         [message show];
     }

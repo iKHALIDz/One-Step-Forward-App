@@ -19,4 +19,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *ProgressDate;
 
+@property (weak, nonatomic) IBOutlet UIButton *comments;
+
+@property (weak, nonatomic) IBOutlet UILabel *numberOfComments;
+@property (weak, nonatomic) IBOutlet UILabel *nLikes;
+@property (weak, nonatomic) IBOutlet UIButton *likes;
+
 @end

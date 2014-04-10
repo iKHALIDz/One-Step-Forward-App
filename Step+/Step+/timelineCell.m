@@ -34,4 +34,9 @@
 - (IBAction)comment:(UIButton *)sender {
     
 }
+- (IBAction)LikeAction:(UIButton *)sender {
+    
+    
+}
+
 @end

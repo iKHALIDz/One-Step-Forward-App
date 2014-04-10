@@ -19,10 +19,17 @@
 @synthesize userProfilePic;
 @synthesize PostType;
 @synthesize postID;
+@synthesize whoLikePost;
+@synthesize isLiked;
+@synthesize whoCommentPost;
 
 
 -(void) NewTimelinePost
 {
+    whoLikePost=[[NSMutableArray alloc]init];
+    whoCommentPost=[[NSMutableArray alloc]init];
+    
+
     self.postID=[self nextIdentifies];
     
     PFObject *newPost = [PFObject objectWithClassName:@"Timeline"];
@@ -34,6 +41,8 @@
     [newPost setObject:self.PostDate forKey:@"PostDate"];
     [newPost setObject:self.PostOtherRelatedInFormationContent forKey:@"PostOtherRelatedInFormationContent"];
     [newPost setObject:self.PostType forKey:@"PostType"];
+    [newPost setObject:whoLikePost forKey:@"whoLikePost"];
+    [newPost setObject:whoCommentPost forKey:@"whoCommentPost"];
     
     NSData *pictureData = UIImagePNGRepresentation(userProfilePic);
     PFFile *file = [PFFile fileWithName:@"img" data:pictureData];
@@ -43,7 +52,6 @@
         [newPost saveEventually];
     }];
 }
-
 
 -(NSString *)nextIdentifies
 {
@@ -55,6 +63,55 @@
     return [NSString stringWithFormat:@"%ld",(long)identifier];
 }
 
+
+-(void) UpdatePostLikes
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Timeline"];
+    [query whereKey:@"postID" equalTo:postID];
+    [query whereKey:@"username" equalTo:username];
+    
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+       
+        if (!error)
+        {
+
+            [object setObject:whoLikePost forKey:@"whoLikePost"];
+            
+            [object saveEventually];
+        }
+        
+        else
+        {
+            
+            NSLog(@"error");
+        }
+    
+    }];
+}
+
+-(void) UpdatePostComments
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Timeline"];
+    [query whereKey:@"postID" equalTo:postID];
+    [query whereKey:@"username" equalTo:username];
+    
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        
+        if (!error)
+        {
+            [object setObject:whoCommentPost forKey:@"whoCommentPost"];
+            
+            [object saveEventually];
+        }
+        
+        else
+        {
+            
+            NSLog(@"error");
+        }
+        
+    }];
+}
 
 
 @end

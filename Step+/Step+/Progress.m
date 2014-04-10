@@ -17,7 +17,8 @@
 @synthesize LoggedBy;
 @synthesize stepOrder;
 @synthesize progressDate;
-
+@synthesize numberOfCommentss;
+@synthesize numberOfLikes;
 
 //NSString *createSQL3= @"create table IF NOT exists Progress(progressID integer, progressDescription text, progressPercentageToGoal REAL, goalID integer,progressDate text,createdBy int,stepOrder int);";
 //
@@ -74,8 +75,12 @@
     
     [newProgress setObject:self.progressDate forKey:@"LogDate"];
     
+    [newProgress setObject:[NSString stringWithFormat:@"%d",self.numberOfCommentss] forKey:@"numberOfComments"];
+    [newProgress setObject:[NSString stringWithFormat:@"%d",self.numberOfLikes] forKey:@"numberOfLikes"];
+    
     [newProgress saveEventually];
 }
+
 
 -(void)DeleteProgressFromDatabase
 {

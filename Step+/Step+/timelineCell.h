@@ -23,5 +23,14 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *toUserinfo;
 
+@property (weak, nonatomic) IBOutlet UIButton *like;
+
+- (IBAction)LikeAction:(UIButton *)sender;
+
+@property (weak, nonatomic) IBOutlet UILabel *numberOfLikess;
+
+@property (weak, nonatomic) IBOutlet UILabel *numberOfComments;
+
+@property (weak, nonatomic) IBOutlet UIButton *goToCommentsButton;
 
 @end

@@ -80,7 +80,7 @@
     if (correctDate==YES )
     {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"MM/DD/YYYY hh:mm:ss"];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
         
         NSString *currentData= [dateFormatter stringFromDate:selectedDate];
         
@@ -173,6 +173,21 @@
     [goal AddGoaltoDatabase];
     [goal AddGoalToParse];
     
+    
+    Progress *progress=[[Progress alloc]init];
+    progress.progressDescription=@"New Goal has started";
+    progress.goalID=goal.goalID;
+    progress.LoggedBy=goal.createdBy;
+    progress.progressPercentageToGoal=0;
+    progress.progressDate=goal.goalDate;
+    progress.stepOrder=0;
+    progress.progressID=[[self nextIdentifies] integerValue];
+    progress.numberOfCommentss=0;
+    progress.numberOfLikes=0;
+    
+    [progress AddProgressltoDatabase];
+    [progress AddProgresslToParse];
+
     // Add Post To Timeline
     
     TimelinePost *newPost=[[TimelinePost alloc]init];
@@ -183,7 +198,8 @@
     newPost.userProfilePic=currentUser.userProfileImage;
     
     newPost.PostContent=[NSString stringWithFormat:@"%@ started new goal: %@",currentUser.userFirsname,goal.goalName];
-    newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",goal.goalID];
+    
+    newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",progress.progressID];
     
     newPost.PostType=@"Goal";
     newPost.PostDate=goal.goalDate;
@@ -236,7 +252,7 @@
 -(NSString *)getCurrentDataAndTime
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/DD/YYYY hh:mm:ss"];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
     NSDate *Todaydata=[NSDate date];
     
     NSString *currentData= [dateFormatter stringFromDate:Todaydata];

@@ -32,25 +32,24 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     currentProgress=[[Progress alloc]init];
     
-
-    // Do any additional setup after loading the view.
-    
     progressList=[[NSMutableArray alloc]init];
     progressListFromParse=[[NSMutableArray alloc]init];
     
     progressList=[self getProgressList];
-
+    
+    progressListFromParse=[self getProgressFromParse];
     
     if ([progressList count]==0)
     {
         NSLog(@"Progress, We still need to add it to DB");
-        progressListFromParse=[self getProgressFromParse];
+        
         for (Progress *newProgress in progressListFromParse)
         {
             [newProgress AddProgressltoDatabase];
@@ -59,7 +58,7 @@
     
     NSLog(@"%d",self.currentUser.numberOfInProgressGoals);
     NSLog(@"%d",self.currentUser.numberOfAchievedGoals);
-
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -71,23 +70,26 @@
     
     self.NumberofStepsTakenLable.text=[NSString stringWithFormat:@"Step Taken: %d",currentGoal.numberOfGoalSteps];
     
-    NSInteger days=[self daysBetweenDate:currentGoal.goalDate andDate:[self getCurrentDataAndTime]];
+    
     NSInteger days2=[self daysBetweenDate:[self getCurrentDataAndTime] andDate:currentGoal.goalDeadline];
+    self.NumberofdaysyillDeadline.text=[NSString stringWithFormat:@"Number of days till Deadline %d days",days2];
     
-    self.numberofDaysSinceCreated.text=[NSString stringWithFormat:@"Number of days since Createted: %d",days];
+    NSInteger days=[self daysBetweenDate:currentGoal.goalDate andDate:[self getCurrentDataAndTime]];
+    self.numberofDaysSinceCreated.text=[NSString stringWithFormat:@"Number of days since Createted: %d days",days+1];
     
-    self.NumberofdaysyillDeadline.text=[NSString stringWithFormat:@"Number of days till Deadline %d",days2];
+    
     
     progressList=[self getProgressList];
+    progressListFromParse=[self getProgressFromParse];
+    
     [self.tableview reloadData];
-
 }
 
 
 -(NSInteger)daysBetweenDate:(NSString*)fromDateTime andDate:(NSString*)toDateTime
 {
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"MM/DD/YYYY hh:mm:ss"];
+    [format setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
     
     NSDate *fromDate = [format dateFromString: fromDateTime];
     NSDate *toDate = [format dateFromString: toDateTime];
@@ -105,12 +107,10 @@
     return [difference day];
 }
 
-
-
 -(NSString *)getCurrentDataAndTime
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/DD/YYYY hh:mm:ss"];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
     NSDate *Todaydata=[NSDate date];
     
     NSString *currentData= [dateFormatter stringFromDate:Todaydata];
@@ -120,7 +120,7 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-
+    
     if ([[segue identifier] isEqualToString:@"addProgress"])
     {
         newProgressViewController* nav = [segue destinationViewController];
@@ -146,7 +146,14 @@
         
     }
     
-
+    if ([[segue identifier] isEqualToString:@"toLikeList"])
+    {
+        ProgressDetailsLikeListViewController* nav = [segue destinationViewController];
+        [nav setCurrentProgress:currentProgress];
+        [nav setCurrentUser:currentUser];
+        
+    }
+    
 }
 
 -(void) setGoal:(Goal *)updatedGoal
@@ -158,60 +165,79 @@
     
     Goal *goal=self.currentGoal;
     
-    goal.goalID=self.currentGoal.goalID;
+    if (goal.goalProgress==100)
+    {
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error!"
+                                                          message:@"The Goal is already Achieved"
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+        
+        [message show];
+        
+    }
     
-    goal.numberOfGoalSteps=goal.numberOfGoalSteps+1;
+    else
+    {
+        goal.goalID=self.currentGoal.goalID;
+        
+        goal.numberOfGoalSteps=goal.numberOfGoalSteps+1;
+        
+        [goal declareGoalAsAchieved];
+        [goal declareGoalAsAchievedinParse];
+        
+        currentUser.numberOfAchievedGoals=currentUser.numberOfAchievedGoals+1;
+        currentUser.numberOfInProgressGoals=currentUser.numberOfInProgressGoals-1;
+        
+        [currentUser UpdateUserDataDB];
+        [currentUser UpdateUserParse];
+        
+        
+        Progress *progress=[[Progress alloc]init];
+        progress.progressDescription=@"Achieved Peogress";
+        progress.goalID=self.currentGoal.goalID;
+        progress.LoggedBy=self.currentGoal.createdBy;
+        
+        progress.progressPercentageToGoal=100-currentGoal.goalProgress;
+        progress.progressDate=[self getCurrentDataAndTime];
+        
+        progress.stepOrder=self.currentGoal.numberOfGoalSteps;
+        
+        progress.progressID=[[self nextIdentifies] integerValue];
+        progress.numberOfLikes=0;
+        progress.numberOfCommentss=0;
+        
+        [progress AddProgressltoDatabase];
+        [progress AddProgresslToParse];
+        
+        
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Congrats!"
+                                                          message:@"The Goal is Achieved"
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+        
+        [message show];
+        
+        TimelinePost *newPost=[[TimelinePost alloc]init];
+        
+        newPost.userFirstName=currentUser.userFirsname;
+        newPost.userLastName=currentUser.userLastname;
+        newPost.username=currentUser.userUsername;
+        newPost.userProfilePic=currentUser.userProfileImage;
+        
+        newPost.PostContent=[NSString stringWithFormat:@"%@ has achieved a goal: %@",currentUser.userFirsname,goal.goalName];
+        newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",goal.goalID];
+        
+        newPost.PostType=@"Goal";
+        newPost.PostDate=progress.progressDate;
+        
+        [newPost NewTimelinePost];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }
     
-    [goal declareGoalAsAchieved];
-    [goal declareGoalAsAchievedinParse];
-    
-    currentUser.numberOfAchievedGoals=currentUser.numberOfAchievedGoals+1;
-    currentUser.numberOfInProgressGoals=currentUser.numberOfInProgressGoals-1;
-    
-    [currentUser UpdateUserDataDB];
-    [currentUser UpdateUserParse];
-
-    
-    Progress *progress=[[Progress alloc]init];
-    progress.progressDescription=@"Achieved Peogress";
-    progress.goalID=self.currentGoal.goalID;
-    progress.LoggedBy=self.currentGoal.createdBy;
-    
-    progress.progressPercentageToGoal=100-currentGoal.goalProgress;
-    progress.progressDate=[self getCurrentDataAndTime];
-    
-    progress.stepOrder=self.currentGoal.numberOfGoalSteps;
-    
-    progress.progressID=[[self nextIdentifies] integerValue];
-    
-    [progress AddProgressltoDatabase];
-    [progress AddProgresslToParse];
-    
-    
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Congrats!"
-                                                      message:@"The Goal is Achieved"
-                                                     delegate:nil
-                                            cancelButtonTitle:@"OK"
-                                            otherButtonTitles:nil];
-    
-    [message show];
-    
-    TimelinePost *newPost=[[TimelinePost alloc]init];
-    
-    newPost.userFirstName=currentUser.userFirsname;
-    newPost.userLastName=currentUser.userLastname;
-    newPost.username=currentUser.userUsername;
-    newPost.userProfilePic=currentUser.userProfileImage;
-    
-    newPost.PostContent=[NSString stringWithFormat:@"%@ has achieved a goal: %@",currentUser.userFirsname,goal.goalName];
-    newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",goal.goalID];
-    
-    newPost.PostType=@"Goal";
-    newPost.PostDate=progress.progressDate;
-    
-    [newPost NewTimelinePost];
-    
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(NSString*)DataFilePath{
@@ -284,6 +310,8 @@
         progress.stepOrder=[[obj objectForKey:@"stepOrder"] integerValue];
         progress.progressPercentageToGoal=[[obj objectForKey:@"ProgressPercentage"] doubleValue];
         progress.LoggedBy=[obj objectForKey:@"createdBy"];
+        progress.numberOfCommentss=[[obj objectForKey:@"numberOfComments"] integerValue];
+        progress.numberOfLikes=[[obj objectForKey:@"numberOfLikes"] integerValue];
         
         [list addObject:progress];
     }
@@ -317,8 +345,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    
     static NSString *simpleTableIdentifier = @"progressCell";
     
     ProgressTableViewCell *cell = (ProgressTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
@@ -335,21 +361,80 @@
     
     
     
-    cell.ProgressDate.text=[self GetWordyTime:[[progressList objectAtIndex:indexPath.row] progressDate]];
-
-;
-
+    cell.ProgressDate.text=[self GetTimeinWords:[[progressList objectAtIndex:indexPath.row] progressDate]];
+    
+    
+    cell.numberOfComments.text=[NSString stringWithFormat:@"%d",[[progressListFromParse objectAtIndex:indexPath.row] numberOfCommentss]];
+    
+    cell.nLikes.text=[NSString stringWithFormat:@"%d",[[progressListFromParse objectAtIndex:indexPath.row] numberOfLikes]];
+    
+    
+    [cell.comments addTarget:self action:@selector(GotoComments:)  forControlEvents:UIControlEventTouchUpInside];
+    
+    [cell.comments setTag:indexPath.row];
+    
+    
+    [cell.likes addTarget:self action:@selector(GotoLikes:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.likes setTag:indexPath.row];
+    
+    
     
     return cell;
+}
+
+- (IBAction)GotoLikes:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    
+    int row = button.tag;
+    NSLog(@"isPressed");
+    
+    NSLog(@"%d",row);
+    
+    currentProgress.progressID = [[progressList objectAtIndex:row] progressID];
+    currentProgress.progressPercentageToGoal =[[progressList objectAtIndex:row] progressPercentageToGoal];
+    
+    currentProgress.goalID=currentGoal.goalID;
+    
+    currentProgress.LoggedBy=currentGoal.createdBy;
+    
+    currentProgress.progressDescription=[[progressList objectAtIndex:row]progressDescription];
+    currentProgress.progressDate=[[progressList objectAtIndex:row]progressDate];
+    currentProgress.stepOrder=[[progressList objectAtIndex:row]stepOrder];
+    
+    
+    [self performSegueWithIdentifier:@"toLikeList" sender:nil];
+    
+}
+
+- (IBAction)GotoComments:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    
+    int row = button.tag;
+    NSLog(@"isPressed");
+    
+    NSLog(@"%d",row);
+    
+    currentProgress.progressID = [[progressList objectAtIndex:row] progressID];
+    currentProgress.progressPercentageToGoal =[[progressList objectAtIndex:row] progressPercentageToGoal];
+    
+    currentProgress.goalID=currentGoal.goalID;
+    
+    currentProgress.LoggedBy=currentGoal.createdBy;
+    
+    currentProgress.progressDescription=[[progressList objectAtIndex:row]progressDescription];
+    currentProgress.progressDate=[[progressList objectAtIndex:row]progressDate];
+    currentProgress.stepOrder=[[progressList objectAtIndex:row]stepOrder];
+    
+    [self performSegueWithIdentifier:@"toProgressDetails" sender:nil];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 80;
 }
-
-
-
 
 - (IBAction)deleteGoal:(UIBarButtonItem *)sender {
     
@@ -378,7 +463,7 @@
         
         [currentUser UpdateUserDataDB];
         [currentUser UpdateUserParse];
-
+        
     }
     
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Success!"
@@ -393,10 +478,11 @@
     
 }
 
--(NSString *) GetWordyTime: (NSString *) Y
+
+-(NSString *) GetTimeinWords: (NSString *) Y
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/DD/YYYY hh:mm:ss"];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
     [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
     
     NSDate *dateFromString = [[NSDate alloc]init];
@@ -411,7 +497,6 @@
     
     NSString * I=[dateFromString prettyDate];
     
-    
     NSLog(@"%@",I);
     
     return I;
@@ -419,18 +504,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    currentProgress.progressID = [[progressList objectAtIndex:indexPath.row] progressID];
-    currentProgress.progressPercentageToGoal =[[progressList objectAtIndex:indexPath.row] progressPercentageToGoal];
-    
-    currentProgress.goalID=currentGoal.goalID;
-    
-    currentProgress.LoggedBy=currentGoal.createdBy;
-    
-    currentProgress.progressDescription=[[progressList objectAtIndex:indexPath.row]progressDescription];
-    currentProgress.progressDate=[[progressList objectAtIndex:indexPath.row]progressDate];
-    currentProgress.stepOrder=[[progressList objectAtIndex:indexPath.row]stepOrder];
-    
-    [self performSegueWithIdentifier:@"toProgressDetails" sender:nil];
+    NSLog(@"Manage A Progress");
 }
 
 @end

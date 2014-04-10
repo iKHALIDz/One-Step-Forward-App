@@ -12,6 +12,10 @@
 #import "TimelinePostDetailsViewController.h"
 #import "User.h"
 #import "UserProfileViewController.h"
+#import "timelinePostLike.h"
+#import "Progress.h"
+#import "NSDate+PrettyDate.h"
+
 
 @interface TimelineViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
@@ -22,5 +26,7 @@
 
 @property (nonatomic,retain) NSString *currentUsername;
 
+@property (nonatomic,retain) NSMutableArray *postLikes;
+@property (nonatomic,retain) NSMutableArray *postStat;
 
 @end

@@ -18,6 +18,8 @@
 @synthesize currentUser;
 @synthesize TimelinePostComments;
 @synthesize currentUsername;
+@synthesize currentSelectedtimeLinePost;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,6 +34,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
     
     self.postusername.text=[NSString stringWithFormat:@"%@ %@",self.currentSelectedtimeLinePost.userFirstName,self.currentSelectedtimeLinePost.userLastName];
     
@@ -71,12 +74,44 @@
     [newPostComment setObject:self.currentSelectedtimeLinePost.postID forKey:@"PostID"];
     [newPostComment setObject:self.currentSelectedtimeLinePost.PostOtherRelatedInFormationContent forKey:@"ItemID"];
     
+    
     NSData *pictureData = UIImagePNGRepresentation(currentUser.userProfileImage);
     PFFile *file = [PFFile fileWithName:@"img" data:pictureData];
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
         [newPostComment setObject:file forKey:@"FromuserProfilePic"];
         [newPostComment saveEventually];
+        
+        
+        
+    }];
+    
+    
+     [[self.currentSelectedtimeLinePost whoCommentPost] addObject:currentUser.userUsername];
+    
+
+    [self.currentSelectedtimeLinePost UpdatePostComments];
+
+    PFQuery *query = [PFQuery queryWithClassName:@"Progress"];
+    
+    [query whereKey:@"progressID" equalTo:[NSString stringWithFormat:@"%@",self.currentSelectedtimeLinePost.PostOtherRelatedInFormationContent]];
+    
+    [query whereKey:@"createdBy" equalTo:self.currentSelectedtimeLinePost.username];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * updateGoals, NSError *error){
+        if (!error) {
+            
+            for (PFObject* obj in updateGoals)
+            {
+                NSString *temp=[obj objectForKey:@"numberOfComments"];
+                NSInteger Nummber=[temp integerValue]+1;
+                NSLog(@"%d",Nummber);
+                
+                [obj setObject:[NSString stringWithFormat:@"%d",Nummber] forKey:@"numberOfComments"];
+                
+                [obj saveEventually];
+            }
+        }
     }];
 }
 
@@ -88,7 +123,7 @@
     [query whereKey:@"To" equalTo:self.currentSelectedtimeLinePost.username];
     [query whereKey:@"PostID" equalTo:self.currentSelectedtimeLinePost.postID];
     
-    NSLog(@"currentSelectedtimeLinePost %@",_currentSelectedtimeLinePost.username);
+    NSLog(@"currentSelectedtimeLinePost %@",currentSelectedtimeLinePost.username);
     
     NSError *error=nil;
     

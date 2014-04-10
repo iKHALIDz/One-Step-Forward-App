@@ -20,8 +20,14 @@
 @property (nonatomic,retain) NSString *PostOtherRelatedInFormationContent;
 @property (nonatomic,retain) NSString * PostType;
 @property (nonatomic,retain) NSString * postID;
+@property (nonatomic,retain) NSMutableArray *whoLikePost;
+@property (nonatomic,retain) NSMutableArray *whoCommentPost;
 
+@property BOOL isLiked;
 
 -(void) NewTimelinePost;
+-(void) UpdatePostLikes;
+-(void) UpdatePostComments;
+
 
 @end

@@ -52,6 +52,9 @@
 		E99348C018F4639200844C2C /* UserProfileViewControllerDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99348BF18F4639200844C2C /* UserProfileViewControllerDetailsViewController.m */; };
 		E99348C318F47D1600844C2C /* goalSuggestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99348C218F47D1600844C2C /* goalSuggestionsViewController.m */; };
 		E99348C618F4D03500844C2C /* ProgressDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99348C518F4D03500844C2C /* ProgressDetailsViewController.m */; };
+		E99348C918F5CFEF00844C2C /* Like2.png in Resources */ = {isa = PBXBuildFile; fileRef = E99348C718F5CFEF00844C2C /* Like2.png */; };
+		E99348CA18F5CFEF00844C2C /* Like1.png in Resources */ = {isa = PBXBuildFile; fileRef = E99348C818F5CFEF00844C2C /* Like1.png */; };
+		E99348CD18F5EE0100844C2C /* timelinePostLike.m in Sources */ = {isa = PBXBuildFile; fileRef = E99348CC18F5EE0100844C2C /* timelinePostLike.m */; };
 		E995330D18E15D7F00F42C08 /* AddButton.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E995330C18E15D7F00F42C08 /* AddButton.jpg */; };
 		E9A1108B18E28BBC00252364 /* newProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A1108A18E28BBC00252364 /* newProgressViewController.m */; };
 		E9B8AD2818DBEC4600035AC8 /* LoginBox.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B8AD2718DBEC4600035AC8 /* LoginBox.png */; };
@@ -64,6 +67,7 @@
 		E9B8AD5118DCBE6D00035AC8 /* SignUPCellNoBo.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B8AD5018DCBE6D00035AC8 /* SignUPCellNoBo.png */; };
 		E9B8AD5318DCC01E00035AC8 /* Profile Picture.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B8AD5218DCC01E00035AC8 /* Profile Picture.png */; };
 		E9B8AD5818DCE9E200035AC8 /* SignupNavigationBar.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B8AD5718DCE9E200035AC8 /* SignupNavigationBar.png */; };
+		E9BA2E8018F64DBB0016002E /* ProgressDetailsLikeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2E7F18F64DBB0016002E /* ProgressDetailsLikeListViewController.m */; };
 		E9EA332A18DCFF6200609052 /* MDRadialProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA332518DCFF6200609052 /* MDRadialProgressView.m */; };
 		E9EA332B18DCFF6200609052 /* MDRadialProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA332518DCFF6200609052 /* MDRadialProgressView.m */; };
 		E9EA332C18DCFF6200609052 /* MDRadialProgressTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA332718DCFF6200609052 /* MDRadialProgressTheme.m */; };
@@ -189,6 +193,10 @@
 		E99348C218F47D1600844C2C /* goalSuggestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goalSuggestionsViewController.m; sourceTree = "<group>"; };
 		E99348C418F4D03500844C2C /* ProgressDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressDetailsViewController.h; sourceTree = "<group>"; };
 		E99348C518F4D03500844C2C /* ProgressDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressDetailsViewController.m; sourceTree = "<group>"; };
+		E99348C718F5CFEF00844C2C /* Like2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Like2.png; sourceTree = "<group>"; };
+		E99348C818F5CFEF00844C2C /* Like1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Like1.png; sourceTree = "<group>"; };
+		E99348CB18F5EE0100844C2C /* timelinePostLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timelinePostLike.h; sourceTree = "<group>"; };
+		E99348CC18F5EE0100844C2C /* timelinePostLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = timelinePostLike.m; sourceTree = "<group>"; };
 		E995330C18E15D7F00F42C08 /* AddButton.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = AddButton.jpg; sourceTree = "<group>"; };
 		E9A1108918E28BBC00252364 /* newProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newProgressViewController.h; sourceTree = "<group>"; };
 		E9A1108A18E28BBC00252364 /* newProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newProgressViewController.m; sourceTree = "<group>"; };
@@ -203,6 +211,8 @@
 		E9B8AD5018DCBE6D00035AC8 /* SignUPCellNoBo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SignUPCellNoBo.png; sourceTree = "<group>"; };
 		E9B8AD5218DCC01E00035AC8 /* Profile Picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Profile Picture.png"; sourceTree = "<group>"; };
 		E9B8AD5718DCE9E200035AC8 /* SignupNavigationBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SignupNavigationBar.png; sourceTree = "<group>"; };
+		E9BA2E7E18F64DBB0016002E /* ProgressDetailsLikeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressDetailsLikeListViewController.h; sourceTree = "<group>"; };
+		E9BA2E7F18F64DBB0016002E /* ProgressDetailsLikeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressDetailsLikeListViewController.m; sourceTree = "<group>"; };
 		E9EA332418DCFF6200609052 /* MDRadialProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressView.h; sourceTree = "<group>"; };
 		E9EA332518DCFF6200609052 /* MDRadialProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRadialProgressView.m; sourceTree = "<group>"; };
 		E9EA332618DCFF6200609052 /* MDRadialProgressTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressTheme.h; sourceTree = "<group>"; };
@@ -371,6 +381,8 @@
 				E99348BF18F4639200844C2C /* UserProfileViewControllerDetailsViewController.m */,
 				E96F17A618F385CD0057C3CA /* timelinePostComment.h */,
 				E96F17A718F385CD0057C3CA /* timelinePostComment.m */,
+				E99348CB18F5EE0100844C2C /* timelinePostLike.h */,
+				E99348CC18F5EE0100844C2C /* timelinePostLike.m */,
 				E9EA335318DCFFEB00609052 /* External Libararies */,
 				E944C83F18DBDBF9002714D8 /* Supporting Files */,
 			);
@@ -411,6 +423,8 @@
 		E944C87818DBE0B6002714D8 /* Image Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				E99348C718F5CFEF00844C2C /* Like2.png */,
+				E99348C818F5CFEF00844C2C /* Like1.png */,
 				E907C21F18E9FAC10059D19A /* topAndBottomRow.png */,
 				E907C21D18E9FAAC0059D19A /* gradientBackground.png */,
 				E923993D18E92FF100F7AB19 /* SettingIcon.png */,
@@ -443,6 +457,8 @@
 				E9EA33A418E10F2200609052 /* goalDetailsViewController.m */,
 				E99348C418F4D03500844C2C /* ProgressDetailsViewController.h */,
 				E99348C518F4D03500844C2C /* ProgressDetailsViewController.m */,
+				E9BA2E7E18F64DBB0016002E /* ProgressDetailsLikeListViewController.h */,
+				E9BA2E7F18F64DBB0016002E /* ProgressDetailsLikeListViewController.m */,
 				E99348C118F47D1600844C2C /* goalSuggestionsViewController.h */,
 				E99348C218F47D1600844C2C /* goalSuggestionsViewController.m */,
 				E9510E3818E20663000C30B8 /* Progress.h */,
@@ -635,6 +651,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E99348CA18F5CFEF00844C2C /* Like1.png in Resources */,
 				E995330D18E15D7F00F42C08 /* AddButton.jpg in Resources */,
 				E907C21E18E9FAAC0059D19A /* gradientBackground.png in Resources */,
 				E944C87D18DBE59B002714D8 /* LoginBackground@2x.png in Resources */,
@@ -644,6 +661,7 @@
 				E9B8AD2818DBEC4600035AC8 /* LoginBox.png in Resources */,
 				E9B8AD5818DCE9E200035AC8 /* SignupNavigationBar.png in Resources */,
 				E944C87B18DBE59B002714D8 /* LoginBackground-568@2x.png in Resources */,
+				E99348C918F5CFEF00844C2C /* Like2.png in Resources */,
 				E923993E18E92FF100F7AB19 /* SettingIcon.png in Resources */,
 				E9EA339D18DFFFF700609052 /* goalTableViewCell.xib in Resources */,
 				E96F17A518F3838C0057C3CA /* TimelinePostCommentTableViewCell.xib in Resources */,
@@ -704,6 +722,7 @@
 				E909908A18E51D66005D30BB /* achievedGoalsUIViewController.m in Sources */,
 				E90990AE18E56D46005D30BB /* NSDate+PrettyDate.m in Sources */,
 				E9EA338518DF96D500609052 /* InProgressGoalsViewController.m in Sources */,
+				E99348CD18F5EE0100844C2C /* timelinePostLike.m in Sources */,
 				E9EA33A518E10F2200609052 /* goalDetailsViewController.m in Sources */,
 				E9B8AD2D18DC02FC00035AC8 /* SingupViewController.m in Sources */,
 				E9EA339118DFB94400609052 /* newGoalViewController.m in Sources */,
@@ -716,6 +735,7 @@
 				E9EA335018DCFFD000609052 /* FMResultSet.m in Sources */,
 				E99348C018F4639200844C2C /* UserProfileViewControllerDetailsViewController.m in Sources */,
 				E9EA332A18DCFF6200609052 /* MDRadialProgressView.m in Sources */,
+				E9BA2E8018F64DBB0016002E /* ProgressDetailsLikeListViewController.m in Sources */,
 				E9A1108B18E28BBC00252364 /* newProgressViewController.m in Sources */,
 				E96F179518F24AA80057C3CA /* TimelinePost.m in Sources */,
 				E96F17A818F385CD0057C3CA /* timelinePostComment.m in Sources */,

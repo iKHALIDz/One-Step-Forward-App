@@ -18,6 +18,7 @@
 #import "TimelinePost.h"
 #import "goalSuggestionsViewController.h"
 #import "ProgressDetailsViewController.h"
+#import "ProgressDetailsLikeListViewController.h"
 
 
 
