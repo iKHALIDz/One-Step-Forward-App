@@ -14,6 +14,8 @@
 
 @implementation SettingViewController
 
+@synthesize currentUser;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,6 +29,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if (currentUser.wantsToShare==YES)
+    {
+        self.shareSwitch.on=YES;
+    
+    }
+    else
+    {
+        self.shareSwitch.on=NO;
+
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,4 +58,30 @@
     [self presentViewController:wViewController animated:YES completion:nil];
 
 }
+
+
+- (IBAction)isDonePressed:(UIBarButtonItem *)sender{
+    
+    [currentUser UpdateUserDataDB];
+    [currentUser UpdateUserParse];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+- (IBAction)changeOption:(UISwitch *)sender {
+    
+    if (self.shareSwitch.on)
+    {
+        currentUser.wantsToShare=YES;
+        
+    
+    }
+    else
+    {
+        currentUser.wantsToShare=NO;
+        
+    }
+}
+
+
 @end

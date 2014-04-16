@@ -47,8 +47,6 @@
     
     postStat=[[NSMutableArray alloc]init];
     
-    NSLog(@"rrrr %d",[postLikes count]);
-    
 }
 
 -(NSString *) GetTimeinWords: (NSString *) Y
@@ -63,15 +61,8 @@
     
     dateFromString = [dateFormatter dateFromString:Y];
     
-    NSLog(@"%@",Y);
-    
-    NSString *strDate = [dateFormatter stringFromDate:dateFromString];
-    
-    NSLog(@"%@",strDate);
-    
     NSString * I=[dateFromString prettyDate];
     
-    NSLog(@"%@",I);
     
     return I;
 }
@@ -364,10 +355,5 @@
         [nav setCurrentUser:currentUser];
     }
 }
-
-
-
-
-
 
 @end

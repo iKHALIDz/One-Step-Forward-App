@@ -109,11 +109,56 @@
     
 }
 
+-(void)DeleteSingleProgressFromDatabase
+{
+    FMDatabase *db=[FMDatabase databaseWithPath:[[self DataFilePath] stringByAppendingPathComponent:@"Database.sqlite"]];
+    BOOL isOpen=[db open];
+    if (isOpen==NO)
+    {
+        NSLog(@"Fail to open");
+        
+    }
+    
+    NSString *deleteSQLP = [NSString stringWithFormat:@"DELETE FROM Progress WHERE progressID='%d' AND createdBy='%@';",self.progressID,self.LoggedBy];
+    
+    
+    NSLog(@"%@",deleteSQLP);
+    BOOL succ=[db executeUpdate:deleteSQLP];
+    
+    if (succ==YES) {
+        NSLog(@"Succseed");
+    }
+    
+    else
+    {
+        NSLog(@"Fail");
+    }
+
+}
+
 -(void)DeleteProgressFromParse
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Progress"];
     
     [query whereKey:@"goalID" equalTo:[NSString stringWithFormat:@"%d",self.goalID]];
+    [query whereKey:@"createdBy" equalTo:self.LoggedBy];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * updateGoals, NSError *error){
+        if (!error) {
+            
+            for (PFObject* obj in updateGoals)
+            {
+                [obj deleteEventually];
+            }
+        }
+    }];
+}
+
+-(void)DeleteSingleProgressFromParse
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Progress"];
+    
+    [query whereKey:@"progressID" equalTo:[NSString stringWithFormat:@"%d",self.progressID]];
     [query whereKey:@"createdBy" equalTo:self.LoggedBy];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * updateGoals, NSError *error){

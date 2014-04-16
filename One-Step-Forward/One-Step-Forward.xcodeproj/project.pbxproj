@@ -86,6 +86,10 @@
 		E9AA299918B55A5B00719757 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AA299818B55A5B00719757 /* User.m */; };
 		E9B2298618B83EC400311007 /* detailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2298518B83EC400311007 /* detailsViewController.m */; };
 		E9B2298918B9A96F00311007 /* Progress.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2298818B9A96F00311007 /* Progress.m */; };
+		E9BA2E9E18FF0FD80016002E /* Achieve.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BA2E9A18FF0FD80016002E /* Achieve.png */; };
+		E9BA2E9F18FF0FD80016002E /* Create.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BA2E9B18FF0FD80016002E /* Create.png */; };
+		E9BA2EA018FF0FD80016002E /* Progress.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BA2E9C18FF0FD80016002E /* Progress.png */; };
+		E9BA2EA118FF0FD80016002E /* Remove.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BA2E9D18FF0FD80016002E /* Remove.png */; };
 		E9D9685818B1619E00339A50 /* CalenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D9685718B1619E00339A50 /* CalenderViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -199,6 +203,10 @@
 		E9B2298518B83EC400311007 /* detailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = detailsViewController.m; path = ../detailsViewController.m; sourceTree = "<group>"; };
 		E9B2298718B9A96F00311007 /* Progress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Progress.h; sourceTree = "<group>"; };
 		E9B2298818B9A96F00311007 /* Progress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Progress.m; sourceTree = "<group>"; };
+		E9BA2E9A18FF0FD80016002E /* Achieve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Achieve.png; sourceTree = "<group>"; };
+		E9BA2E9B18FF0FD80016002E /* Create.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Create.png; sourceTree = "<group>"; };
+		E9BA2E9C18FF0FD80016002E /* Progress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Progress.png; sourceTree = "<group>"; };
+		E9BA2E9D18FF0FD80016002E /* Remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Remove.png; sourceTree = "<group>"; };
 		E9D9685618B1619E00339A50 /* CalenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderViewController.h; sourceTree = "<group>"; };
 		E9D9685718B1619E00339A50 /* CalenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -405,6 +413,10 @@
 				E9EA339418DFFA2000609052 /* Done */,
 				E974BE5418D6ED6100B14F3A /* Logs */,
 				E982D25218A6DA4B006F70E0 /* Main.storyboard */,
+				E9BA2E9A18FF0FD80016002E /* Achieve.png */,
+				E9BA2E9B18FF0FD80016002E /* Create.png */,
+				E9BA2E9C18FF0FD80016002E /* Progress.png */,
+				E9BA2E9D18FF0FD80016002E /* Remove.png */,
 				E9D9685518B1616700339A50 /* External Resources */,
 				E982D24718A6DA4B006F70E0 /* Supporting Files */,
 			);
@@ -587,15 +599,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				E982D25918A6DA4B006F70E0 /* Images.xcassets in Resources */,
+				E9BA2EA118FF0FD80016002E /* Remove.png in Resources */,
 				E974BE5B18D82B0300B14F3A /* P.png in Resources */,
 				E982D24B18A6DA4B006F70E0 /* InfoPlist.strings in Resources */,
 				E989757C18D2609A00714005 /* goalTableViewCell.xib in Resources */,
 				E982D25418A6DA4B006F70E0 /* Main.storyboard in Resources */,
 				E973FD5D18CDB23F006ED83F /* Database.sqlite in Resources */,
+				E9BA2E9E18FF0FD80016002E /* Achieve.png in Resources */,
 				E974BE6D18DA633E00B14F3A /* FacebookButton.png in Resources */,
 				E982D28518A6DBC5006F70E0 /* Profile Picture.png in Resources */,
+				E9BA2E9F18FF0FD80016002E /* Create.png in Resources */,
 				E974BE6F18DA870700B14F3A /* FacebookButton2.png in Resources */,
 				E974BE5C18D82B0300B14F3A /* G.png in Resources */,
+				E9BA2EA018FF0FD80016002E /* Progress.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

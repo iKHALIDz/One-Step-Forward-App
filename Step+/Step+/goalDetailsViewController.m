@@ -44,7 +44,7 @@
     
     progressList=[self getProgressList];
     
-    progressListFromParse=[self getProgressFromParse];
+    //progressListFromParse=[self getProgressFromParse];
     
     if ([progressList count]==0)
     {
@@ -77,14 +77,13 @@
     NSInteger days=[self daysBetweenDate:currentGoal.goalDate andDate:[self getCurrentDataAndTime]];
     self.numberofDaysSinceCreated.text=[NSString stringWithFormat:@"Number of days since Createted: %d days",days+1];
     
-    
+    NSLog(@"Steps %d",currentGoal.numberOfGoalSteps);
     
     progressList=[self getProgressList];
     progressListFromParse=[self getProgressFromParse];
     
     [self.tableview reloadData];
 }
-
 
 -(NSInteger)daysBetweenDate:(NSString*)fromDateTime andDate:(NSString*)toDateTime
 {
@@ -123,11 +122,13 @@
     
     if ([[segue identifier] isEqualToString:@"addProgress"])
     {
-        newProgressViewController* nav = [segue destinationViewController];
-        [nav setCurrentGoal:currentGoal];
-        [nav setCurrentUser:currentUser];
+        UINavigationController *nav = [segue destinationViewController];
+        newProgressViewController *vc =(newProgressViewController*)nav.topViewController;
+
+        [vc setCurrentGoal:currentGoal];
+        [vc setCurrentUser:currentUser];
         
-        [nav setDelegate:self];
+        [vc setDelegate:self];
     }
     
     if ([[segue identifier] isEqualToString:@"toGoalSuggestion"])
@@ -154,6 +155,13 @@
         
     }
     
+    if ([[segue identifier] isEqualToString:@"EditGoal"])
+    {
+        UINavigationController *nav = [segue destinationViewController];
+        EditGoalViewController *vc =(EditGoalViewController*)nav.topViewController;
+        
+        [vc setCurrentGoal:currentGoal];
+    }
 }
 
 -(void) setGoal:(Goal *)updatedGoal
@@ -219,20 +227,39 @@
         
         [message show];
         
-        TimelinePost *newPost=[[TimelinePost alloc]init];
         
-        newPost.userFirstName=currentUser.userFirsname;
-        newPost.userLastName=currentUser.userLastname;
-        newPost.username=currentUser.userUsername;
-        newPost.userProfilePic=currentUser.userProfileImage;
+        Log *newLog=[[Log alloc]init];
         
-        newPost.PostContent=[NSString stringWithFormat:@"%@ has achieved a goal: %@",currentUser.userFirsname,goal.goalName];
-        newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",goal.goalID];
+        newLog.userUsername=currentUser.userUsername;
+        newLog.logDate=[self getCurrentDataAndTimeForLogging];
+        newLog.logContent=[NSString stringWithFormat:@"%@",self.currentGoal.goalName];
+        newLog.logType=@"Goal";
+        newLog.logAction=@"Achieve";
+        newLog.month=[[self getMonth] integerValue];
+        newLog.year=[[self getYear] integerValue];
+
         
-        newPost.PostType=@"Goal";
-        newPost.PostDate=progress.progressDate;
+        [newLog addLOG];
         
-        [newPost NewTimelinePost];
+        
+        if (currentUser.wantsToShare==YES)
+        {
+        
+            TimelinePost *newPost=[[TimelinePost alloc]init];
+            
+            newPost.userFirstName=currentUser.userFirsname;
+            newPost.userLastName=currentUser.userLastname;
+            newPost.username=currentUser.userUsername;
+            newPost.userProfilePic=currentUser.userProfileImage;
+            
+            newPost.PostContent=[NSString stringWithFormat:@"%@ has achieved a goal: %@",currentUser.userFirsname,goal.goalName];
+            newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",goal.goalID];
+            
+            newPost.PostType=@"Goal";
+            newPost.PostDate=progress.progressDate;
+            
+            [newPost NewTimelinePost];
+        }
         
         [self.navigationController popViewControllerAnimated:YES];
         
@@ -378,9 +405,35 @@
     [cell.likes setTag:indexPath.row];
     
     
+    [cell.deleteProgress addTarget:self action:@selector(deleteProgressSel:)  forControlEvents:UIControlEventTouchUpInside];
+    
+    [cell.deleteProgress setTag:indexPath.row];
+    
+    cell.deleteProgress.hidden=YES;
+    
     
     return cell;
 }
+
+- (IBAction)deleteProgressSel:(id)sender
+{
+    NSLog(@"TTT");
+    
+    UIButton *button = (UIButton *)sender;
+    
+    int row = button.tag;
+    NSLog(@"isPressed");
+    
+    NSLog(@"%d",row);
+    
+    currentProgress= [progressList objectAtIndex:row];
+    
+    UIAlertView *updateAlert = [[UIAlertView alloc] initWithTitle: @"Progress Deletion" message: @"Are you sure you want to delete" delegate: self cancelButtonTitle: @"Yes"  otherButtonTitles:@"Cancel",nil];
+    updateAlert.tag=1;
+    [updateAlert show];
+    
+}
+
 
 - (IBAction)GotoLikes:(id)sender
 {
@@ -438,46 +491,141 @@
 
 - (IBAction)deleteGoal:(UIBarButtonItem *)sender {
     
-    Goal *goal=self.currentGoal;
-    Progress *progress=[[Progress alloc]init];
-    progress.goalID=currentGoal.goalID;
-    progress.LoggedBy=currentGoal.createdBy;
+    UIAlertView *updateAlert = [[UIAlertView alloc] initWithTitle: @"Goal Deletion" message: @"Are you sure you want to delete" delegate: self cancelButtonTitle: @"Yes"  otherButtonTitles:@"Cancel",nil];
     
-    
-    [goal DeleteGoalFromDatabase];
-    [progress DeleteProgressFromDatabase];
-    [goal DeleteGoalFromParse];
-    [progress DeleteProgressFromParse];
-    
-    if (goal.isGoalCompleted==NO)
+    updateAlert.tag=0;
+    [updateAlert show];
+
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag==0)
     {
-        currentUser.numberOfInProgressGoals=currentUser.numberOfInProgressGoals-1;
-        [currentUser UpdateUserDataDB];
-        [currentUser UpdateUserParse];
-        
-        
+        if(buttonIndex==0)
+        {
+            NSLog(@"Yes Goal is deleted");
+            Goal *goal=self.currentGoal;
+            Progress *progress=[[Progress alloc]init];
+            progress.goalID=currentGoal.goalID;
+            progress.LoggedBy=currentGoal.createdBy;
+            
+            
+            [goal DeleteGoalFromDatabase];
+            [progress DeleteProgressFromDatabase];
+            [goal DeleteGoalFromParse];
+            [progress DeleteProgressFromParse];
+            
+            Log *newLog=[[Log alloc]init];
+            
+            newLog.userUsername=currentUser.userUsername;
+            newLog.logDate=[self getCurrentDataAndTimeForLogging];
+            newLog.logContent=[NSString stringWithFormat:@"%@",self.currentGoal.goalName];
+            newLog.logType=@"Goal";
+            newLog.logAction=@"Deleted";
+            newLog.month=[[self getMonth] integerValue];
+            newLog.year=[[self getYear] integerValue];
+
+            [newLog addLOG];
+
+            
+            if (goal.isGoalCompleted==NO)
+            {
+                currentUser.numberOfInProgressGoals=currentUser.numberOfInProgressGoals-1;
+                [currentUser UpdateUserDataDB];
+                [currentUser UpdateUserParse];
+                
+                
+            }
+            else
+            {
+                currentUser.numberOfAchievedGoals=currentUser.numberOfAchievedGoals-1;
+                
+                [currentUser UpdateUserDataDB];
+                [currentUser UpdateUserParse];
+                
+            }
+            
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Success!"
+                                                              message:@"The goal is deleteted"
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles:nil];
+            
+            [message show];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            
+            
+        }
+        else
+        {
+            NSLog(@"NO Goal isn't deleted");
+            
+        }
     }
     else
     {
-        currentUser.numberOfAchievedGoals=currentUser.numberOfAchievedGoals-1;
+        if(buttonIndex==0)
+        {
+            
+            NSLog(@"Yes Progress is Deleted");
+            [currentProgress DeleteSingleProgressFromParse];
+            [currentProgress DeleteSingleProgressFromDatabase];
+            
+            Log *newLog=[[Log alloc]init];
+            
+            [newLog addLOG];
+
+            
+            Goal*goal=currentGoal;
+            Goal*parseGoal=currentGoal;
+            
+            goal.numberOfGoalSteps=goal.numberOfGoalSteps-1;
+            
+            
+            if ((goal.goalProgress==100 && goal.goalProgress-currentProgress.progressPercentageToGoal<100))
+            {
+                goal.isGoalCompleted=NO;
+                goal.isGoalinProgress=NO;
+                
+                [goal declareGoalAsUNAchieved];
+                [goal declareGoalAsUNAchievedinParse];
+                
+                currentUser.numberOfInProgressGoals=currentUser.numberOfInProgressGoals+1;
+                currentUser.numberOfAchievedGoals=currentUser.numberOfAchievedGoals-1;
+                [currentUser UpdateUserDataDB];
+                [currentUser UpdateUserParse];
+
+            }
+            
+    
+            [goal UpdataGoalWithProgress:currentProgress.progressPercentageToGoal WithMark:@"-"];
+            
+            [parseGoal UpdataGoalWithProgressInParse:currentProgress.progressPercentageToGoal WithMark:@"-"];
+            
+            self.TotalPercentageLable.text=[[NSString stringWithFormat:@"%.2f",currentGoal.goalProgress-currentProgress.progressPercentageToGoal] stringByAppendingString:@"%"];
+            
+    
+            
+            self.NumberofStepsTakenLable.text=[NSString stringWithFormat:@"Step Taken: %d",currentGoal.numberOfGoalSteps-1];
+            
+            
+            [progressList removeObject:currentProgress];
+            
+            [self.tableview reloadData];
+            
+        }
         
-        [currentUser UpdateUserDataDB];
-        [currentUser UpdateUserParse];
-        
+        else
+        {
+            NSLog(@"No Progress isn't Deleted");
+            
+            
+        }
     }
     
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Success!"
-                                                      message:@"The goal is deleteted"
-                                                     delegate:nil
-                                            cancelButtonTitle:@"OK"
-                                            otherButtonTitles:nil];
-    
-    [message show];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-    
 }
-
 
 -(NSString *) GetTimeinWords: (NSString *) Y
 {
@@ -489,22 +637,68 @@
     
     dateFromString = [dateFormatter dateFromString:Y];
     
-    NSLog(@"%@",Y);
     
-    NSString *strDate = [dateFormatter stringFromDate:dateFromString];
     
-    NSLog(@"%@",strDate);
     
     NSString * I=[dateFromString prettyDate];
-    
-    NSLog(@"%@",I);
     
     return I;
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Manage A Progress");
+    
+    ProgressTableViewCell *cell = (ProgressTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+    
+    cell.deleteProgress.hidden=NO;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
 }
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    ProgressTableViewCell *cell = (ProgressTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+    
+    cell.deleteProgress.hidden=YES;
+    
+}
+
+
+
+-(NSString *)getCurrentDataAndTimeForLogging
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    NSDate *Todaydata=[NSDate date];
+    
+    NSString *currentData= [dateFormatter stringFromDate:Todaydata];
+    
+    return currentData;
+}
+
+-(NSString *)getMonth
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM"];
+    NSDate *Todaydata=[NSDate date];
+    
+    NSString *currentData= [dateFormatter stringFromDate:Todaydata];
+    
+    return currentData;
+}
+
+-(NSString *)getYear
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy"];
+    NSDate *Todaydata=[NSDate date];
+    
+    NSString *currentData= [dateFormatter stringFromDate:Todaydata];
+    
+    return currentData;
+}
+
 
 @end

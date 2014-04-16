@@ -11,6 +11,7 @@
 #import "Progress.h"
 #import "TimelinePost.h"
 #import "User.h"
+#import "Log.h"
 
 @protocol updateGoal<NSObject>
 

@@ -1,8 +1,8 @@
 //
-//  newGoalViewController.h
+//  EditGoalViewController.h
 //  Step+
 //
-//  Created by KHALID ALAHMARI on 3/23/14.
+//  Created by KHALID ALAHMARI on 4/15/14.
 //  Copyright (c) 2014 Khalid. All rights reserved.
 //
 
@@ -13,18 +13,14 @@
 #import "FMDatabase.h"
 #import <Parse/Parse.h>
 #import "Progress.h"
-#import "Log.h"
 
-@interface newGoalViewController : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate>
+@interface EditGoalViewController : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
-- (IBAction)chooseDeadline:(UIButton *)sender;
-
 @property (weak, nonatomic) IBOutlet UIToolbar *pickerToolbar;
 
-- (IBAction)hidepickerView:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UITextField *goalNameTextfield;
 
 @property (weak, nonatomic) IBOutlet UITextField *goalDescriptionTextfield;
@@ -35,10 +31,9 @@
 
 - (IBAction)isSavePressed:(UIBarButtonItem *)sender;
 
-@property (weak, nonatomic) IBOutlet UIPickerView *goalTypepicker;
-
 @property (retain,nonatomic) NSArray *goalTypes;
 
+@property (weak, nonatomic) IBOutlet UIPickerView *goalTypepicker;
 
 @property (nonatomic,strong) User *currentUser;
 
@@ -48,5 +43,8 @@
 
 -(IBAction) isCancelisPressed;
 
+@property (retain,nonatomic) Goal *currentGoal;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *isDoneisPressed1;
 
 @end

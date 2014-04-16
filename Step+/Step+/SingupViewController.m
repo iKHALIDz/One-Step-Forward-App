@@ -23,6 +23,7 @@
 
 @synthesize imagePicker,ProfileImg;
 @synthesize user;
+@synthesize shareSwitch;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -157,6 +158,15 @@
     [user setUserProfileImage:self.ProfileImg.image];
     [user setNumberOfAchievedGoals:0];
     [user setNumberOfInProgressGoals:0];
+    if(shareSwitch.on)
+    {
+    [user setWantsToShare:YES];
+    }
+    else
+    {
+        [user setWantsToShare:NO];
+
+    }
     
     BOOL x=[user createAnAccountUsingParse];
     if (x==YES)

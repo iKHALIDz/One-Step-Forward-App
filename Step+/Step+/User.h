@@ -22,6 +22,7 @@
 @property int numberOfInProgressGoals;
 @property int numberOfAchievedGoals;
 @property BOOL isUserloggedin;
+@property BOOL wantsToShare;
 
 -(BOOL) loginToAccountUsingParse;
 -(BOOL) createAnAccountUsingParse;

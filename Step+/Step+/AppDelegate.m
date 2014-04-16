@@ -38,7 +38,7 @@
     }
     
     
-    NSString *createSQL1= @"create table IF NOT exists Users(userId integer,userFirstname text, userLastname text, userUsername text primary key, userPassword text, userEmailAddress text, userProfileImage blob,numberOfInProgressGoals int,numberOfAchievedGoals int);";
+    NSString *createSQL1= @"create table IF NOT exists Users(userId integer,userFirstname text, userLastname text, userUsername text primary key, userPassword text, userEmailAddress text, userProfileImage blob,numberOfInProgressGoals int,numberOfAchievedGoals int,wantsToShare int);";
     
     
     FMDatabase *db=[FMDatabase databaseWithPath:[[self DataFilePath] stringByAppendingPathComponent:@"Database.sqlite"]];
@@ -60,6 +60,12 @@
     
     [db executeUpdate:createSQL3];
 
+    
+    NSString *createSQL4= @"create table IF NOT exists Logs(logID integer, userUsername text, logDate text,LogContent text, logType text,logAction text,month int,year int);";
+    
+    [db executeUpdate:createSQL4];
+
+    
     
     return YES;
 }

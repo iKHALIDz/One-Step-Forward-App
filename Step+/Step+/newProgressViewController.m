@@ -37,6 +37,8 @@
         self.progressPercenatge.enabled=NO;
         
     }
+    NSLog(@"66 %d",currentUser.wantsToShare);
+
     
 }
 
@@ -52,7 +54,7 @@
     int X=-1;
     
     //invalid input
-    if ([self.progressPercenatge.text isEqual:@""])
+    if ( [self.progressPercenatge.text isEqual:@""] && self.currentGoal.isGoalCompleted==NO)
     {
         
         X=-3;
@@ -93,6 +95,18 @@
     return currentData;
 }
 
+-(NSString *)getCurrentDataAndTimeForLogging
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    
+    NSDate *Todaydata=[NSDate date];
+    
+    NSString *currentData= [dateFormatter stringFromDate:Todaydata];
+    
+    return currentData;
+}
+
 
 -(NSString *)nextIdentifies
 {
@@ -122,11 +136,24 @@
         progress.progressDate=[self getCurrentDataAndTime];
         progress.stepOrder=self.currentGoal.numberOfGoalSteps+1;
         progress.progressID=[[self nextIdentifies] integerValue];
+
         
         [progress AddProgressltoDatabase];
         [progress AddProgresslToParse];
         
+        Log *newLog=[[Log alloc]init];
+        newLog.userUsername=currentUser.userUsername;
+        newLog.logDate=[self getCurrentDataAndTimeForLogging];
+        newLog.logContent=[NSString stringWithFormat:@"%@ / %@ / %@ ",self.progressDescription.text,self.progressPercenatge.text,currentGoal.goalName];
+    
+        newLog.logType=@"Progress";
+        newLog.logAction=@"Log";
+        newLog.month=[[self getMonth] integerValue];
+        newLog.year=[[self getYear] integerValue];
+
         
+        [newLog addLOG];
+
         Goal*goal=currentGoal;
         Goal*parseGoal=currentGoal;
         
@@ -135,27 +162,31 @@
         [goal UpdataGoalWithProgress:[self.progressPercenatge.text doubleValue] WithMark:@"+"];
         [parseGoal UpdataGoalWithProgressInParse:[self.progressPercenatge.text doubleValue] WithMark:@"+"];
         
-        
         NSString *sum=[NSString stringWithFormat:@"%.2f",[self.progressPercenatge.text doubleValue]+goal.goalProgress];
         goal.goalProgress=[sum doubleValue];
         
         [[self delegate]setGoal:goal];
         
+
         // New timeline Post
-        TimelinePost *newPost=[[TimelinePost alloc]init];
+            TimelinePost *newPost=[[TimelinePost alloc]init];
+            
+            newPost.userFirstName=currentUser.userFirsname;
+            newPost.userLastName=currentUser.userLastname;
+            newPost.username=currentUser.userUsername;
+            newPost.userProfilePic=currentUser.userProfileImage;
+            
+            newPost.PostContent=[NSString stringWithFormat:@"%@ made a progress: %@ in %@",currentUser.userFirsname,progress.progressDescription,currentGoal.goalName];
+            newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",progress.progressID];
+            
+            newPost.PostType=@"Progress";
+            newPost.PostDate=progress.progressDate;
         
-        newPost.userFirstName=currentUser.userFirsname;
-        newPost.userLastName=currentUser.userLastname;
-        newPost.username=currentUser.userUsername;
-        newPost.userProfilePic=currentUser.userProfileImage;
-        
-        newPost.PostContent=[NSString stringWithFormat:@"%@ made a progress: %@ in %@",currentUser.userFirsname,progress.progressDescription,currentGoal.goalName];
-        newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",progress.progressID];
-        
-        newPost.PostType=@"Progress";
-        newPost.PostDate=progress.progressDate;
-        
-        [newPost NewTimelinePost];
+        if (currentUser.wantsToShare==YES)
+        {
+            [newPost NewTimelinePost];
+            
+        }
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -170,32 +201,54 @@
         progress.progressID=[[self nextIdentifies] integerValue];
         
         [progress AddProgressltoDatabase];
+        [progress AddProgresslToParse];
+        
+        Log *newLog=[[Log alloc]init];
+        newLog.userUsername=currentUser.userUsername;
+        newLog.logDate=[self getCurrentDataAndTimeForLogging];
+        newLog.logContent=[NSString stringWithFormat:@"%@ / %@ / %@ ",self.progressDescription.text,self.progressPercenatge.text,currentGoal.goalName];
+        
+        newLog.logType=@"Progress";
+        newLog.logAction=@"Log";
+        newLog.month=[[self getMonth] integerValue];
+        newLog.year=[[self getYear] integerValue];
+
+        
+        [newLog addLOG];
+        
         
         // New timeline Post
+        
         TimelinePost *newPost=[[TimelinePost alloc]init];
+      
+            newPost.userFirstName=currentUser.userFirsname;
+            newPost.userLastName=currentUser.userLastname;
+            newPost.username=currentUser.userUsername;
+            newPost.userProfilePic=currentUser.userProfileImage;
+            
+            newPost.PostContent=[NSString stringWithFormat:@"%@ made a progress: %@ in %@",currentUser.userFirsname,progress.progressDescription,currentGoal.goalName];
+            
+            
+            newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",progress.progressID];
+            
+            newPost.PostType=@"Progress";
+            
+            newPost.PostDate=progress.progressDate;
         
-        newPost.userFirstName=currentUser.userFirsname;
-        newPost.userLastName=currentUser.userLastname;
-        newPost.username=currentUser.userUsername;
-        newPost.userProfilePic=currentUser.userProfileImage;
-        
-        newPost.PostContent=[NSString stringWithFormat:@"%@ made a progress: %@ in %@",currentUser.userFirsname,progress.progressDescription,currentGoal.goalName];
+        if (currentUser.wantsToShare==YES)
+        {
+            [newPost NewTimelinePost];
+        }
         
         
-        newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",progress.progressID];
-        
-        newPost.PostType=@"Progress";
         Goal *goal=currentGoal;
-
-        newPost.PostDate=progress.progressDate;
         
-        [newPost NewTimelinePost];
-
         goal.numberOfGoalSteps=goal.numberOfGoalSteps+1;
         [goal declareGoalAsAchieved];
         [goal declareGoalAsAchievedinParse];
         
-        
+       
+
         TimelinePost *newPost2=[[TimelinePost alloc]init];
         
         newPost2.userFirstName=currentUser.userFirsname;
@@ -209,8 +262,11 @@
         newPost2.PostType=@"Goal";
         newPost2.PostDate=progress.progressDate;
         
-        [newPost2 NewTimelinePost];
-
+        if (currentUser.wantsToShare==YES)
+        {
+            [newPost2 NewTimelinePost];
+        
+        }
         
         currentGoal.goalProgress=100.00;
         
@@ -243,6 +299,93 @@
         [message show];
         
     }
+    
+    else // in case the goal is done and the user wants to enter a progress
+    {
+        progress.progressPercentageToGoal=0;
+        progress.progressDate=[self getCurrentDataAndTime];
+        progress.stepOrder=self.currentGoal.numberOfGoalSteps+1;
+        progress.progressID=[[self nextIdentifies] integerValue];
+        
+        
+        [progress AddProgressltoDatabase];
+        [progress AddProgresslToParse];
+        
+        Log *newLog=[[Log alloc]init];
+        newLog.userUsername=currentUser.userUsername;
+        newLog.logDate=[self getCurrentDataAndTimeForLogging];
+        newLog.logContent=[NSString stringWithFormat:@"%@ / %.2f / %@ ",self.progressDescription.text,progress.progressPercentageToGoal,currentGoal.goalName];
+        
+        newLog.logType=@"Progress";
+        newLog.logAction=@"Log";
+        newLog.month=[[self getMonth] integerValue];
+        newLog.year=[[self getYear] integerValue];
+
+        [newLog addLOG];
+
+        
+        Goal*goal=currentGoal;
+        Goal*parseGoal=currentGoal;
+        
+        goal.numberOfGoalSteps=goal.numberOfGoalSteps+1;
+        
+        [goal UpdataGoalWithProgress:0 WithMark:@"+"];
+        [parseGoal UpdataGoalWithProgressInParse:0 WithMark:@"+"];
+        
+        
+        NSString *sum=[NSString stringWithFormat:@"%.2f",0+goal.goalProgress];
+        goal.goalProgress=[sum doubleValue];
+        
+        [[self delegate]setGoal:goal];
+        
+        
+        // New timeline Post
+        TimelinePost *newPost=[[TimelinePost alloc]init];
+        
+        newPost.userFirstName=currentUser.userFirsname;
+        newPost.userLastName=currentUser.userLastname;
+        newPost.username=currentUser.userUsername;
+        newPost.userProfilePic=currentUser.userProfileImage;
+        
+        newPost.PostContent=[NSString stringWithFormat:@"%@ made a progress: %@ in %@",currentUser.userFirsname,progress.progressDescription,currentGoal.goalName];
+        newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",progress.progressID];
+        
+        newPost.PostType=@"Progress";
+        newPost.PostDate=progress.progressDate;
+        
+        if (currentUser.wantsToShare==YES)
+        {
+            [newPost NewTimelinePost];
+            
+        }
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+    }
+    
+}
+
+
+-(NSString *)getMonth
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM"];
+    NSDate *Todaydata=[NSDate date];
+    
+    NSString *currentData= [dateFormatter stringFromDate:Todaydata];
+    
+    return currentData;
+}
+
+-(NSString *)getYear
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy"];
+    NSDate *Todaydata=[NSDate date];
+    
+    NSString *currentData= [dateFormatter stringFromDate:Todaydata];
+    
+    return currentData;
 }
 
 @end

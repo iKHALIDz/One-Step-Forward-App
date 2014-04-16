@@ -25,4 +25,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *nLikes;
 @property (weak, nonatomic) IBOutlet UIButton *likes;
 
+@property (weak, nonatomic) IBOutlet UIButton *deleteProgress;
+
+
+
 @end

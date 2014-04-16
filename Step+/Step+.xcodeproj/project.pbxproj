@@ -68,6 +68,15 @@
 		E9B8AD5318DCC01E00035AC8 /* Profile Picture.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B8AD5218DCC01E00035AC8 /* Profile Picture.png */; };
 		E9B8AD5818DCE9E200035AC8 /* SignupNavigationBar.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B8AD5718DCE9E200035AC8 /* SignupNavigationBar.png */; };
 		E9BA2E8018F64DBB0016002E /* ProgressDetailsLikeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2E7F18F64DBB0016002E /* ProgressDetailsLikeListViewController.m */; };
+		E9BA2E8318FDBE830016002E /* EditGoalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2E8218FDBE830016002E /* EditGoalViewController.m */; };
+		E9BA2E8818FE4D950016002E /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BA2E8718FE4D950016002E /* trash.png */; };
+		E9BA2E8F18FEEB5C0016002E /* Log.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2E8A18FEEB5C0016002E /* Log.m */; };
+		E9BA2E9018FEEB5C0016002E /* CalenderLogsEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2E8C18FEEB5C0016002E /* CalenderLogsEventsViewController.m */; };
+		E9BA2E9118FEEB5C0016002E /* logCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2E8E18FEEB5C0016002E /* logCell.m */; };
+		E9BA2EA618FF106A0016002E /* A.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BA2EA218FF106A0016002E /* A.png */; };
+		E9BA2EA718FF106A0016002E /* C.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BA2EA318FF106A0016002E /* C.png */; };
+		E9BA2EA818FF106A0016002E /* P.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BA2EA418FF106A0016002E /* P.png */; };
+		E9BA2EAB18FF117A0016002E /* Re.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BA2EAA18FF117A0016002E /* Re.png */; };
 		E9EA332A18DCFF6200609052 /* MDRadialProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA332518DCFF6200609052 /* MDRadialProgressView.m */; };
 		E9EA332B18DCFF6200609052 /* MDRadialProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA332518DCFF6200609052 /* MDRadialProgressView.m */; };
 		E9EA332C18DCFF6200609052 /* MDRadialProgressTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA332718DCFF6200609052 /* MDRadialProgressTheme.m */; };
@@ -213,6 +222,19 @@
 		E9B8AD5718DCE9E200035AC8 /* SignupNavigationBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SignupNavigationBar.png; sourceTree = "<group>"; };
 		E9BA2E7E18F64DBB0016002E /* ProgressDetailsLikeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressDetailsLikeListViewController.h; sourceTree = "<group>"; };
 		E9BA2E7F18F64DBB0016002E /* ProgressDetailsLikeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressDetailsLikeListViewController.m; sourceTree = "<group>"; };
+		E9BA2E8118FDBE830016002E /* EditGoalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditGoalViewController.h; sourceTree = "<group>"; };
+		E9BA2E8218FDBE830016002E /* EditGoalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditGoalViewController.m; sourceTree = "<group>"; };
+		E9BA2E8718FE4D950016002E /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
+		E9BA2E8918FEEB5C0016002E /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
+		E9BA2E8A18FEEB5C0016002E /* Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Log.m; sourceTree = "<group>"; };
+		E9BA2E8B18FEEB5C0016002E /* CalenderLogsEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderLogsEventsViewController.h; sourceTree = "<group>"; };
+		E9BA2E8C18FEEB5C0016002E /* CalenderLogsEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderLogsEventsViewController.m; sourceTree = "<group>"; };
+		E9BA2E8D18FEEB5C0016002E /* logCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logCell.h; sourceTree = "<group>"; };
+		E9BA2E8E18FEEB5C0016002E /* logCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = logCell.m; sourceTree = "<group>"; };
+		E9BA2EA218FF106A0016002E /* A.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = A.png; sourceTree = "<group>"; };
+		E9BA2EA318FF106A0016002E /* C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C.png; sourceTree = "<group>"; };
+		E9BA2EA418FF106A0016002E /* P.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P.png; sourceTree = "<group>"; };
+		E9BA2EAA18FF117A0016002E /* Re.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Re.png; sourceTree = "<group>"; };
 		E9EA332418DCFF6200609052 /* MDRadialProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressView.h; sourceTree = "<group>"; };
 		E9EA332518DCFF6200609052 /* MDRadialProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRadialProgressView.m; sourceTree = "<group>"; };
 		E9EA332618DCFF6200609052 /* MDRadialProgressTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressTheme.h; sourceTree = "<group>"; };
@@ -383,6 +405,12 @@
 				E96F17A718F385CD0057C3CA /* timelinePostComment.m */,
 				E99348CB18F5EE0100844C2C /* timelinePostLike.h */,
 				E99348CC18F5EE0100844C2C /* timelinePostLike.m */,
+				E9BA2E8918FEEB5C0016002E /* Log.h */,
+				E9BA2E8A18FEEB5C0016002E /* Log.m */,
+				E9BA2E8B18FEEB5C0016002E /* CalenderLogsEventsViewController.h */,
+				E9BA2E8C18FEEB5C0016002E /* CalenderLogsEventsViewController.m */,
+				E9BA2E8D18FEEB5C0016002E /* logCell.h */,
+				E9BA2E8E18FEEB5C0016002E /* logCell.m */,
 				E9EA335318DCFFEB00609052 /* External Libararies */,
 				E944C83F18DBDBF9002714D8 /* Supporting Files */,
 			);
@@ -423,6 +451,7 @@
 		E944C87818DBE0B6002714D8 /* Image Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				E9BA2E8718FE4D950016002E /* trash.png */,
 				E99348C718F5CFEF00844C2C /* Like2.png */,
 				E99348C818F5CFEF00844C2C /* Like1.png */,
 				E907C21F18E9FAC10059D19A /* topAndBottomRow.png */,
@@ -467,6 +496,8 @@
 				E9EA337C18DF90C300609052 /* Goal.m */,
 				E9EA338F18DFB94400609052 /* newGoalViewController.h */,
 				E9EA339018DFB94400609052 /* newGoalViewController.m */,
+				E9BA2E8118FDBE830016002E /* EditGoalViewController.h */,
+				E9BA2E8218FDBE830016002E /* EditGoalViewController.m */,
 			);
 			name = "Local Part";
 			sourceTree = "<group>";
@@ -476,6 +507,10 @@
 			children = (
 				E923993F18E9316100F7AB19 /* SettingViewController.h */,
 				E923994018E9316100F7AB19 /* SettingViewController.m */,
+				E9BA2EA218FF106A0016002E /* A.png */,
+				E9BA2EA318FF106A0016002E /* C.png */,
+				E9BA2EA418FF106A0016002E /* P.png */,
+				E9BA2EAA18FF117A0016002E /* Re.png */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -654,11 +689,13 @@
 				E99348CA18F5CFEF00844C2C /* Like1.png in Resources */,
 				E995330D18E15D7F00F42C08 /* AddButton.jpg in Resources */,
 				E907C21E18E9FAAC0059D19A /* gradientBackground.png in Resources */,
+				E9BA2EA718FF106A0016002E /* C.png in Resources */,
 				E944C87D18DBE59B002714D8 /* LoginBackground@2x.png in Resources */,
 				E9510E4318E210E7000C30B8 /* progressTableViewCell.xib in Resources */,
 				E9510E3418E16C0C000C30B8 /* UITableBackground.png in Resources */,
 				E9B8AD5118DCBE6D00035AC8 /* SignUPCellNoBo.png in Resources */,
 				E9B8AD2818DBEC4600035AC8 /* LoginBox.png in Resources */,
+				E9BA2EAB18FF117A0016002E /* Re.png in Resources */,
 				E9B8AD5818DCE9E200035AC8 /* SignupNavigationBar.png in Resources */,
 				E944C87B18DBE59B002714D8 /* LoginBackground-568@2x.png in Resources */,
 				E99348C918F5CFEF00844C2C /* Like2.png in Resources */,
@@ -669,8 +706,10 @@
 				E9B8AD4418DC2E2A00035AC8 /* SignupBackground-568@2x.png in Resources */,
 				E9EA33A218E00B7200609052 /* SignupBackgroundv2-568@2x.png in Resources */,
 				E9B8AD5318DCC01E00035AC8 /* Profile Picture.png in Resources */,
+				E9BA2E8818FE4D950016002E /* trash.png in Resources */,
 				E923993C18E91FE100F7AB19 /* MoveCell-Icon.png in Resources */,
 				E96F179718F31A100057C3CA /* timelineCell.xib in Resources */,
+				E9BA2EA618FF106A0016002E /* A.png in Resources */,
 				E9B8AD4918DC304400035AC8 /* SignupBackground@2x.png in Resources */,
 				E9B8AD2A18DBEFAC00035AC8 /* FacebookLogin.png in Resources */,
 				E944C84E18DBDBF9002714D8 /* Images.xcassets in Resources */,
@@ -678,6 +717,7 @@
 				E907C22018E9FAC10059D19A /* topAndBottomRow.png in Resources */,
 				E9B8AD4D18DCBAC800035AC8 /* SignUPCell.png in Resources */,
 				E9B8AD4B18DCB5D500035AC8 /* SineupBox.png in Resources */,
+				E9BA2EA818FF106A0016002E /* P.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,10 +739,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9BA2E9018FEEB5C0016002E /* CalenderLogsEventsViewController.m in Sources */,
 				E96F17A318F3833A0057C3CA /* TimelinePostCommentTableViewCell.m in Sources */,
 				E96F179D18F320B70057C3CA /* timelineCell.m in Sources */,
 				E9EA33A018E0011700609052 /* goalTableViewCell.m in Sources */,
 				E96F17A018F364B30057C3CA /* TimelinePostDetailsViewController.m in Sources */,
+				E9BA2E8F18FEEB5C0016002E /* Log.m in Sources */,
 				E9EA333718DCFFA000609052 /* RDVExampleDayCell.m in Sources */,
 				E9EA332C18DCFF6200609052 /* MDRadialProgressTheme.m in Sources */,
 				E99348C618F4D03500844C2C /* ProgressDetailsViewController.m in Sources */,
@@ -710,6 +752,7 @@
 				E9EA335918DD00D700609052 /* User.m in Sources */,
 				E9EA337D18DF90C300609052 /* Goal.m in Sources */,
 				E99348BD18F39E4000844C2C /* UserProfileViewController.m in Sources */,
+				E9BA2E9118FEEB5C0016002E /* logCell.m in Sources */,
 				E9EA334818DCFFD000609052 /* FMDatabase.m in Sources */,
 				E9EA337A18DD1C0800609052 /* MainMenuViewController.m in Sources */,
 				E923994118E9316100F7AB19 /* SettingViewController.m in Sources */,
@@ -728,6 +771,7 @@
 				E9EA339118DFB94400609052 /* newGoalViewController.m in Sources */,
 				E9EA334E18DCFFD000609052 /* FMDatabaseQueue.m in Sources */,
 				E9510E3A18E20663000C30B8 /* Progress.m in Sources */,
+				E9BA2E8318FDBE830016002E /* EditGoalViewController.m in Sources */,
 				E99348C318F47D1600844C2C /* goalSuggestionsViewController.m in Sources */,
 				E9EA332E18DCFF6200609052 /* MDRadialProgressLabel.m in Sources */,
 				E944C84C18DBDBF9002714D8 /* Step_.xcdatamodeld in Sources */,

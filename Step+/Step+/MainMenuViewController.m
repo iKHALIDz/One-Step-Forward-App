@@ -30,18 +30,22 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     
+    
     [super viewDidAppear:YES];
     
     PFUser *curreUser =[PFUser currentUser];
     
     if (currentUser==nil) // in Case if the user is already logged in
     {
+        NSLog(@"rrrr");
         currentUser=[[User alloc]init];
         
         currentUser=[currentUser getUserInfo:curreUser.username];
         
         if (currentUser ==nil)
         {
+            
+            NSLog(@"rrr1");
             NSLog(@"User isn't in the Database");
             currentUser=[self getUserInfromationAsObject];
             NSLog(@"Username %@",currentUser.userUsername);
@@ -52,13 +56,17 @@
         
         else
         {
-            
+            NSLog(@"rrr2");
+
         }
     }
     
     else
+        
     {
-        currentUser=[currentUser getUserInfo:curreUser.username];
+        NSLog(@"rrr3");
+
+        //currentUser=[currentUser getUserInfo:curreUser.username];
         NSLog(@"User exist in the Database");
     }
     
@@ -72,7 +80,10 @@
     self.img.clipsToBounds = YES;
     self.img.layer.cornerRadius = 2.0f;
     
+    NSLog(@"66 %d",currentUser.wantsToShare);
+    
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -157,6 +168,24 @@
         currentUser.userProfileImage=self.img.image;
         [vc setCurrentUser:self.currentUser];
     }
+    
+    if ([[segue identifier] isEqualToString:@"toSetting"])
+    {
+        UINavigationController *nav = [segue destinationViewController];
+
+        SettingViewController*vc = (SettingViewController*)nav.topViewController;
+        
+        currentUser.userProfileImage=self.img.image;
+        [vc setCurrentUser:self.currentUser];
+    }
+    
+    if ([[segue identifier] isEqualToString:@"toLogs"])
+    {
+        CalenderLogsEventsViewController*vc =[segue destinationViewController];
+        currentUser.userProfileImage=self.img.image;
+        [vc setCurrentUser:self.currentUser];
+    }
+
     
 }
 

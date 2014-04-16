@@ -12,6 +12,8 @@
 #import "LoginViewController.h"
 #import "InProgressGoalsViewController.h"
 #import "TimelineViewController.h"
+#import "SettingViewController.h"
+#import "CalenderLogsEventsViewController.h"
 
 
 @interface MainMenuViewController : UIViewController

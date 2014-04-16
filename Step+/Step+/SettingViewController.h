@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "LoginViewController.h"
+#import "User.h"
 
 @interface SettingViewController : UIViewController
 
 - (IBAction)isSignoutPressed:(UIButton *)sender;
+
+@property (weak, nonatomic) IBOutlet UISwitch *shareSwitch;
+
+@property (nonatomic,retain) User *currentUser;
+
+- (IBAction)changeOption:(UISwitch *)sender;
 
 @end

@@ -20,6 +20,7 @@
 @synthesize numberOfAchievedGoals;
 @synthesize numberOfInProgressGoals;
 @synthesize isUserloggedin;
+@synthesize wantsToShare;
 
 
 -(BOOL) loginToAccountUsingParse
@@ -41,8 +42,9 @@
         userEmailAddres=[existingUser objectForKey:@"email"];
         numberOfAchievedGoals=[[existingUser objectForKey:@"numberOfAchievedGoals"] integerValue];
         numberOfInProgressGoals=[[existingUser objectForKey:@"numberOfInProgressGoals"] integerValue];
+        wantsToShare=[[existingUser objectForKey:@"wantsToShare"] boolValue];
+        
     }
-    
     else
     {
         NSString *errorString = [[error userInfo] objectForKey:@"error"];
@@ -63,6 +65,7 @@
     [newUser setObject:userLastname forKey:@"LastName"];
     [newUser setObject:[NSString stringWithFormat:@"%d",numberOfInProgressGoals] forKey:@"numberOfInProgressGoals"];
     [newUser setObject:[NSString stringWithFormat:@"%d",numberOfAchievedGoals] forKey:@"numberOfAchievedGoals"];
+    [newUser setObject:[NSNumber numberWithBool:wantsToShare] forKey:@"wantsToShare"];
     
     newUser.username=userUsername;
     newUser.password=userPassword;
@@ -117,7 +120,7 @@
     }
     
     
-    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Users (userId,userFirstname,userLastname,userUsername,userPassword,userEmailAddress,numberOfInProgressGoals,numberOfAchievedGoals) VALUES (%@,'%@','%@','%@','%@','%@','%d','%d')",userID,userFirsname,userLastname,userUsername,userPassword,userEmailAddres,numberOfInProgressGoals,numberOfAchievedGoals];
+    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Users (userId,userFirstname,userLastname,userUsername,userPassword,userEmailAddress,numberOfInProgressGoals,numberOfAchievedGoals,wantsToShare) VALUES (%@,'%@','%@','%@','%@','%@','%d','%d','%d')",userID,userFirsname,userLastname,userUsername,userPassword,userEmailAddres,numberOfInProgressGoals,numberOfAchievedGoals,wantsToShare];
     
     
     NSLog(@"%@",insertSQL);
@@ -171,6 +174,8 @@
         user.userPassword=[result stringForColumn:@"userPassword"];
         user.numberOfAchievedGoals=[result intForColumn:@"numberOfAchievedGoals"];
         user.numberOfInProgressGoals=[result intForColumn:@"numberOfInProgressGoals"];
+        user.wantsToShare=[result intForColumn:@"wantsToShare"];
+        
     }
     
     return user;
@@ -194,7 +199,7 @@
         
     }
     
-    NSString *insertSQL = [NSString stringWithFormat:@"UPDATE Users SET numberOfInProgressGoals='%d',numberOfAchievedGoals='%d' WHERE userUsername='%@';",self.numberOfInProgressGoals,self.numberOfAchievedGoals,self.userUsername];
+    NSString *insertSQL = [NSString stringWithFormat:@"UPDATE Users SET numberOfInProgressGoals='%d',numberOfAchievedGoals='%d',wantsToShare='%d' WHERE userUsername='%@';",self.numberOfInProgressGoals,self.numberOfAchievedGoals,wantsToShare,self.userUsername];
     
     NSLog(@"%@",insertSQL);
     
@@ -225,11 +230,11 @@
         if (!error) {
             [updateUser setObject:[NSString stringWithFormat:@"%d",numberOfInProgressGoals] forKey:@"numberOfInProgressGoals"];
             [updateUser setObject:[NSString stringWithFormat:@"%d",numberOfAchievedGoals] forKey:@"numberOfAchievedGoals"];
+            [updateUser setObject:[NSNumber numberWithBool:wantsToShare] forKey:@"wantsToShare"];
+
             [updateUser saveEventually];
             
         }}];
-    
-    
     
 }
 -(NSString*)DataFilePath

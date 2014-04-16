@@ -12,6 +12,8 @@
 {
     
     Goal *goal;
+    BOOL isDate;
+
 }
 
 @end
@@ -50,6 +52,8 @@
     
     self.saveButton.enabled=NO;
     
+    NSLog(@"66 %d",currentUser.wantsToShare);
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,17 +64,26 @@
 
 - (IBAction)chooseDeadline:(UIButton *)sender
 {
+    isDate=YES;
     [self.goalNameTextfield resignFirstResponder];
      [self.goalDescriptionTextfield resignFirstResponder];
     
     self.datePicker.hidden=NO;
     self.pickerToolbar.hidden=NO;
+    self.goalTypepicker.hidden=YES;
+
     
 }
+
 - (IBAction)hidepickerView:(UIBarButtonItem *)sender {
     
-    
-    self.goalTypepicker.hidden=YES;
+    if (isDate==NO) {
+        self.goalTypepicker.hidden=YES;
+        self.pickerToolbar.hidden=YES;
+    }
+
+    else
+    {
     
     NSDate *selectedDate=[self.datePicker date];
     
@@ -101,9 +114,13 @@
 
     }
 }
+    
+}
 
 
 - (IBAction)chooseGoalType:(UIButton *)sender {
+    
+    isDate=NO;
     
     [self.goalNameTextfield resignFirstResponder];
      [self.goalDescriptionTextfield resignFirstResponder];
@@ -210,9 +227,22 @@
     [currentUser UpdateUserDataDB];
     [currentUser UpdateUserParse];
     
+    //logID,userUsername,logDate,LogContent,logType,logAction
+    Log *newLog=[[Log alloc]init];
+    
+    newLog.userUsername=currentUser.userUsername;
+    newLog.logDate=[self getCurrentDataAndTimeForLogging];
+    newLog.logContent=[NSString stringWithFormat:@"%@",self.goalNameTextfield.text];
+    newLog.logType=@"Goal";
+    newLog.logAction=@"Create";
+    newLog.month=[[self getMonth] integerValue];
+    newLog.year=[[self getYear] integerValue];
+        
+    [newLog addLOG];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 -(NSString *)nextIdentifies
 {
@@ -260,6 +290,40 @@
     return currentData;
 }
 
+-(NSString *)getCurrentDataAndTimeForLogging
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    NSDate *Todaydata=[NSDate date];
+    
+    NSString *currentData= [dateFormatter stringFromDate:Todaydata];
+    
+    return currentData;
+}
+
+
+
+-(NSString *)getMonth
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM"];
+    NSDate *Todaydata=[NSDate date];
+    
+    NSString *currentData= [dateFormatter stringFromDate:Todaydata];
+    
+    return currentData;
+}
+
+-(NSString *)getYear
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy"];
+    NSDate *Todaydata=[NSDate date];
+    
+    NSString *currentData= [dateFormatter stringFromDate:Todaydata];
+    
+    return currentData;
+}
 
 
 -(IBAction) isCancelisPressed
@@ -268,6 +332,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
+
 
 -(NSString*)DataFilePath{
     

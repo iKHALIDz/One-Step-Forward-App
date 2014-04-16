@@ -32,6 +32,8 @@
 
 @property (nonatomic,weak) UIActionSheet *actionSheet;
 
+@property (weak, nonatomic) IBOutlet UISwitch *shareSwitch;
+
 @property (nonatomic,strong) User *user;
 
 - (IBAction)selectImage:(UIButton *)sender;

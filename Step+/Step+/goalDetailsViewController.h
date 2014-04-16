@@ -19,7 +19,8 @@
 #import "goalSuggestionsViewController.h"
 #import "ProgressDetailsViewController.h"
 #import "ProgressDetailsLikeListViewController.h"
-
+#import "EditGoalViewController.h"
+#import "Log.h"
 
 
 @interface goalDetailsViewController : UIViewController <updateGoal,UITableViewDataSource,UITableViewDelegate>

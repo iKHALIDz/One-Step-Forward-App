@@ -34,9 +34,15 @@
 -(void)declareGoalAsAchieved;
 -(void)declareGoalAsAchievedinParse;
 
+-(void)declareGoalAsUNAchieved;
+-(void)declareGoalAsUNAchievedinParse;
+
 -(void)DeleteGoalFromDatabase;
 -(void)DeleteGoalFromParse;
 
 -(void) UpdateGoalPriority:(NSInteger) indexP;
+
+-(void) UpdateGoalDB;
+-(void) UpdateGoalParse;
 
 @end
