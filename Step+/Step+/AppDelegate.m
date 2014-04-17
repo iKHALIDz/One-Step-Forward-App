@@ -106,6 +106,7 @@
 {
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+    
 }
 
 - (void)saveContext
@@ -201,6 +202,18 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    NSLog(@"Here");
+    UILocalNotification *newNotification = notification;
+    notification.fireDate = [NSDate dateWithTimeInterval:3600 sinceDate:notification.fireDate];
+    notification.repeatInterval = 0;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
+    
 }
 
 @end

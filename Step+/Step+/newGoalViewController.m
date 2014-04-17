@@ -13,7 +13,8 @@
     
     Goal *goal;
     BOOL isDate;
-
+    BOOL isReminder;
+    
 }
 
 @end
@@ -54,6 +55,8 @@
     
     NSLog(@"66 %d",currentUser.wantsToShare);
     
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,69 +68,73 @@
 - (IBAction)chooseDeadline:(UIButton *)sender
 {
     isDate=YES;
+    isReminder=NO;
+    
     [self.goalNameTextfield resignFirstResponder];
-     [self.goalDescriptionTextfield resignFirstResponder];
+    [self.goalDescriptionTextfield resignFirstResponder];
     
     self.datePicker.hidden=NO;
     self.pickerToolbar.hidden=NO;
     self.goalTypepicker.hidden=YES;
 
-    
 }
 
 - (IBAction)hidepickerView:(UIBarButtonItem *)sender {
     
-    if (isDate==NO) {
+    if (isDate==NO)
+    {
+        
         self.goalTypepicker.hidden=YES;
         self.pickerToolbar.hidden=YES;
     }
-
-    else
+    
+    else if (isDate==YES)
     {
-    
-    NSDate *selectedDate=[self.datePicker date];
-    
-    BOOL correctDate=[self compareBetweenTwoDates:selectedDate];
-    
-    
-    if (correctDate==YES )
-    {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
         
-        NSString *currentData= [dateFormatter stringFromDate:selectedDate];
+        NSDate *selectedDate=[self.datePicker date];
         
-        self.goalDeadlineTextField.text=currentData;
-        self.datePicker.hidden=YES;
-        self.pickerToolbar.hidden=YES;
+        BOOL correctDate=[self compareBetweenTwoDates:selectedDate];
+        
+        
+        if (correctDate==YES )
+        {
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
+            
+            NSString *currentData= [dateFormatter stringFromDate:selectedDate];
+            
+            self.goalDeadlineTextField.text=currentData;
+            self.datePicker.hidden=YES;
+            self.pickerToolbar.hidden=YES;
+        }
+        
+        else
+        {
+            
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error!"
+                                                              message:@"The selected date is invaid"
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles:nil];
+            [message show];
+            
+        }
     }
     
-    else
-    {
-        
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error!"
-                                                          message:@"The selected date is invaid"
-                                                         delegate:nil
-                                                cancelButtonTitle:@"OK"
-                                                otherButtonTitles:nil];
-        [message show];
-
-    }
 }
-    
-}
-
 
 - (IBAction)chooseGoalType:(UIButton *)sender {
     
     isDate=NO;
+    isReminder=NO;
     
     [self.goalNameTextfield resignFirstResponder];
-     [self.goalDescriptionTextfield resignFirstResponder];
-   
+    [self.goalDescriptionTextfield resignFirstResponder];
+    
     self.goalTypepicker.hidden=NO;
     self.pickerToolbar.hidden=NO;
     self.datePicker.hidden=YES;
+    
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -204,7 +211,7 @@
     
     [progress AddProgressltoDatabase];
     [progress AddProgresslToParse];
-
+    
     // Add Post To Timeline
     
     TimelinePost *newPost=[[TimelinePost alloc]init];
@@ -222,12 +229,11 @@
     newPost.PostDate=goal.goalDate;
     
     [newPost NewTimelinePost];
-
+    
     currentUser.numberOfInProgressGoals=currentUser.numberOfInProgressGoals+1;
     [currentUser UpdateUserDataDB];
     [currentUser UpdateUserParse];
     
-    //logID,userUsername,logDate,LogContent,logType,logAction
     Log *newLog=[[Log alloc]init];
     
     newLog.userUsername=currentUser.userUsername;
@@ -237,8 +243,9 @@
     newLog.logAction=@"Create";
     newLog.month=[[self getMonth] integerValue];
     newLog.year=[[self getYear] integerValue];
-        
+    
     [newLog addLOG];
+    
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -341,7 +348,6 @@
     return [paths objectAtIndex:0];
 }
 
-
 -(int ) getLargestGoalPriority;
 {
     int list = 0;
@@ -368,6 +374,14 @@
     }
     
     return list;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    
+    self.pickerToolbar.hidden=YES;
+    
+    return YES;
 }
 
 @end

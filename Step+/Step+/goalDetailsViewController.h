@@ -21,9 +21,10 @@
 #import "ProgressDetailsLikeListViewController.h"
 #import "EditGoalViewController.h"
 #import "Log.h"
+#import <Social/Social.h>
 
 
-@interface goalDetailsViewController : UIViewController <updateGoal,UITableViewDataSource,UITableViewDelegate>
+@interface goalDetailsViewController : UIViewController <updateGoal,UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scroller;
@@ -52,5 +53,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *numberofDaysSinceCreated;
 
 - (IBAction)deleteGoal:(UIBarButtonItem *)sender;
+
+@property (nonatomic,weak) UIActionSheet *actionSheet;
+
 
 @end

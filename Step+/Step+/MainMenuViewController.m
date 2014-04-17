@@ -185,8 +185,14 @@
         currentUser.userProfileImage=self.img.image;
         [vc setCurrentUser:self.currentUser];
     }
-
     
+    if ([[segue identifier] isEqualToString:@"toStat"])
+    {
+        statisticsViewController*vc =[segue destinationViewController];
+        currentUser.userProfileImage=self.img.image;
+        [vc setCurrentUser:self.currentUser];
+    }
+
 }
 
 @end

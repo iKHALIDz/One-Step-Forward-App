@@ -14,6 +14,7 @@
 #import "TimelineViewController.h"
 #import "SettingViewController.h"
 #import "CalenderLogsEventsViewController.h"
+#import "statisticsViewController.h"
 
 
 @interface MainMenuViewController : UIViewController

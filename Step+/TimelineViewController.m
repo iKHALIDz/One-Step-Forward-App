@@ -303,6 +303,7 @@
 
     PFQuery *query = [PFQuery queryWithClassName:@"Timeline"];
     
+    
     [query orderByDescending:@"PostDate"];
     
     NSError *error=nil;
@@ -335,7 +336,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  
     
 }
 

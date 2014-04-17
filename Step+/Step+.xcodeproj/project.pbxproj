@@ -77,6 +77,10 @@
 		E9BA2EA718FF106A0016002E /* C.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BA2EA318FF106A0016002E /* C.png */; };
 		E9BA2EA818FF106A0016002E /* P.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BA2EA418FF106A0016002E /* P.png */; };
 		E9BA2EAB18FF117A0016002E /* Re.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BA2EAA18FF117A0016002E /* Re.png */; };
+		E9BA2EB118FF8F4B0016002E /* statisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2EB018FF8F4B0016002E /* statisticsViewController.m */; };
+		E9BA2EB418FF941B0016002E /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2EB318FF941B0016002E /* XYPieChart.m */; };
+		E9BA2EE018FFBDDB0016002E /* BENPedometerBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2EDD18FFBDDB0016002E /* BENPedometerBarView.m */; };
+		E9BA2EE118FFBDDB0016002E /* BENPedometerChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2EDF18FFBDDB0016002E /* BENPedometerChart.m */; };
 		E9EA332A18DCFF6200609052 /* MDRadialProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA332518DCFF6200609052 /* MDRadialProgressView.m */; };
 		E9EA332B18DCFF6200609052 /* MDRadialProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA332518DCFF6200609052 /* MDRadialProgressView.m */; };
 		E9EA332C18DCFF6200609052 /* MDRadialProgressTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA332718DCFF6200609052 /* MDRadialProgressTheme.m */; };
@@ -235,6 +239,14 @@
 		E9BA2EA318FF106A0016002E /* C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C.png; sourceTree = "<group>"; };
 		E9BA2EA418FF106A0016002E /* P.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P.png; sourceTree = "<group>"; };
 		E9BA2EAA18FF117A0016002E /* Re.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Re.png; sourceTree = "<group>"; };
+		E9BA2EAF18FF8F4B0016002E /* statisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = statisticsViewController.h; sourceTree = "<group>"; };
+		E9BA2EB018FF8F4B0016002E /* statisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = statisticsViewController.m; sourceTree = "<group>"; };
+		E9BA2EB218FF941B0016002E /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
+		E9BA2EB318FF941B0016002E /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
+		E9BA2EDC18FFBDDB0016002E /* BENPedometerBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BENPedometerBarView.h; sourceTree = "<group>"; };
+		E9BA2EDD18FFBDDB0016002E /* BENPedometerBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BENPedometerBarView.m; sourceTree = "<group>"; };
+		E9BA2EDE18FFBDDB0016002E /* BENPedometerChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BENPedometerChart.h; sourceTree = "<group>"; };
+		E9BA2EDF18FFBDDB0016002E /* BENPedometerChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BENPedometerChart.m; sourceTree = "<group>"; };
 		E9EA332418DCFF6200609052 /* MDRadialProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressView.h; sourceTree = "<group>"; };
 		E9EA332518DCFF6200609052 /* MDRadialProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRadialProgressView.m; sourceTree = "<group>"; };
 		E9EA332618DCFF6200609052 /* MDRadialProgressTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressTheme.h; sourceTree = "<group>"; };
@@ -488,6 +500,8 @@
 				E99348C518F4D03500844C2C /* ProgressDetailsViewController.m */,
 				E9BA2E7E18F64DBB0016002E /* ProgressDetailsLikeListViewController.h */,
 				E9BA2E7F18F64DBB0016002E /* ProgressDetailsLikeListViewController.m */,
+				E9BA2EAF18FF8F4B0016002E /* statisticsViewController.h */,
+				E9BA2EB018FF8F4B0016002E /* statisticsViewController.m */,
 				E99348C118F47D1600844C2C /* goalSuggestionsViewController.h */,
 				E99348C218F47D1600844C2C /* goalSuggestionsViewController.m */,
 				E9510E3818E20663000C30B8 /* Progress.h */,
@@ -541,6 +555,17 @@
 			name = Signup;
 			sourceTree = "<group>";
 		};
+		E9BA2EE218FFBDEE0016002E /* BENPedometerChart */ = {
+			isa = PBXGroup;
+			children = (
+				E9BA2EDC18FFBDDB0016002E /* BENPedometerBarView.h */,
+				E9BA2EDD18FFBDDB0016002E /* BENPedometerBarView.m */,
+				E9BA2EDE18FFBDDB0016002E /* BENPedometerChart.h */,
+				E9BA2EDF18FFBDDB0016002E /* BENPedometerChart.m */,
+			);
+			name = BENPedometerChart;
+			sourceTree = "<group>";
+		};
 		E9EA333018DCFF7300609052 /* RadialProgress */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,8 +612,11 @@
 		E9EA335318DCFFEB00609052 /* External Libararies */ = {
 			isa = PBXGroup;
 			children = (
+				E9BA2EE218FFBDEE0016002E /* BENPedometerChart */,
 				E90990AC18E56D46005D30BB /* NSDate+PrettyDate.h */,
 				E90990AD18E56D46005D30BB /* NSDate+PrettyDate.m */,
+				E9BA2EB218FF941B0016002E /* XYPieChart.h */,
+				E9BA2EB318FF941B0016002E /* XYPieChart.m */,
 				E9EA333018DCFF7300609052 /* RadialProgress */,
 				E9EA333D18DCFFAE00609052 /* RDVECalendar */,
 				E9EA335218DCFFDE00609052 /* Database */,
@@ -748,6 +776,7 @@
 				E9EA333718DCFFA000609052 /* RDVExampleDayCell.m in Sources */,
 				E9EA332C18DCFF6200609052 /* MDRadialProgressTheme.m in Sources */,
 				E99348C618F4D03500844C2C /* ProgressDetailsViewController.m in Sources */,
+				E9BA2EB118FF8F4B0016002E /* statisticsViewController.m in Sources */,
 				E96F179A18F320040057C3CA /* TimelineViewController.m in Sources */,
 				E9EA335918DD00D700609052 /* User.m in Sources */,
 				E9EA337D18DF90C300609052 /* Goal.m in Sources */,
@@ -772,13 +801,16 @@
 				E9EA334E18DCFFD000609052 /* FMDatabaseQueue.m in Sources */,
 				E9510E3A18E20663000C30B8 /* Progress.m in Sources */,
 				E9BA2E8318FDBE830016002E /* EditGoalViewController.m in Sources */,
+				E9BA2EE118FFBDDB0016002E /* BENPedometerChart.m in Sources */,
 				E99348C318F47D1600844C2C /* goalSuggestionsViewController.m in Sources */,
 				E9EA332E18DCFF6200609052 /* MDRadialProgressLabel.m in Sources */,
 				E944C84C18DBDBF9002714D8 /* Step_.xcdatamodeld in Sources */,
 				E944C84918DBDBF9002714D8 /* AppDelegate.m in Sources */,
+				E9BA2EB418FF941B0016002E /* XYPieChart.m in Sources */,
 				E9EA335018DCFFD000609052 /* FMResultSet.m in Sources */,
 				E99348C018F4639200844C2C /* UserProfileViewControllerDetailsViewController.m in Sources */,
 				E9EA332A18DCFF6200609052 /* MDRadialProgressView.m in Sources */,
+				E9BA2EE018FFBDDB0016002E /* BENPedometerBarView.m in Sources */,
 				E9BA2E8018F64DBB0016002E /* ProgressDetailsLikeListViewController.m in Sources */,
 				E9A1108B18E28BBC00252364 /* newProgressViewController.m in Sources */,
 				E96F179518F24AA80057C3CA /* TimelinePost.m in Sources */,

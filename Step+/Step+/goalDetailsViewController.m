@@ -8,6 +8,11 @@
 
 #import "goalDetailsViewController.h"
 
+#define Facebook @"Facebook"
+#define Twitter @"Twitter"
+#define CANCEL_BUTTON_TITLE @"Cancel"
+
+
 @interface goalDetailsViewController ()
 
 @end
@@ -31,6 +36,7 @@
     }
     return self;
 }
+
 
 
 - (void)viewDidLoad
@@ -698,6 +704,57 @@
     NSString *currentData= [dateFormatter stringFromDate:Todaydata];
     
     return currentData;
+}
+
+- (IBAction)shareSocial:(id)sender {
+    
+    
+    if(!self.actionSheet){
+        UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Share A goal"
+                                                                delegate:self cancelButtonTitle:nil
+                                                  destructiveButtonTitle:nil
+                                                       otherButtonTitles:nil];
+        
+        [actionSheet addButtonWithTitle:Facebook];
+        [actionSheet addButtonWithTitle:Twitter];
+        [actionSheet addButtonWithTitle:CANCEL_BUTTON_TITLE];
+        [actionSheet setCancelButtonIndex:actionSheet.numberOfButtons-1];
+        [actionSheet showInView:sender];
+        
+        self.actionSheet = actionSheet;
+    }
+
+    
+}
+
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    NSString *choice = [actionSheet buttonTitleAtIndex:buttonIndex];
+    
+    if([choice isEqualToString:Facebook]){
+        
+        if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+            SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+            
+            [controller setInitialText:@"First post from my iPhone app"];
+            [self presentViewController:controller animated:YES completion:Nil];
+    }
+        
+    else if([choice isEqualToString:Twitter])
+    {
+        if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+        {
+            SLComposeViewController *tweetSheet = [SLComposeViewController
+                                                   composeViewControllerForServiceType:SLServiceTypeTwitter];
+            [tweetSheet setInitialText:@"Great fun to learn iOS programming at appcoda.com!"];
+            [self presentViewController:tweetSheet animated:YES completion:nil];
+        }
+
+    }
+    
+}
 }
 
 

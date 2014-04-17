@@ -21,8 +21,6 @@
 @synthesize tableviw=_tableviw;
 @synthesize radialView;
 
-
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -301,7 +299,6 @@
     
     FMResultSet *result =[db executeQuery:Finalquery];
     
-
     
     while ([result next])
     {
@@ -371,7 +368,6 @@
     return [paths objectAtIndex:0];
 }
 
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"DoneGoalToDetails"])
@@ -381,6 +377,5 @@
         [nav setCurrentUser:self.currentUser];
     }
 }
-
 
 @end

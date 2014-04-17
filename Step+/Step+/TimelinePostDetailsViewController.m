@@ -51,6 +51,7 @@
     
     [self.tableview reloadData];
     
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -62,7 +63,6 @@
 {
     return [TimelinePostComments count];
 }
-
 
 - (IBAction)sendComment:(UIButton *)sender {
     
