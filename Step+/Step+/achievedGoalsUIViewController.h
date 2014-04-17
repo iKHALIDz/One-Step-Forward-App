@@ -20,7 +20,6 @@
 #import "goalTableViewCell.h"
 #import "goalDetailsViewController.h"
 
-
 @interface achievedGoalsUIViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) User *currentUser;

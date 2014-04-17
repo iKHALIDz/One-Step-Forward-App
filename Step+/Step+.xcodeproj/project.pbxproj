@@ -81,6 +81,7 @@
 		E9BA2EB418FF941B0016002E /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2EB318FF941B0016002E /* XYPieChart.m */; };
 		E9BA2EE018FFBDDB0016002E /* BENPedometerBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2EDD18FFBDDB0016002E /* BENPedometerBarView.m */; };
 		E9BA2EE118FFBDDB0016002E /* BENPedometerChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2EDF18FFBDDB0016002E /* BENPedometerChart.m */; };
+		E9BA2EEB1900607A0016002E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2EEA1900607A0016002E /* Reachability.m */; };
 		E9EA332A18DCFF6200609052 /* MDRadialProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA332518DCFF6200609052 /* MDRadialProgressView.m */; };
 		E9EA332B18DCFF6200609052 /* MDRadialProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA332518DCFF6200609052 /* MDRadialProgressView.m */; };
 		E9EA332C18DCFF6200609052 /* MDRadialProgressTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA332718DCFF6200609052 /* MDRadialProgressTheme.m */; };
@@ -247,6 +248,8 @@
 		E9BA2EDD18FFBDDB0016002E /* BENPedometerBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BENPedometerBarView.m; sourceTree = "<group>"; };
 		E9BA2EDE18FFBDDB0016002E /* BENPedometerChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BENPedometerChart.h; sourceTree = "<group>"; };
 		E9BA2EDF18FFBDDB0016002E /* BENPedometerChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BENPedometerChart.m; sourceTree = "<group>"; };
+		E9BA2EE91900607A0016002E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		E9BA2EEA1900607A0016002E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		E9EA332418DCFF6200609052 /* MDRadialProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressView.h; sourceTree = "<group>"; };
 		E9EA332518DCFF6200609052 /* MDRadialProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRadialProgressView.m; sourceTree = "<group>"; };
 		E9EA332618DCFF6200609052 /* MDRadialProgressTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressTheme.h; sourceTree = "<group>"; };
@@ -566,6 +569,24 @@
 			name = BENPedometerChart;
 			sourceTree = "<group>";
 		};
+		E9BA2EE719005F370016002E /* NSDate+PrettyDate */ = {
+			isa = PBXGroup;
+			children = (
+				E90990AC18E56D46005D30BB /* NSDate+PrettyDate.h */,
+				E90990AD18E56D46005D30BB /* NSDate+PrettyDate.m */,
+			);
+			name = "NSDate+PrettyDate";
+			sourceTree = "<group>";
+		};
+		E9BA2EE819005F3C0016002E /* XYPieChart */ = {
+			isa = PBXGroup;
+			children = (
+				E9BA2EB218FF941B0016002E /* XYPieChart.h */,
+				E9BA2EB318FF941B0016002E /* XYPieChart.m */,
+			);
+			name = XYPieChart;
+			sourceTree = "<group>";
+		};
 		E9EA333018DCFF7300609052 /* RadialProgress */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,11 +633,11 @@
 		E9EA335318DCFFEB00609052 /* External Libararies */ = {
 			isa = PBXGroup;
 			children = (
+				E9BA2EE91900607A0016002E /* Reachability.h */,
+				E9BA2EEA1900607A0016002E /* Reachability.m */,
 				E9BA2EE218FFBDEE0016002E /* BENPedometerChart */,
-				E90990AC18E56D46005D30BB /* NSDate+PrettyDate.h */,
-				E90990AD18E56D46005D30BB /* NSDate+PrettyDate.m */,
-				E9BA2EB218FF941B0016002E /* XYPieChart.h */,
-				E9BA2EB318FF941B0016002E /* XYPieChart.m */,
+				E9BA2EE719005F370016002E /* NSDate+PrettyDate */,
+				E9BA2EE819005F3C0016002E /* XYPieChart */,
 				E9EA333018DCFF7300609052 /* RadialProgress */,
 				E9EA333D18DCFFAE00609052 /* RDVECalendar */,
 				E9EA335218DCFFDE00609052 /* Database */,
@@ -771,6 +792,7 @@
 				E96F17A318F3833A0057C3CA /* TimelinePostCommentTableViewCell.m in Sources */,
 				E96F179D18F320B70057C3CA /* timelineCell.m in Sources */,
 				E9EA33A018E0011700609052 /* goalTableViewCell.m in Sources */,
+				E9BA2EEB1900607A0016002E /* Reachability.m in Sources */,
 				E96F17A018F364B30057C3CA /* TimelinePostDetailsViewController.m in Sources */,
 				E9BA2E8F18FEEB5C0016002E /* Log.m in Sources */,
 				E9EA333718DCFFA000609052 /* RDVExampleDayCell.m in Sources */,

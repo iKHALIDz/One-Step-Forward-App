@@ -93,6 +93,7 @@
     [self.currentSelectedtimeLinePost UpdatePostComments];
 
     PFQuery *query = [PFQuery queryWithClassName:@"Progress"];
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     
     [query whereKey:@"progressID" equalTo:[NSString stringWithFormat:@"%@",self.currentSelectedtimeLinePost.PostOtherRelatedInFormationContent]];
     
@@ -122,7 +123,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"PostComment"];
     [query whereKey:@"To" equalTo:self.currentSelectedtimeLinePost.username];
     [query whereKey:@"PostID" equalTo:self.currentSelectedtimeLinePost.postID];
-    
+
     NSLog(@"currentSelectedtimeLinePost %@",currentSelectedtimeLinePost.username);
     
     NSError *error=nil;

@@ -20,6 +20,7 @@
 @synthesize currentUsername;
 @synthesize postLikes;
 @synthesize postStat;
+@synthesize posts;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,19 +35,39 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.timelinePosts=[[NSMutableArray alloc]init];
+
     selectedtimeLinePost=[[TimelinePost alloc]init];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableview addSubview:refreshControl];
-    self.timelinePosts=[self getPosts];
-
+    
     postLikes=[[NSMutableArray alloc]init];
     
     postStat=[[NSMutableArray alloc]init];
     
+    posts=[[NSMutableArray alloc]init];
+    
+    Reachability *reach = [Reachability reachabilityForInternetConnection];
+    
+    NetworkStatus internetStats = [reach currentReachabilityStatus];
+    
+    if (internetStats == NotReachable) {
+        UIAlertView *alertOne = [[UIAlertView alloc] initWithTitle:@"Internet" message:@"is DOWN!!!" delegate:self cancelButtonTitle:@"Damnit!!" otherButtonTitles:@"Cancel", nil];
+        [alertOne show];
+        [self getPosts];
+        [self.tableview reloadData];
+
+
+    }
+    else {
+        [self getPosts];
+        [self.tableview reloadData];
+
+    }
+    
+    
+    NSLog(@"View Didload %d",[timelinePosts count]);
 }
 
 -(NSString *) GetTimeinWords: (NSString *) Y
@@ -68,8 +89,8 @@
 }
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
-    self.timelinePosts=[self getPosts];
-
+    [self getPosts];
+    
     [self.tableview reloadData];
     
     [refreshControl endRefreshing];
@@ -116,7 +137,7 @@
     
     [cell.goToCommentsButton addTarget:self action:@selector(goToComments:) forControlEvents:UIControlEventTouchUpInside];
     [cell.goToCommentsButton setTag:indexPath.row];
-
+    
     
     for (id obj in [[timelinePosts objectAtIndex:indexPath.row] whoLikePost]) {
         NSLog(@"%@",obj);
@@ -136,7 +157,7 @@
     cell.numberOfLikess.text=[NSString stringWithFormat:@"%d",[[[timelinePosts objectAtIndex:indexPath.row] whoLikePost] count]];
     
     cell.numberOfComments.text=[NSString stringWithFormat:@"%d",[[[timelinePosts objectAtIndex:indexPath.row] whoCommentPost] count]];
-
+    
     
     return cell;
 }
@@ -170,14 +191,14 @@
         tLike.ItemRID=[[timelinePosts objectAtIndex:row] PostOtherRelatedInFormationContent];
         
         [tLike unlike];
-
+        
         
         
         PFQuery *query = [PFQuery queryWithClassName:@"Progress"];
         
         [query whereKey:@"progressID" equalTo:[NSString stringWithFormat:@"%@",post.PostOtherRelatedInFormationContent]];
         [query whereKey:@"createdBy" equalTo:post.username];
-    
+        
         [query findObjectsInBackgroundWithBlock:^(NSArray * updateGoals, NSError *error){
             if (!error) {
                 
@@ -248,11 +269,11 @@
     
     int row = button.tag;
     NSLog(@"isPressed");
-
+    
     
     currentUsername=[[timelinePosts objectAtIndex:row] username];
     
-
+    
     [self performSegueWithIdentifier:@"GoToUserProfile" sender:self];
 }
 
@@ -297,45 +318,58 @@
     return 160;
 }
 
--(NSMutableArray *) getPosts
+-(void) getPosts
 {
-    NSMutableArray *list=[[NSMutableArray alloc]init];
-
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Timeline"];
-    
-    
     [query orderByDescending:@"PostDate"];
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     
-    NSError *error=nil;
-    
-    NSArray* goals=[query findObjects:&error];
-    
-    for(PFObject *obj in goals)
-    {
-        TimelinePost *post=[[TimelinePost alloc]init];
-        post.userFirstName=[obj objectForKey:@"userFirstName"];
-        post.userLastName=[obj objectForKey:@"userLastName"];
-        post.username=[obj objectForKey:@"username"];
-        post.PostDate=[obj objectForKey:@"PostDate"];
-        post.PostContent=[obj objectForKey:@"PostContent"];
-        post.postID=[obj objectForKey:@"postID"];
-        post.PostOtherRelatedInFormationContent=[obj objectForKey:@"PostOtherRelatedInFormationContent"];
-        post.whoLikePost=[obj objectForKey:@"whoLikePost"];
-        post.whoCommentPost=[obj objectForKey:@"whoCommentPost"];
+    [query findObjectsInBackgroundWithTarget:self
+                                    selector:@selector(findCallback:error:)];
+}
 
-        PFFile *image = (PFFile *)[obj objectForKey:@"userProfilePic"];
-        post.userProfilePic=[UIImage imageWithData:[image getData]];
+
+- (void)findCallback:(NSArray *)objects error:(NSError *)error {
+    if (!error) {
+        
+        self.timelinePosts=[[NSMutableArray alloc]init];
+        
+        for(PFObject *obj in objects)
+        {
+            NSLog(@"tttt");
+            TimelinePost *post=[[TimelinePost alloc]init];
+            post.userFirstName=[obj objectForKey:@"userFirstName"];
+            post.userLastName=[obj objectForKey:@"userLastName"];
+            post.username=[obj objectForKey:@"username"];
+            post.PostDate=[obj objectForKey:@"PostDate"];
+            post.PostContent=[obj objectForKey:@"PostContent"];
+            post.postID=[obj objectForKey:@"postID"];
+            post.PostOtherRelatedInFormationContent=[obj objectForKey:@"PostOtherRelatedInFormationContent"];
+            post.whoLikePost=[obj objectForKey:@"whoLikePost"];
+            post.whoCommentPost=[obj objectForKey:@"whoCommentPost"];
+            
+            PFFile *image = (PFFile *)[obj objectForKey:@"userProfilePic"];
+            post.userProfilePic=[UIImage imageWithData:[image getData]];
+            
+            
+            [timelinePosts addObject:post];
+            
+        }
+        [self.tableview reloadData];
+
+    } else
+    {
         
         
-        [list addObject:post];
+        NSLog(@"Error: %@ %@", error, [error userInfo]);
     }
-    
-    return list;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     
 }
 

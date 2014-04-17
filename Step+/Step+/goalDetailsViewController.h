@@ -26,7 +26,6 @@
 
 @interface goalDetailsViewController : UIViewController <updateGoal,UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>
 
-
 @property (weak, nonatomic) IBOutlet UIScrollView *scroller;
 
 @property (strong,nonatomic) Progress * currentProgress;

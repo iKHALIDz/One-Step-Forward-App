@@ -15,6 +15,7 @@
 #import "timelinePostLike.h"
 #import "Progress.h"
 #import "NSDate+PrettyDate.h"
+#import "Reachability.h"
 
 
 @interface TimelineViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
@@ -28,5 +29,8 @@
 
 @property (nonatomic,retain) NSMutableArray *postLikes;
 @property (nonatomic,retain) NSMutableArray *postStat;
+
+
+@property (nonatomic,retain) NSMutableArray *posts;
 
 @end
