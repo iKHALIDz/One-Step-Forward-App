@@ -435,7 +435,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I0b-24-ggp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="262" y="664"/>
+            <point key="canvasLocation" x="422" y="771"/>
         </scene>
         <!--Timeline View Controller-->
         <scene sceneID="zCN-0e-zrr">
@@ -548,7 +548,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OFG-BT-isy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1537" y="946"/>
+            <point key="canvasLocation" x="1905" y="922"/>
         </scene>
         <!--Progress Details Like List View Controller-->
         <scene sceneID="04w-be-LGD">
@@ -668,23 +668,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="loi-Qp-I9H">
-                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="r5h-Wc-QOc" id="mK7-l7-OA8"/>
-                                    <outlet property="delegate" destination="r5h-Wc-QOc" id="0k7-sp-KoG"/>
-                                </connections>
-                            </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zfp-CU-GmT">
-                                <rect key="frame" x="8" y="91" width="198" height="30"/>
+                                <rect key="frame" x="12" y="91" width="207" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsN-p7-B9L">
-                                <rect key="frame" x="237" y="91" width="36" height="30"/>
+                                <rect key="frame" x="246" y="91" width="36" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Send">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -699,12 +690,11 @@
                     <navigationItem key="navigationItem" id="beO-yZ-w4g"/>
                     <connections>
                         <outlet property="suggestionTextField" destination="Zfp-CU-GmT" id="1Ia-9b-dlq"/>
-                        <outlet property="tableview" destination="loi-Qp-I9H" id="yhv-g0-h39"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1OZ-zv-2xE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3855" y="771"/>
+            <point key="canvasLocation" x="3772" y="778"/>
         </scene>
         <!--Achieved GoalsUI View Controller-->
         <scene sceneID="Rli-1b-9c8">
@@ -718,7 +708,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="C7751581-D37C-46BB-B593-C6F8BAA9ECDF" translatesAutoresizingMaskIntoConstraints="NO" id="Nj3-IQ-dUR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="92DF2EED-B63F-40EA-BFE4-758C8A9BEE6B" translatesAutoresizingMaskIntoConstraints="NO" id="Nj3-IQ-dUR">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -1622,7 +1612,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
-        <image name="C7751581-D37C-46BB-B593-C6F8BAA9ECDF" width="640" height="1136">
+        <image name="92DF2EED-B63F-40EA-BFE4-758C8A9BEE6B" width="640" height="1136">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -50161,7 +50151,7 @@ ACxqzQAsatAALGriACxq5QAsauoAAAAAAAAEAQAAAAAAAABCAAAAAAAAAAAAAAAAACxq7A
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="GYY-zl-9wo"/>
+        <segue reference="8u1-Es-JMk"/>
         <segue reference="nG7-90-PY7"/>
-        <segue reference="SiL-vE-Cjq"/>
     </inferredMetricsTieBreakers>
 </document>

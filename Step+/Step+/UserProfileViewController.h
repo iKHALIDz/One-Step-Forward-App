@@ -30,8 +30,8 @@
 @property (nonatomic,strong) NSString *selectedUsername;
 @property(nonatomic,retain) NSMutableArray *inProgressArrayFromParse;
 @property (nonatomic,strong) MDRadialProgressView *radialView;
-@property (nonatomic,strong) NSMutableArray *goalPosts;
 @property (nonatomic,strong) Goal* currentGoal;
 @property (nonatomic,strong) User *currentUser;
+@property (nonatomic,strong) User *selectedUser;
 
 @end

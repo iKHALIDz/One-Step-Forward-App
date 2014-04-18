@@ -44,9 +44,6 @@
     [super viewDidLoad];
 
     
-    NSLog(@"LLLLLL");
-    
-    
     selectedtimeLinePost=[[TimelinePost alloc]init];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];

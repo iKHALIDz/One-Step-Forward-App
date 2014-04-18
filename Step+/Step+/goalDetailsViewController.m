@@ -463,7 +463,6 @@
     
     
     [self performSegueWithIdentifier:@"toLikeList" sender:nil];
-    
 }
 
 - (IBAction)GotoComments:(id)sender
@@ -751,11 +750,9 @@
             [tweetSheet setInitialText:@"Great fun to learn iOS programming at appcoda.com!"];
             [self presentViewController:tweetSheet animated:YES completion:nil];
         }
-
     }
+}
     
 }
-}
-
 
 @end

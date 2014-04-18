@@ -12,16 +12,18 @@
 #import "TimelinePost.h"
 #import <Parse/Parse.h>
 #import "User.h"
+#import "Progress.h"
+#import "ProgressTableViewCell.h"
+#import "NSDate+PrettyDate.h"
 
 @interface UserProfileViewControllerDetailsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic,strong) NSMutableArray *gPosts;
 @property (nonatomic,strong) Goal* cgoal;
 
 @property (weak, nonatomic) IBOutlet UITextField *suggestionTextField;
 - (IBAction)send:(UIButton *)sender;
 
-@property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (nonatomic,strong) User *currentUser;
 
 @end
+

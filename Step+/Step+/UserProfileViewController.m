@@ -19,10 +19,9 @@
 @synthesize tableview=_tableview;
 @synthesize inProgressArrayFromParse;
 @synthesize radialView;
-@synthesize goalPosts;
 @synthesize currentGoal;
 @synthesize currentUser;
-
+@synthesize selectedUser;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,29 +37,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    User *user=[[User alloc]init];
     
-    user=[self getUserInfromationAsObject];
+    [self getUserInfromationAsObject];
     
-    self.userFullname.text=[NSString stringWithFormat:@"%@ %@",user.userFirsname,user.userLastname];
-    self.NumberAchievedGoals.text=[NSString stringWithFormat:@"%d",user.numberOfAchievedGoals];
-    self.NumberInProgressGoals.text=[NSString stringWithFormat:@"%d",user.numberOfInProgressGoals];
-    self.img.image=user.userProfileImage;
+    self.userFullname.text=[NSString stringWithFormat:@"%@ %@",selectedUser.userFirsname,selectedUser.userLastname];
+    self.NumberAchievedGoals.text=[NSString stringWithFormat:@"%d",selectedUser.numberOfAchievedGoals];
+    self.NumberInProgressGoals.text=[NSString stringWithFormat:@"%d",selectedUser.numberOfInProgressGoals];
+    self.img.image=selectedUser.userProfileImage;
     self.img.layer.borderWidth = 1.0f;
     self.img.clipsToBounds = YES;
     self.img.layer.cornerRadius = 2.0f;
     
-    inProgressArrayFromParse=[[NSMutableArray alloc]init];
-
-    inProgressArrayFromParse=[self getDoneGoalsFromParse];
+    [self getDoneGoalsFromParse];
     [self.tableview reloadData];
     
-    goalPosts=[[NSMutableArray alloc]init];
     
     currentGoal=[[Goal alloc]init];
-    
-    
-    
 }
 
 - (MDRadialProgressView *)progressViewWithFrame:(CGRect)frame
@@ -127,117 +119,101 @@
     // Dispose of any resources that can be recreated.
 }
 
--(User *)getUserInfromationAsObject
+-(void)getUserInfromationAsObject
 {
     PFQuery *query = [PFUser query];
     
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    
     [query whereKey:@"username" equalTo:self.selectedUsername];
     
-    User *user=[[User alloc]init];
-    
-    PFObject *object=[query getFirstObject];
-    if (!object) {
-        NSLog(@"The getFirstObject request failed.");
-    } else {
-        // The find succeeded.
-        user.userFirsname=[NSString stringWithFormat:@"%@",[object objectForKey:@"FirstName"]];
-        user.userLastname=[NSString stringWithFormat:@"%@",[object objectForKey:@"LastName"]];
-        user.userUsername=[NSString stringWithFormat:@"%@",[object objectForKey:@"username"]];
-        user.userPassword=[NSString stringWithFormat:@"%@",[object objectForKey:@"password"]];
-        user.userEmailAddres=[NSString stringWithFormat:@"%@",[object objectForKey:@"email"]];
-        
-        user.numberOfAchievedGoals=[[NSString stringWithFormat:@"%@",[object objectForKey:@"numberOfAchievedGoals"]] integerValue];
-        user.numberOfInProgressGoals=[[NSString stringWithFormat:@"%@",[object objectForKey:@"numberOfInProgressGoals"]]integerValue];
-        PFFile *image = (PFFile *)[object objectForKey:@"ProfileImage"];
-        
-        user.userProfileImage=[UIImage imageWithData:[image getData]];
-        
-    }
-    
-    return user;
+    [query findObjectsInBackgroundWithTarget:self
+                                    selector:@selector(getuserinfCallBack:error:)];
 }
 
 
--(NSMutableArray *) getDoneGoalsFromParse
+- (void)getuserinfCallBack:(NSArray *)objects error:(NSError *)error {
+    if (!error) {
+        
+        PFObject *object=[objects objectAtIndex:0];
+        if (!object) {
+            NSLog(@"The getFirstObject request failed.");
+        } else {
+            NSLog(@"ttttt");
+            selectedUser=[[User alloc]init];
+            // The find succeeded.
+            selectedUser.userFirsname=[NSString stringWithFormat:@"%@",[object objectForKey:@"FirstName"]];
+            NSLog(@"ttttt2");
+            
+            selectedUser.userLastname=[NSString stringWithFormat:@"%@",[object objectForKey:@"LastName"]];
+            selectedUser.userUsername=[NSString stringWithFormat:@"%@",[object objectForKey:@"username"]];
+            selectedUser.userPassword=[NSString stringWithFormat:@"%@",[object objectForKey:@"password"]];
+            selectedUser.userEmailAddres=[NSString stringWithFormat:@"%@",[object objectForKey:@"email"]];
+            NSLog(@"ttttt2");
+            
+            selectedUser.numberOfAchievedGoals=[[NSString stringWithFormat:@"%@",[object objectForKey:@"numberOfAchievedGoals"]] integerValue];
+            selectedUser.numberOfInProgressGoals=[[NSString stringWithFormat:@"%@",[object objectForKey:@"numberOfInProgressGoals"]]integerValue];
+            PFFile *image = (PFFile *)[object objectForKey:@"ProfileImage"];
+            
+            selectedUser.userProfileImage=[UIImage imageWithData:[image getData]];
+            
+            self.userFullname.text=[NSString stringWithFormat:@"%@ %@",selectedUser.userFirsname,selectedUser.userLastname];
+            self.NumberAchievedGoals.text=[NSString stringWithFormat:@"%d",selectedUser.numberOfAchievedGoals];
+            self.NumberInProgressGoals.text=[NSString stringWithFormat:@"%d",selectedUser.numberOfInProgressGoals];
+            self.img.image=selectedUser.userProfileImage;
+            
+        }
+        
+    }
+}
+
+-(void) getDoneGoalsFromParse
 {
-    NSMutableArray *list=[[NSMutableArray alloc]init];
     
     PFQuery *query = [PFQuery queryWithClassName:@"Goal"];
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    
     [query whereKey:@"createdBy" equalTo:self.selectedUsername];
     
-    NSError *error=nil;
+    [query findObjectsInBackgroundWithTarget:self
+                                    selector:@selector(findCallback:error:)];
     
-    NSArray* goals=[query findObjects:&error];
-    
-    for(PFObject *obj in goals)
-    {
-        Goal *goal=[[Goal alloc]init];
-        goal.goalID= [[obj objectForKey:@"goalID"] integerValue];
-        goal.goalName=[obj objectForKey:@"GoalName"];
-        goal.goalDescription=[obj objectForKey:@"GoalDesc"];
-        goal.goalDeadline=[obj objectForKey:@"GoalDeadline"];
-        goal.isGoalCompleted=NO;
-        goal.isGoalinProgress=YES;
-        goal.goalProgress=[[obj objectForKey:@"goalPercentage"] doubleValue];
-        
-        goal.createdBy =[obj objectForKey:@"createdBy"];
-        
-        goal.numberOfGoalSteps=[[obj objectForKey:@"numberOfGoalSteps"] integerValue];
-        goal.goalDate=[obj objectForKey:@"goalDate"];
-        
-        goal.goalType=[obj objectForKey:@"goalType"];
-        
-        [list addObject:goal];
-    }
-    
-    return list;
 }
 
-
--(NSMutableArray *) getPostsFromSelectedGoal:(int) goalID AndUsername :(NSString *)username
-{
-    NSMutableArray *list=[[NSMutableArray alloc]init];
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"Timeline"];
-    
-    NSLog(@"username: %@",username);
-    NSLog(@"username: %d",goalID);
-    
-    [query whereKey:@"username" equalTo:username];
-    [query whereKey:@"PostOtherRelatedInFormationContent" equalTo:[NSString stringWithFormat:@"%d",goalID]];
-    
-    [query orderByDescending:@"PostDate"];
-    
-    NSError *error=nil;
-
-    NSArray* goals=[query findObjects:&error];
-    
-    for(PFObject *obj in goals)
-    {
-        TimelinePost *post=[[TimelinePost alloc]init];
-        post.userFirstName=[obj objectForKey:@"userFirstName"];
-        post.userLastName=[obj objectForKey:@"userLastName"];
-        post.username=[obj objectForKey:@"username"];
-        post.PostDate=[obj objectForKey:@"PostDate"];
-        post.PostContent=[obj objectForKey:@"PostContent"];
-        post.postID=[obj objectForKey:@"postID"];
-        post.PostOtherRelatedInFormationContent=[obj objectForKey:@"PostOtherRelatedInFormationContent"];
+- (void)findCallback:(NSArray *)objects error:(NSError *)error {
+    if (!error) {
+        inProgressArrayFromParse=[[NSMutableArray alloc]init];
         
-        PFFile *image = (PFFile *)[obj objectForKey:@"userProfilePic"];
-        post.userProfilePic=[UIImage imageWithData:[image getData]];
+        for(PFObject *obj in objects)
+        {
+            Goal *goal=[[Goal alloc]init];
+            goal.goalID= [[obj objectForKey:@"goalID"] integerValue];
+            goal.goalName=[obj objectForKey:@"GoalName"];
+            goal.goalDescription=[obj objectForKey:@"GoalDesc"];
+            goal.goalDeadline=[obj objectForKey:@"GoalDeadline"];
+            goal.isGoalCompleted=NO;
+            goal.isGoalinProgress=YES;
+            goal.goalProgress=[[obj objectForKey:@"goalPercentage"] doubleValue];
+            
+            goal.createdBy =[obj objectForKey:@"createdBy"];
+            
+            goal.numberOfGoalSteps=[[obj objectForKey:@"numberOfGoalSteps"] integerValue];
+            goal.goalDate=[obj objectForKey:@"goalDate"];
+            
+            goal.goalType=[obj objectForKey:@"goalType"];
+            
+            [inProgressArrayFromParse addObject:goal];
+        }
         
-        [list addObject:post];
+        [self.tableview reloadData];
+        
     }
-    
-    NSLog(@"List Count %d",[list count]);
-    
-
-    return list;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     currentGoal.goalID=[[NSString stringWithFormat:@"%d",[[inProgressArrayFromParse objectAtIndex:indexPath.row] goalID]] integerValue];
     
     currentGoal.goalName=[NSString stringWithFormat:@"%@",[[inProgressArrayFromParse objectAtIndex:indexPath.row] goalName]];
@@ -259,10 +235,6 @@
     currentGoal.goalPriority=[[inProgressArrayFromParse objectAtIndex:indexPath.row] goalPriority];
     
     
-    goalPosts=[self getPostsFromSelectedGoal:[[NSString stringWithFormat:@"%d",[[inProgressArrayFromParse objectAtIndex:indexPath.row] goalID]] integerValue]
-                                 AndUsername:[NSString stringWithFormat:@"%@",[[inProgressArrayFromParse objectAtIndex:indexPath.row] createdBy]]];
-    
-    
     [self performSegueWithIdentifier:@"userProfileToD" sender:nil];
     
 }
@@ -273,7 +245,6 @@
     {
         UserProfileViewControllerDetailsViewController *nav = [segue destinationViewController];
         [nav setCgoal:currentGoal];
-        [nav setGPosts:goalPosts];
         [nav setCurrentUser:currentUser];
     }
 }
