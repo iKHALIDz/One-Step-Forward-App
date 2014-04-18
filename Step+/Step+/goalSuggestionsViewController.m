@@ -33,7 +33,7 @@
     
     sPosts=[[NSMutableArray alloc]init];
     
-    sPosts=[self getPostsCommments];
+    [self getPostsCommments];
     
     NSLog(@"55%d",[sPosts count]);
     self.goalNameLable.text=currentGoal.goalName;
@@ -48,19 +48,22 @@
     // Dispose of any resources that can be recreated.
 }
 
--(NSMutableArray *) getPostsCommments
+-(void) getPostsCommments
 {
-    NSMutableArray *list=[[NSMutableArray alloc]init];
     
     PFQuery *query = [PFQuery queryWithClassName:@"GoalSuggestion"];
     [query whereKey:@"To" equalTo:self.currentUser.userUsername];
     [query whereKey:@"GoalID" equalTo:[NSString stringWithFormat:@"%d",currentGoal.goalID ]];
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     
-    NSError *error=nil;
+    [query findObjectsInBackgroundWithTarget:self
+                                    selector:@selector(findCallback:error:)];
+}
+
+- (void)findCallback:(NSArray *)objects error:(NSError *)error {
+    if (!error) {
     
-    NSArray* goals=[query findObjects:&error];
-    
-    for(PFObject *obj in goals)
+    for(PFObject *obj in objects)
     {
         timelinePostComment *postcomment=[[timelinePostComment alloc]init];
         
@@ -71,11 +74,14 @@
         PFFile *image = (PFFile *)[obj objectForKey:@"FromuserProfilePic"];
         postcomment.FromuserProfilePic=[UIImage imageWithData:[image getData]];
         
-        [list addObject:postcomment];
+        [sPosts addObject:postcomment];
     }
-    
-    return list;
+        
+        [self.tableView reloadData];
+        
 }
+}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

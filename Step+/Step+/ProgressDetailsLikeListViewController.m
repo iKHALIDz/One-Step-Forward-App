@@ -37,10 +37,8 @@
     sPosts=[[NSMutableArray alloc]init];
 
     // Do any additional setup after loading the view.
-    sPosts=[self getPostsCommments];
-    NSLog(@"444:  %d",[sPosts count]);
-    NSLog(@"curent %d",currentProgress.progressID);
-
+    
+    [self getPostsCommments];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,22 +48,26 @@
 }
 
 
--(NSMutableArray *) getPostsCommments
+-(void) getPostsCommments
 {
-    NSMutableArray *list=[[NSMutableArray alloc]init];
     
     PFQuery *query = [PFQuery queryWithClassName:@"PostLike"];
     
     [query whereKey:@"To" equalTo:self.currentUser.userUsername];
     [query whereKey:@"ItemID" equalTo:[NSString stringWithFormat:@"%d",self.currentProgress.progressID]];
     [query whereKey:@"isLiked" equalTo:@YES];
-    
-    NSError *error=nil;
-    
-    NSArray* goals=[query findObjects:&error];
-    
-    for(PFObject *obj in goals)
-    {
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+
+    [query findObjectsInBackgroundWithTarget:self
+                                    selector:@selector(findCallback:error:)];
+}
+
+- (void)findCallback:(NSArray *)objects error:(NSError *)error {
+    if (!error) {
+
+        sPosts=[[NSMutableArray alloc]init];
+        for(PFObject *obj in objects)
+        {
         timelinePostLike *postlike=[[timelinePostLike alloc]init];
         
         postlike.To=[obj objectForKey:@"To"];
@@ -75,12 +77,13 @@
         postlike.ItemRID=[obj objectForKey:@"ItemID"];
         PFFile *image = (PFFile *)[obj objectForKey:@"FromuserProfilePic"];
         postlike.FromuserProfilePic=[UIImage imageWithData:[image getData]];
-        
-        [list addObject:postlike];
+            [sPosts addObject:postlike];
+
     }
-    
-    return list;
+        [self.tableView reloadData];
 }
+}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -33,9 +33,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    sPosts=[[NSMutableArray alloc]init];
     
-    sPosts=[self getPostsCommments];
+    [self getPostsCommments];
     
     NSLog(@"RRR%d",currentProgress.progressID);
     NSLog(@"RRR%d",[sPosts count]);
@@ -52,21 +51,29 @@
     // Dispose of any resources that can be recreated.
 }
 
--(NSMutableArray *) getPostsCommments
+
+-(void) getPostsCommments
 {
-    NSMutableArray *list=[[NSMutableArray alloc]init];
-    
     PFQuery *query = [PFQuery queryWithClassName:@"PostComment"];
     
     [query whereKey:@"To" equalTo:self.currentUser.userUsername];
     [query whereKey:@"ItemID" equalTo:[NSString stringWithFormat:@"%d",self.currentProgress.progressID]];
     
-    NSError *error=nil;
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     
-    NSArray* goals=[query findObjects:&error];
-    
-    for(PFObject *obj in goals)
+    [query findObjectsInBackgroundWithTarget:self
+                                    selector:@selector(findCallback:error:)];
+}
+
+
+- (void)findCallback:(NSArray *)objects error:(NSError *)error {
+    if (!error) {
+        sPosts=[[NSMutableArray alloc]init];
+
+        
+    for(PFObject *obj in objects)
     {
+        
         timelinePostComment *postcomment=[[timelinePostComment alloc]init];
         
         postcomment.To=[obj objectForKey:@"To"];
@@ -77,10 +84,12 @@
         PFFile *image = (PFFile *)[obj objectForKey:@"FromuserProfilePic"];
         postcomment.FromuserProfilePic=[UIImage imageWithData:[image getData]];
         
-        [list addObject:postcomment];
+        [sPosts addObject:postcomment];
     }
-    return list;
+        [self.tableview reloadData];
 }
+}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

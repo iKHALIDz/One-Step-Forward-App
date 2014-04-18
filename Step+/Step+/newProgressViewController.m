@@ -61,24 +61,31 @@
     }
     
     // curent goal progress + new progress < 100
-    else if (self.currentGoal.goalProgress+[self.progressPercenatge.text doubleValue] < 100)
+    else if (self.currentGoal.goalProgress+[self.progressPercenatge.text doubleValue] < 100 && self.currentGoal.isGoalCompleted==NO)
     {
         
         X=1;
     }
     // curent goal progress + new progress = 100
     
-    else if (self.currentGoal.goalProgress+[self.progressPercenatge.text doubleValue] == 100)
+    else if (self.currentGoal.goalProgress+[self.progressPercenatge.text doubleValue] == 100 && self.currentGoal.isGoalCompleted==NO)
     {
         X=0;
     }
     
     // invalid input
-    else if ([self.progressPercenatge.text doubleValue] > 100)
+    else if ([self.progressPercenatge.text doubleValue] > 100 && self.currentGoal.isGoalCompleted==NO)
     {
         X=-2;
     }
     
+    else if (self.currentGoal.isGoalCompleted==YES)
+    {
+        
+        X=4;
+    }
+    
+    NSLog(@"X= %d",X);
     return X;
 }
 
@@ -300,15 +307,23 @@
         
     }
     
-    else // in case the goal is done and the user wants to enter a progress
+    else if (check==4) // in case the goal is done and the user wants to enter a progress
     {
+        progress.progressDescription=self.progressDescription.text;
+        progress.goalID=self.currentGoal.goalID;
+        progress.LoggedBy=self.currentGoal.createdBy;
+        progress.numberOfCommentss=0;
+        progress.numberOfLikes=0;
+        
         progress.progressPercentageToGoal=0;
         progress.progressDate=[self getCurrentDataAndTime];
         progress.stepOrder=self.currentGoal.numberOfGoalSteps+1;
         progress.progressID=[[self nextIdentifies] integerValue];
         
         
+        
         [progress AddProgressltoDatabase];
+        
         [progress AddProgresslToParse];
         
         Log *newLog=[[Log alloc]init];
@@ -335,7 +350,7 @@
         
         NSString *sum=[NSString stringWithFormat:@"%.2f",0+goal.goalProgress];
         goal.goalProgress=[sum doubleValue];
-        
+
         [[self delegate]setGoal:goal];
         
         
@@ -352,6 +367,7 @@
         
         newPost.PostType=@"Progress";
         newPost.PostDate=progress.progressDate;
+        
         
         if (currentUser.wantsToShare==YES)
         {

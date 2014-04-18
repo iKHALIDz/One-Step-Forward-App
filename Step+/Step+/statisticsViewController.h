@@ -18,13 +18,11 @@
 
 @interface statisticsViewController : UIViewController <XYPieChartDelegate, XYPieChartDataSource,BENPedometerChartDataSource>
 
-
 @property (nonatomic,strong) User *currentUser;
 @property(nonatomic,retain) NSMutableArray *inProgressArray;
 @property(nonatomic,retain) NSMutableArray *achievedArray;
 @property (strong, nonatomic) IBOutlet XYPieChart *pieChartRight;
 @property (strong,nonatomic) IBOutlet BENPedometerBarView *barChart;
-
 
 @end
 

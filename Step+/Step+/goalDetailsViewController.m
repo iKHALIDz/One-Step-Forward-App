@@ -28,6 +28,7 @@
 @synthesize currentProgress;
 
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -50,8 +51,6 @@
     
     progressList=[self getProgressList];
     
-    //progressListFromParse=[self getProgressFromParse];
-    
     if ([progressList count]==0)
     {
         NSLog(@"Progress, We still need to add it to DB");
@@ -61,9 +60,7 @@
             [newProgress AddProgressltoDatabase];
         }
     }
-    
-    NSLog(@"%d",self.currentUser.numberOfInProgressGoals);
-    NSLog(@"%d",self.currentUser.numberOfAchievedGoals);
+
     
 }
 
@@ -87,6 +84,15 @@
     
     progressList=[self getProgressList];
     progressListFromParse=[self getProgressFromParse];
+    
+    
+    NSLog(@"DB %d",[progressList count]);
+    
+    NSLog(@"Parse %d",[progressListFromParse count]);
+    
+    
+    NSLog(@"%@",[[progressList objectAtIndex:0] progressDescription]);
+    NSLog(@"%@",[[progressListFromParse objectAtIndex:0] progressDescription]);
     
     [self.tableview reloadData];
 }
@@ -247,7 +253,6 @@
         
         [newLog addLOG];
         
-        
         if (currentUser.wantsToShare==YES)
         {
         
@@ -259,7 +264,7 @@
             newPost.userProfilePic=currentUser.userProfileImage;
             
             newPost.PostContent=[NSString stringWithFormat:@"%@ has achieved a goal: %@",currentUser.userFirsname,goal.goalName];
-            newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",goal.goalID];
+            newPost.PostOtherRelatedInFormationContent=[NSString stringWithFormat:@"%d",progress.progressID];
             
             newPost.PostType=@"Goal";
             newPost.PostDate=progress.progressDate;
@@ -268,7 +273,6 @@
         }
         
         [self.navigationController popViewControllerAnimated:YES];
-        
     }
     
 }
@@ -329,6 +333,8 @@
     
     [query whereKey:@"goalID" equalTo:[NSString stringWithFormat:@"%d",currentGoal.goalID]];
     
+    [query orderByAscending:@"LogDate"];
+    
     NSError *error=nil;
     NSArray* progresses=[query findObjects:&error];
     
@@ -347,10 +353,10 @@
         progress.numberOfLikes=[[obj objectForKey:@"numberOfLikes"] integerValue];
         
         [list addObject:progress];
+        
+        
     }
-    
     return list;
-    
 }
 
 
