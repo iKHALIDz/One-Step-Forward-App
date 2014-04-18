@@ -30,6 +30,15 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    
+    [self getPostsCommments];
+    [self.tableview reloadData];
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -45,9 +54,8 @@
     
     self.userpic.image=self.currentSelectedtimeLinePost.userProfilePic;
     
-    TimelinePostComments=[[NSMutableArray alloc]init];
     
-    TimelinePostComments=[self getPostsCommments];
+   [self getPostsCommments];
     
     [self.tableview reloadData];
     
@@ -82,8 +90,6 @@
         [newPostComment setObject:file forKey:@"FromuserProfilePic"];
         [newPostComment saveEventually];
         
-        
-        
     }];
     
     
@@ -114,23 +120,33 @@
             }
         }
     }];
+    
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
--(NSMutableArray *) getPostsCommments
+
+
+-(void) getPostsCommments
 {
-    NSMutableArray *list=[[NSMutableArray alloc]init];
     
     PFQuery *query = [PFQuery queryWithClassName:@"PostComment"];
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     [query whereKey:@"To" equalTo:self.currentSelectedtimeLinePost.username];
     [query whereKey:@"PostID" equalTo:self.currentSelectedtimeLinePost.postID];
+    [query findObjectsInBackgroundWithTarget:self
+                                    selector:@selector(findCallback:error:)];
+}
 
+- (void)findCallback:(NSArray *)objects error:(NSError *)error {
+    if (!error) {
+        
     NSLog(@"currentSelectedtimeLinePost %@",currentSelectedtimeLinePost.username);
     
-    NSError *error=nil;
+    TimelinePostComments=[[NSMutableArray alloc]init];
     
-    NSArray* goals=[query findObjects:&error];
-    
-    for(PFObject *obj in goals)
+    for(PFObject *obj in objects)
     {
         timelinePostComment *postcomment=[[timelinePostComment alloc]init];
         
@@ -141,11 +157,13 @@
         PFFile *image = (PFFile *)[obj objectForKey:@"FromuserProfilePic"];
         postcomment.FromuserProfilePic=[UIImage imageWithData:[image getData]];
         
-        [list addObject:postcomment];
+        [TimelinePostComments addObject:postcomment];
     }
-    
-    return list;
+        [self.tableview reloadData];
+        
+    }
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -188,7 +206,6 @@
         [nav setSelectedUsername:currentUsername];
         [nav setCurrentUser:currentUser];
 
-        
     }
 }
 

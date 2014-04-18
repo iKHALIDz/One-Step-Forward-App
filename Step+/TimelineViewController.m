@@ -32,10 +32,21 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    
+    [self getPosts];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    
+    NSLog(@"LLLLLL");
+    
+    
     selectedtimeLinePost=[[TimelinePost alloc]init];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -45,6 +56,7 @@
     postLikes=[[NSMutableArray alloc]init];
     
     postStat=[[NSMutableArray alloc]init];
+
     
     posts=[[NSMutableArray alloc]init];
     
@@ -215,6 +227,9 @@
             }
         }];
         
+        
+        
+        
     }
     
     else
@@ -259,6 +274,8 @@
     }
     
     [button  setSelected:!button.isSelected];
+    
+    [self.tableview reloadData];
     
 }
 
@@ -369,6 +386,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     
     
 }
