@@ -17,6 +17,7 @@
 
 
 @synthesize currentUser;
+@synthesize avatar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,9 +28,28 @@
     return self;
 }
 
+
+-(void) viewDidLoad
+{
+    [super viewDidLoad];
+    
+    
+    [self.scrollView setScrollEnabled:YES];
+    
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 12,
+                                        self.scrollView.frame.size.height);
+    
+    
+    // Generate content for our scroll view using the frame height and width as the reference
+    
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
-    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+
     
     [super viewDidAppear:YES];
     
@@ -64,7 +84,6 @@
     else
         
     {
-        NSLog(@"rrr3");
 
         //currentUser=[currentUser getUserInfo:curreUser.username];
         NSLog(@"User exist in the Database");
@@ -74,13 +93,17 @@
     self.NumberAchievedGoals.text=[NSString stringWithFormat:@"%d",currentUser.numberOfAchievedGoals];
     self.NumberInProgressGoals.text=[NSString stringWithFormat:@"%d",currentUser.numberOfInProgressGoals];
     
+    [avatar removeFromSuperview];
+    
     [self getProfileImageInfoFromParse];
     
-    self.img.layer.borderWidth = 1.0f;
-    self.img.clipsToBounds = YES;
-    self.img.layer.cornerRadius = 2.0f;
     
-    NSLog(@"66 %d",currentUser.wantsToShare);
+    avatar = [[AMPAvatarView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    
+    [self.ProfileImageView addSubview:avatar];
+        
+    
+    NSLog(@"want to share %d",currentUser.wantsToShare);
     
 }
 
@@ -97,28 +120,36 @@
     PFUser *curreUser = [PFUser currentUser];
     
     PFQuery *query = [PFUser query];
-    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
 
     [query whereKey:@"username" equalTo:curreUser.username];
 
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        if (!object) {
-            NSLog(@"The getFirstObject request failed.");
-        } else {
-            // The find succeeded.
-            PFFile *image = (PFFile *)[object objectForKey:@"ProfileImage"];
-            self.img.image=[UIImage imageWithData:[image getData]];
-            
-        }
-    }];
+    [query findObjectsInBackgroundWithTarget:self selector:@selector(findCallback:error:)];
+
 }
+
+- (void)findCallback:(NSArray *)objects error:(NSError *)error {
+    if (!error) {
+        
+        for(PFObject *obj in objects)
+        {
+            NSLog(@"ttt");
+            
+            PFFile *image = (PFFile *)[obj objectForKey:@"ProfileImage"];
+            avatar.image=[UIImage imageWithData:[image getData]];
+
+        }
+        
+    }
+}
+
 
 -(User *)getUserInfromationAsObject
 {
     PFUser *curreUser = [PFUser currentUser];
     
     PFQuery *query = [PFUser query];
-    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+    //query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     
     [query whereKey:@"username" equalTo:curreUser.username];
     
@@ -194,5 +225,14 @@
     }
 
 }
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+
+
+
 
 @end

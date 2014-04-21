@@ -15,6 +15,8 @@
 #import "SettingViewController.h"
 #import "CalenderLogsEventsViewController.h"
 #import "statisticsViewController.h"
+#import <QuartzCore/QuartzCore.h>
+#import "AMPAvatarView.h"
 
 
 @interface MainMenuViewController : UIViewController
@@ -30,6 +32,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *userFullname;
 
+@property (weak, nonatomic) IBOutlet UIView *ProfileImageView;
 
+@property (strong, nonatomic) AMPAvatarView *avatar;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
