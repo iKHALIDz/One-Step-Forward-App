@@ -20,6 +20,9 @@
 #import "goalTableViewCell.h"
 #import "goalDetailsViewController.h"
 
+#import "UIColor+ConvertHexToUIColor.h"
+#import "achievedGoalsUIViewController.h"
+
 
 @interface InProgressGoalsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 

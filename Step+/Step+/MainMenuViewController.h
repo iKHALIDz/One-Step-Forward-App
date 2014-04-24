@@ -12,17 +12,18 @@
 #import "LoginViewController.h"
 #import "InProgressGoalsViewController.h"
 #import "TimelineViewController.h"
+
 #import "SettingViewController.h"
+
 #import "CalenderLogsEventsViewController.h"
 #import "statisticsViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "AMPAvatarView.h"
 
 
-@interface MainMenuViewController : UIViewController
+@interface MainMenuViewController : UIViewController < updateUserinfo >
 
 @property (nonatomic,strong) User *currentUser;
-
 
 @property (weak, nonatomic) IBOutlet UIImageView *img;
 
@@ -37,5 +38,7 @@
 @property (strong, nonatomic) AMPAvatarView *avatar;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *userbackground;
 
 @end

@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TimelinePostCommentTableViewCell.h"
+#import "UIColor+ConvertHexToUIColor.h"
 
-@interface timelineCell : UITableViewCell
+#import "timelinePostComment.h"
+
+@interface timelineCell : UITableViewCell <UITableViewDataSource,UITableViewDelegate>
+
 
 @property (weak, nonatomic) IBOutlet UILabel *name;
 
@@ -32,5 +37,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *numberOfComments;
 
 @property (weak, nonatomic) IBOutlet UIButton *goToCommentsButton;
+
+@property (weak, nonatomic) IBOutlet UIView *profileView;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableview;
+
+
+@property (strong,nonatomic) NSMutableArray *lastTwoComments;
 
 @end

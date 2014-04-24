@@ -22,6 +22,8 @@
 @synthesize currentGoal;
 @synthesize currentUser;
 @synthesize selectedUser;
+@synthesize avatar;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,16 +45,25 @@
     self.userFullname.text=[NSString stringWithFormat:@"%@ %@",selectedUser.userFirsname,selectedUser.userLastname];
     self.NumberAchievedGoals.text=[NSString stringWithFormat:@"%d",selectedUser.numberOfAchievedGoals];
     self.NumberInProgressGoals.text=[NSString stringWithFormat:@"%d",selectedUser.numberOfInProgressGoals];
-    self.img.image=selectedUser.userProfileImage;
-    self.img.layer.borderWidth = 1.0f;
-    self.img.clipsToBounds = YES;
-    self.img.layer.cornerRadius = 2.0f;
+    
+    [avatar removeFromSuperview];
+    avatar = [[AMPAvatarView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     
     [self getDoneGoalsFromParse];
     [self.tableview reloadData];
     
     
     currentGoal=[[Goal alloc]init];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    
+    self.tableview.separatorColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0];
+
+    
+    
+
 }
 
 - (MDRadialProgressView *)progressViewWithFrame:(CGRect)frame
@@ -86,16 +97,26 @@
     
     [cell.GoalName setText:(NSString *)[[inProgressArrayFromParse objectAtIndex:indexPath.row] goalName]];
     
+    [cell.DueDate setText:[NSString stringWithFormat:@"%d Steps Taken",[[inProgressArrayFromParse objectAtIndex:indexPath.row] numberOfGoalSteps]]];
+    
+    
     CGRect frame = CGRectMake(0,-10, 40, 40);
     
     radialView = [self progressViewWithFrame:frame];
     radialView.progressTotal = 100;
     radialView.progressCounter = [[inProgressArrayFromParse objectAtIndex:indexPath.row] goalProgress];
-    radialView.startingSlice = 3;
-    radialView.theme.sliceDividerThickness = 1;
+    radialView.theme.completedColor=[UIColor blueColor];
+    radialView.theme.incompletedColor=[UIColor colorWithHexString:@"8795b1"];
+    radialView.theme.thickness=10;
     radialView.theme.sliceDividerHidden = NO;
+    radialView.startingSlice = 3;
+    radialView.theme.sliceDividerThickness = 0;
+    
     radialView.label.textColor = [UIColor blueColor];
     radialView.label.shadowColor = [UIColor clearColor];
+    
+    radialView.label.pointSizeToWidthFactor=0.3;
+    
     [cell.contentView addSubview:radialView];
     
     cell.MoveCell.hidden=YES;
@@ -156,11 +177,23 @@
             PFFile *image = (PFFile *)[object objectForKey:@"ProfileImage"];
             
             selectedUser.userProfileImage=[UIImage imageWithData:[image getData]];
+            avatar.image=[UIImage imageWithData:[image getData]];
+            
+            [self.profileview addSubview:avatar];
+
+            
+            PFFile *image2 = (PFFile *)[object objectForKey:@"BackgroundPic"];
+            selectedUser.userBackgroundImage=[UIImage imageWithData:[image2 getData]];
+
             
             self.userFullname.text=[NSString stringWithFormat:@"%@ %@",selectedUser.userFirsname,selectedUser.userLastname];
             self.NumberAchievedGoals.text=[NSString stringWithFormat:@"%d",selectedUser.numberOfAchievedGoals];
             self.NumberInProgressGoals.text=[NSString stringWithFormat:@"%d",selectedUser.numberOfInProgressGoals];
             self.img.image=selectedUser.userProfileImage;
+            
+            self.background.image=selectedUser.userBackgroundImage;
+            
+            
             
         }
         
@@ -239,14 +272,26 @@
     
 }
 
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"userProfileToD"])
     {
-        UserProfileViewControllerDetailsViewController *nav = [segue destinationViewController];
-        [nav setCgoal:currentGoal];
-        [nav setCurrentUser:currentUser];
+        UINavigationController *nav=[segue destinationViewController];
+        
+        UserProfileViewControllerDetailsViewController *vc = (UserProfileViewControllerDetailsViewController*) nav.topViewController;
+        [vc setCgoal:currentGoal];
+        [vc setCurrentUser:currentUser];
     }
 }
 
+- (IBAction)back:(id)sender {
+    
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    NSLog(@"$");
+    
+    
+}
 @end

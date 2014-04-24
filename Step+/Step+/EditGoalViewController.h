@@ -46,5 +46,6 @@
 @property (retain,nonatomic) Goal *currentGoal;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *isDoneisPressed1;
+@property (weak, nonatomic) IBOutlet UIImageView *ik;
 
 @end

@@ -119,7 +119,7 @@
     
     cell.FromUserComment.text=[NSString stringWithFormat:@"%@",[[sPosts objectAtIndex:indexPath.row] commentContent]];
     
-    cell.FromUserimage.image=[[sPosts objectAtIndex:indexPath.row] FromuserProfilePic];
+    //cell.FromUserimage.image=[[sPosts objectAtIndex:indexPath.row] FromuserProfilePic];
     
     [cell.GoToUserProfile addTarget:self action:@selector(GoToUserInfo:)  forControlEvents:UIControlEventTouchUpInside];
     [cell.GoToUserProfile setTag:indexPath.row];

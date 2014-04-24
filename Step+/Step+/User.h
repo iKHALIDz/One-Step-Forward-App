@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 #import "FMDatabase.h"
+#import "UIImage+ResizeImage.h"
 
 @interface User : NSObject
 
@@ -23,15 +24,18 @@
 @property int numberOfAchievedGoals;
 @property BOOL isUserloggedin;
 @property BOOL wantsToShare;
+@property (strong, nonatomic) UIImage *userBackgroundImage;
 
 -(BOOL) loginToAccountUsingParse;
 -(BOOL) createAnAccountUsingParse;
 -(void)UserRegistrationUsingDatabase;
 - (User*) getUserInfo: (NSString*) username;
 
--(void)UpdateUserDataUsingParse;
 -(void)UpdateUserDataDB;
 -(void)UpdateUserParse;
+-(void)UpdateProfilePic;
+-(void)UpdateBackgroundPic;
+
 
 
 @end

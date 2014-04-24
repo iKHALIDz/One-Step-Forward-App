@@ -64,9 +64,9 @@
     achievedGoalsArray=[self getDoneGoalsFromDB];
     [self.tableviw reloadData];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"UITableBackground.png"]];
-    
-    self.tableviw.backgroundView = imageView;
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"UITableBackground.png"]];
+//    
+//    self.tableviw.backgroundView = imageView;
     
     self.tableviw.separatorColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0];
     
@@ -110,11 +110,18 @@
     radialView = [self progressViewWithFrame:frame];
     radialView.progressTotal = 100;
     radialView.progressCounter = [[achievedGoalsArray objectAtIndex:indexPath.row] goalProgress];
-    radialView.startingSlice = 3;
-    radialView.theme.sliceDividerThickness = 1;
+    radialView.theme.completedColor=[UIColor blueColor];
+    radialView.theme.incompletedColor=[UIColor colorWithHexString:@"8795b1"];
+    radialView.theme.thickness=10;
     radialView.theme.sliceDividerHidden = NO;
+    radialView.startingSlice = 3;
+    radialView.theme.sliceDividerThickness = 0;
+    
     radialView.label.textColor = [UIColor blueColor];
     radialView.label.shadowColor = [UIColor clearColor];
+    
+    radialView.label.pointSizeToWidthFactor=0.3;
+
     [cell.contentView addSubview:radialView];
     
     UIView *myBackView = [[UIView alloc] initWithFrame:cell.frame];
@@ -376,6 +383,20 @@
         [nav setCurrentGoal:currentGoal];
         [nav setCurrentUser:self.currentUser];
     }
+    
+    if ([[segue identifier] isEqualToString:@"newGoal"])
+    {
+        UINavigationController *nav = [segue destinationViewController];
+        newGoalViewController *vc =(newGoalViewController*)nav.topViewController;
+        [vc setCurrentUser:self.currentUser];
+    }
+
+}
+
+- (IBAction)goToProgressList:(UIButton *)sender {
+    
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

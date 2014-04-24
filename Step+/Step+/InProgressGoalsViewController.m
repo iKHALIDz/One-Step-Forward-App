@@ -56,13 +56,14 @@
     inProgressArray=[self getDoneGoalsFromDB];
     [self.tableView reloadData];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"UITableBackground.png"]];
+    //UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"UITableBackground.png"]];
     
-    self.tableView.backgroundView = imageView;
+    //self.tableView.backgroundView = imageView;
 
     self.tableView.separatorColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0];
     
 }
+
 
 - (IBAction)longPressGestureRecognized:(id)sender {
     
@@ -205,7 +206,12 @@
         [nav setCurrentGoal:currentGoal];
         [nav setCurrentUser:self.currentUser];
     }
-    
+    else if ([[segue identifier] isEqualToString:@"doneGoals"])
+    {
+        UINavigationController *nav = [segue destinationViewController];
+        achievedGoalsUIViewController *vc =(achievedGoalsUIViewController*)nav.topViewController;
+        [vc setCurrentUser:self.currentUser];
+    }
 }
 
 
@@ -325,11 +331,18 @@
     radialView = [self progressViewWithFrame:frame];
     radialView.progressTotal = 100;
     radialView.progressCounter = [[inProgressArray objectAtIndex:indexPath.row] goalProgress];
-    radialView.startingSlice = 3;
-    radialView.theme.sliceDividerThickness = 1;
+    radialView.theme.completedColor=[UIColor blueColor];
+    radialView.theme.incompletedColor=[UIColor colorWithHexString:@"8795b1"];
+    radialView.theme.thickness=10;
     radialView.theme.sliceDividerHidden = NO;
+    radialView.startingSlice = 3;
+    radialView.theme.sliceDividerThickness = 0;
+
     radialView.label.textColor = [UIColor blueColor];
     radialView.label.shadowColor = [UIColor clearColor];
+    
+     radialView.label.pointSizeToWidthFactor=0.3;
+
     [cell.contentView addSubview:radialView];
     
     UIView *myBackView = [[UIView alloc] initWithFrame:cell.frame];
@@ -339,6 +352,8 @@
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
 
     [cell.MoveCell addGestureRecognizer:longPress];
+    
+    //cell.backgroundView =  [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"Test.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
     
     return cell;
 }

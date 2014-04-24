@@ -21,6 +21,8 @@
 @synthesize postLikes;
 @synthesize postStat;
 @synthesize posts;
+@synthesize avatar;
+@synthesize TimelinePostComments;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -48,6 +50,7 @@
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    
     [self.tableview addSubview:refreshControl];
     
     postLikes=[[NSMutableArray alloc]init];
@@ -62,6 +65,7 @@
     NetworkStatus internetStats = [reach currentReachabilityStatus];
     
     if (internetStats == NotReachable) {
+        
         UIAlertView *alertOne = [[UIAlertView alloc] initWithTitle:@"Internet" message:@"is DOWN!!!" delegate:self cancelButtonTitle:@"Damnit!!" otherButtonTitles:@"Cancel", nil];
         [alertOne show];
         [self getPosts];
@@ -69,19 +73,19 @@
 
 
     }
-    else {
+    else
+    {
         [self getPosts];
         [self.tableview reloadData];
 
     }
-    
     
     NSLog(@"View Didload %d",[timelinePosts count]);
 }
 
 -(NSString *) GetTimeinWords: (NSString *) Y
 {
-    NSLog(@"rrr");
+    //NSLog(@"rrr");
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
@@ -135,8 +139,11 @@
     cell.timedate.text=[self GetTimeinWords:[NSString stringWithFormat:@"%@",[[timelinePosts objectAtIndex:indexPath.row] PostDate]]];
     
     
-    cell.userpic.image=[[timelinePosts objectAtIndex:indexPath.row] userProfilePic];
+    avatar = [[AMPAvatarView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    avatar.image=[[timelinePosts objectAtIndex:indexPath.row] userProfilePic];
     
+    [cell.profileView addSubview:avatar];
+
     [cell.toUserinfo addTarget:self action:@selector(GoToUserInfo:)  forControlEvents:UIControlEventTouchUpInside];
     [cell.toUserinfo setTag:indexPath.row];
     
@@ -149,8 +156,8 @@
     
     
     for (id obj in [[timelinePosts objectAtIndex:indexPath.row] whoLikePost]) {
-        NSLog(@"%@",obj);
-        NSLog(@"c%@",currentUser.userUsername);
+        //NSLog(@"%@",obj);
+        //NSLog(@"c%@",currentUser.userUsername);
         
         if ([obj isEqualToString:currentUser.userUsername])
         {
@@ -161,11 +168,23 @@
             cell.like.selected=NO;
         }
         
+        
     }
     
-    cell.numberOfLikess.text=[NSString stringWithFormat:@"%d",[[[timelinePosts objectAtIndex:indexPath.row] whoLikePost] count]];
+    cell.numberOfLikess.text=[NSString stringWithFormat:@"%d Likes",[[[timelinePosts objectAtIndex:indexPath.row] whoLikePost] count]];
     
-    cell.numberOfComments.text=[NSString stringWithFormat:@"%d",[[[timelinePosts objectAtIndex:indexPath.row] whoCommentPost] count]];
+    cell.numberOfComments.text=[NSString stringWithFormat:@"%d Comments",[[[timelinePosts objectAtIndex:indexPath.row] whoCommentPost] count]];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TimelineCellCropped.png"]];
+    
+    cell.backgroundView = imageView;
+    
+    
+//    [self getPostsCommments:[[timelinePosts objectAtIndex:indexPath.row]username] andPostID:[[timelinePosts objectAtIndex:indexPath.row]postID]];
+    
+    NSLog(@"Username :%@",[[timelinePosts objectAtIndex:indexPath.row]username]);
+    NSLog(@"PostID :%@",[[timelinePosts objectAtIndex:indexPath.row]postID]);
+    
     
     
     return cell;
@@ -255,11 +274,12 @@
         [query findObjectsInBackgroundWithBlock:^(NSArray * updateGoals, NSError *error){
             if (!error) {
                 
+
                 for (PFObject* obj in updateGoals)
                 {
                     NSString *temp=[obj objectForKey:@"numberOfLikes"];
                     NSInteger Nummber=[temp integerValue]+1;
-                    NSLog(@"%d",Nummber);
+                    //NSLog(@"%d",Nummber);
                     
                     [obj setObject:[NSString stringWithFormat:@"%d",Nummber] forKey:@"numberOfLikes"];
                     
@@ -297,7 +317,7 @@
     UIButton *button = (UIButton *)sender;
     
     int row = button.tag;
-    NSLog(@"isPressed");
+    //NSLog(@"isPressed");
     
     
     selectedtimeLinePost.userFirstName=[NSString stringWithFormat:@"%@",[[timelinePosts objectAtIndex:row] userFirstName]];
@@ -329,7 +349,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 160;
+    return 245;
 }
 
 -(void) getPosts
@@ -351,7 +371,6 @@
         
         for(PFObject *obj in objects)
         {
-            NSLog(@"tttt");
             TimelinePost *post=[[TimelinePost alloc]init];
             post.userFirstName=[obj objectForKey:@"userFirstName"];
             post.userLastName=[obj objectForKey:@"userLastName"];
@@ -370,13 +389,13 @@
             [timelinePosts addObject:post];
             
         }
+        
         [self.tableview reloadData];
 
     } else
     {
         
         
-        NSLog(@"Error: %@ %@", error, [error userInfo]);
     }
 }
 
@@ -384,7 +403,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    timelineCell *cell = (timelineCell*)[tableView cellForRowAtIndexPath:indexPath];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    
+    [self isLikeisPressed:cell.like];
     
 }
 
@@ -399,10 +423,12 @@
     
     if ([[segue identifier] isEqualToString:@"GoToUserProfile"])
     {
-        UserProfileViewController *nav = [segue destinationViewController];
-        [nav setSelectedUsername:self.currentUsername];
-        [nav setCurrentUser:currentUser];
+        UINavigationController *nav = [segue destinationViewController];
+        UserProfileViewController*vc = (UserProfileViewController*)nav.topViewController;
+        [vc setSelectedUsername:self.currentUsername];
+        [vc setCurrentUser:currentUser];
     }
 }
+
 
 @end

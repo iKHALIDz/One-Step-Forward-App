@@ -278,7 +278,7 @@
 	float percentageCompleted = (100.0f / self.progressTotal) * self.progressCounter;
 	
 	self.accessibilityValue = [NSString stringWithFormat:@"%.2f", percentageCompleted];
-	self.label.text = [NSString stringWithFormat:@"%.0f", percentageCompleted];
+	self.label.text = [[NSString stringWithFormat:@"%.0f", percentageCompleted] stringByAppendingString:@"%"];
 	
 	NSString *notificationText = [NSString stringWithFormat:@"%@ %@",
 								  NSLocalizedString(@"Progress changed to:", nil),

@@ -14,10 +14,11 @@
 #import "MDRadialProgressTheme.h"
 #import "MDRadialProgressLabel.h"
 #import "goalTableViewCell.h"
-#import <QuartzCore/QuartzCore.h>
 #import "TimelinePost.h"
 #import "UserProfileViewControllerDetailsViewController.h"
 
+#import <QuartzCore/QuartzCore.h>
+#import "AMPAvatarView.h"
 
 @interface UserProfileViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
@@ -33,5 +34,11 @@
 @property (nonatomic,strong) Goal* currentGoal;
 @property (nonatomic,strong) User *currentUser;
 @property (nonatomic,strong) User *selectedUser;
+@property (strong, nonatomic) AMPAvatarView *avatar;
+
+@property (weak, nonatomic) IBOutlet UIImageView *background;
+
+@property (weak, nonatomic) IBOutlet UIView *profileview;
+
 
 @end

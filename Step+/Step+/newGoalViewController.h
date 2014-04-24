@@ -14,6 +14,7 @@
 #import <Parse/Parse.h>
 #import "Progress.h"
 #import "Log.h"
+#import "InProgressGoalsViewController.h"
 
 @interface newGoalViewController : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate>
 
@@ -39,7 +40,6 @@
 
 @property (retain,nonatomic) NSArray *goalTypes;
 
-
 @property (nonatomic,strong) User *currentUser;
 
 -(IBAction)editingChanged;
@@ -47,6 +47,5 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
 -(IBAction) isCancelisPressed;
-
 
 @end

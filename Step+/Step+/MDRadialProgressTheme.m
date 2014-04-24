@@ -45,6 +45,7 @@ static const int kMaxFontSize = 64;
 		self.labelShadowColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1.0];
 		self.labelShadowOffset = CGSizeMake(1, 1);
 		self.font = [UIFont systemFontOfSize:kMaxFontSize];
+        
 	}
 	
 	return self;

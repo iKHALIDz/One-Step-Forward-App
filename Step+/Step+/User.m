@@ -21,6 +21,7 @@
 @synthesize numberOfInProgressGoals;
 @synthesize isUserloggedin;
 @synthesize wantsToShare;
+@synthesize userBackgroundImage;
 
 
 -(BOOL) loginToAccountUsingParse
@@ -39,6 +40,8 @@
         userUsername=[existingUser objectForKey:@"username"];
         userPassword=[existingUser objectForKey:@"password"];
         userProfileImage=[existingUser objectForKey:@"ProfileImage"];
+        userBackgroundImage=[existingUser objectForKey:@"BackgroundPic"];
+        
         userEmailAddres=[existingUser objectForKey:@"email"];
         numberOfAchievedGoals=[[existingUser objectForKey:@"numberOfAchievedGoals"] integerValue];
         numberOfInProgressGoals=[[existingUser objectForKey:@"numberOfInProgressGoals"] integerValue];
@@ -76,6 +79,19 @@
     PFFile *file = [PFFile fileWithName:@"img" data:pictureData];
     
     [newUser setObject:file forKey:@"ProfileImage"];
+    
+    
+    
+    UIImage *img=[UIImage imageNamed:@"DSC_0939.jpg"];
+    userBackgroundImage=[img imageByScalingAndCroppingForSize:CGSizeMake(img.size.width/2,img.size.height/2)
+];
+    
+    
+    NSData *pictureData2 = UIImagePNGRepresentation(userBackgroundImage);
+    
+    PFFile *file2 = [PFFile fileWithName:@"img" data:pictureData2];
+    
+    [newUser setObject:file2 forKey:@"BackgroundPic"];
     
     NSError *error = nil;
     
@@ -182,10 +198,6 @@
 }
 
 
--(void)UpdateUserDataUsingParse
-{
-    
-}
 
 -(void)UpdateUserDataDB
 {
@@ -231,12 +243,66 @@
             [updateUser setObject:[NSString stringWithFormat:@"%d",numberOfInProgressGoals] forKey:@"numberOfInProgressGoals"];
             [updateUser setObject:[NSString stringWithFormat:@"%d",numberOfAchievedGoals] forKey:@"numberOfAchievedGoals"];
             [updateUser setObject:[NSNumber numberWithBool:wantsToShare] forKey:@"wantsToShare"];
-
-            [updateUser saveEventually];
             
+            NSData *pictureData = UIImagePNGRepresentation(userBackgroundImage);
+            PFFile *file = [PFFile fileWithName:@"img" data:pictureData];
+
+            [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                
+                [updateUser setObject:file forKey:@"BackgroundPic"];
+                [updateUser saveEventually];
+            }];
         }}];
+}
+-(void)UpdateBackgroundPic
+{
+    PFQuery *query = [PFUser query];
+    
+    [query whereKey:@"username" equalTo:self.userUsername];
+    
+    
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * updateUser, NSError *error){
+        if (!error) {
+            
+            NSData *pictureData = UIImagePNGRepresentation(userBackgroundImage);
+            PFFile *file = [PFFile fileWithName:@"img" data:pictureData];
+            
+            [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                
+                [updateUser setObject:file forKey:@"BackgroundPic"];
+                [updateUser saveEventually];
+            }];
+        }}];
+
+    
+    
     
 }
+-(void)UpdateProfilePic
+{
+    
+    PFQuery *query = [PFUser query];
+    
+    [query whereKey:@"username" equalTo:self.userUsername];
+    
+    
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * updateUser, NSError *error){
+        if (!error) {
+            
+            NSData *pictureData = UIImagePNGRepresentation(userProfileImage);
+            PFFile *file = [PFFile fileWithName:@"img" data:pictureData];
+            
+            [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                
+                [updateUser setObject:file forKey:@"ProfileImage"];
+                [updateUser saveEventually];
+            }];
+        }}];
+
+    
+}
+
+
 -(NSString*)DataFilePath
 {
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

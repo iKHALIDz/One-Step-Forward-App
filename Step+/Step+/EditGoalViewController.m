@@ -52,6 +52,8 @@
     self.goalDeadlineTextField.text=currentGoal.goalDeadline;
     self.goalTypeTextFiled.text=currentGoal.goalType;
     
+    self.ik.image=currentUser.userProfileImage;
+    
     
 }
 

@@ -16,6 +16,7 @@
 #import "Progress.h"
 #import "NSDate+PrettyDate.h"
 #import "Reachability.h"
+#import "AMPAvatarView.h"
 
 
 
@@ -30,7 +31,8 @@
 
 @property (nonatomic,retain) NSMutableArray *postLikes;
 @property (nonatomic,retain) NSMutableArray *postStat;
-
+@property (strong, nonatomic) AMPAvatarView *avatar;
+@property (nonatomic,strong) NSMutableArray *TimelinePostComments;
 
 @property (nonatomic,retain) NSMutableArray *posts;
 

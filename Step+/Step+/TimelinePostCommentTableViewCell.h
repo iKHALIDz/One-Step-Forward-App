@@ -10,9 +10,9 @@
 
 @interface TimelinePostCommentTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *FromUserimage;
-
 @property (weak, nonatomic) IBOutlet UILabel *FromUserComment;
 @property (weak, nonatomic) IBOutlet UIButton *GoToUserProfile;
+
+@property (weak, nonatomic) IBOutlet UIView *FromUserImageView;
 
 @end

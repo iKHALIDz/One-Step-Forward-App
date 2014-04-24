@@ -15,15 +15,40 @@
 #import "Progress.h"
 #import "ProgressTableViewCell.h"
 #import "NSDate+PrettyDate.h"
+#import "UIColor+ConvertHexToUIColor.h"
+#import "ProgressTableViewCell.h"
+#import "MDRadialProgressView.h"
+#import "MDRadialProgressTheme.h"
+#import "MDRadialProgressLabel.h"
 
-@interface UserProfileViewControllerDetailsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+
+@interface UserProfileViewControllerDetailsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 
 @property (nonatomic,strong) Goal* cgoal;
 
 @property (weak, nonatomic) IBOutlet UITextField *suggestionTextField;
-- (IBAction)send:(UIButton *)sender;
+
+@property (weak, nonatomic) IBOutlet UILabel *goalName;
+
+@property (weak, nonatomic) IBOutlet UILabel *goalDescription;
+
+@property (weak, nonatomic) IBOutlet UILabel *stepTaken;
+
+@property (weak, nonatomic) IBOutlet UIView *ProgressPercentage;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneOutlet;
+
+- (IBAction)send:(UIBarButtonItem *)sender;
 
 @property (nonatomic,strong) User *currentUser;
+
+@property (weak, nonatomic) IBOutlet UITableView *progressListTable;
+
+@property(nonatomic,retain) NSMutableArray *progressListFromParse;
+
+@property (nonatomic,strong) MDRadialProgressView *radialView;
+
+- (IBAction)BackISPressedisPre:(UIBarButtonItem *)sender;
 
 @end
 

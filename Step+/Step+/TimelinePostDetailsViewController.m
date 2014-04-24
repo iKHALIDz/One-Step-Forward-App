@@ -19,6 +19,8 @@
 @synthesize TimelinePostComments;
 @synthesize currentUsername;
 @synthesize currentSelectedtimeLinePost;
+@synthesize avatar;
+@synthesize avatar2;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,7 +35,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
-    
+    self.sendBu.enabled=NO;
     [self getPostsCommments];
     [self.tableview reloadData];
     
@@ -49,16 +51,23 @@
     
     self.postContent.text=[NSString stringWithFormat:@"%@",self.currentSelectedtimeLinePost.PostContent];
     
-    self.userPostDate.text=[NSString stringWithFormat:@"%@",self.currentSelectedtimeLinePost.PostDate];
+    self.userPostDate.text=[NSString stringWithFormat:@"%@",[self GetTimeinWords:self.currentSelectedtimeLinePost.PostDate]];
     
     
-    self.userpic.image=self.currentSelectedtimeLinePost.userProfilePic;
+    [avatar removeFromSuperview];
+    avatar = [[AMPAvatarView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
     
+    avatar.image=self.currentSelectedtimeLinePost.userProfilePic;
+    [self.userProfiePic addSubview:avatar];
+    self.view.backgroundColor=[UIColor colorWithHexString:@"fffcfc"];
     
-   [self getPostsCommments];
+    [self getPostsCommments];
     
     [self.tableview reloadData];
+    [self.commentTextField becomeFirstResponder];
     
+    self.tableview.separatorColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0];
+
     
 }
 
@@ -121,6 +130,9 @@
         }
     }];
     
+    [self.tableview reloadData];
+    
+    
     
     [self.navigationController popViewControllerAnimated:YES];
     
@@ -177,7 +189,13 @@
     
     cell.FromUserComment.text=[NSString stringWithFormat:@"%@",[[TimelinePostComments objectAtIndex:indexPath.row] commentContent]];
     
-    cell.FromUserimage.image=[[TimelinePostComments objectAtIndex:indexPath.row] FromuserProfilePic];
+    
+    avatar2 = [[AMPAvatarView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+
+    avatar2.image=[[TimelinePostComments objectAtIndex:indexPath.row] FromuserProfilePic];
+    
+    [cell.FromUserImageView addSubview:avatar2];
+    
     
     [cell.GoToUserProfile addTarget:self action:@selector(GoToUserInfo:)  forControlEvents:UIControlEventTouchUpInside];
     [cell.GoToUserProfile setTag:indexPath.row];
@@ -199,19 +217,65 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
- 
     if ([[segue identifier] isEqualToString:@"GoToUserProfile"])
     {
-        UserProfileViewController *nav = [segue destinationViewController];
-        [nav setSelectedUsername:currentUsername];
-        [nav setCurrentUser:currentUser];
-
+        UINavigationController *nav = [segue destinationViewController];
+        UserProfileViewController*vc = (UserProfileViewController*)nav.topViewController;
+        [vc setSelectedUsername:self.currentUsername];
+        [vc setCurrentUser:currentUser];
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 30;
+    return 40;
 }
+
+
+-(NSString *) GetTimeinWords: (NSString *) Y
+{
+    //NSLog(@"rrr");
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
+    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+    
+    NSDate *dateFromString = [[NSDate alloc]init];
+    
+    dateFromString = [dateFormatter dateFromString:Y];
+    
+    NSString * I=[dateFromString prettyDate];
+    
+    
+    return I;
+}
+
+- (void)touchesBegan: (NSSet *) touches withEvent: (UIEvent *) event
+{
+    if (! [self isFirstResponder])
+    {
+            if ([self.commentTextField isFirstResponder])
+            {
+                [self.commentTextField resignFirstResponder];
+            
+            }
+    }
+}
+
+
+-(IBAction)editingChanged
+{
+    // make sure all fields are have something in them
+    
+    if (self.commentTextField.text.length > 0)
+    {
+        self.sendBu.enabled=YES;
+    }
+    else
+    {
+        self.sendBu.enabled=NO;
+    }
+}
+
 
 @end

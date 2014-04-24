@@ -19,6 +19,7 @@
 #import "FMDatabase.h"
 #import "goalTableViewCell.h"
 #import "goalDetailsViewController.h"
+#import "UIColor+ConvertHexToUIColor.h"
 
 @interface achievedGoalsUIViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
@@ -30,6 +31,7 @@
 @property (nonatomic,strong) MDRadialProgressView *radialView;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableviw;
+- (IBAction)goToProgressList:(UIButton *)sender;
 
 
 @end

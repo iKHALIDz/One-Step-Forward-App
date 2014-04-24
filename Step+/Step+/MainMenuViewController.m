@@ -10,6 +10,10 @@
 
 @interface MainMenuViewController ()
 
+{
+    int tag;
+}
+
 @end
 
 
@@ -33,14 +37,15 @@
 {
     [super viewDidLoad];
     
-    
-    [self.scrollView setScrollEnabled:YES];
-    
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 12,
-                                        self.scrollView.frame.size.height);
+//    
+//    [self.scrollView setScrollEnabled:YES];
+//    
+//    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 12,
+//                                        self.scrollView.frame.size.height);
     
     
     // Generate content for our scroll view using the frame height and width as the reference
+    
     
 }
 
@@ -57,18 +62,17 @@
     
     if (currentUser==nil) // in Case if the user is already logged in
     {
-        NSLog(@"rrrr");
+        NSLog(@"User is already logged in");
         currentUser=[[User alloc]init];
         
         currentUser=[currentUser getUserInfo:curreUser.username];
         
         if (currentUser ==nil)
         {
-            
-            NSLog(@"rrr1");
             NSLog(@"User isn't in the Database");
+            
             currentUser=[self getUserInfromationAsObject];
-            NSLog(@"Username %@",currentUser.userUsername);
+            
             
             [currentUser UserRegistrationUsingDatabase];
             NSLog(@"Got Data From Parse");
@@ -76,7 +80,7 @@
         
         else
         {
-            NSLog(@"rrr2");
+            NSLog(@"We got the information form the database and the Username %@",currentUser.userUsername);
 
         }
     }
@@ -86,7 +90,7 @@
     {
 
         //currentUser=[currentUser getUserInfo:curreUser.username];
-        NSLog(@"User exist in the Database");
+        NSLog(@"User exists in the Database");
     }
     
     self.userFullname.text=[NSString stringWithFormat:@"%@ %@",currentUser.userFirsname,currentUser.userLastname];
@@ -95,15 +99,28 @@
     
     [avatar removeFromSuperview];
     
-    [self getProfileImageInfoFromParse];
-    
     
     avatar = [[AMPAvatarView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    
-    [self.ProfileImageView addSubview:avatar];
+
+    if (tag==1)
+    {
+        self.userbackground.image=currentUser.userBackgroundImage;
+        avatar.image=currentUser.userProfileImage;
+        [self.ProfileImageView addSubview:avatar];
+    }
+
+    else
+    {
+        [self getProfileImageInfoFromParse];
+
+        [self.ProfileImageView addSubview:avatar];
         
+    }
+    
     
     NSLog(@"want to share %d",currentUser.wantsToShare);
+    
+    
     
 }
 
@@ -125,31 +142,33 @@
     [query whereKey:@"username" equalTo:curreUser.username];
 
     [query findObjectsInBackgroundWithTarget:self selector:@selector(findCallback:error:)];
-
 }
+
+
 
 - (void)findCallback:(NSArray *)objects error:(NSError *)error {
     if (!error) {
         
         for(PFObject *obj in objects)
         {
-            NSLog(@"ttt");
-            
             PFFile *image = (PFFile *)[obj objectForKey:@"ProfileImage"];
             avatar.image=[UIImage imageWithData:[image getData]];
-
+            currentUser.userProfileImage=[UIImage imageWithData:[image getData]];
+            
+            PFFile *image2 = (PFFile *)[obj objectForKey:@"BackgroundPic"];
+            currentUser.userBackgroundImage=[UIImage imageWithData:[image2 getData]];
+            self.userbackground.image=[UIImage imageWithData:[image2 getData]];
         }
         
     }
 }
-
 
 -(User *)getUserInfromationAsObject
 {
     PFUser *curreUser = [PFUser currentUser];
     
     PFQuery *query = [PFUser query];
-    //query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     
     [query whereKey:@"username" equalTo:curreUser.username];
     
@@ -168,8 +187,10 @@
             user.numberOfAchievedGoals=[[NSString stringWithFormat:@"%@",[object objectForKey:@"numberOfAchievedGoals"]] integerValue];
             user.numberOfInProgressGoals=[[NSString stringWithFormat:@"%@",[object objectForKey:@"numberOfInProgressGoals"]]integerValue];
             PFFile *image = (PFFile *)[object objectForKey:@"ProfileImage"];
-            
+            PFFile *image2 = (PFFile *)[object objectForKey:@"BackgroundPic"];
+
             user.userProfileImage=[UIImage imageWithData:[image getData]];
+            user.userBackgroundImage=[UIImage imageWithData:[image2 getData]];
             
         }
     
@@ -180,47 +201,44 @@
 {
     if ([[segue identifier] isEqualToString:@"toInProgressGoals"])
     {
-         InProgressGoalsViewController*vc =[segue destinationViewController];
-        currentUser.userProfileImage=self.img.image;
+        UINavigationController *nav = [segue destinationViewController];
+
+        InProgressGoalsViewController*vc = (InProgressGoalsViewController*)nav.topViewController;
+        //currentUser.userProfileImage=avatar.image;
         
-        [vc setCurrentUser:self.currentUser];
-    }
-    
-    if ([[segue identifier] isEqualToString:@"toDoneGoals"])
-    {
-        InProgressGoalsViewController*vc =[segue destinationViewController];
-        currentUser.userProfileImage=self.img.image;
         [vc setCurrentUser:self.currentUser];
     }
     
     if ([[segue identifier] isEqualToString:@"toSocialPart"])
     {
-        TimelineViewController*vc =[segue destinationViewController];
-        currentUser.userProfileImage=self.img.image;
+        UINavigationController *nav = [segue destinationViewController];
+        TimelineViewController*vc = (TimelineViewController*)nav.topViewController;
+        currentUser.userProfileImage=avatar.image;
         [vc setCurrentUser:self.currentUser];
     }
     
     if ([[segue identifier] isEqualToString:@"toSetting"])
     {
         UINavigationController *nav = [segue destinationViewController];
-
         SettingViewController*vc = (SettingViewController*)nav.topViewController;
+        currentUser.userProfileImage=avatar.image;
         
-        currentUser.userProfileImage=self.img.image;
         [vc setCurrentUser:self.currentUser];
+        [vc setDelegate:self];
+
     }
     
     if ([[segue identifier] isEqualToString:@"toLogs"])
     {
         CalenderLogsEventsViewController*vc =[segue destinationViewController];
-        currentUser.userProfileImage=self.img.image;
+        currentUser.userProfileImage=avatar.image;
         [vc setCurrentUser:self.currentUser];
     }
     
     if ([[segue identifier] isEqualToString:@"toStat"])
     {
         statisticsViewController*vc =[segue destinationViewController];
-        currentUser.userProfileImage=self.img.image;
+        currentUser.userProfileImage=avatar.image;
         [vc setCurrentUser:self.currentUser];
     }
 
@@ -231,8 +249,13 @@
     return UIStatusBarStyleLightContent;
 }
 
-
-
-
-
+-(void) updateUser:(User *)updatedUser
+{
+    tag=1;
+    NSLog(@"Update User");
+    
+    currentUser=updatedUser;
+    
+    
+}
 @end
