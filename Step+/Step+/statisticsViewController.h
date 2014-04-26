@@ -23,6 +23,9 @@
 @property(nonatomic,retain) NSMutableArray *achievedArray;
 @property (strong, nonatomic) IBOutlet XYPieChart *pieChartRight;
 @property (strong,nonatomic) IBOutlet BENPedometerBarView *barChart;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end
 

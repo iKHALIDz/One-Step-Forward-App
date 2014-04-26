@@ -11,6 +11,7 @@
 		E907C22018E9FAC10059D19A /* topAndBottomRow.png in Resources */ = {isa = PBXBuildFile; fileRef = E907C21F18E9FAC10059D19A /* topAndBottomRow.png */; };
 		E909908A18E51D66005D30BB /* achievedGoalsUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E909908918E51D66005D30BB /* achievedGoalsUIViewController.m */; };
 		E90990AE18E56D46005D30BB /* NSDate+PrettyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = E90990AD18E56D46005D30BB /* NSDate+PrettyDate.m */; };
+		E9133A25190B8A5600333A02 /* LogAndStatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9133A24190B8A5600333A02 /* LogAndStatViewController.m */; };
 		E91369971908700F0031ABD4 /* ProfileNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91369961908700F0031ABD4 /* ProfileNavigationController.m */; };
 		E913699919099D1A0031ABD4 /* GoalCellBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E913699819099D1A0031ABD4 /* GoalCellBackground.png */; };
 		E913699B1909A6E60031ABD4 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = E913699A1909A6E60031ABD4 /* back.png */; };
@@ -180,6 +181,8 @@
 		E909908918E51D66005D30BB /* achievedGoalsUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = achievedGoalsUIViewController.m; sourceTree = "<group>"; };
 		E90990AC18E56D46005D30BB /* NSDate+PrettyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+PrettyDate.h"; sourceTree = "<group>"; };
 		E90990AD18E56D46005D30BB /* NSDate+PrettyDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PrettyDate.m"; sourceTree = "<group>"; };
+		E9133A23190B8A5600333A02 /* LogAndStatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogAndStatViewController.h; sourceTree = "<group>"; };
+		E9133A24190B8A5600333A02 /* LogAndStatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogAndStatViewController.m; sourceTree = "<group>"; };
 		E91369951908700F0031ABD4 /* ProfileNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileNavigationController.h; sourceTree = "<group>"; };
 		E91369961908700F0031ABD4 /* ProfileNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileNavigationController.m; sourceTree = "<group>"; };
 		E913699819099D1A0031ABD4 /* GoalCellBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoalCellBackground.png; sourceTree = "<group>"; };
@@ -466,6 +469,8 @@
 				E944C84818DBDBF9002714D8 /* AppDelegate.m */,
 				E944C84D18DBDBF9002714D8 /* Images.xcassets */,
 				E944C86B18DBDC1A002714D8 /* main.storyboard */,
+				E9133A23190B8A5600333A02 /* LogAndStatViewController.h */,
+				E9133A24190B8A5600333A02 /* LogAndStatViewController.m */,
 				E9EA335318DCFFEB00609052 /* External Libararies */,
 				E944C83F18DBDBF9002714D8 /* Supporting Files */,
 			);
@@ -1016,6 +1021,7 @@
 				E9510E3A18E20663000C30B8 /* Progress.m in Sources */,
 				E9BA2E8318FDBE830016002E /* EditGoalViewController.m in Sources */,
 				E9BA2EE118FFBDDB0016002E /* BENPedometerChart.m in Sources */,
+				E9133A25190B8A5600333A02 /* LogAndStatViewController.m in Sources */,
 				E99348C318F47D1600844C2C /* goalSuggestionsViewController.m in Sources */,
 				E9EA332E18DCFF6200609052 /* MDRadialProgressLabel.m in Sources */,
 				E944C84C18DBDBF9002714D8 /* Step_.xcdatamodeld in Sources */,

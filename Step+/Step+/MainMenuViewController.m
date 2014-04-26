@@ -236,9 +236,13 @@
         [vc setCurrentUser:self.currentUser];
     }
     
-    if ([[segue identifier] isEqualToString:@"toStat"])
+    if ([[segue identifier] isEqualToString:@"toStatAndLog"])
     {
-        statisticsViewController*vc =[segue destinationViewController];
+        UINavigationController *nav = [segue destinationViewController];
+        
+        
+        statisticsViewController*vc = (statisticsViewController*)nav.topViewController;
+
         currentUser.userProfileImage=avatar.image;
         [vc setCurrentUser:self.currentUser];
     }

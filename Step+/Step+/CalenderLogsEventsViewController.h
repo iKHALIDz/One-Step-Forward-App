@@ -12,10 +12,14 @@
 #import "RDVCalendarView.h"
 #import "logCell.h"
 #import "User.h"
+#import "User.h"
+#import "Goal.h"
+#import "FMDatabase.h"
+#import "XYPieChart.h"
+#import <QuartzCore/QuartzCore.h>
 
 
-@interface CalenderLogsEventsViewController : UIViewController <RDVCalendarViewDelegate,UITableViewDataSource,UITableViewDelegate>
-
+@interface CalenderLogsEventsViewController : UIViewController <RDVCalendarViewDelegate,UITableViewDataSource,UITableViewDelegate,XYPieChartDelegate, XYPieChartDataSource>
 
 @property (nonatomic, strong) RDVCalendarView *calendarView;
 @property (nonatomic) BOOL clearsSelectionOnViewWillAppear;
@@ -25,9 +29,11 @@
 @property (weak, nonatomic) IBOutlet UITableView *calenderLog;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
+
 @property (nonatomic,strong) NSMutableArray *array;
 
 @property (nonatomic,strong) User *currentUser;
 
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end

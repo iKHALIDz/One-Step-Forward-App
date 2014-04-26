@@ -39,6 +39,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    self.scrollView.contentSize=self.contentView.bounds.size;
+    self.scrollView.scrollEnabled=YES;
+
+    
     inProgressArray=[[NSMutableArray alloc]init];
     achievedArray=[[NSMutableArray alloc]init];
     
@@ -70,17 +75,17 @@
 	[self.barChart addSubview:chart];
     
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-10-[chart]-10-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(chart)]];
-    
-	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[chart]-20-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(chart)]];
-	
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:chart
-														  attribute:NSLayoutAttributeHeight
-														  relatedBy:NSLayoutRelationEqual
-															 toItem:self.view
-														  attribute:NSLayoutAttributeHeight
-														 multiplier:0.48
-                                                        constant:0]];    
+//    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-10-[chart]-10-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(chart)]];
+//    
+//	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[chart]-20-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(chart)]];
+//	
+//    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:chart
+//														  attribute:NSLayoutAttributeHeight
+//														  relatedBy:NSLayoutRelationEqual
+//															 toItem:self.view
+//														  attribute:NSLayoutAttributeHeight
+//														 multiplier:0.48
+//                                                        constant:0]];    
 }
 
 - (void)didReceiveMemoryWarning
