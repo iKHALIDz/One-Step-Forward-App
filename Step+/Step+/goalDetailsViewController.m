@@ -262,6 +262,8 @@
 - (void)declareGoalAchieaved{
     
     Goal *goal=self.currentGoal;
+    goal.month=[[self getMonth] integerValue];
+    goal.year=[[self getYear] integerValue];
     
     if (goal.goalProgress==100)
     {
@@ -937,4 +939,6 @@
     [self.actionSheet showFromBarButtonItem:sender animated:YES];
     
 }
+
+
 @end

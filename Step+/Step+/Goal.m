@@ -22,6 +22,9 @@
 @synthesize createdBy;
 @synthesize goalDate;
 @synthesize goalPriority;
+@synthesize month;
+@synthesize year;
+
 
 
 -(void)AddGoaltoDatabase
@@ -34,8 +37,7 @@
         
     }
     
-    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Goals (goalId,GoalName,GoalDesc,GoalDeadline,isGoalCompleted,isGoalinPregress,goalPercentage,CreatedBy,goalDate,numberofStepTaken,goalType,goalpriority) VALUES (%d,'%@','%@','%@','%d','%d','%f','%@','%@','%d','%@','%d')",self.goalID,self.goalName,self.goalDescription,self.goalDeadline,isGoalCompleted,isGoalinProgress,goalProgress,self.createdBy,self.goalDate,self.numberOfGoalSteps,goalType,goalPriority];
-    
+    NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Goals (goalId,GoalName,GoalDesc,GoalDeadline,isGoalCompleted,isGoalinPregress,goalPercentage,CreatedBy,goalDate,numberofStepTaken,goalType,goalpriority,month,year) VALUES (%d,'%@','%@','%@','%d','%d','%f','%@','%@','%d','%@','%d','%d','%d')",self.goalID,self.goalName,self.goalDescription,self.goalDeadline,isGoalCompleted,isGoalinProgress,goalProgress,self.createdBy,self.goalDate,self.numberOfGoalSteps,goalType,goalPriority,month,year];
     
     NSLog(@"%@",insertSQL);
     
@@ -45,7 +47,6 @@
     {
         NSLog(@"Succseed");
         
-
     }
     else
     {
@@ -56,6 +57,7 @@
 }
 
 
+
 -(NSString*)DataFilePath
 {
     
@@ -64,29 +66,6 @@
     NSLog(@"PATH: %@",[paths objectAtIndex:0]);
     return [paths objectAtIndex:0];
 }
-
-
--(void) AddGoalToParse
-{
-    PFObject *newGoal = [PFObject objectWithClassName:@"Goal"];
-    
-    [newGoal setObject:[NSString stringWithFormat:@"%d",self.goalID] forKey:@"goalID"];
-    [newGoal setObject:self.goalName forKey:@"GoalName"];
-    [newGoal setObject:self.goalDescription forKey:@"GoalDesc"];
-    [newGoal setObject:self.goalDeadline forKey:@"GoalDeadline"];
-    [newGoal setObject:@NO forKey:@"isGoalCompleted"];
-    [newGoal setObject:@YES forKey:@"isGoalinProgress"];
-    [newGoal setObject:[NSString stringWithFormat:@"%f",self.goalProgress] forKey:@"goalPercentage"];
-    [newGoal setObject:self.createdBy forKey:@"createdBy"];
-    [newGoal setObject:goalDate forKey:@"goalDate"];
-    [newGoal setObject:[NSString stringWithFormat:@"%d",self.numberOfGoalSteps] forKey:@"numberOfGoalSteps"];
-    [newGoal setObject:self.goalType forKey:@"goalType"];
-    [newGoal setObject:[NSString stringWithFormat:@"%d",self.goalPriority] forKey:@"goalpriority"];
-    
-    [newGoal saveEventually];
-}
-
-
 
 -(void) UpdataGoalWithProgress:(double) progress WithMark:(NSString*)mark
 {
@@ -124,6 +103,33 @@
     }
     [db close];
 }
+
+
+
+
+
+-(void) AddGoalToParse
+{
+    PFObject *newGoal = [PFObject objectWithClassName:@"Goal"];
+    
+    [newGoal setObject:[NSString stringWithFormat:@"%d",self.goalID] forKey:@"goalID"];
+    [newGoal setObject:self.goalName forKey:@"GoalName"];
+    [newGoal setObject:self.goalDescription forKey:@"GoalDesc"];
+    [newGoal setObject:self.goalDeadline forKey:@"GoalDeadline"];
+    [newGoal setObject:@NO forKey:@"isGoalCompleted"];
+    [newGoal setObject:@YES forKey:@"isGoalinProgress"];
+    [newGoal setObject:[NSString stringWithFormat:@"%f",self.goalProgress] forKey:@"goalPercentage"];
+    [newGoal setObject:self.createdBy forKey:@"createdBy"];
+    [newGoal setObject:goalDate forKey:@"goalDate"];
+    [newGoal setObject:[NSString stringWithFormat:@"%d",self.numberOfGoalSteps] forKey:@"numberOfGoalSteps"];
+    [newGoal setObject:self.goalType forKey:@"goalType"];
+    [newGoal setObject:[NSString stringWithFormat:@"%d",self.goalPriority] forKey:@"goalpriority"];
+    
+    [newGoal saveEventually];
+}
+
+
+
 
 
 -(void) UpdataGoalWithProgressInParse:(double) progress WithMark:(NSString*)mark
@@ -173,9 +179,8 @@
         
     }
     
-    NSString *insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET isGoalCompleted='1',isGoalinPregress='0',numberofStepTaken='%d',goalPercentage='100.00' where goalId='%d' AND createdBy='%@';",self.numberOfGoalSteps,self.goalID,self.createdBy];
+    NSString *insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET isGoalCompleted='1',isGoalinPregress='0',numberofStepTaken='%d',goalPercentage='100.00',month='%d',year='%d' where goalId='%d' AND createdBy='%@';",self.numberOfGoalSteps,self.month,self.year,self.goalID,self.createdBy];
     
-
     
     
     NSLog(@"%@",insertSQL);
@@ -208,7 +213,6 @@
     }
     
     NSString *insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET isGoalCompleted='0',isGoalinPregress='1',numberofStepTaken='%d',goalPercentage='100.00' where goalId='%d' AND createdBy='%@';",self.numberOfGoalSteps,self.goalID,self.createdBy];
-    
     
     
     NSLog(@"%@",insertSQL);
@@ -248,6 +252,7 @@
         [updateGoal saveEventually];
     }];
 }
+
 
 -(void)declareGoalAsUNAchievedinParse
 {

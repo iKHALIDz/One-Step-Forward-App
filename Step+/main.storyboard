@@ -399,18 +399,7 @@
                                     <color key="titleShadowColor" red="0.91932744570000002" green="0.88792957429999997" blue="0.50293144670000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="N3H-vj-CfZ" kind="push" identifier="toLogs" id="SwA-xX-lre"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vcm-he-DiP">
-                                <rect key="frame" x="0.0" y="420" width="320" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Stats">
-                                    <color key="titleColor" red="0.0" green="0.073474537529999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.91932744570000002" green="0.88792957429999997" blue="0.50293144670000001" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="8DG-Qv-bpZ" kind="push" identifier="toStat" id="tlQ-eR-GQY"/>
+                                    <segue destination="zeg-c5-Tes" kind="modal" identifier="toLogs" id="SwA-xX-lre"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="mDg-XC-L9K">
@@ -473,7 +462,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I0b-24-ggp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="554" y="863"/>
+            <point key="canvasLocation" x="262" y="727"/>
         </scene>
         <!--Timeline View Controller-->
         <scene sceneID="zCN-0e-zrr">
@@ -495,7 +484,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Lmd-gd-fs1"/>
+                    <navigationItem key="navigationItem" id="Lmd-gd-fs1">
+                        <barButtonItem key="leftBarButtonItem" title="Main" id="xft-hV-vYW">
+                            <connections>
+                                <action selector="backToMain:" destination="I8U-QH-1fY" id="C5B-Ai-i6s"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>
                         <outlet property="tableview" destination="9fb-IS-hC1" id="n2H-Xv-YYC"/>
@@ -505,7 +500,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Nr-1U-HMm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1609" y="678"/>
+            <point key="canvasLocation" x="1517" y="678"/>
         </scene>
         <!--Timeline Post Details View Controller-->
         <scene sceneID="xzc-M8-t1F">
@@ -616,7 +611,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fz-cT-OJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2983" y="40"/>
+            <point key="canvasLocation" x="3509" y="40"/>
         </scene>
         <!--User Profile View Controller-->
         <scene sceneID="ubb-Zt-QN2">
@@ -887,7 +882,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="In Progress Goals" id="A3n-u0-Wnh"/>
+                    <navigationItem key="navigationItem" title="In Progress Goals" id="A3n-u0-Wnh">
+                        <barButtonItem key="leftBarButtonItem" title="Main" id="8pv-XJ-Tli">
+                            <connections>
+                                <action selector="backToMain:" destination="ojR-HR-wWJ" id="MWT-OV-lIW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="e9l-Qt-jeR" id="R0R-Zm-JmP"/>
                         <segue destination="Zyq-05-19A" kind="push" identifier="GoalToDetails" id="6oc-fy-8iw"/>
@@ -1572,11 +1573,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="oi2-cN-mp7">
-                                <rect key="frame" x="18" y="62" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="28" sectionHeaderHeight="22" sectionFooterHeight="22" id="5Rq-JM-OG6">
-                                        <rect key="frame" x="0.0" y="273" width="320" height="143"/>
+                                        <rect key="frame" x="0.0" y="256" width="320" height="160"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
@@ -1624,7 +1625,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Nzm-nd-I5L"/>
+                    <navigationItem key="navigationItem" id="Nzm-nd-I5L">
+                        <barButtonItem key="leftBarButtonItem" title="Main " id="fOp-TJ-hRQ">
+                            <connections>
+                                <action selector="backToMain:" destination="N3H-vj-CfZ" id="oV5-DG-P1Z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <size key="freeformSize" width="320" height="750"/>
                     <connections>
                         <outlet property="calenderLog" destination="5Rq-JM-OG6" id="1Jk-FM-bSy"/>
@@ -1634,7 +1641,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pks-vq-Khh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1979" y="-13"/>
+            <point key="canvasLocation" x="2525" y="1"/>
         </scene>
         <!--Goal Section View Controller-->
         <scene sceneID="V45-Fu-WJo">
@@ -1689,7 +1696,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xf9-28-WAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1083" y="678"/>
+            <point key="canvasLocation" x="959" y="678"/>
         </scene>
         <!--Profile Navigation Controller-->
         <scene sceneID="sNq-Gz-VDX">
@@ -1728,6 +1735,25 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="4724" y="1000"/>
         </scene>
+        <!--Goal Section View Controller-->
+        <scene sceneID="PFn-8U-J6p">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zeg-c5-Tes" customClass="GoalSectionViewController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="5B8-MC-v4T"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XhB-kp-ZqD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="N3H-vj-CfZ" kind="relationship" relationship="rootViewController" id="pFO-GO-j5t"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vvp-EE-ghY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1975" y="1"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Backee.png" width="640" height="100"/>
@@ -1746,8 +1772,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="GYY-zl-9wo"/>
-        <segue reference="nG7-90-PY7"/>
-        <segue reference="JXJ-P0-DnP"/>
-        <segue reference="SiL-vE-Cjq"/>
+        <segue reference="8hX-6m-hkZ"/>
+        <segue reference="6oc-fy-8iw"/>
+        <segue reference="wWv-bz-qls"/>
     </inferredMetricsTieBreakers>
 </document>

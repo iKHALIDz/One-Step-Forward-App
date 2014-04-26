@@ -24,6 +24,8 @@
 @property (nonatomic,retain) NSString * createdBy;
 @property (nonatomic,retain) NSString *goalDate;
 @property int goalPriority;
+@property int month;
+@property int year;
 
 -(void)AddGoaltoDatabase;
 -(void) AddGoalToParse;

@@ -192,6 +192,8 @@
     goal.goalType=self.goalTypeTextFiled.text;
     goal.goalDate=[self getCurrentDataAndTime];
     goal.goalPriority=[self getLargestGoalPriority]+1;
+    goal.month=[[self getMonth] integerValue];
+    goal.year=[[self getYear]integerValue];
     
     
     [goal AddGoaltoDatabase];

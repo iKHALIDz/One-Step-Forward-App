@@ -466,8 +466,6 @@
 				E944C84818DBDBF9002714D8 /* AppDelegate.m */,
 				E944C84D18DBDBF9002714D8 /* Images.xcassets */,
 				E944C86B18DBDC1A002714D8 /* main.storyboard */,
-				E9B85836190843780098B220 /* UIImage+ResizeImage.h */,
-				E9B85837190843780098B220 /* UIImage+ResizeImage.m */,
 				E9EA335318DCFFEB00609052 /* External Libararies */,
 				E944C83F18DBDBF9002714D8 /* Supporting Files */,
 			);
@@ -797,6 +795,8 @@
 		E9EA335318DCFFEB00609052 /* External Libararies */ = {
 			isa = PBXGroup;
 			children = (
+				E9B85836190843780098B220 /* UIImage+ResizeImage.h */,
+				E9B85837190843780098B220 /* UIImage+ResizeImage.m */,
 				E9D3E3141905943D002797BA /* AMPAvatarView */,
 				E9BA2EE91900607A0016002E /* Reachability.h */,
 				E9BA2EEA1900607A0016002E /* Reachability.m */,

@@ -230,7 +230,8 @@
     
     if ([[segue identifier] isEqualToString:@"toLogs"])
     {
-        CalenderLogsEventsViewController*vc =[segue destinationViewController];
+        UINavigationController *nav = [segue destinationViewController];
+        CalenderLogsEventsViewController*vc = (CalenderLogsEventsViewController*)nav.topViewController;
         currentUser.userProfileImage=avatar.image;
         [vc setCurrentUser:self.currentUser];
     }
