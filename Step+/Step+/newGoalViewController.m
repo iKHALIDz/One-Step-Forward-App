@@ -48,12 +48,12 @@
     
     self.goalTypes  = [[NSArray alloc] initWithObjects:@"Health",@"Work",@"Travel",@"Fun",@"Learn",@"Money",@"Relatioship",@"Event",@"Spirit",@"Home",nil];
     
-    NSLog(@"%d",self.currentUser.numberOfInProgressGoals);
-    NSLog(@"%d",self.currentUser.numberOfAchievedGoals);
+    //NSLog(@"%d",self.currentUser.numberOfInProgressGoals);
+    //NSLog(@"%d",self.currentUser.numberOfAchievedGoals);
     
     self.saveButton.enabled=NO;
     
-    NSLog(@"66 %d",currentUser.wantsToShare);
+    //NSLog(@"66 %d",currentUser.wantsToShare);
     
     
     
@@ -199,7 +199,7 @@
     
     
     Progress *progress=[[Progress alloc]init];
-    progress.progressDescription=@"New Goal has started";
+    progress.progressDescription=@"New Goal Has Started";
     progress.goalID=goal.goalID;
     progress.LoggedBy=goal.createdBy;
     progress.progressPercentageToGoal=0;

@@ -12,6 +12,8 @@
 #import "timelinePostComment.h"
 #import "TimelinePostCommentTableViewCell.h"
 #import "UserProfileViewController.h"
+#import "AMPAvatarView.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface ProgressDetailsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
@@ -19,16 +21,11 @@
 @property(nonatomic,strong) Progress *currentProgress;
 @property (nonatomic,strong) User *currentUser;
 
-@property (weak, nonatomic) IBOutlet UILabel *progressDescription;
-
-@property (weak, nonatomic) IBOutlet UILabel *stepOrderTextField;
-@property (weak, nonatomic) IBOutlet UILabel *progressDateTextFiled;
-
-@property (weak, nonatomic) IBOutlet UILabel *progressPercentageTextField;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (nonatomic,strong) NSMutableArray *sPosts;
 
+@property (strong, nonatomic) AMPAvatarView *avatar2;
 
 
 @end

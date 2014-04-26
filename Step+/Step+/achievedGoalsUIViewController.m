@@ -76,7 +76,7 @@
 {
 	MDRadialProgressView *view = [[MDRadialProgressView alloc] initWithFrame:frame];
     
-	view.center = CGPointMake(30,22);
+	view.center = CGPointMake(35,40);
     
 	return view;
 }
@@ -93,6 +93,8 @@
     return achievedGoalsArray.count;
 }
 
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -105,7 +107,10 @@
     
     [cell.GoalName setText:(NSString *)[[achievedGoalsArray objectAtIndex:indexPath.row] goalName]];
     
-    CGRect frame = CGRectMake(0,-10, 40, 40);
+    [cell.DueDate setText:[NSString stringWithFormat:@"%d Steps Taken",[[achievedGoalsArray objectAtIndex:indexPath.row] numberOfGoalSteps]]];
+    
+    
+    CGRect frame = CGRectMake(0,0, 60, 60);
     
     radialView = [self progressViewWithFrame:frame];
     radialView.progressTotal = 100;
@@ -131,6 +136,12 @@
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
     
     [cell.MoveCell addGestureRecognizer:longPress];
+    
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"GoalCellBackground.png"]];
+    
+    cell.backgroundView = imageView;
+
 
     
     return cell;
@@ -276,13 +287,13 @@
     
     
     [self performSegueWithIdentifier:@"DoneGoalToDetails" sender:nil];
-    
+
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 64;
+    return 85;
 }
 
 -(NSMutableArray *) getDoneGoalsFromDB
@@ -398,5 +409,39 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
+-(NSInteger)daysBetweenDate:(NSString*)fromDateTime andDate:(NSString*)toDateTime
+{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
+    
+    NSDate *fromDate = [format dateFromString: fromDateTime];
+    NSDate *toDate = [format dateFromString: toDateTime];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&fromDate
+                 interval:NULL forDate:fromDate];
+    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&toDate
+                 interval:NULL forDate:toDate];
+    
+    
+    NSDateComponents *difference = [calendar components:NSDayCalendarUnit
+                                               fromDate:fromDate toDate:toDate options:0];
+    return [difference day];
+}
+
+-(NSString *)getCurrentDataAndTime
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
+    NSDate *Todaydata=[NSDate date];
+    
+    NSString *currentData= [dateFormatter stringFromDate:Todaydata];
+    
+    return currentData;
+}
+
 
 @end

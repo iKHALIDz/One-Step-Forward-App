@@ -14,6 +14,7 @@
 
 @implementation goalSuggestionsViewController
 @synthesize sPosts;
+@synthesize avatar2;
 
 @synthesize currentUser,currentGoal;
 
@@ -36,8 +37,12 @@
     [self getPostsCommments];
     
     NSLog(@"55%d",[sPosts count]);
-    self.goalNameLable.text=currentGoal.goalName;
+    //self.goalNameLable.text=currentGoal.goalName;
     
+    self.tableView.separatorColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0];
+    self.view.backgroundColor=[UIColor colorWithHexString:@"fffcfc"];
+    
+    self.tableView.backgroundColor=[UIColor colorWithHexString:@"fffcfc"];
     
     
 }
@@ -62,7 +67,8 @@
 
 - (void)findCallback:(NSArray *)objects error:(NSError *)error {
     if (!error) {
-    
+        sPosts=[[NSMutableArray alloc]init];
+
     for(PFObject *obj in objects)
     {
         timelinePostComment *postcomment=[[timelinePostComment alloc]init];
@@ -111,10 +117,16 @@
     
     cell.FromUserComment.text=[NSString stringWithFormat:@"%@",[[sPosts objectAtIndex:indexPath.row] commentContent]];
     
-    //cell.FromUserimage.image=[[sPosts objectAtIndex:indexPath.row] FromuserProfilePic];
+    avatar2 = [[AMPAvatarView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    
+    avatar2.image=[[sPosts objectAtIndex:indexPath.row] FromuserProfilePic];
+    
+    [cell.FromUserImageView addSubview:avatar2];
     
     [cell.GoToUserProfile addTarget:self action:@selector(GoToUserInfo:)  forControlEvents:UIControlEventTouchUpInside];
     [cell.GoToUserProfile setTag:indexPath.row];
+    
+    cell.backgroundColor=[UIColor colorWithHexString:@"fffcfc"];
     
     return cell;
 }
@@ -134,12 +146,15 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
+    
     if ([[segue identifier] isEqualToString:@"GoToUserProfile"])
     {
-        UserProfileViewController *nav = [segue destinationViewController];
-        [nav setSelectedUsername:currentUser.userUsername];
-        [nav setCurrentUser:currentUser];
+        UINavigationController *nav = [segue destinationViewController];
+        UserProfileViewController*vc = (UserProfileViewController*)nav.topViewController;
+        [vc setCurrentUser:currentUser];
+        [vc setSelectedUsername:currentUser.userUsername];        
     }
 }
+
 
 @end

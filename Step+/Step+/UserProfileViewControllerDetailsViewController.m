@@ -70,6 +70,12 @@
     
     self.doneOutlet.enabled=NO;
     
+    self.view.backgroundColor=[UIColor colorWithHexString:@"F8F8F8"];
+    
+    self.progressListTable.backgroundColor=[UIColor colorWithHexString:@"F8F8F8"];
+    self.progressListTable.separatorColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0];
+
+    
     
     
 }
@@ -141,6 +147,9 @@
         [newGoalSuggestion setObject:file forKey:@"FromuserProfilePic"];
         [newGoalSuggestion saveEventually];
     }];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -221,6 +230,11 @@
     
     cell.nLikes.text=[NSString stringWithFormat:@"%d",[[progressListFromParse objectAtIndex:indexPath.row] numberOfLikes]];
     
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ProgressCell"]];
+    
+    cell.backgroundView = imageView;
+
     
 //    [cell.comments addTarget:self action:@selector(GotoComments:)  forControlEvents:UIControlEventTouchUpInside];
 //    

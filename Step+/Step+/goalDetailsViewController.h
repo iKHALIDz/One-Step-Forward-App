@@ -23,10 +23,22 @@
 #import "Log.h"
 #import <Social/Social.h>
 
+#import "MDRadialProgressView.h"
+#import "MDRadialProgressTheme.h"
+#import "MDRadialProgressLabel.h"
+
+
 
 @interface goalDetailsViewController : UIViewController <updateGoal,UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>
 
+
+@property (weak, nonatomic) IBOutlet UIView *progressCircle;
+
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scroller;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *mangeGoal;
+
+- (IBAction)GoalMange:(UIBarButtonItem *)sender;
 
 @property (strong,nonatomic) Progress * currentProgress;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
@@ -35,9 +47,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *GoalDescriptionLable;
 
-@property (weak, nonatomic) IBOutlet UILabel *TotalPercentageLable;
 
 @property (weak, nonatomic) IBOutlet UILabel *GoalTypeLable;
+
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @property (weak, nonatomic) IBOutlet UILabel *NumberofStepsTakenLable;
 
@@ -49,11 +62,19 @@
 @property(nonatomic,strong) Goal *currentGoal;
 @property (nonatomic,strong) User *currentUser;
 
-@property (weak, nonatomic) IBOutlet UILabel *numberofDaysSinceCreated;
 
-- (IBAction)deleteGoal:(UIBarButtonItem *)sender;
 
 @property (nonatomic,weak) UIActionSheet *actionSheet;
 
+@property (nonatomic,weak) UIActionSheet *actionSheetMangeGoal;
+
+
+@property (nonatomic,strong) MDRadialProgressView *radialView;
+
+@property (nonatomic,strong) MDRadialProgressView *radialView2;
+
+
+
+@property (weak, nonatomic) IBOutlet UIView *currentPercView;
 
 @end

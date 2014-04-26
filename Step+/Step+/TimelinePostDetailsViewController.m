@@ -59,6 +59,8 @@
     
     avatar.image=self.currentSelectedtimeLinePost.userProfilePic;
     [self.userProfiePic addSubview:avatar];
+    
+    
     self.view.backgroundColor=[UIColor colorWithHexString:@"fffcfc"];
     
     [self getPostsCommments];
@@ -132,7 +134,7 @@
     
     [self.tableview reloadData];
     
-    
+
     
     [self.navigationController popViewControllerAnimated:YES];
     
@@ -199,6 +201,9 @@
     
     [cell.GoToUserProfile addTarget:self action:@selector(GoToUserInfo:)  forControlEvents:UIControlEventTouchUpInside];
     [cell.GoToUserProfile setTag:indexPath.row];
+    
+    
+    cell.backgroundColor=[UIColor colorWithHexString:@"fffcfc"];
     
     return cell;
 }

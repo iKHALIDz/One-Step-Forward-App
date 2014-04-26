@@ -13,6 +13,11 @@
 #define CANCEL_BUTTON_TITLE @"Cancel"
 
 
+#define Declare_As_Achieved @"Declare As Achieved"
+#define Edit @"Edit"
+#define Delete @"Delete"
+
+
 @interface goalDetailsViewController ()
 
 @end
@@ -26,7 +31,8 @@
 @synthesize progressListFromParse;
 @synthesize tableview = _tableview;
 @synthesize currentProgress;
-
+@synthesize radialView;
+@synthesize radialView2;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -60,25 +66,48 @@
             [newProgress AddProgressltoDatabase];
         }
     }
-
+    
+    
+    self.scroller.contentSize=self.contentView.bounds.size;
+    self.scroller.scrollEnabled=YES;
+    
+    self.contentView.backgroundColor=[UIColor colorWithHexString:@"F8F8F8"];
+    
+    self.tableview.backgroundColor=[UIColor colorWithHexString:@"F8F8F8"];
+    self.tableview.separatorColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0];
+    
+    
+    
     
 }
+
+
+- (MDRadialProgressView *)progressViewWithFrame:(CGRect)frame
+{
+	MDRadialProgressView *view = [[MDRadialProgressView alloc] initWithFrame:frame];
+    
+	view.center = CGPointMake(40,40);
+    
+	return view;
+}
+
 
 -(void) viewWillAppear:(BOOL)animated
 {
     self.GoalNameLable.text=currentGoal.goalName;
     self.GoalDescriptionLable.text=currentGoal.goalDescription;
-    self.GoalTypeLable.text=currentGoal.goalType;
-    self.TotalPercentageLable.text=[[NSString stringWithFormat:@"%.2f",currentGoal.goalProgress] stringByAppendingString:@"%"];
     
-    self.NumberofStepsTakenLable.text=[NSString stringWithFormat:@"Step Taken: %d",currentGoal.numberOfGoalSteps];
+    [self.GoalDescriptionLable setFont:[UIFont fontWithName:@"GillSans-LightItalic" size:12]];
+    
+    self.GoalTypeLable.text=currentGoal.goalType;
+    
+    self.NumberofStepsTakenLable.text=[NSString stringWithFormat:@"%d",currentGoal.numberOfGoalSteps];
     
     
     NSInteger days2=[self daysBetweenDate:[self getCurrentDataAndTime] andDate:currentGoal.goalDeadline];
-    self.NumberofdaysyillDeadline.text=[NSString stringWithFormat:@"Number of days till Deadline %d days",days2];
     
-    NSInteger days=[self daysBetweenDate:currentGoal.goalDate andDate:[self getCurrentDataAndTime]];
-    self.numberofDaysSinceCreated.text=[NSString stringWithFormat:@"Number of days since Createted: %d days",days+1];
+    self.NumberofdaysyillDeadline.text=[NSString stringWithFormat:@"%d days",days2];
+    
     
     NSLog(@"Steps %d",currentGoal.numberOfGoalSteps);
     
@@ -95,6 +124,53 @@
     NSLog(@"%@",[[progressListFromParse objectAtIndex:0] progressDescription]);
     
     [self.tableview reloadData];
+    
+    CGRect frame = CGRectMake(0,0, 80, 80);
+    
+    radialView = [self progressViewWithFrame:frame];
+    radialView.progressTotal = 100;
+    radialView.progressCounter = currentGoal.goalProgress;
+    radialView.theme.completedColor=[UIColor blueColor];
+    radialView.theme.incompletedColor=[UIColor colorWithHexString:@"8795b3"];
+    radialView.theme.thickness=10;
+    radialView.theme.centerColor=[UIColor colorWithHexString:@"8795b1"];
+    radialView.theme.sliceDividerHidden = NO;
+    radialView.startingSlice = 3;
+    radialView.theme.sliceDividerThickness = 0;
+    
+    radialView.label.text=@"";
+    radialView.label.textColor = [UIColor redColor];
+    radialView.label.shadowColor = [UIColor clearColor];
+    
+    
+    radialView.label.pointSizeToWidthFactor=0.6;
+    
+    [self.progressCircle addSubview:radialView];
+    
+    [radialView2 removeFromSuperview];
+    
+    
+    CGRect frame2 = CGRectMake(0,0, 75, 75);
+    
+    radialView2 = [self progressViewWithFrame:frame2];
+    radialView2.progressTotal = 100;
+    radialView2.progressCounter = currentGoal.goalProgress;
+    radialView2.theme.completedColor=[UIColor blueColor];
+    radialView2.theme.incompletedColor=[UIColor colorWithHexString:@"8795b3"];
+    radialView2.theme.thickness=10;
+    //radialView2.theme.centerColor=[UIColor colorWithHexString:@"8795b1"];
+    radialView2.theme.sliceDividerHidden = NO;
+    radialView2.startingSlice = 3;
+    radialView2.theme.sliceDividerThickness = 0;
+    
+    radialView2.label.textColor = [UIColor blueColor];
+    radialView2.label.shadowColor = [UIColor clearColor];
+    
+    
+    radialView2.label.pointSizeToWidthFactor=0.3;
+    
+    [self.currentPercView addSubview:radialView2];
+    
 }
 
 -(NSInteger)daysBetweenDate:(NSString*)fromDateTime andDate:(NSString*)toDateTime
@@ -116,6 +192,8 @@
     NSDateComponents *difference = [calendar components:NSDayCalendarUnit
                                                fromDate:fromDate toDate:toDate options:0];
     return [difference day];
+    
+    
 }
 
 -(NSString *)getCurrentDataAndTime
@@ -136,7 +214,7 @@
     {
         UINavigationController *nav = [segue destinationViewController];
         newProgressViewController *vc =(newProgressViewController*)nav.topViewController;
-
+        
         [vc setCurrentGoal:currentGoal];
         [vc setCurrentUser:currentUser];
         
@@ -181,7 +259,7 @@
     self.currentGoal=updatedGoal;
 }
 
-- (IBAction)declareGoalAchieaved:(UIButton *)sender {
+- (void)declareGoalAchieaved{
     
     Goal *goal=self.currentGoal;
     
@@ -249,13 +327,13 @@
         newLog.logAction=@"Achieve";
         newLog.month=[[self getMonth] integerValue];
         newLog.year=[[self getYear] integerValue];
-
+        
         
         [newLog addLOG];
         
         if (currentUser.wantsToShare==YES)
         {
-        
+            
             TimelinePost *newPost=[[TimelinePost alloc]init];
             
             newPost.userFirstName=currentUser.userFirsname;
@@ -394,7 +472,7 @@
     
     [cell.progressName setText:(NSString *)[[progressList objectAtIndex:indexPath.row] progressDescription]];
     
-    [cell.progressPercentage setText:[NSString stringWithFormat:@"%.2f",[[progressList objectAtIndex:indexPath.row] progressPercentageToGoal]]];
+    [cell.progressPercentage setText:[[NSString stringWithFormat:@"%.2f",[[progressList objectAtIndex:indexPath.row] progressPercentageToGoal]] stringByAppendingString:@"%"]];
     
     [cell.cellStepOrder setText:[NSString stringWithFormat:@"Step: %d",[[progressList objectAtIndex:indexPath.row] stepOrder]]];
     
@@ -424,6 +502,13 @@
     cell.deleteProgress.hidden=YES;
     
     
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ProgressCell"]];
+    
+    cell.backgroundView = imageView;
+    
+    
+    
+    
     return cell;
 }
 
@@ -443,6 +528,7 @@
     UIAlertView *updateAlert = [[UIAlertView alloc] initWithTitle: @"Progress Deletion" message: @"Are you sure you want to delete" delegate: self cancelButtonTitle: @"Yes"  otherButtonTitles:@"Cancel",nil];
     updateAlert.tag=1;
     [updateAlert show];
+    
     
 }
 
@@ -500,13 +586,13 @@
     return 80;
 }
 
-- (IBAction)deleteGoal:(UIBarButtonItem *)sender {
+- (void)deleteGoal {
     
     UIAlertView *updateAlert = [[UIAlertView alloc] initWithTitle: @"Goal Deletion" message: @"Are you sure you want to delete" delegate: self cancelButtonTitle: @"Yes"  otherButtonTitles:@"Cancel",nil];
     
     updateAlert.tag=0;
     [updateAlert show];
-
+    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -536,9 +622,9 @@
             newLog.logAction=@"Deleted";
             newLog.month=[[self getMonth] integerValue];
             newLog.year=[[self getYear] integerValue];
-
+            
             [newLog addLOG];
-
+            
             
             if (goal.isGoalCompleted==NO)
             {
@@ -587,7 +673,7 @@
             Log *newLog=[[Log alloc]init];
             
             [newLog addLOG];
-
+            
             
             Goal*goal=currentGoal;
             Goal*parseGoal=currentGoal;
@@ -607,24 +693,71 @@
                 currentUser.numberOfAchievedGoals=currentUser.numberOfAchievedGoals-1;
                 [currentUser UpdateUserDataDB];
                 [currentUser UpdateUserParse];
-
+                
             }
             
-    
+            
             [goal UpdataGoalWithProgress:currentProgress.progressPercentageToGoal WithMark:@"-"];
             
             [parseGoal UpdataGoalWithProgressInParse:currentProgress.progressPercentageToGoal WithMark:@"-"];
             
-            self.TotalPercentageLable.text=[[NSString stringWithFormat:@"%.2f",currentGoal.goalProgress-currentProgress.progressPercentageToGoal] stringByAppendingString:@"%"];
             
-    
+            
             
             self.NumberofStepsTakenLable.text=[NSString stringWithFormat:@"Step Taken: %d",currentGoal.numberOfGoalSteps-1];
+            
             
             
             [progressList removeObject:currentProgress];
             
             [self.tableview reloadData];
+            
+            self.NumberofStepsTakenLable.text=[NSString stringWithFormat:@"%d",currentGoal.numberOfGoalSteps];
+            
+            [radialView removeFromSuperview];
+            
+            CGRect frame4 = CGRectMake(0,0, 80, 80);
+            radialView = [self progressViewWithFrame:frame4];
+            radialView.progressCounter = currentGoal.goalProgress-currentProgress.progressPercentageToGoal;
+            radialView.progressTotal = 100;
+            radialView.theme.completedColor=[UIColor blueColor];
+            radialView.theme.incompletedColor=[UIColor colorWithHexString:@"8795b3"];
+            radialView.theme.thickness=10;
+            radialView.theme.centerColor=[UIColor colorWithHexString:@"8795b1"];
+            radialView.theme.sliceDividerHidden = NO;
+            radialView.startingSlice = 3;
+            radialView.theme.sliceDividerThickness = 0;
+            radialView.label.text=@"";
+            radialView.label.textColor = [UIColor redColor];
+            radialView.label.shadowColor = [UIColor clearColor];
+            radialView.label.pointSizeToWidthFactor=0.6;
+            [self.progressCircle addSubview:radialView];
+            
+            
+            [radialView2 removeFromSuperview];
+            
+            CGRect frame3 = CGRectMake(0,0, 75, 75);
+            
+            radialView2 = [self progressViewWithFrame:frame3];
+            radialView2.progressTotal = 100;
+            radialView2.progressCounter = currentGoal.goalProgress-currentProgress.progressPercentageToGoal;
+            radialView2.theme.completedColor=[UIColor blueColor];
+            radialView2.theme.incompletedColor=[UIColor colorWithHexString:@"8795b3"];
+            radialView2.theme.thickness=10;
+            //radialView2.theme.centerColor=[UIColor colorWithHexString:@"8795b1"];
+            radialView2.theme.sliceDividerHidden = NO;
+            radialView2.startingSlice = 3;
+            radialView2.theme.sliceDividerThickness = 0;
+            
+            radialView2.label.textColor = [UIColor blueColor];
+            radialView2.label.shadowColor = [UIColor clearColor];
+            
+            
+            radialView2.label.pointSizeToWidthFactor=0.3;
+            
+            [self.currentPercView addSubview:radialView2];
+            
+            
             
         }
         
@@ -711,54 +844,97 @@
     return currentData;
 }
 
-- (IBAction)shareSocial:(id)sender {
-    
-    
-    if(!self.actionSheet){
-        UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Share A goal"
-                                                                delegate:self cancelButtonTitle:nil
-                                                  destructiveButtonTitle:nil
-                                                       otherButtonTitles:nil];
-        
-        [actionSheet addButtonWithTitle:Facebook];
-        [actionSheet addButtonWithTitle:Twitter];
-        [actionSheet addButtonWithTitle:CANCEL_BUTTON_TITLE];
-        [actionSheet setCancelButtonIndex:actionSheet.numberOfButtons-1];
-        [actionSheet showInView:sender];
-        
-        self.actionSheet = actionSheet;
-    }
-
-    
-}
-
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     
-    NSString *choice = [actionSheet buttonTitleAtIndex:buttonIndex];
-    
-    if([choice isEqualToString:Facebook]){
-        
-        if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
-            SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-            
-            [controller setInitialText:@"First post from my iPhone app"];
-            [self presentViewController:controller animated:YES completion:Nil];
-    }
-        
-    else if([choice isEqualToString:Twitter])
-    {
-        if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+
+        if(buttonIndex==0)
         {
-            SLComposeViewController *tweetSheet = [SLComposeViewController
-                                                   composeViewControllerForServiceType:SLServiceTypeTwitter];
-            [tweetSheet setInitialText:@"Great fun to learn iOS programming at appcoda.com!"];
-            [self presentViewController:tweetSheet animated:YES completion:nil];
+            
+            [self declareGoalAchieaved];
+            
         }
-    }
-}
+        
+        else if(buttonIndex==1)
+        {
+            [self performSegueWithIdentifier:@"EditGoal" sender:self];
+
+            
+        }
+        
+        else if(buttonIndex==2)
+
+        {
+            [self deleteGoal];
+            
+        }
+    
+    
+        else if(buttonIndex==3)
+        {
+            
+            if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+            {
+                SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+                
+                [controller setInitialText:@"Share Something about your Goal.."];
+                [self presentViewController:controller animated:YES completion:Nil];
+            }
+
+            
+        }
+    
+    
+    
+        else if(buttonIndex==4)
+        {
+            if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+            {
+                SLComposeViewController *tweetSheet = [SLComposeViewController
+                                                       composeViewControllerForServiceType:SLServiceTypeTwitter];
+                [tweetSheet setInitialText:@"Share Something about your Goal.."];
+                [self presentViewController:tweetSheet animated:YES completion:nil];
+            }
+            
+            
+        }
+    
+    
+        else if(buttonIndex==5)
+        {
+            [self performSegueWithIdentifier:@"toGoalSuggestion" sender:self];
+
+            
+        }
     
 }
 
+
+
+
+
+- (IBAction)GoalMange:(UIBarButtonItem *)sender {
+    NSLog(@"Mange Goal");
+    
+    UIActionSheet *actionSheet2 = [[UIActionSheet alloc]initWithTitle:@"Manage A Goal"
+                                                             delegate:self cancelButtonTitle:nil
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:nil];
+    
+    [actionSheet2 addButtonWithTitle:Declare_As_Achieved];
+    [actionSheet2 addButtonWithTitle:Edit];
+    [actionSheet2 addButtonWithTitle:Delete];
+    [actionSheet2 addButtonWithTitle:@"Share in Facebook"];
+    [actionSheet2 addButtonWithTitle:@"Share in Twitter"];
+    [actionSheet2 addButtonWithTitle:@"See what Others Suggested"];
+    [actionSheet2 addButtonWithTitle:CANCEL_BUTTON_TITLE];
+    
+    [actionSheet2 setCancelButtonIndex:actionSheet2.numberOfButtons-1];
+    
+    self.actionSheet=actionSheet2;
+    
+    [self.actionSheet showFromBarButtonItem:sender animated:YES];
+    
+}
 @end

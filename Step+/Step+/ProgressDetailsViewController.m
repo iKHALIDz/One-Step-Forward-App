@@ -17,6 +17,7 @@
 @synthesize currentProgress,currentUser;
 @synthesize sPosts;
 @synthesize tableview=_tableview;
+@synthesize avatar2;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -39,10 +40,12 @@
     NSLog(@"RRR%d",currentProgress.progressID);
     NSLog(@"RRR%d",[sPosts count]);
     
-    self.progressDateTextFiled.text=currentProgress.progressDate;
-    self.progressDescription.text=currentProgress.progressDescription;
-    self.stepOrderTextField.text=[NSString stringWithFormat:@"Step: %d",currentProgress.stepOrder];
-    self.progressPercentageTextField.text=[NSString stringWithFormat:@"Step: %.2f",currentProgress.progressPercentageToGoal];
+    
+    self.tableview.separatorColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0];
+    self.view.backgroundColor=[UIColor colorWithHexString:@"fffcfc"];
+
+    self.tableview.backgroundColor=[UIColor colorWithHexString:@"fffcfc"];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -119,10 +122,17 @@
     
     cell.FromUserComment.text=[NSString stringWithFormat:@"%@",[[sPosts objectAtIndex:indexPath.row] commentContent]];
     
-    //cell.FromUserimage.image=[[sPosts objectAtIndex:indexPath.row] FromuserProfilePic];
+    avatar2 = [[AMPAvatarView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    
+    avatar2.image=[[sPosts objectAtIndex:indexPath.row] FromuserProfilePic];
+    
+    [cell.FromUserImageView addSubview:avatar2];
     
     [cell.GoToUserProfile addTarget:self action:@selector(GoToUserInfo:)  forControlEvents:UIControlEventTouchUpInside];
     [cell.GoToUserProfile setTag:indexPath.row];
+    
+    cell.backgroundColor=[UIColor colorWithHexString:@"fffcfc"];
+
     
     return cell;
 }
@@ -144,9 +154,11 @@
     
     if ([[segue identifier] isEqualToString:@"GoToUserProfile"])
     {
-        UserProfileViewController *nav = [segue destinationViewController];
-        [nav setSelectedUsername:currentUser.userUsername];
-        [nav setCurrentUser:currentUser];
+        UINavigationController *nav = [segue destinationViewController];
+        UserProfileViewController*vc = (UserProfileViewController*)nav.topViewController;
+        [vc setCurrentUser:currentUser];
+        [vc setSelectedUsername:currentUser.userUsername];
+
     }
 }
 

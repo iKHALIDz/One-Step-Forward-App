@@ -21,7 +21,6 @@
 @synthesize inProgressArray;
 @synthesize inProgressArrayFromParse;
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -181,12 +180,11 @@
         return snapshot;
 }
 
-    
 - (MDRadialProgressView *)progressViewWithFrame:(CGRect)frame
 {
 	MDRadialProgressView *view = [[MDRadialProgressView alloc] initWithFrame:frame];
     
-	view.center = CGPointMake(30,22);
+	view.center = CGPointMake(35,40);
     
 	return view;
 }
@@ -221,6 +219,7 @@
     
     return [paths objectAtIndex:0];
 }
+
 
 -(NSMutableArray *) getDoneGoalsFromDB
 {
@@ -326,7 +325,34 @@
     
     [cell.GoalName setText:(NSString *)[[inProgressArray objectAtIndex:indexPath.row] goalName]];
     
-    CGRect frame = CGRectMake(0,-10, 40, 40);
+    
+    NSInteger days2=[self daysBetweenDate:[self getCurrentDataAndTime] andDate:[[inProgressArray objectAtIndex:indexPath.row] goalDeadline]];
+    
+    if (days2 >1)
+    {
+        [cell.DueDate setText:[NSString stringWithFormat:@"Due Date: In %d days",days2]];
+        
+    }
+    else if (days2 == 1)
+    {
+        [cell.DueDate setText:[NSString stringWithFormat:@"Due Date: Tomorrow"]];
+        
+    }
+    else if (days2 == 0)
+    {
+        [cell.DueDate setText:[NSString stringWithFormat:@"Due Date : Today"]];
+        
+    }
+    
+    else if (days2<0)
+    {
+        [cell.DueDate setText:[NSString stringWithFormat:@"Past Due"]];
+        
+    }
+    
+
+    
+    CGRect frame = CGRectMake(0,0, 60, 60);
     
     radialView = [self progressViewWithFrame:frame];
     radialView.progressTotal = 100;
@@ -337,12 +363,12 @@
     radialView.theme.sliceDividerHidden = NO;
     radialView.startingSlice = 3;
     radialView.theme.sliceDividerThickness = 0;
-
+    
     radialView.label.textColor = [UIColor blueColor];
     radialView.label.shadowColor = [UIColor clearColor];
     
-     radialView.label.pointSizeToWidthFactor=0.3;
-
+    radialView.label.pointSizeToWidthFactor=0.3;
+    
     [cell.contentView addSubview:radialView];
     
     UIView *myBackView = [[UIView alloc] initWithFrame:cell.frame];
@@ -350,10 +376,14 @@
     cell.selectedBackgroundView = myBackView;
     
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
-
+    
     [cell.MoveCell addGestureRecognizer:longPress];
     
-    //cell.backgroundView =  [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"Test.png"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"GoalCellBackground.png"]];
+    
+    cell.backgroundView = imageView;
+
+    
     
     return cell;
 }
@@ -387,8 +417,40 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 64;
+    return 85;
 }
 
+
+-(NSInteger)daysBetweenDate:(NSString*)fromDateTime andDate:(NSString*)toDateTime
+{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
+    
+    NSDate *fromDate = [format dateFromString: fromDateTime];
+    NSDate *toDate = [format dateFromString: toDateTime];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&fromDate
+                 interval:NULL forDate:fromDate];
+    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&toDate
+                 interval:NULL forDate:toDate];
+    
+    
+    NSDateComponents *difference = [calendar components:NSDayCalendarUnit
+                                               fromDate:fromDate toDate:toDate options:0];
+    return [difference day];
+}
+
+-(NSString *)getCurrentDataAndTime
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
+    NSDate *Todaydata=[NSDate date];
+    
+    NSString *currentData= [dateFormatter stringFromDate:Todaydata];
+    
+    return currentData;
+}
 
 @end

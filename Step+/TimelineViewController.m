@@ -180,11 +180,6 @@
     cell.backgroundView = imageView;
     
     
-//    [self getPostsCommments:[[timelinePosts objectAtIndex:indexPath.row]username] andPostID:[[timelinePosts objectAtIndex:indexPath.row]postID]];
-    
-    NSLog(@"Username :%@",[[timelinePosts objectAtIndex:indexPath.row]username]);
-    NSLog(@"PostID :%@",[[timelinePosts objectAtIndex:indexPath.row]postID]);
-    
     
     
     return cell;

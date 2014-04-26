@@ -12,6 +12,8 @@
 #import "timelinePostComment.h"
 #import "TimelinePostCommentTableViewCell.h"
 #import "UserProfileViewController.h"
+#import "AMPAvatarView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface goalSuggestionsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
@@ -25,5 +27,6 @@
 @property (nonatomic,strong) User *currentUser;
 
 @property (nonatomic,strong) NSMutableArray *sPosts;
+@property (strong, nonatomic) AMPAvatarView *avatar2;
 
 @end

@@ -12,6 +12,8 @@
 #import "TimelinePostCommentTableViewCell.h"
 #import "UserProfileViewController.h"
 #import "Progress.h"
+#import "AMPAvatarView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ProgressDetailsLikeListViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
@@ -22,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *sPosts;
 
+@property (strong, nonatomic) AMPAvatarView *avatar2;
 
 
 @end
