@@ -14,7 +14,6 @@
 #import "User.h"
 #import "Goal.h"
 #import "FMDatabase.h"
-#import "XYPieChart.h"
 #import <QuartzCore/QuartzCore.h>
 #import "MDRadialProgressView.h"
 #import "MDRadialProgressTheme.h"
@@ -40,8 +39,6 @@
 @property(nonatomic,retain) NSMutableArray *inProgressArray;
 @property(nonatomic,retain) NSMutableArray *achievedArray;
 @property (nonatomic,retain) NSMutableArray *createdGoals;
-
-@property (strong, nonatomic) IBOutlet XYPieChart *pieChartRight;
 
 @property (weak, nonatomic) IBOutlet UIView *createdGoalView;
 

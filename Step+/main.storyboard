@@ -407,7 +407,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ucP-sw-qqL" kind="modal" identifier="toStatAndLog" id="etU-gf-Jgw"/>
+                                    <segue destination="ucP-sw-qqL" kind="modal" identifier="toLogs" id="etU-gf-Jgw"/>
                                 </connections>
                             </button>
                         </subviews>

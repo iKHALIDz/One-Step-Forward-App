@@ -20,7 +20,6 @@
 @synthesize currentUser;
 @synthesize inProgressArray;
 @synthesize achievedArray;
-@synthesize pieChartRight = _pieChart;
 @synthesize radialView,radialView2,radialView3;
 @synthesize createdGoals;
 

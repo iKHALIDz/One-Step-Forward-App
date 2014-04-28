@@ -236,18 +236,8 @@
         [vc setCurrentUser:self.currentUser];
     }
     
-    if ([[segue identifier] isEqualToString:@"toStatAndLog"])
-    {
-        UINavigationController *nav = [segue destinationViewController];
-        
-        
-        statisticsViewController*vc = (statisticsViewController*)nav.topViewController;
-
-        currentUser.userProfileImage=avatar.image;
-        [vc setCurrentUser:self.currentUser];
-    }
-
 }
+
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {

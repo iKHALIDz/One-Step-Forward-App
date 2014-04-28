@@ -16,7 +16,6 @@
 #import "SettingViewController.h"
 
 #import "CalenderLogsEventsViewController.h"
-#import "statisticsViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "AMPAvatarView.h"
 

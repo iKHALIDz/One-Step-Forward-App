@@ -28,11 +28,9 @@
 -(void)AddProgressltoDatabase;
 -(void)DeleteProgressFromDatabase;
 -(void)DeleteSingleProgressFromDatabase;
--(void)UpdateProgress;
 
 -(void)AddProgresslToParse;
 -(void)DeleteProgressFromParse;
--(void)UpdateProgressToParse;
 -(void)DeleteSingleProgressFromParse;
 
 

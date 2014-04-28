@@ -91,8 +91,6 @@
 		E9BA2EA718FF106A0016002E /* C.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BA2EA318FF106A0016002E /* C.png */; };
 		E9BA2EA818FF106A0016002E /* P.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BA2EA418FF106A0016002E /* P.png */; };
 		E9BA2EAB18FF117A0016002E /* Re.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BA2EAA18FF117A0016002E /* Re.png */; };
-		E9BA2EB118FF8F4B0016002E /* statisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2EB018FF8F4B0016002E /* statisticsViewController.m */; };
-		E9BA2EB418FF941B0016002E /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2EB318FF941B0016002E /* XYPieChart.m */; };
 		E9BA2EE018FFBDDB0016002E /* BENPedometerBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2EDD18FFBDDB0016002E /* BENPedometerBarView.m */; };
 		E9BA2EE118FFBDDB0016002E /* BENPedometerChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2EDF18FFBDDB0016002E /* BENPedometerChart.m */; };
 		E9BA2EEB1900607A0016002E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2EEA1900607A0016002E /* Reachability.m */; };
@@ -285,10 +283,6 @@
 		E9BA2EA318FF106A0016002E /* C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C.png; sourceTree = "<group>"; };
 		E9BA2EA418FF106A0016002E /* P.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P.png; sourceTree = "<group>"; };
 		E9BA2EAA18FF117A0016002E /* Re.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Re.png; sourceTree = "<group>"; };
-		E9BA2EAF18FF8F4B0016002E /* statisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = statisticsViewController.h; sourceTree = "<group>"; };
-		E9BA2EB018FF8F4B0016002E /* statisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = statisticsViewController.m; sourceTree = "<group>"; };
-		E9BA2EB218FF941B0016002E /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
-		E9BA2EB318FF941B0016002E /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		E9BA2EDC18FFBDDB0016002E /* BENPedometerBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BENPedometerBarView.h; sourceTree = "<group>"; };
 		E9BA2EDD18FFBDDB0016002E /* BENPedometerBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BENPedometerBarView.m; sourceTree = "<group>"; };
 		E9BA2EDE18FFBDDB0016002E /* BENPedometerChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BENPedometerChart.h; sourceTree = "<group>"; };
@@ -461,7 +455,6 @@
 				E9EA337F18DF90CD00609052 /* Login/Singup/MainMenu */,
 				E99348BA18F39CA700844C2C /* Setting */,
 				E9BA2EF219011A230016002E /* Goals/Proggress */,
-				E9BA2EF319011A800016002E /* Statistics */,
 				E9BA2EF619011ADB0016002E /* Log */,
 				E9BA2EF719011B1B0016002E /* User Profile */,
 				E9BA2EF819011B3C0016002E /* Timeline */,
@@ -604,15 +597,6 @@
 			name = "NSDate+PrettyDate";
 			sourceTree = "<group>";
 		};
-		E9BA2EE819005F3C0016002E /* XYPieChart */ = {
-			isa = PBXGroup;
-			children = (
-				E9BA2EB218FF941B0016002E /* XYPieChart.h */,
-				E9BA2EB318FF941B0016002E /* XYPieChart.m */,
-			);
-			name = XYPieChart;
-			sourceTree = "<group>";
-		};
 		E9BA2EF0190119FA0016002E /* goalTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,15 +651,6 @@
 				E9D3E32819062C30002797BA /* NavagationBarBottom.png */,
 			);
 			name = Goals/Proggress;
-			sourceTree = "<group>";
-		};
-		E9BA2EF319011A800016002E /* Statistics */ = {
-			isa = PBXGroup;
-			children = (
-				E9BA2EAF18FF8F4B0016002E /* statisticsViewController.h */,
-				E9BA2EB018FF8F4B0016002E /* statisticsViewController.m */,
-			);
-			name = Statistics;
 			sourceTree = "<group>";
 		};
 		E9BA2EF419011AAD0016002E /* TimelinePostCommentTableViewCell */ = {
@@ -807,7 +782,6 @@
 				E9BA2EEA1900607A0016002E /* Reachability.m */,
 				E9BA2EE218FFBDEE0016002E /* BENPedometerChart */,
 				E9BA2EE719005F370016002E /* NSDate+PrettyDate */,
-				E9BA2EE819005F3C0016002E /* XYPieChart */,
 				E9EA333018DCFF7300609052 /* RadialProgress */,
 				E9EA333D18DCFFAE00609052 /* RDVECalendar */,
 				E9EA335218DCFFDE00609052 /* Database */,
@@ -991,7 +965,6 @@
 				E9EA333718DCFFA000609052 /* RDVExampleDayCell.m in Sources */,
 				E9EA332C18DCFF6200609052 /* MDRadialProgressTheme.m in Sources */,
 				E99348C618F4D03500844C2C /* ProgressDetailsViewController.m in Sources */,
-				E9BA2EB118FF8F4B0016002E /* statisticsViewController.m in Sources */,
 				E96F179A18F320040057C3CA /* TimelineViewController.m in Sources */,
 				E9EA335918DD00D700609052 /* User.m in Sources */,
 				E9EA337D18DF90C300609052 /* Goal.m in Sources */,
@@ -1026,7 +999,6 @@
 				E9EA332E18DCFF6200609052 /* MDRadialProgressLabel.m in Sources */,
 				E944C84C18DBDBF9002714D8 /* Step_.xcdatamodeld in Sources */,
 				E944C84918DBDBF9002714D8 /* AppDelegate.m in Sources */,
-				E9BA2EB418FF941B0016002E /* XYPieChart.m in Sources */,
 				E9EA335018DCFFD000609052 /* FMResultSet.m in Sources */,
 				E9D3E31D1905D1B4002797BA /* GoalSectionViewController.m in Sources */,
 				E99348C018F4639200844C2C /* UserProfileViewControllerDetailsViewController.m in Sources */,
