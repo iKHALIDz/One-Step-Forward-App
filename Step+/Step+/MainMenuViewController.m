@@ -62,25 +62,25 @@
     
     if (currentUser==nil) // in Case if the user is already logged in
     {
-        NSLog(@"User is already logged in");
+        //NSLog(@"User is already logged in");
         currentUser=[[User alloc]init];
         
         currentUser=[currentUser getUserInfo:curreUser.username];
         
         if (currentUser ==nil)
         {
-            NSLog(@"User isn't in the Database");
+            //NSLog(@"User isn't in the Database");
             
             currentUser=[self getUserInfromationAsObject];
             
             
             [currentUser UserRegistrationUsingDatabase];
-            NSLog(@"Got Data From Parse");
+            //NSLog(@"Got Data From Parse");
         }
         
         else
         {
-            NSLog(@"We got the information form the database and the Username %@",currentUser.userUsername);
+            //NSLog(@"We got the information form the database and the Username %@",currentUser.userUsername);
 
         }
     }
@@ -90,7 +90,7 @@
     {
 
         //currentUser=[currentUser getUserInfo:curreUser.username];
-        NSLog(@"User exists in the Database");
+        //NSLog(@"User exists in the Database");
     }
     
     self.userFullname.text=[NSString stringWithFormat:@"%@ %@",currentUser.userFirsname,currentUser.userLastname];
@@ -118,7 +118,7 @@
     }
     
     
-    NSLog(@"want to share %d",currentUser.wantsToShare);
+    //NSLog(@"want to share %d",currentUser.wantsToShare);
     
     
     
@@ -175,7 +175,7 @@
     User *user=[[User alloc]init];
     PFObject *object=[query getFirstObject];
         if (!object) {
-            NSLog(@"The getFirstObject request failed.");
+           // NSLog(@"The getFirstObject request failed.");
         } else {
             // The find succeeded.
             user.userFirsname=[NSString stringWithFormat:@"%@",[object objectForKey:@"FirstName"]];
@@ -247,7 +247,7 @@
 -(void) updateUser:(User *)updatedUser
 {
     tag=1;
-    NSLog(@"Update User");
+    //NSLog(@"Update User");
     
     currentUser=updatedUser;
     

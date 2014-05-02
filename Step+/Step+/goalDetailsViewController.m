@@ -59,7 +59,7 @@
     
     if ([progressList count]==0)
     {
-        NSLog(@"Progress, We still need to add it to DB");
+       // NSLog(@"Progress, We still need to add it to DB");
         
         for (Progress *newProgress in progressListFromParse)
         {
@@ -106,22 +106,29 @@
     
     NSInteger days2=[self daysBetweenDate:[self getCurrentDataAndTime] andDate:currentGoal.goalDeadline];
     
-    self.NumberofdaysyillDeadline.text=[NSString stringWithFormat:@"%d days",days2];
+    if (days2<0)
+    {
+        self.NumberofdaysyillDeadline.text=@"Past Due";
+
+    }
+    else
+    {
+        self.NumberofdaysyillDeadline.text=[NSString stringWithFormat:@"%d days",days2];
+    }
     
-    
-    NSLog(@"Steps %d",currentGoal.numberOfGoalSteps);
+    //NSLog(@"Steps %d",currentGoal.numberOfGoalSteps);
     
     progressList=[self getProgressList];
     progressListFromParse=[self getProgressFromParse];
     
     
-    NSLog(@"DB %d",[progressList count]);
+    //NSLog(@"DB %d",[progressList count]);
     
-    NSLog(@"Parse %d",[progressListFromParse count]);
+    //NSLog(@"Parse %d",[progressListFromParse count]);
     
     
-    NSLog(@"%@",[[progressList objectAtIndex:0] progressDescription]);
-    NSLog(@"%@",[[progressListFromParse objectAtIndex:0] progressDescription]);
+    //NSLog(@"%@",[[progressList objectAtIndex:0] progressDescription]);
+    //NSLog(@"%@",[[progressListFromParse objectAtIndex:0] progressDescription]);
     
     [self.tableview reloadData];
     
@@ -372,14 +379,14 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+        //NSLog(@"Fail to open");
         
     }
     
     NSString *qr=[NSString stringWithFormat:@"select * from Progress where goalId='%d' AND createdBy='%@';",currentGoal.goalID,currentGoal.createdBy];
     
     
-    NSLog(@"%@",qr);
+   // NSLog(@"%@",qr);
     
     
     FMResultSet *result =[db executeQuery:qr];
@@ -516,14 +523,14 @@
 
 - (IBAction)deleteProgressSel:(id)sender
 {
-    NSLog(@"TTT");
+    //NSLog(@"TTT");
     
     UIButton *button = (UIButton *)sender;
     
     int row = button.tag;
-    NSLog(@"isPressed");
+    //NSLog(@"isPressed");
     
-    NSLog(@"%d",row);
+    //NSLog(@"%d",row);
     
     currentProgress= [progressList objectAtIndex:row];
     
@@ -540,9 +547,9 @@
     UIButton *button = (UIButton *)sender;
     
     int row = button.tag;
-    NSLog(@"isPressed");
+   // NSLog(@"isPressed");
     
-    NSLog(@"%d",row);
+    //NSLog(@"%d",row);
     
     currentProgress.progressID = [[progressList objectAtIndex:row] progressID];
     currentProgress.progressPercentageToGoal =[[progressList objectAtIndex:row] progressPercentageToGoal];
@@ -564,9 +571,9 @@
     UIButton *button = (UIButton *)sender;
     
     int row = button.tag;
-    NSLog(@"isPressed");
+    //NSLog(@"isPressed");
     
-    NSLog(@"%d",row);
+    //NSLog(@"%d",row);
     
     currentProgress.progressID = [[progressList objectAtIndex:row] progressID];
     currentProgress.progressPercentageToGoal =[[progressList objectAtIndex:row] progressPercentageToGoal];
@@ -603,7 +610,7 @@
     {
         if(buttonIndex==0)
         {
-            NSLog(@"Yes Goal is deleted");
+            //NSLog(@"Yes Goal is deleted");
             Goal *goal=self.currentGoal;
             Progress *progress=[[Progress alloc]init];
             progress.goalID=currentGoal.goalID;
@@ -659,7 +666,7 @@
         }
         else
         {
-            NSLog(@"NO Goal isn't deleted");
+         //   NSLog(@"NO Goal isn't deleted");
             
         }
     }
@@ -668,7 +675,7 @@
         if(buttonIndex==0)
         {
             
-            NSLog(@"Yes Progress is Deleted");
+        //    NSLog(@"Yes Progress is Deleted");
             [currentProgress DeleteSingleProgressFromParse];
             [currentProgress DeleteSingleProgressFromDatabase];
             
@@ -765,7 +772,7 @@
         
         else
         {
-            NSLog(@"No Progress isn't Deleted");
+           // NSLog(@"No Progress isn't Deleted");
             
             
         }
@@ -917,7 +924,7 @@
 
 
 - (IBAction)GoalMange:(UIBarButtonItem *)sender {
-    NSLog(@"Mange Goal");
+    //NSLog(@"Mange Goal");
     
     UIActionSheet *actionSheet2 = [[UIActionSheet alloc]initWithTitle:@"Manage A Goal"
                                                              delegate:self cancelButtonTitle:nil

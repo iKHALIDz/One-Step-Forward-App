@@ -67,7 +67,7 @@
     
     if (tag==1) // Profile View
     {
-        NSLog(@"UserProfile");
+     //   NSLog(@"UserProfile");
         currentUser.userProfileImage=[info objectForKey:UIImagePickerControllerEditedImage];
         [self dismissViewControllerAnimated:YES completion:nil];
         

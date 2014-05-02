@@ -360,13 +360,13 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+      //  NSLog(@"Fail to open");
         
     }
     
     NSString *query=[NSString stringWithFormat:@"select MAX(goalpriority) from Goals;"];
     
-    NSLog(@"%@",query);
+    //NSLog(@"%@",query);
     
     FMResultSet *result =[db executeQuery:query];
     

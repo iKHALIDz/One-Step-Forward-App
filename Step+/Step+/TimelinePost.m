@@ -83,7 +83,7 @@
         else
         {
             
-            NSLog(@"error");
+            //NSLog(@"error");
         }
     
     }];
@@ -107,7 +107,7 @@
         else
         {
             
-            NSLog(@"error");
+            //NSLog(@"error");
         }
         
     }];

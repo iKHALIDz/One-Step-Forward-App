@@ -123,7 +123,7 @@
             {
                 NSString *temp=[obj objectForKey:@"numberOfComments"];
                 NSInteger Nummber=[temp integerValue]+1;
-                NSLog(@"%d",Nummber);
+               // NSLog(@"%d",Nummber);
                 
                 [obj setObject:[NSString stringWithFormat:@"%d",Nummber] forKey:@"numberOfComments"];
                 
@@ -156,7 +156,7 @@
 - (void)findCallback:(NSArray *)objects error:(NSError *)error {
     if (!error) {
         
-    NSLog(@"currentSelectedtimeLinePost %@",currentSelectedtimeLinePost.username);
+    //NSLog(@"currentSelectedtimeLinePost %@",currentSelectedtimeLinePost.username);
     
     TimelinePostComments=[[NSMutableArray alloc]init];
     
@@ -213,9 +213,9 @@
     UIButton *button = (UIButton *)sender;
     
     int row = button.tag;
-    NSLog(@"isPressed");
+   // NSLog(@"isPressed");
 
-    NSLog(@"%d",row);
+    //NSLog(@"%d",row);
     currentUsername=[[TimelinePostComments objectAtIndex:row] From];
     [self performSegueWithIdentifier:@"GoToUserProfile" sender:self];
 }

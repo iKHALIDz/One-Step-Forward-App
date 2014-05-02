@@ -37,8 +37,8 @@
     
     [self getPostsCommments];
     
-    NSLog(@"RRR%d",currentProgress.progressID);
-    NSLog(@"RRR%d",[sPosts count]);
+   // NSLog(@"RRR%d",currentProgress.progressID);
+   // NSLog(@"RRR%d",[sPosts count]);
     
     
     self.tableview.separatorColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0];
@@ -142,9 +142,9 @@
     UIButton *button = (UIButton *)sender;
     
     int row = button.tag;
-    NSLog(@"isPressed");
+    //NSLog(@"isPressed");
     
-    NSLog(@"%d",row);
+    //NSLog(@"%d",row);
     currentUser.userUsername=[[sPosts objectAtIndex:row] From];
     [self performSegueWithIdentifier:@"GoToUserProfile" sender:self];
 }

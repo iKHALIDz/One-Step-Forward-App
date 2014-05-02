@@ -99,7 +99,7 @@
     
     NSString *currentData= [dateFormatter stringFromDate:_calendarView.selectedDate];
     
-    NSLog(@"%@",currentData);
+    //NSLog(@"%@",currentData);
     
     array=[self getGoalsList:currentData];
     
@@ -116,7 +116,7 @@
     [self.tableview reloadData];
 
 
-    NSLog(@"ttt %d",m);
+//    NSLog(@"ttt %d",m);
     
 }
 
@@ -188,7 +188,7 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+      //  NSLog(@"Fail to open");
         
     }
     
@@ -197,7 +197,7 @@
 
     NSString *s=[qr stringByAppendingString:@"ORDER BY logDate DESC;"];
     
-    NSLog(@"RR %@",s);
+   // NSLog(@"RR %@",s);
     
     FMResultSet *result =[db executeQuery:s];
 
@@ -226,7 +226,7 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+        //NSLog(@"Fail to open");
         
     }
     

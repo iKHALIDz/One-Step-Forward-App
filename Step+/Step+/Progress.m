@@ -37,23 +37,23 @@
     BOOL isOpen=[db open];
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+       // NSLog(@"Fail to open");
         
     }
     
     NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Progress (progressID,progressDescription,progressPercentageToGoal,goalID,progressDate,createdBy,stepOrder) VALUES (%d,'%@','%f','%d','%@','%@','%d')",self.progressID,self.progressDescription,self.progressPercentageToGoal,self.goalID,progressDate,self.LoggedBy,self.stepOrder];
     
-    NSLog(@"%@",insertSQL);
+    //NSLog(@"%@",insertSQL);
     
     BOOL succ=[db executeUpdate:insertSQL];
     
     if (succ==YES) {
-        NSLog(@"Succseed");
+        //NSLog(@"Succseed");
     }
     
     else
     {
-        NSLog(@"Fail");
+     //   NSLog(@"Fail");
     }
     
     [db close];
@@ -88,23 +88,23 @@
     BOOL isOpen=[db open];
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+       // NSLog(@"Fail to open");
         
     }
 
     NSString *deleteSQLP = [NSString stringWithFormat:@"DELETE FROM Progress WHERE goalId='%d' AND createdBy='%@';",self.goalID,self.LoggedBy];
 
     
-    NSLog(@"%@",deleteSQLP);
+    //NSLog(@"%@",deleteSQLP);
     BOOL succ=[db executeUpdate:deleteSQLP];
     
     if (succ==YES) {
-        NSLog(@"Succseed");
+       // NSLog(@"Succseed");
     }
     
     else
     {
-        NSLog(@"Fail");
+       // NSLog(@"Fail");
     }
     
 }
@@ -115,23 +115,23 @@
     BOOL isOpen=[db open];
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+     //   NSLog(@"Fail to open");
         
     }
     
     NSString *deleteSQLP = [NSString stringWithFormat:@"DELETE FROM Progress WHERE progressID='%d' AND createdBy='%@';",self.progressID,self.LoggedBy];
     
     
-    NSLog(@"%@",deleteSQLP);
+   // NSLog(@"%@",deleteSQLP);
     BOOL succ=[db executeUpdate:deleteSQLP];
     
     if (succ==YES) {
-        NSLog(@"Succseed");
+      //  NSLog(@"Succseed");
     }
     
     else
     {
-        NSLog(@"Fail");
+     //   NSLog(@"Fail");
     }
 
 }

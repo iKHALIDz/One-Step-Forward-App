@@ -82,9 +82,9 @@
     
     
     
-    UIImage *img=[UIImage imageNamed:@"DSC_0939.jpg"];
-    userBackgroundImage=[img imageByScalingAndCroppingForSize:CGSizeMake(img.size.width/2,img.size.height/2)
-];
+    UIImage *img=[UIImage imageNamed:@"DSC_093900.jpg"];
+    userBackgroundImage=[img imageByScalingAndCroppingForSize:CGSizeMake(img.size.width/2,img.size.height/2)];
+    
     
     
     NSData *pictureData2 = UIImagePNGRepresentation(userBackgroundImage);
@@ -93,22 +93,43 @@
     
     [newUser setObject:file2 forKey:@"BackgroundPic"];
     
-    NSError *error = nil;
     
-    [newUser signUp:&error];
+    if ([self passwordIsValid:userPassword]==NO)
     {
-        if (!error)
-        {
-            isUserloggedin=YES;
-        }
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error!"
+                                                          message:@"Password must be at least 8 characters with at least one number and upercase letter"
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
         
-        else
-        {
-            NSString *errorString = [[error userInfo] objectForKey:@"error"];
-            UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            [errorAlertView show];
-        }
+        [message show];
+        isUserloggedin=NO;
     }
+    
+    else
+    {
+        NSError *error = nil;
+        
+        [newUser signUp:&error];
+        {
+            if (!error)
+            {
+                isUserloggedin=YES;
+            }
+            
+            else
+            {
+                NSString *errorString = [[error userInfo] objectForKey:@"error"];
+                UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [errorAlertView show];
+            }
+        }
+
+        
+        
+        
+    }
+    
     return isUserloggedin;
 }
 
@@ -131,7 +152,7 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail");
+        //NSLog(@"Fail");
         
     }
     
@@ -139,18 +160,18 @@
     NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Users (userId,userFirstname,userLastname,userUsername,userPassword,userEmailAddress,numberOfInProgressGoals,numberOfAchievedGoals,wantsToShare) VALUES (%@,'%@','%@','%@','%@','%@','%d','%d','%d')",userID,userFirsname,userLastname,userUsername,userPassword,userEmailAddres,numberOfInProgressGoals,numberOfAchievedGoals,wantsToShare];
     
     
-    NSLog(@"%@",insertSQL);
+    //NSLog(@"%@",insertSQL);
     
     BOOL succ=[db executeUpdate:insertSQL];
     
     if (succ==YES)
     {
-        NSLog(@"Succseed");
+        //NSLog(@"Succseed");
     }
     
     else
     {
-        NSLog(@"Fail");
+        //NSLog(@"Fail");
     }
     
     [db close];
@@ -166,13 +187,13 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail");
+       // NSLog(@"Fail");
         
     }
     
     NSString *getSQL = [NSString stringWithFormat:@"select * from Users where userUsername='%@';",username];
     
-    NSLog(@"%@",getSQL);
+    //NSLog(@"%@",getSQL);
     
     User *user;
     
@@ -207,25 +228,25 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+       // NSLog(@"Fail to open");
         
     }
     
     NSString *insertSQL = [NSString stringWithFormat:@"UPDATE Users SET numberOfInProgressGoals='%d',numberOfAchievedGoals='%d',wantsToShare='%d' WHERE userUsername='%@';",self.numberOfInProgressGoals,self.numberOfAchievedGoals,wantsToShare,self.userUsername];
     
-    NSLog(@"%@",insertSQL);
+    //NSLog(@"%@",insertSQL);
     
     BOOL succ=[db executeUpdate:insertSQL];
     
     if (succ==YES)
     {
-        NSLog(@"Succseed");
+       // NSLog(@"Succseed");
         
     }
     
     else
     {
-        NSLog(@"Fail");
+        //NSLog(@"Fail");
     }
     [db close];
     
@@ -254,6 +275,7 @@
             }];
         }}];
 }
+
 -(void)UpdateBackgroundPic
 {
     PFQuery *query = [PFUser query];
@@ -308,5 +330,25 @@
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     return [paths objectAtIndex:0];
 }
+
+
+
+- (BOOL)passwordIsValid:(NSString *)password {
+    
+    // 1. Upper case.
+    if (![[NSCharacterSet uppercaseLetterCharacterSet] characterIsMember:[password characterAtIndex:0]])
+        return NO;
+    
+    // 2. Length.
+    if ([password length] < 8)
+        return NO;
+    
+    // 4. Numbers.
+    if ([[password componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"0123456789"]] count] < 2)
+        return NO;
+    
+    return YES;
+}
+
 
 @end

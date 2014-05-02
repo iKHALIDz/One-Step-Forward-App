@@ -35,7 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSLog(@"T: %d",cgoal.goalID);
+    //NSLog(@"T: %d",cgoal.goalID);
     
     self.goalName.text=cgoal.goalName;
     self.goalDescription.text=cgoal.goalDescription;
@@ -125,9 +125,9 @@
 
 - (IBAction)send:(UIButton *)sender {
     
-    NSLog(@"Goal%@",cgoal.createdBy);
-    NSLog(@"Goal%@",currentUser.userUsername);
-    NSLog(@"Goal%d",cgoal.goalID);
+    //NSLog(@"Goal%@",cgoal.createdBy);
+    //NSLog(@"Goal%@",currentUser.userUsername);
+    //NSLog(@"Goal%d",cgoal.goalID);
     
     PFObject *newGoalSuggestion= [PFObject objectWithClassName:@"GoalSuggestion"];
     

@@ -18,7 +18,7 @@
 -(NSString*)DataFilePath
 {
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSLog(@"PATH: %@",[paths objectAtIndex:0]);
+    //NSLog(@"PATH: %@",[paths objectAtIndex:0]);
     
     return [paths objectAtIndex:0];
 }
@@ -30,7 +30,7 @@
     BOOL isOpen=[db open];
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+       // NSLog(@"Fail to open");
         
     }
     
@@ -38,17 +38,17 @@
     
     NSString *LoginsertSQL = [NSString stringWithFormat:@"INSERT INTO Logs (logID,userUsername,logDate,LogContent,logType,logAction,month,year) VALUES ('%d','%@','%@','%@','%@','%@','%d','%d')",logID,userUsername,logDate,logContent,logType,logAction,month,year];
     
-    NSLog(@"%@",LoginsertSQL);
+    //NSLog(@"%@",LoginsertSQL);
     
     BOOL succ=[db executeUpdate:LoginsertSQL];
     
     if (succ==YES)
     {
-        NSLog(@"Succseed");
+      //  NSLog(@"Succseed");
     }
     else
     {
-        NSLog(@"Fail");
+        //NSLog(@"Fail");
     }
     
     [db close];

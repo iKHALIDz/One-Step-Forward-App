@@ -48,7 +48,7 @@
     
     if ([achievedGoalsArray count]==0)
     {
-        NSLog(@"Parse, We still need to add it to DB");
+       // NSLog(@"Parse, We still need to add it to DB");
         achievedGoalsArrayFromParse=[self getDoneGoalsFromParse];
         for (Goal *newgoal in achievedGoalsArrayFromParse)
         {
@@ -201,8 +201,8 @@
                 
                 int DestnationP=[[achievedGoalsArray objectAtIndex:indexPath.row]goalPriority];
                 
-                NSLog(@"Source: %d",sourceP);
-                NSLog(@"Destination: %d",DestnationP);
+                //NSLog(@"Source: %d",sourceP);
+                //NSLog(@"Destination: %d",DestnationP);
                 
                 
                 // ... update data source.
@@ -305,7 +305,7 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+        //NSLog(@"Fail to open");
         
     }
     
@@ -313,7 +313,7 @@
     
     NSString *Finalquery= [query stringByAppendingString:@"ORDER BY goalpriority DESC;"];
     
-    NSLog(@"%@",Finalquery);
+   // NSLog(@"%@",Finalquery);
     
     FMResultSet *result =[db executeQuery:Finalquery];
     

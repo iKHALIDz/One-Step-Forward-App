@@ -39,7 +39,7 @@
     
     if ([inProgressArray count]==0)
     {
-        NSLog(@"Parse, We still need to add it to DB");
+      //  NSLog(@"Parse, We still need to add it to DB");
         inProgressArrayFromParse=[self getDoneGoalsFromParse];
         for (Goal *newgoal in inProgressArrayFromParse)
         {
@@ -120,8 +120,8 @@
                 
                 int DestnationP=[[inProgressArray objectAtIndex:indexPath.row]goalPriority];
                 
-                NSLog(@"Source: %d",sourceP);
-                NSLog(@"Destination: %d",DestnationP);
+                //NSLog(@"Source: %d",sourceP);
+                //NSLog(@"Destination: %d",DestnationP);
                 
 
                 // ... update data source.
@@ -230,7 +230,7 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+     //   NSLog(@"Fail to open");
         
     }
     
@@ -238,7 +238,7 @@
     
     NSString *Finalquery= [query stringByAppendingString:@"ORDER BY goalpriority DESC;"];
 
-    NSLog(@"%@",Finalquery);
+    //NSLog(@"%@",Finalquery);
     
     FMResultSet *result =[db executeQuery:Finalquery];
     
@@ -364,7 +364,16 @@
     radialView.startingSlice = 3;
     radialView.theme.sliceDividerThickness = 0;
     
-    radialView.label.textColor = [UIColor blueColor];
+    if (days2<0)
+    {
+        radialView.label.textColor = [UIColor redColor];
+
+    }
+    else
+    {
+        radialView.label.textColor = [UIColor blueColor];
+
+    }
     radialView.label.shadowColor = [UIColor clearColor];
     
     radialView.label.pointSizeToWidthFactor=0.3;

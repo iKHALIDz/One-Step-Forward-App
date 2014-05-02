@@ -33,24 +33,24 @@
     BOOL isOpen=[db open];
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+     //   NSLog(@"Fail to open");
         
     }
     
     NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO Goals (goalId,GoalName,GoalDesc,GoalDeadline,isGoalCompleted,isGoalinPregress,goalPercentage,CreatedBy,goalDate,numberofStepTaken,goalType,goalpriority,month,year) VALUES (%d,'%@','%@','%@','%d','%d','%f','%@','%@','%d','%@','%d','%d','%d')",self.goalID,self.goalName,self.goalDescription,self.goalDeadline,isGoalCompleted,isGoalinProgress,goalProgress,self.createdBy,self.goalDate,self.numberOfGoalSteps,goalType,goalPriority,month,year];
     
-    NSLog(@"%@",insertSQL);
+  //  NSLog(@"%@",insertSQL);
     
     BOOL succ=[db executeUpdate:insertSQL];
     
     if (succ==YES)
     {
-        NSLog(@"Succseed");
+       // NSLog(@"Succseed");
         
     }
     else
     {
-        NSLog(@"Fail");
+      //  NSLog(@"Fail");
     }
     
     [db close];
@@ -63,7 +63,7 @@
     
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
-    NSLog(@"PATH: %@",[paths objectAtIndex:0]);
+   // NSLog(@"PATH: %@",[paths objectAtIndex:0]);
     return [paths objectAtIndex:0];
 }
 
@@ -75,7 +75,7 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+       // NSLog(@"Fail to open");
         
     }
     
@@ -91,15 +91,15 @@
         insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET goalPercentage='%f',numberofStepTaken='%d' where goalId='%d' AND createdBy='%@';",self.goalProgress-progress,self.numberOfGoalSteps,self.goalID,self.createdBy];
     }
     
-    NSLog(@"%@",insertSQL);
+   // NSLog(@"%@",insertSQL);
     BOOL succ=[db executeUpdate:insertSQL];
     if (succ==YES)
     {
-        NSLog(@"Succseed");
+       // NSLog(@"Succseed");
     }
     else
     {
-        NSLog(@"Fail");
+     //   NSLog(@"Fail");
     }
     [db close];
 }
@@ -161,7 +161,7 @@
         else
         {
 
-            NSLog(@"Error: %@", error);
+//            NSLog(@"Error: %@", error);
         }
     }];
     
@@ -175,7 +175,7 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+       // NSLog(@"Fail to open");
         
     }
     
@@ -183,19 +183,19 @@
     
     
     
-    NSLog(@"%@",insertSQL);
+    //NSLog(@"%@",insertSQL);
     
     BOOL succ=[db executeUpdate:insertSQL];
     
     if (succ==YES)
     {
-        NSLog(@"Succseed");
+      //  NSLog(@"Succseed");
         
     }
     
     else
     {
-        NSLog(@"Fail");
+      //  NSLog(@"Fail");
     }
     [db close];
 }
@@ -208,26 +208,26 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+      //  NSLog(@"Fail to open");
         
     }
     
     NSString *insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET isGoalCompleted='0',isGoalinPregress='1',numberofStepTaken='%d',goalPercentage='100.00' where goalId='%d' AND createdBy='%@';",self.numberOfGoalSteps,self.goalID,self.createdBy];
     
     
-    NSLog(@"%@",insertSQL);
+   // NSLog(@"%@",insertSQL);
     
     BOOL succ=[db executeUpdate:insertSQL];
     
     if (succ==YES)
     {
-        NSLog(@"Succseed");
+     //   NSLog(@"Succseed");
         
     }
     
     else
     {
-        NSLog(@"Fail");
+      //  NSLog(@"Fail");
     }
     [db close];
 }
@@ -281,24 +281,24 @@
     BOOL isOpen=[db open];
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+        //NSLog(@"Fail to open");
         
     }
     
     NSString *deleteSQL = [NSString stringWithFormat:@"DELETE FROM Goals WHERE goalId='%d' AND createdBy='%@';",self.goalID,self.createdBy];
     
-    NSLog(@"%@",deleteSQL);
+    //NSLog(@"%@",deleteSQL);
     
     
     BOOL succ=[db executeUpdate:deleteSQL];
     
     if (succ==YES) {
-        NSLog(@"Succseed");
+        //NSLog(@"Succseed");
     }
     
     else
     {
-        NSLog(@"Fail");
+     //   NSLog(@"Fail");
     }
     
     [db close];
@@ -328,25 +328,25 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+        //NSLog(@"Fail to open");
         
     }
     
     NSString *insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET goalPriority='%d' where goalId='%d' AND createdBy='%@';",indexP,self.goalID,self.createdBy];
     
-    NSLog(@"%@",insertSQL);
+    //NSLog(@"%@",insertSQL);
     
     BOOL succ=[db executeUpdate:insertSQL];
     
     if (succ==YES)
     {
-        NSLog(@"Succseed");
+     //   NSLog(@"Succseed");
         
     }
     
     else
     {
-        NSLog(@"Fail");
+      //  NSLog(@"Fail");
     }
     [db close];
 }
@@ -361,26 +361,26 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+       // NSLog(@"Fail to open");
         
     }
     
-    NSString *insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET GoalName='%@', GoalDesc ='%@', goalDate = '%@' , goalType='%@' where goalId='%d' AND createdBy='%@';",self.goalName,self.goalDescription,goalDate,goalType,self.goalID,self.createdBy];
+    NSString *insertSQL = [NSString stringWithFormat:@"UPDATE Goals SET GoalName='%@', GoalDesc ='%@', GoalDeadline = '%@' , goalType='%@' where goalId='%d' AND createdBy='%@';",self.goalName,self.goalDescription,goalDeadline,goalType,self.goalID,self.createdBy];
     
     
-    NSLog(@"%@",insertSQL);
+    //NSLog(@"%@",insertSQL);
     
     BOOL succ=[db executeUpdate:insertSQL];
     
     if (succ==YES)
     {
-        NSLog(@"Succseed");
+      //NSLog(@"Succseed");
         
     }
     
     else
     {
-        NSLog(@"Fail");
+    //NSLog(@"Fail");
     }
     
     [db close];
@@ -398,7 +398,7 @@
     [query getFirstObjectInBackgroundWithBlock:^(PFObject * updateGoal, NSError *error){
         if (!error) {
             
-            NSLog(@"Found it");
+          //  NSLog(@"Found it");
             
             
             [updateGoal setObject:self.goalName forKey:@"GoalName"];

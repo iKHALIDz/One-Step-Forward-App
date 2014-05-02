@@ -80,7 +80,7 @@
 
     }
     
-    NSLog(@"View Didload %d",[timelinePosts count]);
+    //NSLog(@"View Didload %d",[timelinePosts count]);
 }
 
 -(NSString *) GetTimeinWords: (NSString *) Y
@@ -229,7 +229,7 @@
                 {
                     NSString *temp=[obj objectForKey:@"numberOfLikes"];
                     NSInteger Nummber=[temp integerValue]-1;
-                    NSLog(@"%d",Nummber);
+                    //NSLog(@"%d",Nummber);
                     
                     [obj setObject:[NSString stringWithFormat:@"%d",Nummber] forKey:@"numberOfLikes"];
                     
@@ -297,7 +297,7 @@
     UIButton *button = (UIButton *)sender;
     
     int row = button.tag;
-    NSLog(@"isPressed");
+    //NSLog(@"isPressed");
     
     
     currentUsername=[[timelinePosts objectAtIndex:row] username];

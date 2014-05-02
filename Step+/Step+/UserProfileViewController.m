@@ -70,7 +70,7 @@
 {
 	MDRadialProgressView *view = [[MDRadialProgressView alloc] initWithFrame:frame];
     
-	view.center = CGPointMake(30,22);
+	view.center = CGPointMake(40,40);
     
 	return view;
 }
@@ -100,7 +100,7 @@
     [cell.DueDate setText:[NSString stringWithFormat:@"%d Steps Taken",[[inProgressArrayFromParse objectAtIndex:indexPath.row] numberOfGoalSteps]]];
     
     
-    CGRect frame = CGRectMake(0,-10, 40, 40);
+    CGRect frame = CGRectMake(0,-10, 70, 70);
     
     radialView = [self progressViewWithFrame:frame];
     radialView.progressTotal = 100;
@@ -130,7 +130,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 64;
+    return 70;
 }
 
 
@@ -158,19 +158,19 @@
         
         PFObject *object=[objects objectAtIndex:0];
         if (!object) {
-            NSLog(@"The getFirstObject request failed.");
+           // NSLog(@"The getFirstObject request failed.");
         } else {
-            NSLog(@"ttttt");
+            //NSLog(@"ttttt");
             selectedUser=[[User alloc]init];
             // The find succeeded.
             selectedUser.userFirsname=[NSString stringWithFormat:@"%@",[object objectForKey:@"FirstName"]];
-            NSLog(@"ttttt2");
+            //NSLog(@"ttttt2");
             
             selectedUser.userLastname=[NSString stringWithFormat:@"%@",[object objectForKey:@"LastName"]];
             selectedUser.userUsername=[NSString stringWithFormat:@"%@",[object objectForKey:@"username"]];
             selectedUser.userPassword=[NSString stringWithFormat:@"%@",[object objectForKey:@"password"]];
             selectedUser.userEmailAddres=[NSString stringWithFormat:@"%@",[object objectForKey:@"email"]];
-            NSLog(@"ttttt2");
+            //NSLog(@"ttttt2");
             
             selectedUser.numberOfAchievedGoals=[[NSString stringWithFormat:@"%@",[object objectForKey:@"numberOfAchievedGoals"]] integerValue];
             selectedUser.numberOfInProgressGoals=[[NSString stringWithFormat:@"%@",[object objectForKey:@"numberOfInProgressGoals"]]integerValue];
@@ -290,7 +290,7 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    NSLog(@"$");
+    //NSLog(@"$");
     
     
 }

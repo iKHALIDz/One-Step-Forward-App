@@ -137,9 +137,9 @@
     UIButton *button = (UIButton *)sender;
     
     int row = button.tag;
-    NSLog(@"isPressed");
+    //NSLog(@"isPressed");
     
-    NSLog(@"%d",row);
+    //NSLog(@"%d",row);
     currentUser.userUsername=[[sPosts objectAtIndex:row] From];
     [self performSegueWithIdentifier:@"GoToUserProfile" sender:self];
 }

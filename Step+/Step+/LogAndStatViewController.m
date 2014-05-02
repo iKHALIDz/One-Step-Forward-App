@@ -113,9 +113,9 @@
     achievedArray=[self getDoneGoalsFromDB:[currentData integerValue]];
     createdGoals=[self getCreatedGoalsFromDB:[currentData integerValue]];
     
-    NSLog(@"In Progress %d",[inProgressArray count]);
-    NSLog(@"Done %d",[achievedArray count]);
-    NSLog(@"Created %d",[createdGoals count]);
+    //NSLog(@"In Progress %d",[inProgressArray count]);
+    //NSLog(@"Done %d",[achievedArray count]);
+    //NSLog(@"Created %d",[createdGoals count]);
 
     
     CGRect frame1 = CGRectMake(0,0, 50, 50);
@@ -200,7 +200,7 @@
     
     NSString *currentData= [dateFormatter stringFromDate:_calendarView.selectedDate];
     
-    NSLog(@"%@",currentData);
+    //NSLog(@"%@",currentData);
     
     array=[self getGoalsList:currentData];
     
@@ -221,9 +221,9 @@
     achievedArray=[self getDoneGoalsFromDB:m];
     createdGoals=[self getCreatedGoalsFromDB:m];
     
-    NSLog(@"In Progress %d",[inProgressArray count]);
-    NSLog(@"Done %d",[achievedArray count]);
-    NSLog(@"Created %d",[createdGoals count]);
+   // NSLog(@"In Progress %d",[inProgressArray count]);
+   // NSLog(@"Done %d",[achievedArray count]);
+   // NSLog(@"Created %d",[createdGoals count]);
     
     
     [radialView removeFromSuperview];
@@ -300,7 +300,7 @@
     
     [self.DoneGoalView addSubview:radialView3];
 
-    NSLog(@"ttt %d",m);
+    //NSLog(@"ttt %d",m);
     
 }
 
@@ -372,7 +372,7 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+        //NSLog(@"Fail to open");
         
     }
     
@@ -381,7 +381,7 @@
     
     NSString *s=[qr stringByAppendingString:@"ORDER BY logDate DESC;"];
     
-    NSLog(@"RR %@",s);
+    //NSLog(@"RR %@",s);
     
     FMResultSet *result =[db executeQuery:s];
     
@@ -410,7 +410,7 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+        //NSLog(@"Fail to open");
         
     }
     
@@ -450,7 +450,7 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+        //NSLog(@"Fail to open");
         
     }
     
@@ -458,7 +458,7 @@
     
     NSString *Finalquery= [query stringByAppendingString:@"ORDER BY goalpriority DESC;"];
     
-    NSLog(@"%@",Finalquery);
+    //NSLog(@"%@",Finalquery);
     
     FMResultSet *result =[db executeQuery:Finalquery];
     
@@ -493,7 +493,7 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+        //NSLog(@"Fail to open");
         
     }
     
@@ -502,7 +502,7 @@
     
     NSString *Finalquery= [query stringByAppendingString:@"ORDER BY goalpriority DESC;"];
     
-    NSLog(@"%@",Finalquery);
+   // NSLog(@"%@",Finalquery);
     
     FMResultSet *result =[db executeQuery:Finalquery];
     
@@ -537,7 +537,7 @@
     
     if (isOpen==NO)
     {
-        NSLog(@"Fail to open");
+       // NSLog(@"Fail to open");
         
     }
     
@@ -546,7 +546,7 @@
     
     NSString *Finalquery= [query stringByAppendingString:@"ORDER BY goalpriority DESC;"];
     
-    NSLog(@"%@",Finalquery);
+    //NSLog(@"%@",Finalquery);
     
     FMResultSet *result =[db executeQuery:Finalquery];
     
@@ -570,6 +570,13 @@
     }
     return list;
 }
+
+- (IBAction)backTomain:(UIBarButtonItem *)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
 
 
 @end

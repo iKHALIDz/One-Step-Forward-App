@@ -82,7 +82,7 @@
     
     dateFromString = [dateFormatter dateFromString:currentGoal.goalDeadline];
     
-    NSLog(@"%@",[dateFromString description]);
+  //  NSLog(@"%@",[dateFromString description]);
     
     if (dateFromString == nil) {
         dateFromString = [NSDate date];
@@ -231,6 +231,9 @@
     
     [currentGoal UpdateGoalDB];
     [currentGoal UpdateGoalParse];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+
     
 }
 

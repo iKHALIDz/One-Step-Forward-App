@@ -37,7 +37,7 @@
         self.progressPercenatge.enabled=NO;
         
     }
-    NSLog(@"66 %d",currentUser.wantsToShare);
+    //NSLog(@"66 %d",currentUser.wantsToShare);
 
     
 }
@@ -85,7 +85,7 @@
         X=4;
     }
     
-    NSLog(@"X= %d",X);
+    //NSLog(@"X= %d",X);
     return X;
 }
 
@@ -285,7 +285,7 @@
     else if (check==-1) // meaning the new progress is larger than the remaining
     {
         
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Errot!"
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error!"
                                                           message:[NSString stringWithFormat:@"The current progress for the selected goal is %.2f",currentGoal.goalProgress]
                                                          delegate:nil
                                                 cancelButtonTitle:@"OK"
@@ -402,6 +402,11 @@
     NSString *currentData= [dateFormatter stringFromDate:Todaydata];
     
     return currentData;
+}
+- (IBAction)cancel:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 @end
